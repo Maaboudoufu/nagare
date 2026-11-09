@@ -43,11 +43,14 @@ export function applySettings() {
 
 /* XP pop-ups for what the server just awarded: one XP total per save, plus each level-up and achievement. */
 let toastId = 0;
+// Each toast times itself out (components/Toasts.jsx): its bar drains, pausing while hovered or focused.
 export function toast(t) {
-  const id = ++toastId;
-  store.toasts = [...store.toasts, {id, ...t}];
+  store.toasts = [...store.toasts, {id:++toastId, ms:['xp', 'note'].includes(t.kind) ? 4000 : 6000, ...t}];
   bump();
-  setTimeout(() => { store.toasts = store.toasts.filter(x => x.id !== id); bump(); }, ['xp', 'note'].includes(t.kind) ? 3500 : 6000);
+}
+export function dismiss(id) {
+  store.toasts = store.toasts.filter(x => x.id !== id);
+  bump();
 }
 export function reward(events = []) {
   bump();
@@ -82,6 +85,7 @@ export function useCourse(slug) {
   const l = isTranslated(slug) ? lang() : 'en', key = `${slug}:${l}`;
   const [course, setCourse] = useState(courseCache[key]);
   useEffect(() => {
+    if (!slug) return;
     if (courseCache[key]) return setCourse(courseCache[key]);
     let live = true;
     english[slug] ??= fetch(`/courses/${slug}.json`).then(r => r.json());

@@ -4,20 +4,8 @@ import {currentPath, pathCourses, paths} from '../paths.js';
 import {isDone, lessonPath, pct, save, store, useStore} from '../store.js';
 import {Topbar} from './Account.jsx';
 import CustomPicker from './CustomPicker.jsx';
+import Resume from './Resume.jsx';
 import {Icon, Logo, Meter} from './ui.jsx';
-
-function resumeLink(list, done) {
-  const last = store.progress['app:last'];
-  const started = list.find(c => c.lessons.some(isDone) && !c.lessons.every(isDone));
-  const next = started || list.find(c => !c.lessons.every(isDone));
-  if (last && list.some(c => c.slug === last.slug))
-    return {href:lessonPath(last.slug, last.uuid), label:t('Continue where you left off'), title:last.title, sub:last.course};
-  if (started)
-    return {href:lessonPath(started.slug), label:t('Continue'), title:started.title,
-            sub:t('{n} of {total} lessons done', {n:started.lessons.filter(isDone).length, total:started.lessons.length})};
-  if (next) return {href:lessonPath(next.slug), label:done ? t('Up next') : t('Start the path'), title:next.title, sub:t('Course {n}', {n:list.indexOf(next) + 1})};
-  return null;
-}
 
 export default function Home() {
   useStore();
@@ -26,7 +14,6 @@ export default function Home() {
   useEffect(() => { document.title = `${path.title} · ${t('nagare')}`; }, [path.title]);
   const total = list.reduce((n, c) => n + c.lessons.length, 0);
   const done = list.reduce((n, c) => n + c.lessons.filter(isDone).length, 0);
-  const resume = resumeLink(list, done);
 
   const choose = id => {
     const data = {id};
@@ -55,16 +42,7 @@ export default function Home() {
             <p className="meta">{t('{done} of {total} lessons · {pct}%', {done:<strong>{done.toLocaleString(locale())}</strong>, total:total.toLocaleString(locale()), pct:pct(done, total)})}</p>
           </div>
         )}
-        {resume ? (
-          <a className="resume" href={resume.href}>
-            <span className="resume-icon"><Icon name="play"/></span>
-            <span className="resume-text">
-              <span className="resume-label">{resume.label}</span>
-              <span className="resume-title">{resume.title}</span><span className="meta">{resume.sub}</span>
-            </span>
-            <Icon name="chevron-right" cls="resume-chev"/>
-          </a>
-        ) : <div className="resume-gap"></div>}
+        <Resume list={list}/>
       </header>
       <h2 className="section-title">{list.length === 1 ? t('{n} course', {n:list.length}) : t('{n} courses', {n:list.length})}</h2>
       {!list.length && <p className="meta">{t('No courses in your custom path yet. Use {edit} to pick some.', {edit:<strong>{t('Edit courses')}</strong>})}</p>}
