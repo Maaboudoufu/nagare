@@ -4,16 +4,18 @@ saved per user in data/progress/<user>.json. python3 server/serve.py also runs i
 Without Docker, build the UI first: cd web && bun install && bun run build   (UI dev with hot reload: bun run dev -> :5173)
 Self-check: python3 server/serve.py --check  (re-submits your saved code, tests the CLI grader)
 Without Docker, Python lessons need pytest: python3 -m venv .venv && .venv/bin/python -m pip install pytest"""
-import email.utils, glob, gzip, json, os, signal, sys, tempfile, threading
+import datetime, email.utils, glob, gzip, hmac, json, os, signal, sys, tempfile, threading
 import urllib.parse
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
-import grader, terminal, workspace
+import gamify, grader, terminal, workspace
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)  # repo root
 WEB = os.path.join(ROOT, 'web', 'dist')
 COURSES = os.path.join(ROOT, 'courses')  # served at /courses/, except shell/ (sandbox files)
-PROGRESS_DIR = os.path.join(os.environ.get('DATA_DIR', os.path.join(ROOT, 'data')), 'progress')
+DATA_DIR = os.environ.get('DATA_DIR', os.path.join(ROOT, 'data'))
+PROGRESS_DIR = os.path.join(DATA_DIR, 'progress')
+INTERNAL_TOKEN = os.environ.get('INTERNAL_TOKEN', '')  # from the gateway, for /internal/ calls only it makes
 LESSONS = {l['uuid']: l
            for p in glob.glob(os.path.join(COURSES, '*.json')) if not p.endswith('index.json')
            for ch in json.load(open(p))['chapters'] for l in ch['lessons']}
@@ -31,14 +33,56 @@ def load_progress(user):
         return {}
 
 
-def save_progress(user, key, data):
+def update_progress(user, fn):
+    """Load, change with fn(prog), save; returns fn's result."""
     with lock:
         prog = load_progress(user)
-        prog.setdefault(key, {}).update(data)
+        out = fn(prog)
         os.makedirs(PROGRESS_DIR, exist_ok=True)
         tmp = progress_path(user) + '.tmp'
         json.dump(prog, open(tmp, 'w'), indent=1)
         os.replace(tmp, progress_path(user))  # never leave a half-written file
+        return prog, out
+
+
+def save_progress(user, key, data):
+    data = {k: v for k, v in data.items() if k != 'doneAt'}  # set by the server only
+    def apply(prog):
+        prog.setdefault(key, {}).update(data)
+        return gamify.saved(prog, LESSONS, key, data)
+    return update_progress(user, apply)
+
+
+# ponytail: reads every progress file per request; cache it if there are ever thousands of users
+def leaderboard(me, period):
+    """Everyone who hasn't opted out (Settings) or been banned, ranked by XP: all time, or the last 7 or 30 days.
+    Names come from their profile or Google account (data/users.json, written by the gateway); never emails."""
+    try:
+        members = json.load(open(os.path.join(DATA_DIR, 'users.json')))
+    except (FileNotFoundError, ValueError):
+        members = {}
+    days = {'week': 7, 'month': 30}.get(period)
+    since = (datetime.date.today() - datetime.timedelta(days=days - 1)).isoformat() if days else None
+    rows = []
+    for path in glob.glob(os.path.join(PROGRESS_DIR, '*.json')):
+        uid = os.path.basename(path)[:-5]
+        m = members.get(uid, {})
+        try:
+            prog = json.load(open(path))
+        except ValueError:
+            continue
+        s, st, pr = prog.get('app:stats') or {}, prog.get('app:settings') or {}, prog.get('app:profile') or {}
+        if m.get('banned') or (st.get('leaderboard') is False and uid != me) or not s:
+            continue
+        xp = sum(v for d, v in s.get('days', {}).items() if d >= since) if since else s.get('xp', 0)
+        rows.append({'name': pr.get('name') or m.get('name') or ('You' if uid == me else 'Learner'), 'handle': pr.get('handle', ''),
+                     'picture': m.get('picture', '') if st.get('photo', True) else '', 'xp': xp, 'level': gamify.level(s.get('xp', 0)),
+                     'streak': s.get('streak', 0), 'lessons': sum(1 for k, v in prog.items() if isinstance(v, dict) and v.get('done') and k in LESSONS),
+                     'you': uid == me, 'hidden': st.get('leaderboard') is False})
+    rows.sort(key=lambda r: (-r['xp'], -r['lessons'], r['name'].lower()))
+    for i, r in enumerate(rows):
+        r['rank'] = i + 1
+    return [r for r in rows if r['rank'] <= 50 or r['you']]
 
 
 class Handler(SimpleHTTPRequestHandler):
@@ -92,7 +136,13 @@ class Handler(SimpleHTTPRequestHandler):
             return terminal.serve(self, urllib.parse.parse_qs(url.query), user)
         if url.path == '/api/progress':  # the app's first call: start their workspace meanwhile
             threading.Thread(target=workspace.warm, args=(user,), daemon=True).start()
-            return self.send_json(load_progress(user))
+            tz = urllib.parse.parse_qs(url.query).get('tz', [None])[0]
+            prog, events = update_progress(user, lambda p: gamify.login(p, LESSONS, tz))
+            return self.send_json({**prog, 'app:events': events})  # app:events isn't saved
+        if url.path == '/api/leaderboard':
+            return self.send_json(leaderboard(user, urllib.parse.parse_qs(url.query).get('period', ['all'])[0]))
+        if url.path == '/api/achievements':
+            return self.send_json(gamify.achievements(load_progress(user), LESSONS))
         if url.path.startswith('/courses/shell/'):  # sandbox files are for the server only
             return self.send_error(404)
         full = self.translate_path(self.path)
@@ -124,6 +174,12 @@ class Handler(SimpleHTTPRequestHandler):
         if not user:
             return self.send_error(400)
         body = json.loads(self.rfile.read(int(self.headers.get('Content-Length') or 0)) or b'{}')
+        if self.path == '/internal/kick':  # never reachable through the gateway's /api/ proxy
+            if not INTERNAL_TOKEN or not hmac.compare_digest(self.headers.get('X-Internal-Token', ''), INTERNAL_TOKEN):
+                return self.send_error(403)
+            if workspace.USER_ID.match(str(body.get('user'))):
+                threading.Thread(target=workspace.remove_user, args=(body['user'],), daemon=True).start()
+            return self.send_json({'ok': True})
         lesson = LESSONS.get(body.get('uuid'))
         try:
             if self.path == '/api/run' and lesson and 'files' in lesson:
@@ -140,9 +196,10 @@ class Handler(SimpleHTTPRequestHandler):
             elif self.path == '/api/sandbox/reset' and lesson and lesson.get('sandbox'):
                 workspace.reset_sandbox(user, body['uuid'])
                 res = {'ok': True}
-            elif self.path == '/api/progress' and isinstance(body.get('uuid'), str) and isinstance(body.get('data'), dict):
-                save_progress(user, body['uuid'], body['data'])
-                res = {'ok': True}
+            elif (self.path == '/api/progress' and isinstance(body.get('uuid'), str) and isinstance(body.get('data'), dict)
+                  and body['uuid'] not in ('app:stats', 'app:events')):  # stats are the server's
+                prog, events = save_progress(user, body['uuid'], body['data'])
+                res = {'ok': True, 'events': events, 'stats': prog['app:stats']}
             else:
                 return self.send_error(404)
         except workspace.Busy as e:

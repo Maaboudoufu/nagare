@@ -1,7 +1,7 @@
 import {createRoot} from 'react-dom/client';
 import App from './App.jsx';
 import SignIn from './components/ui/SignIn.jsx';
-import {lessonPath, navigate, store} from './store.js';
+import {applySettings, lessonPath, navigate, reward, save, store} from './store.js';
 import './lib/codemirror.js';  // its CSS first, so styles.css can override it
 import './styles.css';
 
@@ -16,7 +16,7 @@ const json = url => fetch(url, {cache:'no-store'}).then(r => {
 addEventListener('click', e => {
   const a = e.target.closest?.('a[href]');
   if (!a || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || a.target || a.origin !== location.origin) return;
-  if (a.pathname !== '/' && !a.pathname.startsWith('/learn/')) return;
+  if (!/^\/(learn\/|profile$|settings$|achievements$|leaderboard$|admin$|$)/.test(a.pathname)) return;
   if (a.pathname === location.pathname && a.hash) return;  // in-page anchors
   e.preventDefault();
   navigate(a.pathname);
@@ -29,10 +29,16 @@ if (location.pathname === '/signin') {
   // Old links were #course/lesson: keep them working.
   const old = location.hash.match(/^#([a-z0-9-]+)(?:\/([\w-]+))?$/);
   if (old) navigate(lessonPath(old[1], old[2]), {replace:true});
-  Promise.all([json('/auth/me'), json('/courses/index.json'), json('/api/progress')]).then(([auth, catalog, progress]) => {
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  Promise.all([json('/auth/me'), json('/courses/index.json'), json(`/api/progress?tz=${encodeURIComponent(tz)}`)]).then(([auth, catalog, progress]) => {
+    const {'app:events':events, ...rest} = progress;
     store.user = auth.user;
+    store.admin = auth.admin;
     store.catalog = catalog;
-    store.progress = progress;
+    store.progress = rest;
+    applySettings();
     root.render(<App/>);
+    if (!rest['app:settings']?.tz) save('app:settings', {tz});  // streaks and the activity graph use your days
+    reward(events);
   });
 }

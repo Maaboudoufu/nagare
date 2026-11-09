@@ -8,10 +8,10 @@ export const post = (url, body) => fetch(url, {method:'POST', body:JSON.stringif
 export const signOut = () => fetch('/auth/logout', {method:'POST'}).then(() => location.assign('/signin'));
 export const pct = (n, total) => total ? Math.round(100 * n / total) : 0;
 
-export const store = {catalog:null, progress:{}, user:null, version:0, listeners:new Set()};
+export const store = {catalog:null, progress:{}, user:null, admin:false, toasts:[], version:0, listeners:new Set()};
 const subscribe = fn => (store.listeners.add(fn), () => store.listeners.delete(fn));
 export const useStore = () => useSyncExternalStore(subscribe, () => store.version);
-const bump = () => { store.version++; store.listeners.forEach(fn => fn()); };
+export const bump = () => { store.version++; store.listeners.forEach(fn => fn()); };
 export const isDone = uuid => !!store.progress[uuid]?.done;
 
 let saving = Promise.resolve();
@@ -19,7 +19,39 @@ export function save(key, data) {
   Object.assign(store.progress[key] ??= {}, data);
   bump();
   // One request at a time: the server is threaded, so overlapping saves could land out of order.
-  return saving = saving.catch(() => {}).then(() => post('/api/progress', {uuid:key, data}));
+  return saving = saving.catch(() => {}).then(() => post('/api/progress', {uuid:key, data})).then(res => {
+    if (res.stats) store.progress['app:stats'] = res.stats;
+    reward(res.events);
+    return res;
+  });
+}
+
+/* Settings (app:settings) and the profile people fill in (app:profile). */
+export const ACCENTS = {blue:'#7AA7FF', violet:'#B8A6EE', teal:'#5CC8BE', green:'#62BE8C', amber:'#E2B66B', rose:'#F08A9C'};
+export const settings = () => ({accent:'blue', codeSize:14, toasts:true, photo:true, leaderboard:true, ...store.progress['app:settings']});
+export const profile = () => store.progress['app:profile'] || {};
+export function applySettings() {
+  const s = settings(), hex = ACCENTS[s.accent] || ACCENTS.blue, n = parseInt(hex.slice(1), 16);
+  const root = document.documentElement.style;
+  root.setProperty('--accent', hex);
+  root.setProperty('--accent-soft', `rgba(${n >> 16},${n >> 8 & 255},${n & 255},.14)`);
+  root.setProperty('--code-size', `${s.codeSize}px`);
+}
+
+/* XP pop-ups for what the server just awarded: one XP total per save, plus each level-up and achievement. */
+let toastId = 0;
+export function toast(t) {
+  const id = ++toastId;
+  store.toasts = [...store.toasts, {id, ...t}];
+  bump();
+  setTimeout(() => { store.toasts = store.toasts.filter(x => x.id !== id); bump(); }, ['xp', 'note'].includes(t.kind) ? 3500 : 6000);
+}
+export function reward(events = []) {
+  bump();
+  if (!events.length || !settings().toasts) return;
+  const xp = events.filter(e => e.kind === 'xp');
+  if (xp.length) toast({kind:'xp', xp:xp.reduce((n, e) => n + e.xp, 0), reason:xp[0].reason + (xp.length > 1 ? ' + bonuses' : '')});
+  events.filter(e => e.kind !== 'xp').forEach(toast);
 }
 export const markDone = uuid => save(uuid, {done:true});
 
