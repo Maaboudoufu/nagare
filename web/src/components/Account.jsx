@@ -5,7 +5,7 @@ import {level, levelStart, stats} from '../lib/xp.js';
 import {profile, settings, signOut, store, useStore} from '../store.js';
 import {Brand, Icon, Ring} from './ui.jsx';
 
-export const displayName = () => profile().name || store.user?.name || store.user?.email.split('@')[0] || t('You');
+const displayName = () => profile().name || store.user?.name || store.user?.email.split('@')[0] || t('You');
 
 // The Google profile photo, or the name's first letter if there isn't one (or it fails to load).
 // Yours by default; pass picture and name for someone else's.

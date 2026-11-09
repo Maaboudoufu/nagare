@@ -8,7 +8,7 @@ import {Icon, Meter} from './ui.jsx';
 export const formatDate = iso => new Date(iso.length === 10 ? iso + 'T12:00' : iso).toLocaleDateString(locale(), {month:'short', day:'numeric', year:'numeric'});
 
 // Every achievement with this user's progress toward it; fetched again whenever they earn XP.
-export function useAchievements() {
+function useAchievements() {
   useStore();
   const [list, setList] = useState(null);
   const xp = stats().xp;

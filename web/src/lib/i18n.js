@@ -47,7 +47,7 @@ export async function loadContent() {
 export const isTranslated = slug => !!content[lang()]?.courses?.[slug];
 
 // Course titles and descriptions in the catalog (Home, profile) follow the language; the English is kept to switch back.
-export function localizeCatalog() {
+function localizeCatalog() {
   for (const c of store.catalog?.courses || []) {
     c.en ??= {title:c.title, description:c.description};
     const tr = content[lang()]?.courses?.[c.slug];
