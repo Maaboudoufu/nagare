@@ -1,7 +1,7 @@
 /* Catalog + progress, shared by every component. Saved to the server's progress.json. */
 import {useEffect, useState, useSyncExternalStore} from 'react';
 import {fx} from './lib/fx.js';
-import {isTranslated, lang, localizeCourse} from './lib/i18n.js';
+import {isTranslated, lang, localizeCourse, t} from './lib/i18n.js';
 
 export const post = (url, body) => fetch(url, {method:'POST', body:JSON.stringify(body)}).then(r => {
   if (r.status === 401) location.assign('/signin');  // session ended
@@ -25,6 +25,9 @@ export function save(key, data) {
     if (res.stats) store.progress['app:stats'] = res.stats;
     reward(res.events);
     return res;
+  }, e => {  // say so: otherwise it looks done here but the server never saved it or gave the XP
+    toast({kind:'note', icon:'circle-x', text:t('Progress not saved: server not reachable')});
+    throw e;
   });
 }
 

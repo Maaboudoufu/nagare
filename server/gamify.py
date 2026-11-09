@@ -111,6 +111,12 @@ def tz_of(prog, fallback=None):
     return (prog.get('app:settings') or {}).get('tz') or fallback
 
 
+def live_streak(prog):
+    """The stored streak only counts while it's unbroken: last seen today or yesterday, in their time zone."""
+    s, today = prog.get('app:stats') or {}, now_in(tz_of(prog)).date()
+    return s.get('streak', 0) if s.get('last') in (today.isoformat(), (today - datetime.timedelta(days=1)).isoformat()) else 0
+
+
 def login(prog, lessons, tz=None):
     """First visit of the day: login XP and the streak."""
     now = now_in(tz_of(prog, tz))
@@ -173,5 +179,7 @@ if __name__ == '__main__':
     assert any(e.get('id') == 'make-it-yours' for e in saved(prog, lessons, 'app:profile', prog['app:profile']))
     s['last'] = (now_in(tz_of(prog, 'America/Los_Angeles')).date() - datetime.timedelta(days=1)).isoformat()
     login(prog, lessons, 'America/Los_Angeles')
-    assert s['streak'] == 2, s
+    assert s['streak'] == 2 and live_streak(prog) == 2, s
+    s['last'] = '2000-01-01'
+    assert live_streak(prog) == 0  # broken streaks don't show
     print('ok: gamify')

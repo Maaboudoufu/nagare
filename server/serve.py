@@ -87,12 +87,10 @@ def public_profile(me, uid, lang='en'):
         if code and code != 'any':
             langs[code] = langs.get(code, 0) + 1
     recent = sorted(((p.get('doneAt') or '', u) for u, p in done.items() if p.get('doneAt')), reverse=True)[:8]
-    now = gamify.now_in(gamify.tz_of(prog)).date()
-    live = s.get('last') in (now.isoformat(), (now - datetime.timedelta(days=1)).isoformat())
     return {'id': uid, 'self': uid == me, 'name': pr.get('name') or m.get('name') or '', 'handle': pr.get('handle', ''),
             'bio': pr.get('bio', ''), 'location': pr.get('location', ''), 'website': pr.get('website', ''), 'github': pr.get('github', ''),
             'picture': m.get('picture', '') if st.get('photo', True) else '',
-            'xp': s.get('xp', 0), 'level': gamify.level(s.get('xp', 0)), 'streak': s.get('streak', 0) if live else 0,
+            'xp': s.get('xp', 0), 'level': gamify.level(s.get('xp', 0)), 'streak': gamify.live_streak(prog),
             'best': s.get('best', 0), 'joined': s.get('joined'), 'days': s.get('days', {}), 'lessons': len(done),
             'courses': courses, 'languages': langs,
             'recent': [{'uuid': u, 'slug': gamify.COURSE_OF.get(u, {}).get('slug'), 'title': TITLES.get(lang, {}).get(u) or LESSONS[u]['title'], 'at': at}
@@ -106,7 +104,6 @@ def leaderboard(me, period):
     Names come from their profile or Google account (data/users.json, written by the gateway); never emails."""
     known = members()
     days = {'week': 7, 'month': 30}.get(period)
-    since = (datetime.date.today() - datetime.timedelta(days=days - 1)).isoformat() if days else None
     rows = []
     for path in glob.glob(os.path.join(PROGRESS_DIR, '*.json')):
         uid = os.path.basename(path)[:-5]
@@ -118,10 +115,11 @@ def leaderboard(me, period):
         s, st, pr = prog.get('app:stats') or {}, prog.get('app:settings') or {}, prog.get('app:profile') or {}
         if m.get('banned') or (st.get('leaderboard') is False and uid != me) or not s:
             continue
+        since = (gamify.now_in(gamify.tz_of(prog)).date() - datetime.timedelta(days=days - 1)).isoformat() if days else None  # their days, like 'days'
         xp = sum(v for d, v in s.get('days', {}).items() if d >= since) if since else s.get('xp', 0)
         rows.append({'name': pr.get('name') or m.get('name') or '', 'handle': pr.get('handle', ''),
                      'picture': m.get('picture', '') if st.get('photo', True) else '', 'xp': xp, 'level': gamify.level(s.get('xp', 0)),
-                     'streak': s.get('streak', 0), 'lessons': sum(1 for k, v in prog.items() if isinstance(v, dict) and v.get('done') and k in LESSONS),
+                     'streak': gamify.live_streak(prog), 'lessons': sum(1 for k, v in prog.items() if isinstance(v, dict) and v.get('done') and k in LESSONS),
                      'you': uid == me, 'hidden': st.get('leaderboard') is False,
                      'id': uid if uid == me or st.get('publicProfile') is not False else None})  # links to their profile
     rows.sort(key=lambda r: (-r['xp'], -r['lessons'], r['name'].lower()))  # the UI names nameless rows

@@ -145,6 +145,7 @@
  "Linux sandbox terminal": "Linux サンドボックスのターミナル",
  "Loading…": "読み込み中…",
  "Local server not reachable": "サーバーに接続できません",
+ "Progress not saved: server not reachable": "進捗を保存できませんでした：サーバーに接続できません",
  "Local server not reachable.": "サーバーに接続できません。",
  "Location": "場所",
  "Locked": "未解除",
