@@ -27,7 +27,7 @@ export function BrandMark({className = 'brand-mark'}) {
 
 export const Brand = () => <a className="brand" href="/" aria-label="nagare, home"><BrandMark/><span aria-hidden="true">nagare</span></a>;
 
-export const Icon = ({name, cls = ''}) => <svg className={'icon ' + cls} aria-hidden="true"><use href={`/vendor/icons.svg?v=3#${name}`}/></svg>;
+export const Icon = ({name, cls = ''}) => <svg className={'icon ' + cls} aria-hidden="true"><use href={`/vendor/icons.svg?v=4#${name}`}/></svg>;
 
 export const Meter = ({n, total, label, hidden}) => (
   <div className="meter" role={hidden ? undefined : 'progressbar'} aria-hidden={hidden ? 'true' : undefined} aria-label={label}
@@ -40,7 +40,7 @@ export function Logo({course, size = 'md'}) {
   return (
     <span className={`logo logo-${size}`} style={{background:hex, color:lum > 0.6 ? '#131315' : '#FFFFFF'}} title={name}>
       {img ? <img className="brand-img" src={img} alt="" aria-hidden="true"/>
-           : <svg className={lucide ? 'icon' : 'brand'} aria-hidden="true"><use href={`/vendor/${lucide ? 'icons' : 'brands'}.svg?v=3#${sym}`}/></svg>}
+           : <svg className={lucide ? 'icon' : 'brand'} aria-hidden="true"><use href={`/vendor/${lucide ? 'icons' : 'brands'}.svg?v=4#${sym}`}/></svg>}
       <span className="sr">{name}</span>
     </span>
   );

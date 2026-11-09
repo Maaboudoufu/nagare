@@ -6,7 +6,7 @@ import {CopyButton} from '../components/ui.jsx';
 import CodeMirror from './codemirror.js';
 
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;'}[c]));
-const iconHtml = name => `<svg class="icon" aria-hidden="true"><use href="/vendor/icons.svg?v=3#${name}"/></svg>`;
+const iconHtml = name => `<svg class="icon" aria-hidden="true"><use href="/vendor/icons.svg?v=4#${name}"/></svg>`;
 
 // Lesson markdown -> HTML. Videos are written as images (![title](clip.mp4){captions="captions.vtt"}): make them
 // video players. The {captions=...} attribute is dropped: those caption files were never published.

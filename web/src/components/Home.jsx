@@ -1,8 +1,9 @@
 import {useEffect, useState} from 'react';
 import {currentPath, pathCourses, paths} from '../paths.js';
-import {isDone, lessonPath, pct, save, signOut, store, useStore} from '../store.js';
+import {isDone, lessonPath, pct, save, store, useStore} from '../store.js';
+import {Topbar} from './Account.jsx';
 import CustomPicker from './CustomPicker.jsx';
-import {Brand, Icon, Logo, Meter} from './ui.jsx';
+import {Icon, Logo, Meter} from './ui.jsx';
 
 function resumeLink(list, done) {
   const last = store.progress['app:last'];
@@ -15,14 +16,6 @@ function resumeLink(list, done) {
             sub:`${started.lessons.filter(isDone).length} of ${started.lessons.length} lessons done`};
   if (next) return {href:lessonPath(next.slug), label:done ? 'Up next' : 'Start the path', title:next.title, sub:`Course ${list.indexOf(next) + 1}`};
   return null;
-}
-
-// The Google profile photo, or the name's first letter if there isn't one (or it fails to load).
-function Avatar({user}) {
-  const [broken, setBroken] = useState(false);
-  if (user.picture && !broken)
-    return <img className="avatar" src={user.picture} alt="" referrerPolicy="no-referrer" onError={() => setBroken(true)}/>;
-  return <span className="avatar" aria-hidden="true">{(user.name || user.email)[0].toUpperCase()}</span>;
 }
 
 export default function Home() {
@@ -46,16 +39,7 @@ export default function Home() {
   return (
     <main id="home">
       <header>
-        <div className="topbar">
-          <Brand/>
-          {store.user && (
-          <div className="account">
-            <Avatar user={store.user}/>
-            <span className="account-name">{store.user.name || store.user.email.split('@')[0]}</span>
-            <button className="btn ghost" onClick={signOut}>Sign out</button>
-          </div>
-          )}
-        </div>
+        <Topbar/>
         <div className="path-tabs" role="group" aria-label="Learning path">
           {paths().map(p => (
             <button key={p.id} className="path-tab" aria-pressed={p.id === path.id} onClick={() => choose(p.id)}>{p.short}</button>

@@ -1,5 +1,6 @@
 /* A browser terminal (xterm.js) on the server's /api/term WebSocket. xterm is its own chunk, loaded on first use. */
 import {useEffect, useRef} from 'react';
+import {settings} from '../store.js';
 
 let xtermModules;
 const loadXterm = () => xtermModules ??= Promise.all([
@@ -19,7 +20,7 @@ export default function TermView({url, className = '', label}) {
     let closed = false, cleanup = () => {};
     loadXterm().then(([{Terminal}, {FitAddon}, {WebglAddon}]) => {
       if (closed) return;
-      const term = new Terminal({fontFamily:'"JetBrains Mono", monospace', fontSize:14, lineHeight:1.15, cursorBlink:true, scrollback:5000, theme:THEME});
+      const term = new Terminal({fontFamily:'"JetBrains Mono", monospace', fontSize:settings().codeSize, lineHeight:1.15, cursorBlink:true, scrollback:5000, theme:THEME});
       const fit = new FitAddon();
       term.loadAddon(fit);
       term.open(host.current);
