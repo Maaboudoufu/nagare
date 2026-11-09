@@ -1,0 +1,2272 @@
+{
+ "https://cdn-media-1.freecodecamp.org/images/1*KfZYFUT2OKfjekJlCeYvuQ.jpeg": {
+  "path": "cdn-media-1.freecodecamp.org/images/1*KfZYFUT2OKfjekJlCeYvuQ.jpeg",
+  "sha256": "529081f5a1a961df68e67449eb332e8b017fd74bd17ae6189a8edef619466c0a",
+  "size": 50865
+ },
+ "https://docs.github.com/assets/cb-68964/images/help/repository/file-tree-view-branch-dropdown-expanded.png": {
+  "path": "docs.github.com/assets/cb-68964/images/help/repository/file-tree-view-branch-dropdown-expanded.png",
+  "sha256": "ad1402c013f516303c4b91b9dab14c0b498869373cc2c28cc799391681958cb4",
+  "size": 36152
+ },
+ "https://go.dev/blog/gopher/header.jpg": {
+  "path": "go.dev/blog/gopher/header.jpg",
+  "sha256": "1672e0d50ab773c93301a929c2c824a9c2f6e2f6f155f45f8044b9af8b436e0d",
+  "size": 35704
+ },
+ "https://imgs.xkcd.com/comics/compiling.png": {
+  "path": "imgs.xkcd.com/comics/compiling.png",
+  "sha256": "1489aef471a4ed7cda5e1c69bf9ce9d51395bd2e781346216f025e208c95756b",
+  "size": 28315
+ },
+ "https://imgs.xkcd.com/comics/password_strength.png": {
+  "path": "imgs.xkcd.com/comics/password_strength.png",
+  "sha256": "9320d457432613ffa579f677a54ce9050f46e24554af55e14aeb9cd85855ff93",
+  "size": 93029
+ },
+ "https://imgs.xkcd.com/comics/sandwich.png": {
+  "path": "imgs.xkcd.com/comics/sandwich.png",
+  "sha256": "7ffa29fbd25da766dfb2494f2103afe6ce4514f3ca7989b90863300bf0f8796c",
+  "size": 11828
+ },
+ "https://imgs.xkcd.com/comics/security.png": {
+  "path": "imgs.xkcd.com/comics/security.png",
+  "sha256": "1dfd9f6409fccd5316779b99b835fefd20bd0b57b8bcecc8156c5798af00e9eb",
+  "size": 26341
+ },
+ "https://imgs.xkcd.com/comics/tabletop_roleplaying.png": {
+  "path": "imgs.xkcd.com/comics/tabletop_roleplaying.png",
+  "sha256": "756532b533db078346e2e1997aa1d374dfbee3e4d21e08071a6178856ea5d3ba",
+  "size": 29994
+ },
+ "https://imgs.xkcd.com/comics/the_cloud.png": {
+  "path": "imgs.xkcd.com/comics/the_cloud.png",
+  "sha256": "92ee64ca86b6e81377e39e88431137c62b5f4d871730506958f43b8878d12a1e",
+  "size": 41736
+ },
+ "https://miro.medium.com/max/1400/1*Ggs-bJxobwZmrbfuoWGpFw.png": {
+  "path": "miro.medium.com/max/1400/1*Ggs-bJxobwZmrbfuoWGpFw.png",
+  "sha256": "79249303523a502f86c2cb3b90a669832c7585c3fcc4e3d83c06f35a81b9c13b",
+  "size": 32440
+ },
+ "https://raw.githubusercontent.com/pavankat/big-o-in-plain-english/master/most-of-them.png": {
+  "path": "raw.githubusercontent.com/pavankat/big-o-in-plain-english/master/most-of-them.png",
+  "sha256": "654b6227d1b083a97c6de2897038dd86a382935839c8c4a17065a52ff892bc3b",
+  "size": 37746
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/08X3lqW-219x240.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/08X3lqW-219x240.png",
+  "sha256": "dbf9c1f9095fe3d9809fe862f47e706007cd46984f1f7098784691ed4fda0c5a",
+  "size": 23847
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/0insDcC-1280x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/0insDcC-1280x720.png",
+  "sha256": "dc0d1880a10e96ec8f506620c4575289de59fe5b377615aaa65224492b597e4e",
+  "size": 284305
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/1JabbBi-900x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/1JabbBi-900x720.png",
+  "sha256": "d603cb9b7b87ec301da554c00f44f9fe7f081e09eaad0dd603ff8635f77782e3",
+  "size": 118566
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/1UJLnHP-369x413.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/1UJLnHP-369x413.png",
+  "sha256": "12df04eebdcd8a81c6bb2a5995951e3aa1f9be1d3ad644ef2319c5a70c34623f",
+  "size": 75299
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/1nu2ecT-551x421.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/1nu2ecT-551x421.png",
+  "sha256": "91d885a882f1272ce3bacd277fcdafdfcce446bbf8bf062f5598cef923b51a4f",
+  "size": 33481
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/1sDWIXm-1280x620.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/1sDWIXm-1280x620.png",
+  "sha256": "7526c404aa52b837409c572a0e1590187c5e5b0e5d9f07d194d171420f944cf0",
+  "size": 158052
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/200w0dy-1280x587.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/200w0dy-1280x587.png",
+  "sha256": "cff647c83193257036139e297bc66cc66dd6ccf30742b61a6978072db2dcfac5",
+  "size": 262090
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/293eXUv-844x466.jpg": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/293eXUv-844x466.jpg",
+  "sha256": "c3a0f51bc850e17a5fd3f4cdcd92da36b2a492c9940d6eae71df9993db3d360a",
+  "size": 63574
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/2CofkLc-256x256.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/2CofkLc-256x256.png",
+  "sha256": "4b9b7ea135e68615450a05e046d78e85ed20f03d7fd1e54b689fa103502b414b",
+  "size": 32010
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/2lKPehm-715x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/2lKPehm-715x720.png",
+  "sha256": "e3461eefd96f90a4011be9996858fc4d9fe8333af1c451a07f2a7258f4b448b5",
+  "size": 406739
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/3FtyZpr-419x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/3FtyZpr-419x720.png",
+  "sha256": "ee60104062bab4a4ce1203bdc24f6544b875222643be8303ba1269cdfd21d91b",
+  "size": 110656
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/3RL8Os2-1273x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/3RL8Os2-1273x720.png",
+  "sha256": "81b8b5b3817a3b353165acd81d78b394f082ba696787ccad1b434d27eebb25be",
+  "size": 227705
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/3xmNYJa-1275x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/3xmNYJa-1275x720.png",
+  "sha256": "f241ff8d49454b7ef623bebf6fb1b19d4418015491e410dd992228f49bafa32e",
+  "size": 296001
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/4bZCBHk-1280x643.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/4bZCBHk-1280x643.png",
+  "sha256": "69210b0051915cc4f9d6e1ae307e911de8739b4d16423893e5579847def4498b",
+  "size": 227343
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/4yILqRx-1071x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/4yILqRx-1071x720.png",
+  "sha256": "a258881a0dcc158ee9338e1b6d2d77c162179907bcfb50473650f7a998f155ca",
+  "size": 790106
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/5XD3pFq-776x516.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/5XD3pFq-776x516.png",
+  "sha256": "32795eea63de09b84a027c2e6abbd24e4bdc2aba87699c3ce8fcc6d1b2fd7c59",
+  "size": 190148
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/5nZy0Kx-430x400.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/5nZy0Kx-430x400.png",
+  "sha256": "0be884bf85b10efb809fe2f9cc85a86866fadb95e91f47a1368876511c6b68ec",
+  "size": 301754
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/68Fe6FX-937x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/68Fe6FX-937x720.png",
+  "sha256": "665c670d7de3793e2529bbce1cb0ec56365e60c6dea6eeedbc089530bca90e95",
+  "size": 133146
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/6Dtf56o-1280x290.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/6Dtf56o-1280x290.png",
+  "sha256": "5e0059d2dc372b0dfd2229e4cfbf20670000936a54ccb1079c79bebf3077c148",
+  "size": 173858
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/6HTwrEl-1280x556.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/6HTwrEl-1280x556.png",
+  "sha256": "fbce81aed24e8651daf05052cdde8c064773493186cadf968346e04898ad467e",
+  "size": 214106
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/6Pgwx6u-1280x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/6Pgwx6u-1280x720.png",
+  "sha256": "8b449dfee8a1050ac0b41feea38df70502f237435c93b03a132b76dce28fa6f0",
+  "size": 820441
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/6vd1h1w-1280x605.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/6vd1h1w-1280x605.png",
+  "sha256": "6981d3b7c834bea97067bcd420ea3c76484f9148d80c1af8a67c0722b6c92940",
+  "size": 223535
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/78dpdDE-711x615.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/78dpdDE-711x615.png",
+  "sha256": "9820ada46c6c1dc19df854b70f101eea546017bb29f4c401ce3781e6d5674b58",
+  "size": 140445
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/7jB65c9-500x201.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/7jB65c9-500x201.png",
+  "sha256": "94c3b7070ec1901c0078d9cded27c1a860b24389ed045e5fedb5af661734fc1d",
+  "size": 219809
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/7tFw0Q2-666x205.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/7tFw0Q2-666x205.png",
+  "sha256": "cd3c8caacf647bc3992051ed9ff9b50accfe476468dfcb10ff410219a7bd3bdb",
+  "size": 35545
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/87727t4-1280x638.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/87727t4-1280x638.png",
+  "sha256": "b4a9a51eeb21fffe5958a580b812f71e18419473174aced8992481d8a3165720",
+  "size": 260301
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/8KTaJ9v-1280x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/8KTaJ9v-1280x720.png",
+  "sha256": "cbe72f886fb061776c97f3710dedef677321cb0e0adf5d04304d7443d3889dfc",
+  "size": 125649
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/8Pw0SvQ-1280x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/8Pw0SvQ-1280x720.png",
+  "sha256": "65d99a35f935be482edaa8812a3db1509850a6b055b99889ca57d435ccb7d3a5",
+  "size": 295493
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/8UXWRro-1271x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/8UXWRro-1271x720.png",
+  "sha256": "e107e4a9212cdf774c8467936b7d87b0986a62721954e8a6a56fd380f6af68ce",
+  "size": 260704
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/8gu3Y0s-964x544.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/8gu3Y0s-964x544.png",
+  "sha256": "a9cda7ce75cc0872c51f2dd9c2b02c9a99ecf312255ddd5b066b6072f2dec2ab",
+  "size": 348831
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/9bvRRl4-446x633.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/9bvRRl4-446x633.png",
+  "sha256": "585cbf09218cd121729d42c37fe9c7dc3a9a80add019d515f9b2627d3f26af0c",
+  "size": 32631
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/9huQyqL-1280x647.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/9huQyqL-1280x647.png",
+  "sha256": "753fec7974d391176389a9047d8a3bb2ee14552843f6ecb4f6897ed59485ae94",
+  "size": 266251
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/9skR9Vv-631x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/9skR9Vv-631x720.png",
+  "sha256": "6ca0f9c84cce6d9ed80b75939511751ffe5638c3ad83d518040286b4432dd5cd",
+  "size": 207954
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/AIyzAP2-900x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/AIyzAP2-900x720.png",
+  "sha256": "f325cc7b1e1d09b82c87f817b3282cbb99d3f862342157980f317ba889a89c7c",
+  "size": 91461
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/ANc5LWX-778x702.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/ANc5LWX-778x702.png",
+  "sha256": "e4321e8cc7548db5c15f48911d09ad8d3a245f1428bee5edc01165c388b3c4d0",
+  "size": 243067
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/APzv1tQ-1280x533.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/APzv1tQ-1280x533.png",
+  "sha256": "6d13dcd8ea4757ca4eeed2b0ed165ec0fc9d15e771587f6efa8c62de0d9f6b14",
+  "size": 1006000
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/AhUnpvt-1280x522.gif": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/AhUnpvt-1280x522.gif",
+  "sha256": "87b582a30a9b90073764ab3c6e1afa41bc2a9484f51b55d8c80ed882e5a610ad",
+  "size": 810518
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/AzqPjaT-1280x515.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/AzqPjaT-1280x515.png",
+  "sha256": "2be49f9603d3aea900c4eeccc222f8451e45c64972ed972a9826efeba5955e51",
+  "size": 70661
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/B15jZez-512x128.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/B15jZez-512x128.png",
+  "sha256": "afcc03bb8a1d1ae174a2eeb8cf1a235be054f68fb7075aa3d8028a714cb36acd",
+  "size": 6583
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/BH4Vn3Z-600x396.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/BH4Vn3Z-600x396.png",
+  "sha256": "ec2961ea5a56737ef7f743bf4ca974af1b953ffdc801bd2b3425b277cbbe5e90",
+  "size": 24929
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/BINv0kZ-1280x598.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/BINv0kZ-1280x598.png",
+  "sha256": "312e639f9b34738e0d62db4619871f4e822140e9b87f87cd4dd7021e47ab6f6d",
+  "size": 372619
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/C9bNsVf-1280x552.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/C9bNsVf-1280x552.png",
+  "sha256": "c138dc4c8dcef15f22d4453154c99120c99928490e66d71a67fa9e75528842a3",
+  "size": 201167
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/CA39zaZ-1194x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/CA39zaZ-1194x720.png",
+  "sha256": "5a9c7df1b07e7c67ebea96be64cd1fcf7d54301b082e55efaed516ede3a57b69",
+  "size": 399270
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/CFOzXOQ-767x720.jpeg": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/CFOzXOQ-767x720.jpeg",
+  "sha256": "1b4f952aadfbb66450b4dc244ec9b9aeaae103740df4621a1b66cf49f441abc0",
+  "size": 54942
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/CK2Vt3M-1280x465.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/CK2Vt3M-1280x465.png",
+  "sha256": "ab6ec19b25cca971cb064a6636a7760545a47b1a2931ab085524cae82da4d3b6",
+  "size": 303587
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/CLeobUr-400x355.jpg": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/CLeobUr-400x355.jpg",
+  "sha256": "1b15a5b4c5321a01ad9ee03f53518ad4b3199d6b535f4c5ccb1e1d9af0d83bc9",
+  "size": 30758
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/CMdSKSs-800x400.jpeg": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/CMdSKSs-800x400.jpeg",
+  "sha256": "d80c0a07e6d9fadc5e96d318bf9e1593539f391eeadcd7b4ffd19bf28b54b615",
+  "size": 71109
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/CpEUOdt-372x462.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/CpEUOdt-372x462.png",
+  "sha256": "718b8f0fae69147ca8f9a36e91ac371558732d8f8da69cc25f5a900b2894dfaf",
+  "size": 30580
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/CxniE6l-1280x638.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/CxniE6l-1280x638.png",
+  "sha256": "b362190fbba898f55a7776791db4717941c8f0a234c960795e0f3a9e7592a012",
+  "size": 280720
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/DM1rEvV-1041x528.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/DM1rEvV-1041x528.png",
+  "sha256": "10feab18fb63a617f9138504f8661c8195884afacb6d560f942081db4649b925",
+  "size": 127040
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/DUuXFc4-653x308.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/DUuXFc4-653x308.png",
+  "sha256": "4b9b9016505607a85b5814a46f138787a5e520e1515bc260650161a971713e62",
+  "size": 35207
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/DZl22fo-1280x323.jpeg": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/DZl22fo-1280x323.jpeg",
+  "sha256": "fd10834613f84d31da57b188c93b4808c6e54fb5c47adfa710b701a46f4d0843",
+  "size": 28476
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/EOHr7WG-583x344.jpg": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/EOHr7WG-583x344.jpg",
+  "sha256": "c29e568702152a18b136fd767421dd7ead2519faa9c09b7f324ef08f9fb4ebfe",
+  "size": 159790
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/EX9fu1w-1280x473.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/EX9fu1w-1280x473.png",
+  "sha256": "13d26cb61317c4b22702edc353db996ce3d57042036588503cb79bcd17d48457",
+  "size": 299229
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/EbtdK3N-1280x117.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/EbtdK3N-1280x117.png",
+  "sha256": "8e20ff380e2b1f08471c6e763f0818b75fa21f5c2ec2783b2a583bbaa0d6e331",
+  "size": 101561
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/ElN0n9p-1280x291.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/ElN0n9p-1280x291.png",
+  "sha256": "e5ae41fffd5b317eb9ae9df187942b4894d3027606d1f6e16b9c06bbaad859dc",
+  "size": 330953
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/EqB5LSJ-1280x658.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/EqB5LSJ-1280x658.png",
+  "sha256": "3460102c2dffb2b40eb70e9ba0577072b8efa8a40af8add56891f176048a1fe1",
+  "size": 94178
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/FFFgX7n-1096x514.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/FFFgX7n-1096x514.png",
+  "sha256": "dd71910cca47dbb9557776ac94cd50c1379c62d2e15124fd57fdb1c06a407271",
+  "size": 64676
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/FGpjTCQ-422x585.jpg": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/FGpjTCQ-422x585.jpg",
+  "sha256": "33d219603545546c27e91fe38a2077de992db040d976f6e33698107ae44a43f3",
+  "size": 525617
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/FJl2z9O-549x454.jpg": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/FJl2z9O-549x454.jpg",
+  "sha256": "16ef082b83db835be36182e4e196983cd8dcc98ff411bf03c31a6b7841d32962",
+  "size": 458825
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/FZnA3Yn-1280x188.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/FZnA3Yn-1280x188.png",
+  "sha256": "6685a133f692f96f36edcd13ec24396afc2fca16076a3825fc5a2ec7a647a82f",
+  "size": 30299
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/FdmBQOb-1280x719.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/FdmBQOb-1280x719.png",
+  "sha256": "b162b4856545bac4ff558025f6c943705bfe367b82594555a37abbc20fd35e23",
+  "size": 279345
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/FwcpMrv-1280x563.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/FwcpMrv-1280x563.png",
+  "sha256": "40d43f83b3849842fe5b6771daf64a68df23cd8eaeb9948e654d5a98e6130036",
+  "size": 120700
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/GBGbbhw-532x197.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/GBGbbhw-532x197.png",
+  "sha256": "429d8af2e921a8bcadd05760c1dd43efdf52284593aeae5adb2271ba9e9d4c71",
+  "size": 3963
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/GIlWhYF-500x553.jpg": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/GIlWhYF-500x553.jpg",
+  "sha256": "1a6268b9eda165abfc347802d678f1847fe22bc99c0501f472cb595dfff9d07d",
+  "size": 849301
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/H1N00QA-1206x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/H1N00QA-1206x720.png",
+  "sha256": "387960393b44149e8ccbfd59c3e5d42d364b4ef6527e6a0f16a4d62107047c7d",
+  "size": 247255
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/HA9rBJQ-1275x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/HA9rBJQ-1275x720.png",
+  "sha256": "6fde0d1b251c9927b19236488066b1eae8aa361b3f46ab3857687d9da6780c8f",
+  "size": 69478
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/Hw84fgG-500x281.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/Hw84fgG-500x281.png",
+  "sha256": "7756f75a6b729aafae240ba1ef15ed695244220e3c635a900c57d215a8225e3e",
+  "size": 25369
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/I0sKu9j-1280x719.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/I0sKu9j-1280x719.png",
+  "sha256": "99daa90a8b75c83ab10b8fc63b5f351d1acdab309415b32fb9be6e166fd13e25",
+  "size": 263041
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/I4HSBCi-1165x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/I4HSBCi-1165x720.png",
+  "sha256": "751fc749f42c04d74c81eab350397c38c4c827aa56e2b1930005037ebac6e970",
+  "size": 336336
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/IJHQnrR-1280x671.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/IJHQnrR-1280x671.png",
+  "sha256": "f888aea98fd38c9a31c68c493c37b2f5c702e5a5381b694b5ec216bfe056f8da",
+  "size": 192753
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/IydzBu0-1280x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/IydzBu0-1280x720.png",
+  "sha256": "be89d85afa60d97315138831ca94506f30b23a06fdc15535279c9ba4022b4534",
+  "size": 439675
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/JJN40ZV-816x400.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/JJN40ZV-816x400.png",
+  "sha256": "4fcf0ee65e3f9f29eeacef8fbf596b618379fa48e5eeecf65bfa45dc157b197b",
+  "size": 16945
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/JKD5EHZ-1278x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/JKD5EHZ-1278x720.png",
+  "sha256": "d983a40babf35f030d9a8aa07ec287bce81471f56ed1c688c7ddab361858a748",
+  "size": 358203
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/JXkHUaI-853x256.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/JXkHUaI-853x256.png",
+  "sha256": "383da2f8160063a02e3eb6487765404dc4cb8ddd5775ce11db7311dca0a9b31e",
+  "size": 33361
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/Jev7rhR-675x450.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/Jev7rhR-675x450.png",
+  "sha256": "d2e250d1338cf7538c998eeae56d0b40b3484e6db072cbcf66d554d93278d2dc",
+  "size": 425357
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/JlaJ6d5-1280x666.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/JlaJ6d5-1280x666.png",
+  "sha256": "df755adc7db373fc095b23644a0cdc5970c0a70299066144dc0eb55e32c58496",
+  "size": 289319
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/K95EzqQ-1084x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/K95EzqQ-1084x720.png",
+  "sha256": "debf60c4c8c1b4a41d5a173072f8bc5bf49279a5bc78b072f7f925a3084e3f04",
+  "size": 435497
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/K9VoYg0-916x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/K9VoYg0-916x720.png",
+  "sha256": "7e07766ea954f24890eeeb538d6ed675ee36bb37c292ee604f5611d0decd271e",
+  "size": 34622
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/KIHi6Ea-1280x655.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/KIHi6Ea-1280x655.png",
+  "sha256": "892bf2d9e392983a7580ca8e35670cb02be6199471bf83d2be2440ba7dce23f5",
+  "size": 236142
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/KdxhTNL-1280x453.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/KdxhTNL-1280x453.png",
+  "sha256": "5d10d40836e82a07cf6a16b3d8d1e079f8e13760f10aba551e82ee614f4a11ac",
+  "size": 212724
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/KjvBuUX-1184x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/KjvBuUX-1184x720.png",
+  "sha256": "6a44f9125035dbd86a8280b4849ee7f087e48c1426eeede480a231f1aa428dee",
+  "size": 213024
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/KqZEPTr-853x256.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/KqZEPTr-853x256.png",
+  "sha256": "11c5cd7a0da8b9f7bcfdff882c47967ba5b2cd80e4eafacdb83a5ae9d1359105",
+  "size": 21382
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/KuMAlrl-224x254.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/KuMAlrl-224x254.png",
+  "sha256": "3f71d1e8e967e347fe3ffdee703cae8388e8d0f18ef1bc8be99af11cacf31c1d",
+  "size": 33056
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/La5X4z4-1280x452.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/La5X4z4-1280x452.png",
+  "sha256": "b6a37fdcd6f1e19b79dcaef43869d6d0d9fa92b54a4f2cbeb4ab6fdd43f4ea5e",
+  "size": 109211
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/Lb9Ww31-1280x667.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/Lb9Ww31-1280x667.png",
+  "sha256": "a68cb026f1d934b64237f5f6d11ecc8ce5be0f9d669591f544bb1ae7f62d7b3d",
+  "size": 165103
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/LmF9RNa-1280x528.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/LmF9RNa-1280x528.png",
+  "sha256": "3655cfa51a44a6f54bf5e304ed1c33822639e3c2c9561b58b835f8f9fa03da8f",
+  "size": 71352
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/LmOR0sn-960x720.jpeg": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/LmOR0sn-960x720.jpeg",
+  "sha256": "4a6eff5e735d630e2d209a4e333c4c66be221976f8f0990d766c48725f259a07",
+  "size": 220092
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/LrghRQn-1280x600.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/LrghRQn-1280x600.png",
+  "sha256": "fcb077b26b04e1c987c625eda536677d55c3751496353960a3020e196f9d10f1",
+  "size": 261556
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/MK3y0He-1280x590.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/MK3y0He-1280x590.png",
+  "sha256": "fb8e328e699a997f4d6e56f88489efb4bb304462fb1d2e0debc12f8074bdded8",
+  "size": 199487
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/MZXXT0o-1280x670.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/MZXXT0o-1280x670.png",
+  "sha256": "8c10f1b2e0f8ce26a92e50b8714b5b2c880f04c297d849d2fc8735c1feceb12a",
+  "size": 199345
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/Mn7FERh-990x712.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/Mn7FERh-990x712.png",
+  "sha256": "18578120ba52cbf4895145eed6a1857b10b1ee43d5cd7143df203f37c4ef72a8",
+  "size": 81248
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/N8kGDjM-1280x613.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/N8kGDjM-1280x613.png",
+  "sha256": "d7c61b921ea4900f03cc5412fab221a9d2444e083f9b1bf7108260ef61a51877",
+  "size": 140329
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/NhJX7tj-823x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/NhJX7tj-823x720.png",
+  "sha256": "bae8cbf41112a107e504020bef4bff2988da8a279bd3462bccf17850013b06cf",
+  "size": 102598
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/NyMLaMK-946x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/NyMLaMK-946x720.png",
+  "sha256": "4df48b0567670586c283341da7c7ae2a7d691a7fba21e92ca256076932c35bf0",
+  "size": 198470
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/OQdRn6h-250x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/OQdRn6h-250x720.png",
+  "sha256": "dd8c8be69e14404ff7a43cdb3d107ce286592416a00051175395244aa4cc7465",
+  "size": 57540
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/PE1eKoa-800x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/PE1eKoa-800x720.png",
+  "sha256": "7d5ec0ab5fc75d812888cc057e2154522057cfa52f06d6505f14cb56aea62170",
+  "size": 150649
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/PF3DSOT-800x400.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/PF3DSOT-800x400.png",
+  "sha256": "acbf44a9371cba5f3dba57360cf74652580bb9eb87ba6fb91fa5110d78f69e28",
+  "size": 259112
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/PPINI0p-1071x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/PPINI0p-1071x720.png",
+  "sha256": "6b49895f3e94ad42fe07e244271ae9017444ee471fe68e3637977d07070fd999",
+  "size": 119531
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/QIqITQS-500x213.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/QIqITQS-500x213.png",
+  "sha256": "72c8b902301a5db817d44947049d608dfdee1512dc1986cd3ef651a3c65ae578",
+  "size": 31576
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/QJLLaxr-1280x565.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/QJLLaxr-1280x565.png",
+  "sha256": "bc567f01e8c3a739a324208a4de4d08edec390ecc33f164e845cfe84c79478ea",
+  "size": 355698
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/Qh3Np1n-594x214.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/Qh3Np1n-594x214.png",
+  "sha256": "d5e39b13d49ae097a91ff7beb20c88e6a1081ded69866e7b391f4e41ca39fe5c",
+  "size": 13853
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/RehzDga.gif": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/RehzDga.gif",
+  "sha256": "97fe576bd315613ff21b7252ad847577e6852fcd257108c37e5b851c23326c51",
+  "size": 205514
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/RxCpanC-1280x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/RxCpanC-1280x720.png",
+  "sha256": "37a7ca34a941d0a40dd91fc148a1b9963dad0fc400922ba96adde0355e1b89c2",
+  "size": 208108
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/S96hfKy-512x128.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/S96hfKy-512x128.png",
+  "sha256": "20d1198b802f5dfc80e0c017d14b2efab40a8d62f16180dc06d68553a2796907",
+  "size": 1601
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/SDhZxXM-1280x537.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/SDhZxXM-1280x537.png",
+  "sha256": "671355e36673ba5f43c1c910fa16f63ed2aa9891c848a69e9deb13a2bc5e28e8",
+  "size": 186812
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/STKdceG-580x372.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/STKdceG-580x372.png",
+  "sha256": "3166ddc06dce8c720722db1fb39fc19238c52f4ee64b753d72feffeeebf25da1",
+  "size": 130324
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/SVpmfNV-1026x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/SVpmfNV-1026x720.png",
+  "sha256": "ef9ec3062df6bcee0f450c250b18dfb39f22c01ed4aea3e0491713a5b3f99174",
+  "size": 432914
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/T9uAKkw-1254x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/T9uAKkw-1254x720.png",
+  "sha256": "c7b33ee64d73e40fc6a1024dad855f4faf4e102285116e67efb9e99c2bc51fa0",
+  "size": 354075
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/TjAAW1B-1280x704.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/TjAAW1B-1280x704.png",
+  "sha256": "2c2ed8e00555bea26d77b6f6ccbccac3df9214953358f4199e5f0674fcad2904",
+  "size": 227965
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/TpxX9Ei-1280x234.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/TpxX9Ei-1280x234.png",
+  "sha256": "814ceb7931be79c467e4e64f0b64ee2a3f56474bfc0932b24ad56417429c02d6",
+  "size": 107609
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/TqXp7gk-300x169.webp": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/TqXp7gk-300x169.webp",
+  "sha256": "7d65ef6859b4454d19c31c2e362c1ad5cc024620330b894e8423d7fb153e1e30",
+  "size": 5524
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/Tumf09S-900x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/Tumf09S-900x720.png",
+  "sha256": "26fd7c057ff761699bd4bfb86631541934520e7ec05fa7afb47535687f7680d2",
+  "size": 269715
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/UKCNg8E-1280x607.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/UKCNg8E-1280x607.png",
+  "sha256": "763da43a776b1d35b8511883b0a67e18604cf871f851e171efb63776575c46bb",
+  "size": 323990
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/UTaZhoh-498x278.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/UTaZhoh-498x278.png",
+  "sha256": "dcfe25b73b5c77d12d66b8aa14170b17bb0b21618206ff201702616b823beb1e",
+  "size": 155829
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/UbgRs9O-800x200.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/UbgRs9O-800x200.png",
+  "sha256": "b654c47a0b96d343e0a999d22d3b928d319db86b833c8ca970066fbf947089d7",
+  "size": 24620
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/UekeojO-1280x387.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/UekeojO-1280x387.png",
+  "sha256": "c22d1779a491c685ddab633722819752dc0c08cc689a51ed3c29c975a79e6d12",
+  "size": 38852
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/V26uB22-1280x669.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/V26uB22-1280x669.png",
+  "sha256": "92034eb8d84fc107db7da610249d0d01050e23e22a7cc6f68222e56990f7e1e7",
+  "size": 204332
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/VAtFeql-1280x652.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/VAtFeql-1280x652.png",
+  "sha256": "37e32a4ed03592f7e68e20ca8b8ad7c40bc57b41b17de1c867fb227b19eb43e6",
+  "size": 322187
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/VBhqzp2-435x300.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/VBhqzp2-435x300.png",
+  "sha256": "e4b37fba797c052b40730d36e76c3187b602fe74c42c15015b873721b1b74445",
+  "size": 29439
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/VDJk0zU-1280x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/VDJk0zU-1280x720.png",
+  "sha256": "46db174b307653812e79e894a8ca67508e2d56449279e40c37887da0f95f0a5e",
+  "size": 143926
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/VHzeyaA-644x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/VHzeyaA-644x720.png",
+  "sha256": "c8187df2fca90fcbd7a4b894c1dd89403b0b0e90b3730ac0041fc3bbb49191d2",
+  "size": 122101
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/VOc5FFg-950x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/VOc5FFg-950x720.png",
+  "sha256": "441db8a29935a1ada6afcb57da2ea6652cfb2eb67d6bbe5554f443cb5601c9b3",
+  "size": 164461
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/VQHXHft-1280x638.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/VQHXHft-1280x638.png",
+  "sha256": "92a0799d6087abc1a181f941134a0e65a7cd83c29274c973bd168bae372ee7e4",
+  "size": 364432
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/VgL0UqV-720x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/VgL0UqV-720x720.png",
+  "sha256": "05ef565a733d22e91cb24dfea371e81e9c09721cb89ec31e78587ea373d011cf",
+  "size": 335271
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/Vje53b1-450x453.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/Vje53b1-450x453.png",
+  "sha256": "679fa97a5c7f420a0731cdefda4ea8b4c639c9f075bd23a74c85e3b54d26d9c3",
+  "size": 271863
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/WOSsjXl-364x400.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/WOSsjXl-364x400.png",
+  "sha256": "b05b308d409a820207106b15c6d38a64abf28ce8693948b61131c2282c705cff",
+  "size": 63311
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/WvQZMrd-527x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/WvQZMrd-527x720.png",
+  "sha256": "b78aeb2edc37e249a344346db5d82cc8ca0a90a340a95103b8f8babe04611fc4",
+  "size": 51838
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/Wwnw2Qx-1280x632.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/Wwnw2Qx-1280x632.png",
+  "sha256": "54609e2fd8465c7c24a71cf4a6cd6e99ef3aea85f846577d3171bfb383ed4850",
+  "size": 264065
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/X0P3LiT-1280x587.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/X0P3LiT-1280x587.png",
+  "sha256": "672818826ecc551ea2bee94f2a5963197d07b1d1c2f39fc38e4cd672ff8ebb00",
+  "size": 85358
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/XFlKXCX-850x220.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/XFlKXCX-850x220.png",
+  "sha256": "60e9593dd62775b63dd8e9445c02881a92c631fb53f7f63f967a2c3e35da9b86",
+  "size": 12669
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/Y5pWEEs-454x148.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/Y5pWEEs-454x148.png",
+  "sha256": "3a69a0d352bcecf859d39086e33f4d416e8ace384b4ffee611110a108d3394df",
+  "size": 14347
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/YYMbsFv-1280x416.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/YYMbsFv-1280x416.png",
+  "sha256": "0ea2d3ecc074def1e213a5e7fddaecb8544bbe4facc96a04690c80a337f23a6f",
+  "size": 158972
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/YmSwzVB-691x478.gif": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/YmSwzVB-691x478.gif",
+  "sha256": "bf84fef380e76a053b6f0851711ae676dc27f8901ae32b8443d04e1c841b0f3f",
+  "size": 133683
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/ZESnmkp-1145x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/ZESnmkp-1145x720.png",
+  "sha256": "d829c468d838543b91fbf1dd7792475480ad6dc8c3ab766c363ec32e49c75632",
+  "size": 201417
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/ZS5i6dm-512x128.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/ZS5i6dm-512x128.png",
+  "sha256": "dd605542062ab5883f4ca21a6df1b1499b7484ced44f9453dee369c77dbddb89",
+  "size": 7445
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/Zve5Ywc-1280x672.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/Zve5Ywc-1280x672.png",
+  "sha256": "2f66329a6d44e735f371cf56e89d49ba4064e58e1ef2735be4dca72584fa7c59",
+  "size": 221772
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/aqAvl8W-1280x391.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/aqAvl8W-1280x391.png",
+  "sha256": "e743eafbf930a7ea51bde30d1da04a4af7e52f52e17f4eb70924a5b7b90d5015",
+  "size": 189439
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/b3y7tbi-815x688.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/b3y7tbi-815x688.png",
+  "sha256": "e218a96e4028bed39c9aababa70ea0c917974fff7f7b1ff0a29c5f4c33728b03",
+  "size": 39831
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/bc0bC0E-388x300.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/bc0bC0E-388x300.png",
+  "sha256": "0d21b622853e69308d7c88b53924dd7ea89c326d1b63be420f4f8b330f0386bb",
+  "size": 150915
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/bgCvtkB-1280x251.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/bgCvtkB-1280x251.png",
+  "sha256": "5080c2d5cc19253bbe23ad19bbc06df5ac806378cebe48ae29074fb44458a104",
+  "size": 71514
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/bxq6sYg-394x165.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/bxq6sYg-394x165.png",
+  "sha256": "669144713b1ae4b7784397b75720bd76866a21326c6186be2a1c919b94a9a702",
+  "size": 42322
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/cHU1wLi-645x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/cHU1wLi-645x720.png",
+  "sha256": "06736c5667dd6ac896cad28edbb77a3f76b0f4386523d160cf8b0abc3e5d3904",
+  "size": 100173
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/cVTThOL-530x400.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/cVTThOL-530x400.png",
+  "sha256": "1051035114d86c494ecec7ebb9e8412ecad26eeeada12e4732bf870a91f767e2",
+  "size": 7718
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/cX6R8ep-603x183.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/cX6R8ep-603x183.png",
+  "sha256": "7e7479f8048cf2d815aacd90094ad600c1be86ac9a1f36bc475dbee4699b5d80",
+  "size": 57524
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/cvgKjya-857x640.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/cvgKjya-857x640.png",
+  "sha256": "ce1b8313658720d5b442886028eaa681839a5225238b3cd1a12bb66fd7477f92",
+  "size": 42192
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/d7BEt2O-225x416.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/d7BEt2O-225x416.png",
+  "sha256": "bb59a0debde5caedd2c2a3efd3ca56a01b20f72ca5b87038301170e7155146ab",
+  "size": 25014
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/dJ0hHPM-971x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/dJ0hHPM-971x720.png",
+  "sha256": "9679c4f158897868503b4f66229bccfc0c59cc6d72f8982f0d1e166017a777f1",
+  "size": 398403
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/db5JNUQ-495x381.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/db5JNUQ-495x381.png",
+  "sha256": "e941ee982f2c3602ed11061df719cc6dd6c5e8ca7dd2007412c600f44d14c8dd",
+  "size": 19308
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/eRQE2c3-640x200.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/eRQE2c3-640x200.png",
+  "sha256": "257d6213e729bb795f3cbf301e7b483c318a4c3d1f46daea9377c6ff4e1d1a3a",
+  "size": 28409
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/eWyYRQu-1026x388.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/eWyYRQu-1026x388.png",
+  "sha256": "972a62d29585af74e709aa05d53a71f31010b201499c4c503aae6d965fef28c5",
+  "size": 678526
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/f4B3qlm-1280x447.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/f4B3qlm-1280x447.png",
+  "sha256": "a34585c27ab5fe718121d6d385b8961cf143417113be3aabd38393755eb9b68b",
+  "size": 127780
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/fBvtpZU-959x481.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/fBvtpZU-959x481.png",
+  "sha256": "f6dc92d4d1428adb46174bc1604ca44672aea38b825d36a795a56e24239a0454",
+  "size": 36468
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/fguhaiY-423x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/fguhaiY-423x720.png",
+  "sha256": "3e97995aa50c145120d44705d4654e009a72ba7d5a81841178273190d0aab430",
+  "size": 72856
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/fjNhjq8-1280x189.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/fjNhjq8-1280x189.png",
+  "sha256": "90eec8c03dc1c7d67df4aacbe1a86e653a0d336268faa27d694fb93fa28b1df9",
+  "size": 67000
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/fxu0SEW-800x800.webp": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/fxu0SEW-800x800.webp",
+  "sha256": "66ed4f99f4b050505544dbff61d06c91639702d17c8f4bc4a9e39e78d8f31b50",
+  "size": 27300
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/gDSWZiF-512x128.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/gDSWZiF-512x128.png",
+  "sha256": "2874a1e04d5e9b31e582c4d6a8b81242bf4f96d823ae412df1bfe82e1644b895",
+  "size": 7456
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/gF3aMkk-1280x353.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/gF3aMkk-1280x353.png",
+  "sha256": "d147cb60134b3097d66546af2c1f9c23cd332f9cf155ee599279aac5c353ded7",
+  "size": 94243
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/gOCIIe4-632x283.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/gOCIIe4-632x283.png",
+  "sha256": "44c6ef87fae7c975c786eb25b6a1d847adb39fd6eccf578437b931fbf10ab9de",
+  "size": 30668
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/gYbA4C0-1250x665.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/gYbA4C0-1250x665.png",
+  "sha256": "6035f851b60829abb23c4ba524ea6696b56aa49354ab26f2c49f10c34b2a7c18",
+  "size": 44875
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/ga7wRus-1019x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/ga7wRus-1019x720.png",
+  "sha256": "9512e868d2d4bac8ace8f503707bdf0e2c38366c30ead4e3217315de87196552",
+  "size": 213867
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/gmj5WB9-600x425.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/gmj5WB9-600x425.png",
+  "sha256": "07097add140ebc8bf6e5ea57135b32ec1bd8b05230ae19b5f603b59d1e773a4e",
+  "size": 61548
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/goxChws-1280x636.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/goxChws-1280x636.png",
+  "sha256": "9219978c7df054f8de305caecfe473d214f702229b3829b10c0ec2e3b4b7d257",
+  "size": 188713
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/hFgop3U-480x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/hFgop3U-480x720.png",
+  "sha256": "ef3f9de128360116aa0c7e2cce48cfbdadc0eefe633fe4b8678628d3310c358b",
+  "size": 155691
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/hGiblt7-1280x467.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/hGiblt7-1280x467.png",
+  "sha256": "b83119bba83af51c795f0d02f7c8bafff461b930329813853d85df7078c92b3a",
+  "size": 144745
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/he3UWms-1280x706.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/he3UWms-1280x706.png",
+  "sha256": "bf5d441530c826be941fe2f48487a2f2308e99bc69278cb9781f977e1f7a24d7",
+  "size": 901011
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/hw3KQwJ-1226x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/hw3KQwJ-1226x720.png",
+  "sha256": "8982486a17afd9ccd540c93ac7039f86dde72f3b625e5f67da64a360bdbbf021",
+  "size": 319011
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/i0RdTlL-973x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/i0RdTlL-973x720.png",
+  "sha256": "836f5e209a9ef9cb9622f59212a0e181ef8751a85d158cd89d29ffbb481a66ae",
+  "size": 115223
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/iOkQUdG-517x487.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/iOkQUdG-517x487.png",
+  "sha256": "18bff7f80cfb31ab1269020b9f969a7a76c3a396346d27702636ba766575d46f",
+  "size": 18606
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/iVtccur-1280x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/iVtccur-1280x720.png",
+  "sha256": "baff3a99440bdddbd856bf702e6a299871539ce87bff90c1140720199b01c7c8",
+  "size": 294400
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/j8fYz2T-600x396.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/j8fYz2T-600x396.png",
+  "sha256": "34beda55422d0c3409480b7413731f87b7313d3ea9c186867ffec1e99413ba58",
+  "size": 25105
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/jabFWem-1280x717.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/jabFWem-1280x717.png",
+  "sha256": "029a9464caf9f2598110aa0343677378325e4a94d9232c230cab629b97b5622f",
+  "size": 162063
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/jfag9dU-1280x680.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/jfag9dU-1280x680.png",
+  "sha256": "1b83e564e11c6b80f791996078432794ca4005b2024a95603653d559fa9469d6",
+  "size": 295764
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/jy5bJ2I-1105x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/jy5bJ2I-1105x720.png",
+  "sha256": "16fba414f0651b7263669a33049d38d58e548cec924737aea212d4a6d84bd6a4",
+  "size": 200555
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/kUnRyHC-1280x365.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/kUnRyHC-1280x365.png",
+  "sha256": "16c1c25f3ea17ad7ab44a1b8da4bd6c3a39fd96e3781c1c281b7db06bac110c2",
+  "size": 43741
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/kfRyCoX-1261x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/kfRyCoX-1261x720.png",
+  "sha256": "d1010ba331d5d0b75cfeb2ab0d8f3882d340447aac402fa3dbd68ed8f1c957ef",
+  "size": 294861
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/kqgOhYq-1280x275.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/kqgOhYq-1280x275.png",
+  "sha256": "362724190a264773a80af6455d9bf6305d6712ab0b7a02d18d739aa8f4092db9",
+  "size": 100932
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/kz0imYE-793x394.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/kz0imYE-793x394.png",
+  "sha256": "2ddcf823776834dd85e90db771b74b33b3bd712c4c89ea0869e2056632717816",
+  "size": 18558
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/ldKkKfk-1280x363.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/ldKkKfk-1280x363.png",
+  "sha256": "462fc3b2453a31eb88e8401dc525147fa66e40ece51483bd989274d99fdb1544",
+  "size": 139679
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/lvjZb5u-1280x513.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/lvjZb5u-1280x513.png",
+  "sha256": "19e0bc740232c67d6af21c8a325276384959d9022b4f1823fecc7458fbb7d20c",
+  "size": 158723
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/mefQVyC-500x397.webp": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/mefQVyC-500x397.webp",
+  "sha256": "69115126ff695a6ad140f1d666ed1b2ff940e075f0715a9792373efe70195bac",
+  "size": 25572
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/n2Xbf6Q-419x100.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/n2Xbf6Q-419x100.png",
+  "sha256": "e29a774e70cea03cce13298f017b2a8bace03e2e3cbdc295e4dcfc88be40579a",
+  "size": 6263
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/nBM5V1G-1079x631.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/nBM5V1G-1079x631.png",
+  "sha256": "1571bacd3ff15362a85a77c5a909da87bc03696ace07944911dfafe651c1da07",
+  "size": 42538
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/nUzP2kg-1280x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/nUzP2kg-1280x720.png",
+  "sha256": "8179e8c76a6b673fce0a84f54dcff2f4e54ecd4b6d76fb30790e0eb5eb33564e",
+  "size": 108235
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/naIlOze-362x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/naIlOze-362x720.png",
+  "sha256": "1d92cb8ee875627d0ef7a81c506072fa0eccd512a1d3c728dd6fca7f5725d27f",
+  "size": 96376
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/njm6qva-1200x675.jpeg": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/njm6qva-1200x675.jpeg",
+  "sha256": "4d850a3fc6c39292e4cc8e422630fee45a47a3074815de70023c387a00aff13c",
+  "size": 104999
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/nom5RLr-1280x648.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/nom5RLr-1280x648.png",
+  "sha256": "8a3d41d5b48d7687467ac26129ed93d8fc0270443155a850bd761ada49b72592",
+  "size": 135468
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/nw8iekX-1280x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/nw8iekX-1280x720.png",
+  "sha256": "cdd26f1ecd3510a23415813b7f50741ccbf556990775c4fd268b31427cc3354b",
+  "size": 622617
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/nyG4JBN-1033x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/nyG4JBN-1033x720.png",
+  "sha256": "d9793588cb5e700c27469eb61ff82a20752eae77948a40550e0999f2d609e60f",
+  "size": 208769
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/o3MvzSe-1280x714.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/o3MvzSe-1280x714.png",
+  "sha256": "5cec0f664780d020afa29ca175fb9378698c5202e2b9bab4c8631cdcb031bb9a",
+  "size": 229961
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/oiCQu6G-593x421.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/oiCQu6G-593x421.png",
+  "sha256": "014995d1510665810c1883bd2a08c4bf6b4cd53e4b365c5795ea782d9f7eafa4",
+  "size": 257888
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/owQn2un-1145x652.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/owQn2un-1145x652.png",
+  "sha256": "9d1be842461d926b117db80bc7e9176fe6e06820491d84bdc8273658435c94f3",
+  "size": 25949
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/qDAjQk4-400x413.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/qDAjQk4-400x413.png",
+  "sha256": "24375f427a26d3b8862bbee16c09ab2d11685b84da4befd105f0746e022b1420",
+  "size": 132774
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/qIAkypM-512x128.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/qIAkypM-512x128.png",
+  "sha256": "481cdd518d306d092bd6605c9f7733596f7b465f1d6da4ebbeffe332fe8bc14c",
+  "size": 5124
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/qqCHeTs-1280x718.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/qqCHeTs-1280x718.png",
+  "sha256": "1b2e5245341ea62273cde880ee20a4ac67e3000daa2757b0a2689a03ca3bea1d",
+  "size": 55215
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/qyHo5HQ-256x240.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/qyHo5HQ-256x240.png",
+  "sha256": "455dff4a8e47c9cd12ea33f59d9aedc98330ad0ef61e01af7db9c91b22397863",
+  "size": 80462
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/r16Ur2O-1271x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/r16Ur2O-1271x720.png",
+  "sha256": "95c3658153fd82402a7577fa27e710759b96c50e05158ed5f0c2bccf661691f9",
+  "size": 971590
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/r8EFEj0-1280x717.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/r8EFEj0-1280x717.png",
+  "sha256": "27f1fea160fb6f259075b0f0084eda188de325ebe354246af298305291a50389",
+  "size": 164120
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/rLjXxCH-1280x149.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/rLjXxCH-1280x149.png",
+  "sha256": "2d478a6cf90824ec07ab09362887cff0d03d005c6bb05ecaade0feb3f02efa3d",
+  "size": 85972
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/rNV9Nku-1280x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/rNV9Nku-1280x720.png",
+  "sha256": "f0b4f746d32c21ce57c68b310fa13081a993872bb67dfc642ef58633b5ea2c83",
+  "size": 202677
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/rnBBbE7-1280x589.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/rnBBbE7-1280x589.png",
+  "sha256": "5d2ef33ec0bfe80bc1b3d8985813c7af843024b860c17ba7989ade2bc1b55736",
+  "size": 261154
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/sEC3wDu-758x448.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/sEC3wDu-758x448.png",
+  "sha256": "aa0407e479cf311e06e0a2d08982cc7d0c1316c0f4a544f466cf82b0fe84616d",
+  "size": 48101
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/sEa3nK0-530x400.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/sEa3nK0-530x400.png",
+  "sha256": "c3408c6e8b0b8419bf95dbaaa928c72f2902f382a8451d3e7e15b7a566984f09",
+  "size": 18907
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/sFfGYoP-943x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/sFfGYoP-943x720.png",
+  "sha256": "3111f3bfa2f5fe219b47d866bfd49377258b982e4c5bc07fdc2fc8d6ef561b48",
+  "size": 213407
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/sM7nrnl-720x300.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/sM7nrnl-720x300.png",
+  "sha256": "12bcf40d50c62c6b5411a4224b35e7fd082ed26bc270568b47867cee76f40e3a",
+  "size": 48591
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/sW9VfZO-680x216.jpg": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/sW9VfZO-680x216.jpg",
+  "sha256": "bc527df5d30c2457b5ad38549167f3daacf62031ac3ac6758d58cedc7451d3a1",
+  "size": 312519
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/suxeCuq-886x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/suxeCuq-886x720.png",
+  "sha256": "1df91d091053829d5a8ea98a88a69fa651eff8bbc9d183273673efba41a339b2",
+  "size": 197454
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/sv8MSOD-500x205.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/sv8MSOD-500x205.png",
+  "sha256": "f62b8e78b4d5e4d4a167edf5b57a09730950c5ebe33266b80ad4e146908ea1b0",
+  "size": 46146
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/tFrmTE8-928x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/tFrmTE8-928x720.png",
+  "sha256": "25a775ef0d1c7e33b9ade09e1a5b4445c08ed67288bdde92d85a7de37342ef11",
+  "size": 99070
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/tHmqS6O-1280x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/tHmqS6O-1280x720.png",
+  "sha256": "5fc9c6e00095c60abc8fec65c3e77e9e90105935665fc6caf5789f136def67da",
+  "size": 127353
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/tJbkHlI-607x438.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/tJbkHlI-607x438.png",
+  "sha256": "b2c253cb59196ee68b1d5d6f6de115d2f709582b954ce5399f012365e20e7592",
+  "size": 168451
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/tSHUa0N-1280x652.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/tSHUa0N-1280x652.png",
+  "sha256": "3618baf9966b0fbe57710f73bfda35c790eb4fcbe504c6b98424cf352dfa04c6",
+  "size": 363603
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/tUIWLob-705x400.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/tUIWLob-705x400.png",
+  "sha256": "efa0cd3e5c12e1fd4d1ff8675e64a8ab73f19f76b6cb8fe67e01aa10c2f3f2a7",
+  "size": 36758
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/tpIPc6I-958x500.jpg": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/tpIPc6I-958x500.jpg",
+  "sha256": "3e7765e9dcdd5c2a8739025d3c55d3d2d5258a619427b7105fd40b9e8c865011",
+  "size": 887231
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/u0cnUa0-1280x638.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/u0cnUa0-1280x638.png",
+  "sha256": "4427118f999934ad065c88362c2150b05e3edb20fc1157f37631d55592a44d72",
+  "size": 202189
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/u1trGAY-1280x664.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/u1trGAY-1280x664.png",
+  "sha256": "e4b3f7340250656be4f250fd70e648e7381930b4e3044f49cc0dd598905d5055",
+  "size": 188268
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/u353I80-282x72.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/u353I80-282x72.png",
+  "sha256": "72a9e098a882e3e02ec9f4c6016e5b253ac4685bb2cb5dd8e102009ea7ae17d6",
+  "size": 13468
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/uW8OXNE-1071x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/uW8OXNE-1071x720.png",
+  "sha256": "08c0181cc515ce8d9841ef79118cdf834bfe5d849a12c3518f9de059b9a084fe",
+  "size": 808875
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/unLQOUn-914x597.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/unLQOUn-914x597.png",
+  "sha256": "6bd61bbeaecb36cbf7d9c122488fae843795fea3c9186a8d1e0800827d5738d4",
+  "size": 14877
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/uw8x4XC-1280x539.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/uw8x4XC-1280x539.png",
+  "sha256": "b9c81b3c1bf3601ec2507098ead6b02ecac836c76c85ab862a7019e3733b5895",
+  "size": 162280
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/vC71luv-508x498.gif": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/vC71luv-508x498.gif",
+  "sha256": "a0dafca99785cbfbfd1316626e4b49a2d559d2d32b184f8bc49976a831772ee2",
+  "size": 466747
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/vWIDwnV-675x327.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/vWIDwnV-675x327.png",
+  "sha256": "5e8f1e6269cdf8387be4f1fbe80291fb6641e237ae616e9729e7a7e6672aabce",
+  "size": 283189
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/vn3shY7-360x300.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/vn3shY7-360x300.png",
+  "sha256": "ea8f73e978a20c363179457a34a14e570ae7910f38f1a390b2cedcfc25034f9f",
+  "size": 2097
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/vsvCnya-1280x372.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/vsvCnya-1280x372.png",
+  "sha256": "39fa9f0607e002414903893a801c38aa22fb40c806b7f2245f2bc8a6306c53a2",
+  "size": 34816
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/vuvJYcH-800x300.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/vuvJYcH-800x300.png",
+  "sha256": "30f81027ec79c97d91c13d8495e53cb316647ba0dbdbdc19d01991b49bdb1a0c",
+  "size": 139474
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/w5zQqCt-761x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/w5zQqCt-761x720.png",
+  "sha256": "d0c7b3c9fcc888ab2b8186f62fc28736be6b1b81ca379b1316c6d7b90c6a1bfc",
+  "size": 381650
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/wMpmDHG-477x312.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/wMpmDHG-477x312.png",
+  "sha256": "571149bcd1eebf9274c8a49c0fa2b3a7580fb5fed21373e001d974671e4f71b2",
+  "size": 15465
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/wh2qsdq-500x370.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/wh2qsdq-500x370.png",
+  "sha256": "dd8b631621cf69b6dbd9b296162bba80e31758ffd8de0761f101b8fa5211bc85",
+  "size": 290841
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/x1LzolZ-768x621.jpg": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/x1LzolZ-768x621.jpg",
+  "sha256": "7f44ef80e3e7f5b00a5aff457cb134b0dcd01585b0c09acbbc2dddaae5a3a8c0",
+  "size": 42496
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/y314TB4-1280x552.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/y314TB4-1280x552.png",
+  "sha256": "58591dbb2bcabbb0d416befa281da46a579fbbe3a079b88cc30f8c8fc14c3986",
+  "size": 78328
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/yFLxb2r-1280x292.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/yFLxb2r-1280x292.png",
+  "sha256": "00b10d77afaad1e5ff5f016b3d9b73a55d833aeba3aae8059437b9f1d22eda4e",
+  "size": 296903
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/yN89FAv-1280x234.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/yN89FAv-1280x234.png",
+  "sha256": "9fa3a777056a8c77941bc896f743026a7a13d2311209bb3cf1a6589768deef93",
+  "size": 110375
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/yRuCVZc-1254x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/yRuCVZc-1254x720.png",
+  "sha256": "256e9474bcd56385f8370471fcfc8017a06eb85d2c38eec93b6b0b0100721b3f",
+  "size": 285905
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/yiipuB1-1280x720.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/yiipuB1-1280x720.png",
+  "sha256": "2c86971e0c754abb7416bab553c3a78e00eee9f291750b3a29b779e2bedf9507",
+  "size": 345092
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/zLIT4Bv-1280x642.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/zLIT4Bv-1280x642.png",
+  "sha256": "58e43c67bde98a47c20a1b49cf3d02bb4933907ce42b3764b83d2e329b5ffe50",
+  "size": 224233
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/zadrUr1-800x200.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/zadrUr1-800x200.png",
+  "sha256": "aa141599971d240715a1eb77f3a8188e622ed0ac323fbb4c502f79c0f727e368",
+  "size": 43987
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/zziOWya-596x215.png": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/zziOWya-596x215.png",
+  "sha256": "b142504e908edf8c7e244391630ef6e3149ead0dbf51821e8ef831ff23fe0294",
+  "size": 8073
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/6_Data_Visualization-1080x1920.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/6_Data_Visualization-1080x1920.mp4",
+  "sha256": "06c1be9af60404689cfb08114fc4de24e7fae369803cf7e7b1bda815aff9e602",
+  "size": 218741582
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/8_colors_v3-1080x1920.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/8_colors_v3-1080x1920.mp4",
+  "sha256": "575fbf7ae41eed0808c1ab172f8b69f84c686fb2ad5ef8ffd750b413268a56f7",
+  "size": 350915181
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/A-Star-Search-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/A-Star-Search-1920x1080.mp4",
+  "sha256": "f80f1141d69588e2803990effc48745a40f6c4c7de237f4678d75508a86226b7",
+  "size": 74212086
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/AES-256-V1-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/AES-256-V1-1920x1080.mp4",
+  "sha256": "bf3e355a163faa829da5cb9fa6ab13d50cfa48cd6a7b48e97f137722b7cca53a",
+  "size": 100294939
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/AWS_ECS_v2-1080x1920.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/AWS_ECS_v2-1080x1920.mp4",
+  "sha256": "8e1fc8296a82f2812f2edd0793cc3f85212abb3b3dc8e0a901f6d43c773d79f3",
+  "size": 172973013
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Ai-Prompting-V2-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Ai-Prompting-V2-1920x1080.mp4",
+  "sha256": "c4a7ade95d17afdf43441aa82030496ac13553fc28d284f3103bd404f0cfed42",
+  "size": 47121278
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Aws_Cloudfront_V1_no_outro-1080x1920.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Aws_Cloudfront_V1_no_outro-1080x1920.mp4",
+  "sha256": "c331ee2ef946dd7de7b20238b255be81f440d58c9cc30066d5f1255f42b6fc2d",
+  "size": 283012194
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Aws_Dns_V3-1080x1920.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Aws_Dns_V3-1080x1920.mp4",
+  "sha256": "db503e5d908e0da704c9958c9854b6b538830e78494152cea4f0bc06998f9b09",
+  "size": 107005420
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Aws_VPCs_V1_no_outro-1080x1920.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Aws_VPCs_V1_no_outro-1080x1920.mp4",
+  "sha256": "645a3b213dd66e2dfc163931673798226a367a4775d9d6546228d14b9d8b3845",
+  "size": 169797608
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Bellman-Ford-V2-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Bellman-Ford-V2-1920x1080.mp4",
+  "sha256": "a4cb22567396439833741c6394d7b2cfef816481d467978200a6a7ac600722eb",
+  "size": 150377054
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Binary-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Binary-1920x1080.mp4",
+  "sha256": "153017e8a7ca06713eb5f747a06e3b605b77fa6d19727eb1bdacf2b0a731c746",
+  "size": 48891631
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Bitwise-V3-Audio-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Bitwise-V3-Audio-1920x1080.mp4",
+  "sha256": "129e863769d10120709a04234c2384c4de4b2106de88e5af60fbb1dabbd39676",
+  "size": 28806248
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Breadth-first-search-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Breadth-first-search-1920x1080.mp4",
+  "sha256": "90b866cddd86838e7b8f2928dec2f1344c7ba8c671b717f700874f5d8f9892d2",
+  "size": 34389011
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/CORS-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/CORS-1920x1080.mp4",
+  "sha256": "69d023efb230a7d481ad540ed4b52333a10d3068d07997c696ed1cba99fe4b47",
+  "size": 20589866
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Cache-On-The-Web-v2-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Cache-On-The-Web-v2-1920x1080.mp4",
+  "sha256": "9419d6543e535ea640b72cdcaa9dda0728f79ea0a37a5953b76a40645a425735",
+  "size": 47780870
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Cardinality_v1-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Cardinality_v1-1920x1080.mp4",
+  "sha256": "5c175972a4ff02f99f701352c741b552c78f55813c504f7a0d320fa0acfd034f",
+  "size": 81223332
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Chunked-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Chunked-1920x1080.mp4",
+  "sha256": "32bea13e3745de85a151b32aa07abff3193f1cfb35b5e772a6c0e89cbc29f169",
+  "size": 28793219
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Cohorts_v1-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Cohorts_v1-1920x1080.mp4",
+  "sha256": "ab7d5af5a47fecd31dda21fb46e0ecc9e6c5525e406624665fba2c9a840b71d6",
+  "size": 95254906
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Compiled%20vs%20Interpreted%20Programs_1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Compiled vs Interpreted Programs_1080.mp4",
+  "sha256": "5d9030087545feb01d67fcb90c23ea992fa7ac2ee3eeca8ff14660297518f823",
+  "size": 13240421
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Continuous-Deployment-v1-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Continuous-Deployment-v1-1920x1080.mp4",
+  "sha256": "dba7912a9ddc0290f91bf50989edd575c1eb8f9bccfff8008f84cedd70edf985",
+  "size": 76841175
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Database-Normalization-V3-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Database-Normalization-V3-1920x1080.mp4",
+  "sha256": "93355e645b52113d65b6f07fc7c24752d64259b3f82b797cd3eade11c084cd16",
+  "size": 269061060
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Dax_V41-1080x1882.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Dax_V41-1080x1882.mp4",
+  "sha256": "0f7987c1c02e45441ad3089a3837793ad8f796b4709aef1580f0030654c77293",
+  "size": 25666702
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Dynamic_Programming_9X16_V2_for_platform-1080x1920.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Dynamic_Programming_9X16_V2_for_platform-1080x1920.mp4",
+  "sha256": "718b147a8fcf87590be48d09c50071774f9ee247a1a1f5d9fc4bbff042861433",
+  "size": 209608983
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Encapsulation-Vs-Abstraction-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Encapsulation-Vs-Abstraction-1920x1080.mp4",
+  "sha256": "6d6a55e28b45c963f9866da9fd1359c48b1170b2b413537844a4031078fccc4d",
+  "size": 81748975
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Errors-Vs-Bugs-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Errors-Vs-Bugs-1920x1080.mp4",
+  "sha256": "4d6536f8408ca88cbed2e348e9af8053404d8ab6796a7c57db2e7ca838aa6913",
+  "size": 50295108
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Exponents-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Exponents-1920x1080.mp4",
+  "sha256": "f9bf78d43a2eb781cbb38eede438b5f5c608808c56d5f056bf2b173ee65c3e18",
+  "size": 35016631
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/File-Servers-vs-JSON-API-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/File-Servers-vs-JSON-API-1920x1080.mp4",
+  "sha256": "caba841404857eee4295c16b51144c9afdb88e3a24f9b111e58aed6251ca896a",
+  "size": 50949556
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Floor-division-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Floor-division-1920x1080.mp4",
+  "sha256": "b0fb1591496ad14d2774b4a997f9908a61d5baf9454baa720cb5b2eed6a68452",
+  "size": 28902205
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/GUI-vs-CLI-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/GUI-vs-CLI-1920x1080.mp4",
+  "sha256": "c5fabdadf00b3f1e1f7094dcd6b98302882961d17c4b842c17c9df479331c75e",
+  "size": 19028681
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Geometric-Sequences-v1-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Geometric-Sequences-v1-1920x1080.mp4",
+  "sha256": "ff903d18c7f92ff32b5110ad702b4bf985cb7e02e8c2f75a194245457155d23d",
+  "size": 18633520
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Go_Concurrency_V21-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Go_Concurrency_V21-1920x1080.mp4",
+  "sha256": "49776b786cdb06f003d0619550d96629bc4091da172dee7f5b131805a076cf83",
+  "size": 71342431
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Interpreted_Vs_Compiled_Languages_V3-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Interpreted_Vs_Compiled_Languages_V3-1920x1080.mp4",
+  "sha256": "a0aef1018e27f03149bad2ef1967eed21c625d38c7d93214985b3ec88aaad6e8",
+  "size": 133493533
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/JS-Modules-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/JS-Modules-1920x1080.mp4",
+  "sha256": "daa423c9c087bf007d34a9fb75582c7c73f4107ba54bc030254971e553412138",
+  "size": 49457803
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Js_Event_Loop_V3-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Js_Event_Loop_V3-1920x1080.mp4",
+  "sha256": "c1cfe72da8fa4f5d208a0ac398bb459842898ac809de0479bbed8bc4f4ea18fa",
+  "size": 141848813
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Lazy-Mode-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Lazy-Mode-1920x1080.mp4",
+  "sha256": "6e54c38b8da6316324724fc7e0d280ba71d29c831aab44bb3e8bbaec613a104a",
+  "size": 14016079
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Linux-File-Permissions-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Linux-File-Permissions-1920x1080.mp4",
+  "sha256": "496dfcaeb6c1a6f599be3551818995fa1660c590e21a7655a3198efa1c4c2b7e",
+  "size": 15974044
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Linux-filepaths-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Linux-filepaths-1920x1080.mp4",
+  "sha256": "194c07319324b1e3ecc807ad26fda7fafd7c4741c8171deeccce8b7678b5e369",
+  "size": 8606928
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Logging_Storage_V1-1080x1920.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Logging_Storage_V1-1080x1920.mp4",
+  "sha256": "e81ac60dac9df3c02970e3152e8818a7f7fafa61b78d0d5000747efb5c4ae30d",
+  "size": 162565327
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Mean_And_Median-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Mean_And_Median-1920x1080.mp4",
+  "sha256": "bfd34e85ebcef458e514c750c007495d372f00344784aa9cc4ff7887d8289119",
+  "size": 26046041
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Modeling-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Modeling-1920x1080.mp4",
+  "sha256": "553dac53f1b73958132e369596a957988c85477326a67b2b1225f73ffee039d9",
+  "size": 19798507
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Modulo-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Modulo-1920x1080.mp4",
+  "sha256": "8697caf91da0644fb556f4b8c3a26d11cb41dad4473f9b2318f67655c0cb2a70",
+  "size": 107994205
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Multimodal-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Multimodal-1920x1080.mp4",
+  "sha256": "619bea2b1b20bd6062eefb2c008bb21ac7964f872555e6166de55ffe1c2d00e3",
+  "size": 29036034
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/None-Type-Redo-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/None-Type-Redo-1920x1080.mp4",
+  "sha256": "414f6f3ae20bff2817d9f3f4781257097ff839f224fcc26a74e614ad09c7a24b",
+  "size": 31816671
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Oauth-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Oauth-1920x1080.mp4",
+  "sha256": "e864c5970865bfaebddce0024c9b0a949aebc47b00085afa41ec25f5d932e4eb",
+  "size": 40237116
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Object-Storage-vs-File-Storage-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Object-Storage-vs-File-Storage-1920x1080.mp4",
+  "sha256": "eecb9a24e4768fc47b8c5b43133ebc24f9672bfcf7f3240e0ef683301a2d5a3e",
+  "size": 33776645
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Owasp_Top_10-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Owasp_Top_10-1920x1080.mp4",
+  "sha256": "40b9ec9920d38f80146ddd6d3ee4e9857d563a05ebbf4958620f4f8d67ec8730",
+  "size": 26204427
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Pandas_v2-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Pandas_v2-1920x1080.mp4",
+  "sha256": "91cc0c0c1ceed608a173dae2b922b615e5cd205127104dc34a37c26d944fbd86",
+  "size": 68414265
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Parquet-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Parquet-1920x1080.mp4",
+  "sha256": "4f3d8a033c85834c89d86b628836b49ed77dad32db224c6a31bb297d4d8b895c",
+  "size": 30432469
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Passkeys-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Passkeys-1920x1080.mp4",
+  "sha256": "ab03c8e658dd520372cb6b3b424f3ffc88004867876bfa792439ff1ccf5b5100",
+  "size": 25362032
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Pointer-Pointers-V3-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Pointer-Pointers-V3-1920x1080.mp4",
+  "sha256": "399b6d8e22dc13a166381246fbb5175e9d4357281f93f139f48633a484ac8ef9",
+  "size": 65526261
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Promises-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Promises-1920x1080.mp4",
+  "sha256": "da4902879e3bb376de216596fab6f4c260ad0f73b77e1349859745e26f3294ac",
+  "size": 65997094
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Prompt_Injection_V1-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Prompt_Injection_V1-1920x1080.mp4",
+  "sha256": "6aca225d3c9fe61dd0277e857bf21b95bd79048ebc78f86de71aa4573026a69b",
+  "size": 16942350
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Prototypes_And_Classes_In_Js_V2_-_Beast_Titan_Fix-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Prototypes_And_Classes_In_Js_V2_-_Beast_Titan_Fix-1920x1080.mp4",
+  "sha256": "4726b3925c9d401095d4978fe4f422b53c1d3ad33fea56d7bee00902f6d12133",
+  "size": 60760434
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Queues-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Queues-1920x1080.mp4",
+  "sha256": "8fe696b9c40cbd7d9265034923ffb5482d10b784dec950b11fade9ad7327c16c",
+  "size": 30076632
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/RRF-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/RRF-1920x1080.mp4",
+  "sha256": "2f90a0206540f978fa15fcc48c940124f3e49e1c2b28670b25de37f02d60cfe5",
+  "size": 41374880
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/RSA-V1-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/RSA-V1-1920x1080.mp4",
+  "sha256": "e605a43856a42ec61fc6521e5c1675a1c72e0658512d49aeaffb2abccf0cfaf3",
+  "size": 77138028
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Recursion-explained-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Recursion-explained-1920x1080.mp4",
+  "sha256": "9cd334e08302d227baf85c4d019590878696771d08f74744ecd34b919e278500",
+  "size": 63724443
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/SSRF_v1-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/SSRF_v1-1920x1080.mp4",
+  "sha256": "16849e6dc10db31c51ff48621049c6b8e33b0f8116820849ed4818738ce3e39e",
+  "size": 28378854
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Serverless-Storage-in-S3-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Serverless-Storage-in-S3-1920x1080.mp4",
+  "sha256": "46603b6c7cad7249ae4860d618357e9a8f2f4c2ba80744cb3da76af8c1b6d2e9",
+  "size": 68288569
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Serving-S3-in-Prod-v1-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Serving-S3-in-Prod-v1-1920x1080.mp4",
+  "sha256": "371d92bd2ad9f9948a9a8c19552a386c63f6adebf878c01a39ad2f4a735daa54",
+  "size": 355271419
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Stack_Vs_Heap_Fix_2026_V2-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Stack_Vs_Heap_Fix_2026_V2-1920x1080.mp4",
+  "sha256": "12c0fbb1e49a1bb645b89f2326aa54aab830917a520927d145f6e5bcdb5288d0",
+  "size": 71138227
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Star-Schema-1080x1920.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Star-Schema-1080x1920.mp4",
+  "sha256": "7caa986d00e345e9d0bcf69d373163b6d26be378c0a52684cddfb6998f274499",
+  "size": 193782185
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Streaming-video-from-the-backend-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Streaming-video-from-the-backend-1920x1080.mp4",
+  "sha256": "21e4abcf7c4d3cc63a399b33fb877048dfcb42ff32372c6ca1589bab46277e9d",
+  "size": 47736469
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Tls_V11-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Tls_V11-1920x1080.mp4",
+  "sha256": "767f208390949c8f11ec3665927c3e72f0ca92b97810952448333711c62a3ac4",
+  "size": 25392361
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Types-Vs-Interfaces-v3-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Types-Vs-Interfaces-v3-1920x1080.mp4",
+  "sha256": "dc2a7830dcc27bb28f4b09c0a073f8ce9ff39e8e5b2be3430e0e253a2eadd23f",
+  "size": 112825013
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Up-Vs-Down-Migrations-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Up-Vs-Down-Migrations-1920x1080.mp4",
+  "sha256": "90e1ee24716ae4ccd529697c467dfc008ee3815062d6c386f651b30c972c3628",
+  "size": 65484335
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Vectors-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Vectors-1920x1080.mp4",
+  "sha256": "32fb6f7b8b8ebf61830ff2a636e25acfc579ca4fc05ae6ffefcb04ed953fe1a4",
+  "size": 73904766
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/What-Are-Services-Ingress-Gateway-APIs-In-K8s-V1-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/What-Are-Services-Ingress-Gateway-APIs-In-K8s-V1-1920x1080.mp4",
+  "sha256": "b98819da014201ca04e6130ca53e811c3f38cdcbb17e1702263c599204e91799",
+  "size": 94636268
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/What-Is-SQL-V2-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/What-Is-SQL-V2-1920x1080.mp4",
+  "sha256": "1e0344893513648b582785fa71df345bd2b81dccf587358d4431e32a9867bb09",
+  "size": 71237638
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/What_Is_Git_Merge-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/What_Is_Git_Merge-1920x1080.mp4",
+  "sha256": "877cebb4f47e4bf12ee9da317f71c261e488be27c54e2805a9d3ded79350dc1e",
+  "size": 17152337
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Workflow-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/Workflow-1920x1080.mp4",
+  "sha256": "c9573b8877c1587888afb7b924708b89324569168c6ac16b6975bef829343fea",
+  "size": 21054536
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/agentic-search-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/agentic-search-1920x1080.mp4",
+  "sha256": "f2ac87ae98639d6650f767f0b112601e69b51822ea23280d30c54640175e9d77",
+  "size": 23450521
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/agents-autocomplete-sync-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/agents-autocomplete-sync-1920x1080.mp4",
+  "sha256": "d7083ff0135b46baafd57007c160c814aea598a6894fb5a42e790d24ca3c0092",
+  "size": 31969448
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/agents-md-rules_1920x1080-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/agents-md-rules_1920x1080-1920x1080.mp4",
+  "sha256": "f3a528e38cb8d3cf930fed1f12e96365e008b11e1742625e3c83b42ab695eb3b",
+  "size": 21152910
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/api-conventions-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/api-conventions-1920x1080.mp4",
+  "sha256": "db7b2c22e339e7b1407254334cfd0b6a6c2a7c27e76102d0238a19e216dce1f8",
+  "size": 64226258
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/availability-reliability-and-durability-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/availability-reliability-and-durability-1920x1080.mp4",
+  "sha256": "b1ef124c940c627ab14c9ac6cc2e798499c3f849b8b6214e89ab3152cea7ea78",
+  "size": 33341735
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/backing-up-dbs-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/backing-up-dbs-1920x1080.mp4",
+  "sha256": "4cea5c8ae23ac7d3a9a92488d654e89fd25c089ffd277f8216178db728827a01",
+  "size": 51684303
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/big-o-notation-v1-23-00-x264-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/big-o-notation-v1-23-00-x264-1920x1080.mp4",
+  "sha256": "066d67194ed4e80cb818864dd4a517199c9201a2b1fa2734f182f72362d4712c",
+  "size": 117102214
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/bookbot-final-project-demo-1920x1080-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/bookbot-final-project-demo-1920x1080-1920x1080.mp4",
+  "sha256": "23996d85eaf53f029cd93562861dff8fade9d7969052e8fbef9aab8a10d8dc5d",
+  "size": 1728642
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/bubble-sort-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/bubble-sort-1920x1080.mp4",
+  "sha256": "5a9b7a323bddb69bd9e111143e23c6bc20e20cc5493d50ded5f606d3eec85be3",
+  "size": 6788063
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/build-authentication-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/build-authentication-1920x1080.mp4",
+  "sha256": "4da1af5fd6ab08f92b7387717e9a6facac3f0fc66c7e4ef20a50e7e275eb09d5",
+  "size": 109134053
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/classes-vs-objects-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/classes-vs-objects-1920x1080.mp4",
+  "sha256": "7b7f04c44e57132d67412afa9a1541b4637009a73feadfe8e616deb08a259d57",
+  "size": 51114816
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/clients-vs-servers-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/clients-vs-servers-1920x1080.mp4",
+  "sha256": "4116abd5a825804697e0d1267797648c662873cc3c3bf162ef4eebc938a2ebb1",
+  "size": 49364994
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/collaborating-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/collaborating-1920x1080.mp4",
+  "sha256": "6ff17030526bfe33eeb48e24872f875d36c7006ae3771e931a1b63ed6e3c77b7",
+  "size": 129894769
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/comparison-operators-v1-23-00-x264-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/comparison-operators-v1-23-00-x264-1920x1080.mp4",
+  "sha256": "1993f5a0e310d7261ff473fc10b6c6a178a32abc18a1537c337b8c589466ba30",
+  "size": 57332803
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/compiled-vs-interpreted-languages-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/compiled-vs-interpreted-languages-1920x1080.mp4",
+  "sha256": "e81fe9d719ef44b425b0a0bc8929fba2b27cafe003d277bc9e218185f87f5c58",
+  "size": 19839659
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/context-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/context-1920x1080.mp4",
+  "sha256": "b6799342eab7e4d71a77106393f326530c58617f0e4a23b8ba0c02c08e28c319",
+  "size": 13516363
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/continuos-integration-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/continuos-integration-1920x1080.mp4",
+  "sha256": "70a1e3ae4b14b01c15c3d48bbd55d2d272d3a17b689f0ffcadebd9641d147545",
+  "size": 44382765
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/continuous-deployment-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/continuous-deployment-1920x1080.mp4",
+  "sha256": "a87bed96b982a2f8e0f9ba762bd8cc33587ed45dc59da36bb5c52ea445d1218c",
+  "size": 78613488
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/data-types-1080x1920.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/data-types-1080x1920.mp4",
+  "sha256": "71b29324940e3863ce3a0815db5b292c22a02349451aca6b869d6cfb9506aa36",
+  "size": 44461579
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/db-relationships-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/db-relationships-1920x1080.mp4",
+  "sha256": "3aea1fbff8df4e1f1419efbe8a9e6f74a9b5731b9fd6d8cb488f2072feff338b",
+  "size": 85340852
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/ddos-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/ddos-1920x1080.mp4",
+  "sha256": "4533f05cf141857e2dc2bebf96fe224b4626f3f072c6f8d6c1d2edbddc908f3d",
+  "size": 36731459
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/decoupled-vs-monolith-v1-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/decoupled-vs-monolith-v1-1920x1080.mp4",
+  "sha256": "23f5ca21df60c98bd70e80d5e232003ee43b0d7035b7bda0f57f9a8a778bfe29",
+  "size": 33988263
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/deploying-docker-v1-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/deploying-docker-v1-1920x1080.mp4",
+  "sha256": "885257537b35bf16bf742d585353efb6882a6d7bf9823f78a1f7a7ef2b90a702",
+  "size": 27558255
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/dijkstras-algorithm-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/dijkstras-algorithm-1920x1080.mp4",
+  "sha256": "d38f6119b4a4160916cc14af2c785975b029c30126eb640c56102fb3a7667cd3",
+  "size": 46649046
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/docker-CLI-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/docker-CLI-1920x1080.mp4",
+  "sha256": "53a3c88397465293caadb68aaac1b8e3399000efee82f5c93df6c695b1f74993",
+  "size": 41824374
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/docker-volumes-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/docker-volumes-1920x1080.mp4",
+  "sha256": "125c618c66760447bf3a6c5187086d9e0e8b60c5e31b684edb688d0380f0cfe2",
+  "size": 38518982
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/docker-volumes-persisting-state-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/docker-volumes-persisting-state-1920x1080.mp4",
+  "sha256": "d14f6d11d071903b18ad257630d671b203299a7f7c6481cb02db0b598c367ad4",
+  "size": 46158568
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/documentation-for-web-servers-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/documentation-for-web-servers-1920x1080.mp4",
+  "sha256": "8f86f03a645adcd5ab853c85e2a6c074e2046c6707559ecd6cb9c00f07a09fa4",
+  "size": 140876442
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/edit-distance-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/edit-distance-1920x1080.mp4",
+  "sha256": "c8c7ae5b49b19f2bc1a7b14b1632feeac17ce76ec82cc0a4e6ee49cee19d8327",
+  "size": 55591520
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/encoding-vs-encryption-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/encoding-vs-encryption-1920x1080.mp4",
+  "sha256": "11a1a8a8ed8f7c49aa075d90b51ef2a8457ad7a9451413e3f5d97925938af4be",
+  "size": 70833485
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/enums-vs-types-nit-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/enums-vs-types-nit-1920x1080.mp4",
+  "sha256": "8e08e4ff3014b60f42cf0bdbc15147bbefc7a1960190cd9418ff718aa8958caf",
+  "size": 27563311
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/enums_python-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/enums_python-1920x1080.mp4",
+  "sha256": "017805fdde11fd618a245dde0c726b744d4b707ed20e0dbb5b0c5b8376a44942",
+  "size": 70190451
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/errors-vs-bugs-v3-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/errors-vs-bugs-v3-1920x1080.mp4",
+  "sha256": "d2427683c6158c838ff964410ba5a406d9b5d07b0862f368f8bfa7ed081e6323",
+  "size": 32675690
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/factorials_v-608x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/factorials_v-608x1080.mp4",
+  "sha256": "d67ac8783bdd76447afa4eb9d8f65d617075046346f630724fd33809b79c1020",
+  "size": 25870576
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/favorite-charts-1080x1920.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/favorite-charts-1080x1920.mp4",
+  "sha256": "2dcbd3e0dda16b1c570bad21cb1c2e771d465df7d3377a561bed3e5f4b9952dc",
+  "size": 54557492
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/feedback-loops-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/feedback-loops-1920x1080.mp4",
+  "sha256": "2297ceeab2976a6559469050fe32e444c65646ce96ffc534bd9f32c529340dae",
+  "size": 11488315
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/feistel-ciphers-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/feistel-ciphers-1920x1080.mp4",
+  "sha256": "cb80f9d3d27b058fd70d9b181bde184972221e2f4d4c1c19456cf0881cc8d11d",
+  "size": 19754165
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/garbage-collection-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/garbage-collection-1920x1080.mp4",
+  "sha256": "e49fe32528c1fc7a0db03e4539a56378423085c830b4f3a7492517880ebde1d1",
+  "size": 149897026
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/git-bisect-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/git-bisect-1920x1080.mp4",
+  "sha256": "2cd2589de9b1a33a607f3f5e766eff0c0a4f53678ecd32b724845ed0544c62dc",
+  "size": 15183652
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/git-cherry-pick-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/git-cherry-pick-1920x1080.mp4",
+  "sha256": "f4c422efd489b9080f5de7ccc93b24c1563115180f7d96ab5c7703492073b7ac",
+  "size": 7471836
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/git-commit-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/git-commit-1920x1080.mp4",
+  "sha256": "1d70d7fa323e8a5a82669209442da6d267db19a057cb8347f0da6e385f705dfb",
+  "size": 14165112
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/git-fork-vs-git-clone-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/git-fork-vs-git-clone-1920x1080.mp4",
+  "sha256": "5b55a86cfb802d4061e5fdc3c8c81b946c0078620ae71b4f5d49ca064e691009",
+  "size": 25998799
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/git-log-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/git-log-1920x1080.mp4",
+  "sha256": "16921c6776d95040b5bae01d800042cd7b5513c580b86b14cb2178df3c39bb17",
+  "size": 26800591
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/git-rebase-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/git-rebase-1920x1080.mp4",
+  "sha256": "8482f3ca3a2e662b8c742895576fe804dc5ed3cd52b904c68be2d60f35ff45c6",
+  "size": 26549575
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/git-reflog-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/git-reflog-1920x1080.mp4",
+  "sha256": "2b56429443321421b417e6106bb40e6c23b77ae438e87168c9025ec2ff3714e8",
+  "size": 15371552
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/git-revert-vs-git-reset-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/git-revert-vs-git-reset-1920x1080.mp4",
+  "sha256": "3239d5784ebcd2271ce5dba3c90e8fefe1f54f4fcc9011e7e1b474451c8320af",
+  "size": 18411104
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/git-stash-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/git-stash-1920x1080.mp4",
+  "sha256": "9e84aca177f88b7c1a878a77d877f17042c3a3acf70e39de0fa1757f424f5c46",
+  "size": 13204650
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/go-errors-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/go-errors-1920x1080.mp4",
+  "sha256": "647271e98f9e4e9ed03582337b7be715c50303724bf077f0cfe86c9c32f73552",
+  "size": 40106024
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/go-memory-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/go-memory-1920x1080.mp4",
+  "sha256": "9f0d938288c970be7fda753525ce8122b15245d733cc946b689df27d125419a1",
+  "size": 42305383
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/go-slices-and-arrays-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/go-slices-and-arrays-1920x1080.mp4",
+  "sha256": "04a6f7c1551777a81c4ca729897dd7c5381e4ebf09ba96c8876299fefad2332b",
+  "size": 60976384
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/go-vs-js-servers-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/go-vs-js-servers-1920x1080.mp4",
+  "sha256": "220a94bb7cac72d90025c4552bc3d005ec3e46ba7773e5a8e3f8e5769d8d94f4",
+  "size": 32555500
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/heap_v-608x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/heap_v-608x1080.mp4",
+  "sha256": "5e70d39c687c8975a4dc2f8d9aaa4b248aaf30ee247811e36b8d660fd68c31fa",
+  "size": 21357421
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/how-servers-implement-http-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/how-servers-implement-http-1920x1080.mp4",
+  "sha256": "cf1ff419ef58901a5ebb0334049123b0a24c04d519ff6bfd9bdae1d1ff63e7cb",
+  "size": 75219339
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/http-codes-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/http-codes-1920x1080.mp4",
+  "sha256": "9e3c205840790852e0a6d62d6c28c9d7808e620fc6b5818485771edc2461e208",
+  "size": 49740611
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/http-intro-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/http-intro-1920x1080.mp4",
+  "sha256": "29eb9b7e82c255ff236169f490b5dfd70f880ab4dab77132aed1e32f54c0503b",
+  "size": 100046399
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/https-encryption-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/https-encryption-1920x1080.mp4",
+  "sha256": "db67157ec5b5bd204f2b453ba283cdb4bb6cd12f30a9316cc0ca04edf7ec327d",
+  "size": 48038927
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/iam-1080x1920.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/iam-1080x1920.mp4",
+  "sha256": "08caebc40842c8bf820de457ed87b30d41378c53d6c5d33966dcd30dfff56e71",
+  "size": 9485799
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/images-versus-containers-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/images-versus-containers-1920x1080.mp4",
+  "sha256": "0f5fb8c71178b598a1360616483a843e35bd2b3b258016b28224f94860917cff",
+  "size": 49266340
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/imperative-code-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/imperative-code-1920x1080.mp4",
+  "sha256": "2a5bc04c85962db6035019bd4b13fa77547cb90068ad08ded755bc4f439195e3",
+  "size": 24338730
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/inference-cost-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/inference-cost-1920x1080.mp4",
+  "sha256": "b874e18f0edc476006922cfdaa8468f379a381602c4871c1c2b25b18b3132a7a",
+  "size": 26375142
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/inferred-return-types-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/inferred-return-types-1920x1080.mp4",
+  "sha256": "19920317ba6e7d4b62473ee5729dad166b9d62ebf131cbbd761b5725d7bb1bb3",
+  "size": 73303386
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/insertion-sort-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/insertion-sort-1920x1080.mp4",
+  "sha256": "55ac51f78563d28084256d817d6db5c33d1423016ffe830d63a1d9270488dbf2",
+  "size": 15757750
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/interviewing-tips-1080x1920.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/interviewing-tips-1080x1920.mp4",
+  "sha256": "6d1c0e372fc8f2c3551d469fed7cc5ea7c784182d5ce3ac766033f7cad161131",
+  "size": 40126838
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/intro-to-kuberrnetes-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/intro-to-kuberrnetes-1920x1080.mp4",
+  "sha256": "3b0164fad30a04899094950841ac76c2fa28949c05ef096516bfebac587fec5e",
+  "size": 17855598
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/ip-vs-dns-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/ip-vs-dns-1920x1080.mp4",
+  "sha256": "a695861a6a9fa4314fa44724c66b2bf88e8e46a6d2fcda4fa76c71044ba8af6b",
+  "size": 34499022
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/js-is-single-threaded-and-non-blocking-v3-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/js-is-single-threaded-and-non-blocking-v3-1920x1080.mp4",
+  "sha256": "ddb9510769dc73fec5b94574b39cc2186c24ede34be0083e0193b7cbde697db7",
+  "size": 53006621
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/js-runtimes-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/js-runtimes-1920x1080.mp4",
+  "sha256": "bdb31752c51bd8411cce86560d5c577261f34aa1904aeb549098c126701d66a0",
+  "size": 54866766
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/kdf_v-608x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/kdf_v-608x1080.mp4",
+  "sha256": "247ba18ef182380957601a316ca3bed915c7991c488b02f7802fb3c9afc666ef",
+  "size": 27620678
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/lamba-1080x1920.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/lamba-1080x1920.mp4",
+  "sha256": "5dcede1d9aafb98db9e538498d9d0e46ec1824bf6f0863d955b9d6489ea650d1",
+  "size": 21972797
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/load-balancer-v2-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/load-balancer-v2-1920x1080.mp4",
+  "sha256": "eaa72fd5b4c7e71a43ca31bddd939d4f65e5c1f5e5b2b74d0138a251d75cd2a9",
+  "size": 28954016
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/logarithms-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/logarithms-1920x1080.mp4",
+  "sha256": "bac307f5847b184458236ab69ac2d7524273b77fe58f7d7caea4db14a4380549",
+  "size": 23925927
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/logging_strategies-1080x1920.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/logging_strategies-1080x1920.mp4",
+  "sha256": "2b541e6ea50262020be7b849b41a7cb099df32fb9674a23d713c10d2385cce03",
+  "size": 20211766
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/mac-hmac_v-608x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/mac-hmac_v-608x1080.mp4",
+  "sha256": "dd4b562a8b02a6784c2ba8c3de70e0e8e1e09b275aaea8cd03b3157dd40da3d5",
+  "size": 33983476
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/main-tcp-vs-udp-v1-23-00-x264-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/main-tcp-vs-udp-v1-23-00-x264-1920x1080.mp4",
+  "sha256": "cbd6262b5a99209b50377075471fab5b98bb6f73186eed119d500f1258e7d229",
+  "size": 46438378
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/merge-sort-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/merge-sort-1920x1080.mp4",
+  "sha256": "8cb4a96ac048a76b28de91e6e9e9869c7d6a1d3d8cd67799706a164c7f456eb5",
+  "size": 20539382
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/metrics-1080x1920.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/metrics-1080x1920.mp4",
+  "sha256": "fb89e752ff78074d0c8832d66aebe6ed8f52fc69f90bc7c4ff890f9a413ab1dc",
+  "size": 13742235
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/monoliths-vs-decoupled-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/monoliths-vs-decoupled-1920x1080.mp4",
+  "sha256": "d1680c5ad064950819d76f1cedf4e85300d3feca45ab2631c7bbfe17ddde54f6",
+  "size": 164643773
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/networking-applying-1080x1920.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/networking-applying-1080x1920.mp4",
+  "sha256": "630a5cbb01c3d9a5bb77ce12f72d9cbfe968a2e77df7e73348f77346568511c7",
+  "size": 32821091
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/np-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/np-1920x1080.mp4",
+  "sha256": "e7393cd84a63692933c18dc4fec29d4dfaf582720449f4758a666c2a54a8e723",
+  "size": 90335740
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/one-time-pad-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/one-time-pad-1920x1080.mp4",
+  "sha256": "7660884dd52dca7f7540ef0d3680228f57b24e7e4b0e39de9ada02b6282e488d",
+  "size": 46043805
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/personal-project-1-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/personal-project-1-1920x1080.mp4",
+  "sha256": "764a19df21f4d79b57e4b9ea3c9ccf12e0a9d4f24ddc66237651e7df553a487f",
+  "size": 45265775
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/pointers-are-easy-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/pointers-are-easy-1920x1080.mp4",
+  "sha256": "ee7f25414219bc5bf46e7fba238430ac6c714cf0d04480fceae067f183ecd2a5",
+  "size": 15455214
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/polymorphism-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/polymorphism-1920x1080.mp4",
+  "sha256": "37d322dcdaf3140990d3994034bda13a7e1029de2f8e593637cb48c12fa29b33",
+  "size": 55831434
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/ports-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/ports-1920x1080.mp4",
+  "sha256": "3990495f190824155ce836d7dfacc4c0af64bf6ebae959f1f1a0978920f4a5e2",
+  "size": 32874370
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/projects-1080x1920.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/projects-1080x1920.mp4",
+  "sha256": "6531490d3bed26a1409d83c61ab53748bca81a2c4e8b00aee6cf93e014ace87b",
+  "size": 31286549
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/pure-function-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/pure-function-1920x1080.mp4",
+  "sha256": "085bac0c95ae5920574ae5395fd655c901256202d20ec0208b4e43b7e0763050",
+  "size": 61194333
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/quick-sort-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/quick-sort-1920x1080.mp4",
+  "sha256": "5c4f4fa3b211ec042edbe6105099727b4cc80c71813f6fc173a71b021d0122d8",
+  "size": 57206889
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/random-number-generator-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/random-number-generator-1920x1080.mp4",
+  "sha256": "abb37bd6717ace70e6f4b246b3c6c1d96e58822dc3fbf6de78ca0a8f450567c1",
+  "size": 47404444
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/red-black-trees-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/red-black-trees-1920x1080.mp4",
+  "sha256": "5665f9183b1e5158054a3ce3ff58b1c435cbbe662c5c13dc36ae213b8fbfa446",
+  "size": 46747762
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/responsibility-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/responsibility-1920x1080.mp4",
+  "sha256": "c7e65e801610ba3355f832c320fe8bf08c5d4b4cb9db810ce1511f4638a6899a",
+  "size": 20891737
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/resume_v-1080x1920.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/resume_v-1080x1920.mp4",
+  "sha256": "1171862ec28c44eaf0f9e073957ccf61d2e118ab42283b25c6cf1505f4ca1f0f",
+  "size": 16468457
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/s3-1080x1920.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/s3-1080x1920.mp4",
+  "sha256": "0ced1bff1b78812dd443ff9dd1d96ecd40f740e77630baceb8ec4d9db02b9035",
+  "size": 15018925
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/scope-explainer-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/scope-explainer-1920x1080.mp4",
+  "sha256": "de93e86aede6842c6a9d848daf5088f6ddee55baa35d6c67d13aeac87195768c",
+  "size": 42007457
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/security-1080x1920.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/security-1080x1920.mp4",
+  "sha256": "9e34f40b6e1e16acf473dbc6497515d23f5d8a11aad9acd8f6ef5d3bd26be6e0",
+  "size": 20725238
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/semantic-search-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/semantic-search-1920x1080.mp4",
+  "sha256": "0cf33fdb2b9da13ce75e8563bed463f3a169aad1e81552e00ea8253ab0d34515",
+  "size": 21508369
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/sha256-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/sha256-1920x1080.mp4",
+  "sha256": "e460578e013f42334c56b115158d337e09dbcc824879c0a56264666ee749f3ae",
+  "size": 75217214
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/sql-vs-no-sql-s-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/sql-vs-no-sql-s-1920x1080.mp4",
+  "sha256": "bae89eb8c64f93e0d7bf9dc5dc2212ccdb68ea5b43167aa66af92789d4d40b60",
+  "size": 121706207
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/stacks-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/stacks-1920x1080.mp4",
+  "sha256": "a193ddc8645436dbd5767be59280fb0e055ebe036cdd84b80660dda92d9329fe",
+  "size": 24739209
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/static-vs-dynamic-typing-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/static-vs-dynamic-typing-1920x1080.mp4",
+  "sha256": "546fbc4cd30c93d0e69d7ff48f5185761de5ce6db68b03051ad531e9b1559f25",
+  "size": 64424293
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/strategy_v_1080p-1080x1920.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/strategy_v_1080p-1080x1920.mp4",
+  "sha256": "6f9bdbb7cb3e8d31974ec8b602b3ce74f6c93fb5c8906af799cdc8d1d9416b39",
+  "size": 16984763
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/structured-logging-1080x1920.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/structured-logging-1080x1920.mp4",
+  "sha256": "22b881a9951f71f695b6f221c2f21c6a6af2f9d17cc4a7fd31a9c86e7102fa89",
+  "size": 6514835
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/tf-idf-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/tf-idf-1920x1080.mp4",
+  "sha256": "74b39f5ab7e2575794f1008f01985714309c63abf561da2fa5ff6878f311a200",
+  "size": 19787150
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/the-cloud-1080x1920.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/the-cloud-1080x1920.mp4",
+  "sha256": "eda5e584897f2ff1b9149f9b2f15614c2e74d18247f61841943fb7017f8cb6b8",
+  "size": 28510702
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/this-and-arrow-functions-js-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/this-and-arrow-functions-js-1920x1080.mp4",
+  "sha256": "e3933c8469ec62cde052c85dc9c4a472ce118784bf0571da673b3a62f6fff5e3",
+  "size": 48603633
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/tips-for-git-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/tips-for-git-1920x1080.mp4",
+  "sha256": "5dc8760bc9431a221e0c2964703a467f240dc96b58bd72307d77a925fd63b27c",
+  "size": 26610944
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/tracing-1080x1920.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/tracing-1080x1920.mp4",
+  "sha256": "aa52e5b3a0a55640ded8c725f9ec5246b1cbfb16c2a911c36f234c2aa39f8c73",
+  "size": 10754459
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/tracing-in-mark-and-sweep-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/tracing-in-mark-and-sweep-1920x1080.mp4",
+  "sha256": "f7579aeca2d2555a8f4b551072c08ae0874b4a3a6b0e17c23310417c1220d374",
+  "size": 33412359
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/types-of-authentication-v2-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/types-of-authentication-v2-1920x1080.mp4",
+  "sha256": "0b25de11556d555b17e75799a4986b4f4d0822a27f0639b516f87eda8c14be2e",
+  "size": 30992418
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/urlpaths-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/urlpaths-1920x1080.mp4",
+  "sha256": "04bf010d57e220a37d9fea5d4f95c35566bb56ef76304e6753e8f009e0b9f3b8",
+  "size": 76830252
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/using-c-to-learn-memory-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/using-c-to-learn-memory-1920x1080.mp4",
+  "sha256": "700710bb8ee436a4689fb40791dcc70f2e2ea86e548d92e95a0bce20d9957ad1",
+  "size": 19934748
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/webhooks-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/webhooks-1920x1080.mp4",
+  "sha256": "ba29a01d6b63d3573f5781b12675805e30c9cd1fb05513e3ae2de5cc61d1194b",
+  "size": 48648370
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/welcome-to-c-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/welcome-to-c-1920x1080.mp4",
+  "sha256": "c167cc3d14cab38ee385abc15a4478de262caa36786d0016b784f8452ea629c6",
+  "size": 21612100
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/what-are-algorithms-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/what-are-algorithms-1920x1080.mp4",
+  "sha256": "2ddc7cb3eb7e830e3e771e342c0681605ea10e922d51ba28c7cefd72b316e6a0",
+  "size": 16262285
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/what-are-binary-trees-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/what-are-binary-trees-1920x1080.mp4",
+  "sha256": "086c782324612082ed926528220acf57b13090dd40e6bf0db28118d363a48321",
+  "size": 16574801
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/what-are-structs-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/what-are-structs-1920x1080.mp4",
+  "sha256": "9d78a92da41643f489cc4dcbeab529b1c1005cc8f373b2cd7643762bb7003d42",
+  "size": 26842899
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/what-is-a-container-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/what-is-a-container-1920x1080.mp4",
+  "sha256": "2c71d2cc61032565f7c9319ca7a69e85a40cd63efebc1c0cb9849be23218a4df",
+  "size": 52370459
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/what-is-data-visualization-1080x1920.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/what-is-data-visualization-1080x1920.mp4",
+  "sha256": "1dbb7bbc7a263488879a179ed0d8770f3e3d9aaee7f741b7f67b61ed418758f5",
+  "size": 66559444
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/what-is-git-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/what-is-git-1920x1080.mp4",
+  "sha256": "923965de572810046d84563177a7c26cda94b11a012fb9cab119fe93002d806d",
+  "size": 30868126
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/what-is-git-stash-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/what-is-git-stash-1920x1080.mp4",
+  "sha256": "2ee80d37ec75a30be6b0b6e8fadef724277f31443de831639aedccfbca3391f9",
+  "size": 19028989
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/what-is-inheritance-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/what-is-inheritance-1920x1080.mp4",
+  "sha256": "42935d2bdb3e0b32fa20b28c55397d7d5e7b89b68182f6b71946b620f59c8622",
+  "size": 58715733
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/what-is-pubsub-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/what-is-pubsub-1920x1080.mp4",
+  "sha256": "0c3f2e23aa10b9dbeb153aa41bebb82cc71c3e0645ead1e91cb156e8f650d350",
+  "size": 16204878
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/what-is-rabbitMQ-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/what-is-rabbitMQ-1920x1080.mp4",
+  "sha256": "f71f8677df9f1d1e9053b31849e6f6b9c91f16bb986958daf09989d6b850cc85",
+  "size": 14889058
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/what-is-search-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/what-is-search-1920x1080.mp4",
+  "sha256": "97ecc016ca4987046d813fa007d3a42a12c3dcb464f12bdbf69540624d49824d",
+  "size": 13543500
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/what-is-typescript-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/what-is-typescript-1920x1080.mp4",
+  "sha256": "726fb3e86d975eb2be7dae123804c0438add41af13e627df73ad86c81daabc60",
+  "size": 43786954
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/what-is-yaml-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/what-is-yaml-1920x1080.mp4",
+  "sha256": "4e462c37f68f2b6293b99ac3022fc25462cd3ef93918f99f29bc68ed29abf5df",
+  "size": 13572948
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/whats-a-function-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/whats-a-function-1920x1080.mp4",
+  "sha256": "3ca53cf0c4d53f1c4f6e26d4fce089257a81fc39106052e6c560f6daab6df50c",
+  "size": 5901292
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/why-constants-dont-matter-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/why-constants-dont-matter-1920x1080.mp4",
+  "sha256": "2ab261c2811af04e13d968e58221ebda9778e991f5d49c7df473eb81d4215483",
+  "size": 39810530
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/why-http-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/why-http-1920x1080.mp4",
+  "sha256": "34acc737e0e229bb1679b06bc20d717227dbb5dd5725b869c4469051ae9f227c",
+  "size": 68646568
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/why-js-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/why-js-1920x1080.mp4",
+  "sha256": "011bf3c2099d07221506906f1844efaf0eee63cedaad954cea6ef9ac66e5498e",
+  "size": 51702021
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/why-learn-python-45454-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/why-learn-python-45454-1920x1080.mp4",
+  "sha256": "8d64d393efcc043de7db04b27cbd853dd20a3fed0c613a0effc8a4c75804f9f4",
+  "size": 15073111
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/why-web-security-1080x1920.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/why-web-security-1080x1920.mp4",
+  "sha256": "4372e0cef89104fbb42108c19291c97c50f21eb6f93937db06619b49043eab41",
+  "size": 29479239
+ },
+ "https://storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/writing-safe-migrations-1920x1080.mp4": {
+  "path": "storage.googleapis.com/qvault-webapp-dynamic-assets/lesson_videos/writing-safe-migrations-1920x1080.mp4",
+  "sha256": "64ab068c20c1d89536b587774076d78ee02dc47d951ae1f71ef5757623a4220a",
+  "size": 83283999
+ },
+ "https://upload.wikimedia.org/wikipedia/commons/7/7f/Depth-First-Search.gif": {
+  "path": "upload.wikimedia.org/wikipedia/commons/7/7f/Depth-First-Search.gif",
+  "sha256": "86f05c6224231bd30bd878c656815e66e3abf2436c0f1b9d72bb8043028a6866",
+  "size": 13447
+ },
+ "https://www.mathsisfun.com/algebra/images/function-max-global.svg": {
+  "path": "www.mathsisfun.com/algebra/images/function-max-global.svg",
+  "sha256": "737bb135c2b3a9cf744ab5e0e41b7ff2f251aae638dd0b6bccf7e841d0f7f143",
+  "size": 17951
+ },
+ "https://www.python.org/static/community_logos/python-logo-master-v3-TM-flattened.png": {
+  "path": "www.python.org/static/community_logos/python-logo-master-v3-TM-flattened.png",
+  "sha256": "ccb38978f900ce7033a404ddf4d848fbcc14a96b74ae682ff80e331342aba9fb",
+  "size": 11155
+ }
+}
