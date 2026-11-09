@@ -1,10 +1,11 @@
 import {useEffect, useState} from 'react';
+import {locale, t} from '../lib/i18n.js';
 import {stats} from '../lib/xp.js';
 import {useStore} from '../store.js';
 import {Topbar} from './Account.jsx';
 import {Icon, Meter} from './ui.jsx';
 
-export const formatDate = iso => new Date(iso.length === 10 ? iso + 'T12:00' : iso).toLocaleDateString(undefined, {month:'short', day:'numeric', year:'numeric'});
+export const formatDate = iso => new Date(iso.length === 10 ? iso + 'T12:00' : iso).toLocaleDateString(locale(), {month:'short', day:'numeric', year:'numeric'});
 
 // Every achievement with this user's progress toward it; fetched again whenever they earn XP.
 export function useAchievements() {
@@ -31,10 +32,10 @@ export function AchievementRow({a}) {
     <li className={'ach' + (a.unlocked ? '' : ' locked')}>
       <Badge a={a}/>
       <div className="ach-text">
-        <span className="ach-name">{a.name} <span className={`tier-label tier-${a.tier}`}>{a.tier}</span></span>
-        <span className="meta">{a.description}</span>
-        {a.unlocked ? <span className="meta ach-date">Unlocked {formatDate(a.unlocked)}</span>
-          : a.goal > 1 && <span className="ach-progress"><Meter n={a.value} total={a.goal} label={`${a.name} progress`}/><span className="meta">{a.value}/{a.goal}</span></span>}
+        <span className="ach-name">{t(a.name)} <span className={`tier-label tier-${a.tier}`}>{t(a.tier)}</span></span>
+        <span className="meta">{t(a.description)}</span>
+        {a.unlocked ? <span className="meta ach-date">{t('Unlocked {date}', {date:formatDate(a.unlocked)})}</span>
+          : a.goal > 1 && <span className="ach-progress"><Meter n={a.value} total={a.goal} label={t('{name} progress', {name:t(a.name)})}/><span className="meta">{a.value}/{a.goal}</span></span>}
       </div>
     </li>
   );
@@ -42,13 +43,13 @@ export function AchievementRow({a}) {
 
 export default function Achievements() {
   const list = useAchievements();
-  useEffect(() => { document.title = 'Achievements · nagare'; }, []);
+  useEffect(() => { document.title = `${t('Achievements')} · ${t('nagare')}`; }, []);
   const got = list?.filter(a => a.unlocked) || [];
   return (
     <main id="home" className="page">
       <Topbar/>
-      <h1>Achievements</h1>
-      <p className="path-desc">{list ? `${got.length} of ${list.length} unlocked. Each one is worth bonus XP: bronze 25, silver 50, gold 100.` : 'Loading…'}</p>
+      <h1>{t('Achievements')}</h1>
+      <p className="path-desc">{list ? t('{n} of {total} unlocked. Each one is worth bonus XP: bronze 25, silver 50, gold 100.', {n:got.length, total:list.length}) : t('Loading…')}</p>
       {list && (
         <ul className="ach-grid">
           {[...got.sort((a, b) => b.unlocked.localeCompare(a.unlocked)), ...list.filter(a => !a.unlocked)].map(a => <AchievementRow key={a.id} a={a}/>)}

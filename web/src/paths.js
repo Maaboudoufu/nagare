@@ -1,12 +1,13 @@
 /* Learning paths: All, the curated paths, and your Custom pick. */
 import {SHORT_NAMES} from './constants.js';
+import {t} from './lib/i18n.js';
 import {store} from './store.js';
 
 export function paths() {
   return [
-    {id:'all', short:'All courses', title:'All courses'},
-    ...store.catalog.paths.map(p => ({id:p.slug, short:SHORT_NAMES[p.slug] || p.title, title:p.title, description:p.description, courses:p.courses})),
-    {id:'custom', short:'Custom', title:'Custom path', description:'Your own pick of courses.'},
+    {id:'all', short:t('All courses'), title:t('All courses')},
+    ...store.catalog.paths.map(p => ({id:p.slug, short:SHORT_NAMES[p.slug] ? t(SHORT_NAMES[p.slug]) : p.title, title:p.title, description:p.description, courses:p.courses})),
+    {id:'custom', short:t('Custom'), title:t('Custom path'), description:t('Your own pick of courses.')},
   ];
 }
 

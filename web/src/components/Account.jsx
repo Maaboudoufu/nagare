@@ -1,10 +1,11 @@
 /* The signed-in person: avatar, the menu behind it, and the top bar every page shares. */
 import {useEffect, useRef, useState} from 'react';
+import {LANGS, lang, setLang, t} from '../lib/i18n.js';
 import {level, stats} from '../lib/xp.js';
 import {profile, settings, signOut, store, useStore} from '../store.js';
 import {Brand, Icon} from './ui.jsx';
 
-export const displayName = () => profile().name || store.user?.name || store.user?.email.split('@')[0] || 'You';
+export const displayName = () => profile().name || store.user?.name || store.user?.email.split('@')[0] || t('You');
 
 // The Google profile photo, or the name's first letter if there isn't one (or it fails to load).
 export function Avatar({size = 32}) {
@@ -15,8 +16,8 @@ export function Avatar({size = 32}) {
   return <span className="avatar" style={style} aria-hidden="true">{displayName()[0].toUpperCase()}</span>;
 }
 
-function AccountMenu() {
-  useStore();
+// Open/closed state for a dropdown that closes on Escape or a click outside it.
+function useMenu() {
   const [open, setOpen] = useState(false);
   const ref = useRef();
   useEffect(() => {
@@ -26,27 +27,57 @@ function AccountMenu() {
     addEventListener('keydown', close);
     return () => { removeEventListener('pointerdown', close); removeEventListener('keydown', close); };
   }, [open]);
-  const item = (href, icon, label) => <a role="menuitem" href={href} onClick={() => setOpen(false)}><Icon name={icon}/>{label}</a>;
+  return [open, setOpen, ref];
+}
+
+// Globe button with the UI languages. Language names stay in their own language.
+export function LangMenu() {
+  useStore();
+  const [open, setOpen, ref] = useMenu();
+  const cur = lang();
+  if (LANGS.length < 2) return null;
   return (
-    <div className="account" ref={ref}>
-      <button className="account-btn" aria-haspopup="menu" aria-expanded={open} onClick={() => setOpen(!open)}>
-        <span className="level-chip" title={`${stats().xp.toLocaleString()} XP`}>Lv {level(stats().xp)}</span>
-        <Avatar/>
-        <span className="account-name">{displayName()}</span>
-        <Icon name="chevron-down"/>
+    <div className="lang-menu" ref={ref}>
+      <button className="icon-btn" aria-label={t('Language')} title={t('Language')} aria-haspopup="menu" aria-expanded={open} onClick={() => setOpen(!open)}>
+        <Icon name="globe"/>
       </button>
       {open && (
         <div className="menu" role="menu">
-          {item('/profile', 'user', 'Profile')}
-          {item('/achievements', 'award', 'Achievements')}
-          {item('/leaderboard', 'trophy', 'Leaderboard')}
-          {item('/settings', 'settings', 'Settings')}
-          {store.admin && item('/admin', 'shield', 'Admin')}
-          {store.user && <><hr/><button role="menuitem" onClick={signOut}><Icon name="log-out"/>Sign out</button></>}
+          {LANGS.map(([code, name]) => (
+            <button key={code} role="menuitemradio" aria-checked={code === cur} lang={code} onClick={() => { setLang(code); setOpen(false); }}>
+              <Icon name="check" cls={code === cur ? '' : 'off'}/>{name}
+            </button>
+          ))}
         </div>
       )}
     </div>
   );
 }
 
-export const Topbar = () => <div className="topbar"><Brand/><AccountMenu/></div>;
+function AccountMenu() {
+  useStore();
+  const [open, setOpen, ref] = useMenu();
+  const item = (href, icon, label) => <a role="menuitem" href={href} onClick={() => setOpen(false)}><Icon name={icon}/>{label}</a>;
+  return (
+    <div className="account" ref={ref}>
+      <button className="account-btn" aria-haspopup="menu" aria-expanded={open} onClick={() => setOpen(!open)}>
+        <span className="level-chip" title={t('{n} XP', {n:stats().xp.toLocaleString()})}>{t('Lv {n}', {n:level(stats().xp)})}</span>
+        <Avatar/>
+        <span className="account-name">{displayName()}</span>
+        <Icon name="chevron-down"/>
+      </button>
+      {open && (
+        <div className="menu" role="menu">
+          {item('/profile', 'user', t('Profile'))}
+          {item('/achievements', 'award', t('Achievements'))}
+          {item('/leaderboard', 'trophy', t('Leaderboard'))}
+          {item('/settings', 'settings', t('Settings'))}
+          {store.admin && item('/admin', 'shield', t('Admin'))}
+          {store.user && <><hr/><button role="menuitem" onClick={signOut}><Icon name="log-out"/>{t('Sign out')}</button></>}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export const Topbar = () => <div className="topbar"><Brand/><div className="topbar-end"><LangMenu/><AccountMenu/></div></div>;

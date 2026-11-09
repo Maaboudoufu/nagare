@@ -1,10 +1,12 @@
 import {createRoot} from 'react-dom/client';
 import App from './App.jsx';
-import SignIn from './components/ui/SignIn.jsx';
+import SignIn from './components/SignIn.jsx';
+import {lang} from './lib/i18n.js';
 import {applySettings, lessonPath, navigate, reward, save, store} from './store.js';
 import './lib/codemirror.js';  // its CSS first, so styles.css can override it
 import './styles.css';
 
+document.documentElement.lang = lang();
 const root = createRoot(document.getElementById('root'));
 const json = url => fetch(url, {cache:'no-store'}).then(r => {
   if (r.status === 401) location.assign('/signin');  // session ended
@@ -36,6 +38,7 @@ if (location.pathname === '/signin') {
     store.admin = auth.admin;
     store.catalog = catalog;
     store.progress = rest;
+    document.documentElement.lang = lang();  // the saved setting wins once it's loaded
     applySettings();
     root.render(<App/>);
     if (!rest['app:settings']?.tz) save('app:settings', {tz});  // streaks and the activity graph use your days

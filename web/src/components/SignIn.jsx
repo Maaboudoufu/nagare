@@ -1,12 +1,15 @@
 /* Sign-in screen: Google only.
    The button is a plain link: /auth/login redirects to Google, which redirects back to /auth/callback. */
-import {BrandMark, Icon} from '../ui.jsx';
+import {N_, t} from '../lib/i18n.js';
+import {useStore} from '../store.js';
+import {LangMenu} from './Account.jsx';
+import {BrandMark, Icon} from './ui.jsx';
 
 const ERRORS = {
-  access_denied:'Sign-in was cancelled.',
-  not_allowed:"That Google account isn't allowed to use this app.",
-  state_mismatch:'Sign-in expired. Please try again.',
-  login_expired:'Sign-in expired. Please try again.',
+  access_denied:N_('Sign-in was cancelled.'),
+  not_allowed:N_('That Google account isn\'t allowed to use this app.'),
+  state_mismatch:N_('Sign-in expired. Please try again.'),
+  login_expired:N_('Sign-in expired. Please try again.'),
 };
 
 // Google's "G" mark, as its sign-in branding guidelines require.
@@ -20,16 +23,18 @@ const GoogleG = () => (
 );
 
 export default function SignIn() {
+  useStore();  // re-render when the language changes
   const code = new URLSearchParams(location.search).get('auth_error');
-  const error = code && (ERRORS[code] || 'Sign-in failed. Please try again.');
+  const error = code && (ERRORS[code] ? t(ERRORS[code]) : t('Sign-in failed. Please try again.'));
   return (
     <main className="signin">
+      <LangMenu/>
       <div className="signin-card">
         <BrandMark className="signin-mark"/>
-        <h1>Sign in to nagare</h1>
-        <p className="meta">Continue with your Google account to pick up where you left off.</p>
+        <h1>{t('Sign in to {app}', {app:t('nagare')})}</h1>
+        <p className="meta">{t('Continue with your Google account to pick up where you left off.')}</p>
         {error && <p className="signin-err" role="alert"><Icon name="circle-x"/>{error}</p>}
-        <a className="btn google" href="/auth/login"><GoogleG/>Continue with Google</a>
+        <a className="btn google" href="/auth/login"><GoogleG/>{t('Continue with Google')}</a>
       </div>
     </main>
   );

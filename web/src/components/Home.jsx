@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import {locale, t} from '../lib/i18n.js';
 import {currentPath, pathCourses, paths} from '../paths.js';
 import {isDone, lessonPath, pct, save, store, useStore} from '../store.js';
 import {Topbar} from './Account.jsx';
@@ -10,11 +11,11 @@ function resumeLink(list, done) {
   const started = list.find(c => c.lessons.some(isDone) && !c.lessons.every(isDone));
   const next = started || list.find(c => !c.lessons.every(isDone));
   if (last && list.some(c => c.slug === last.slug))
-    return {href:lessonPath(last.slug, last.uuid), label:'Continue where you left off', title:last.title, sub:last.course};
+    return {href:lessonPath(last.slug, last.uuid), label:t('Continue where you left off'), title:last.title, sub:last.course};
   if (started)
-    return {href:lessonPath(started.slug), label:'Continue', title:started.title,
-            sub:`${started.lessons.filter(isDone).length} of ${started.lessons.length} lessons done`};
-  if (next) return {href:lessonPath(next.slug), label:done ? 'Up next' : 'Start the path', title:next.title, sub:`Course ${list.indexOf(next) + 1}`};
+    return {href:lessonPath(started.slug), label:t('Continue'), title:started.title,
+            sub:t('{n} of {total} lessons done', {n:started.lessons.filter(isDone).length, total:started.lessons.length})};
+  if (next) return {href:lessonPath(next.slug), label:done ? t('Up next') : t('Start the path'), title:next.title, sub:t('Course {n}', {n:list.indexOf(next) + 1})};
   return null;
 }
 
@@ -22,7 +23,7 @@ export default function Home() {
   useStore();
   const [picking, setPicking] = useState(false);
   const path = currentPath(), list = pathCourses(path);
-  useEffect(() => { document.title = `${path.title} · nagare`; }, [path.title]);
+  useEffect(() => { document.title = `${path.title} · ${t('nagare')}`; }, [path.title]);
   const total = list.reduce((n, c) => n + c.lessons.length, 0);
   const done = list.reduce((n, c) => n + c.lessons.filter(isDone).length, 0);
   const resume = resumeLink(list, done);
@@ -40,18 +41,18 @@ export default function Home() {
     <main id="home">
       <header>
         <Topbar/>
-        <div className="path-tabs" role="group" aria-label="Learning path">
+        <div className="path-tabs" role="group" aria-label={t('Learning path')}>
           {paths().map(p => (
             <button key={p.id} className="path-tab" aria-pressed={p.id === path.id} onClick={() => choose(p.id)}>{p.short}</button>
           ))}
         </div>
         <h1>{path.title}</h1>
         {path.description && <p className="path-desc">{path.description}</p>}
-        {path.id === 'custom' && <button className="btn" id="edit-custom" onClick={() => setPicking(true)}><Icon name="pen-line"/>Edit courses</button>}
+        {path.id === 'custom' && <button className="btn" id="edit-custom" onClick={() => setPicking(true)}><Icon name="pen-line"/>{t('Edit courses')}</button>}
         {list.length > 0 && (
           <div className="home-progress">
-            <Meter n={done} total={total} label="Path progress"/>
-            <p className="meta"><strong>{done.toLocaleString()}</strong> of {total.toLocaleString()} lessons · {pct(done, total)}%</p>
+            <Meter n={done} total={total} label={t('Path progress')}/>
+            <p className="meta">{t('{done} of {total} lessons · {pct}%', {done:<strong>{done.toLocaleString(locale())}</strong>, total:total.toLocaleString(locale()), pct:pct(done, total)})}</p>
           </div>
         )}
         {resume ? (
@@ -65,8 +66,8 @@ export default function Home() {
           </a>
         ) : <div className="resume-gap"></div>}
       </header>
-      <h2 className="section-title">{list.length} course{list.length === 1 ? '' : 's'}</h2>
-      {!list.length && <p className="meta">No courses in your custom path yet. Use <strong>Edit courses</strong> to pick some.</p>}
+      <h2 className="section-title">{list.length === 1 ? t('{n} course', {n:list.length}) : t('{n} courses', {n:list.length})}</h2>
+      {!list.length && <p className="meta">{t('No courses in your custom path yet. Use {edit} to pick some.', {edit:<strong>{t('Edit courses')}</strong>})}</p>}
       <ol className="course-grid">
         {list.map((c, i) => {
           const d = c.lessons.filter(isDone).length, complete = d === c.lessons.length;
@@ -74,13 +75,13 @@ export default function Home() {
             <li key={c.slug}><a className={'course-card' + (complete ? ' complete' : '')} href={lessonPath(c.slug)}>
               <div className="card-top">
                 <Logo course={c}/><span className="card-num">{String(i + 1).padStart(2, '0')}</span>
-                {complete && <span className="badge"><Icon name="circle-check"/>Done</span>}
+                {complete && <span className="badge"><Icon name="circle-check"/>{t('Done')}</span>}
               </div>
               <h3>{c.title}</h3>
               <p>{c.description}</p>
               <div className="card-foot">
                 <Meter n={d} total={c.lessons.length} hidden/>
-                <span className="meta">{d}/{c.lessons.length}<span className="sr"> lessons complete</span></span>
+                <span className="meta"><span aria-hidden="true">{d}/{c.lessons.length}</span><span className="sr">{t('{n} of {total} lessons complete', {n:d, total:c.lessons.length})}</span></span>
               </div>
             </a></li>
           );

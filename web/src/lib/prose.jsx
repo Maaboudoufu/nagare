@@ -4,9 +4,10 @@ import {createRoot} from 'react-dom/client';
 import {CALLOUTS, FENCE_MODES} from '../constants.js';
 import {CopyButton} from '../components/ui.jsx';
 import CodeMirror from './codemirror.js';
+import {t} from './i18n.js';
 
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;'}[c]));
-const iconHtml = name => `<svg class="icon" aria-hidden="true"><use href="/vendor/icons.svg?v=4#${name}"/></svg>`;
+const iconHtml = name => `<svg class="icon" aria-hidden="true"><use href="/vendor/icons.svg?v=5#${name}"/></svg>`;
 
 // Lesson markdown -> HTML. Videos are written as images (![title](clip.mp4){captions="captions.vtt"}): make them
 // video players. The {captions=...} attribute is dropped: those caption files were never published.
@@ -46,7 +47,7 @@ export function enhanceProse(root) {
       if (first && !first.textContent.trim()) first.remove();
     }
     bq.className = `callout ${tone}`;
-    if (label) bq.insertAdjacentHTML('afterbegin', `<p class="callout-title">${iconHtml(ic)}${esc(label)}</p>`);
+    if (label) bq.insertAdjacentHTML('afterbegin', `<p class="callout-title">${iconHtml(ic)}${esc(CALLOUTS[kind] ? t(label) : label)}</p>`);
   });
   // Lessons' OS tabs mark headings like "[!linux][!windows] Linux / WSL": the text already says which OS.
   root.querySelectorAll('h1, h2, h3, h4').forEach(h => { if (/\[!\w+\]/.test(h.innerHTML)) h.innerHTML = h.innerHTML.replace(/\[!\w+\]\s*/g, ''); });
@@ -56,7 +57,9 @@ export function enhanceProse(root) {
   root.querySelectorAll('img, video').forEach(el => el.addEventListener('error', () => {
     const p = document.createElement('p'), title = el.alt || el.getAttribute('aria-label');
     p.className = 'img-missing';
-    p.innerHTML = `${iconHtml('info')}<span>${el.tagName === 'VIDEO' ? 'Video' : 'Image'} not available${title ? `: ${esc(title)}` : ''}</span>`;
+    p.innerHTML = `${iconHtml('info')}<span>${el.tagName === 'VIDEO'
+      ? title ? t('Video not available: {title}', {title:esc(title)}) : t('Video not available')
+      : title ? t('Image not available: {title}', {title:esc(title)}) : t('Image not available')}</span>`;
     el.replaceWith(p);
   }, {once:true}));
   return () => roots.forEach(r => setTimeout(() => r.unmount()));  // deferred: React can't unmount a root mid-render

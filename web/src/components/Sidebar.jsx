@@ -1,5 +1,6 @@
 import {useEffect, useRef, useState} from 'react';
 import {TYPES} from '../constants.js';
+import {N_, t} from '../lib/i18n.js';
 import {isDone, lessonPath, store, useStore} from '../store.js';
 import {Icon, Logo, Meter} from './ui.jsx';
 
@@ -14,12 +15,12 @@ export default function Sidebar({course, cur, flat}) {
   const curCh = course.chapters.findIndex(ch => ch.lessons.includes(cur));
   const meta = store.catalog.courses.find(c => c.slug === course.slug);
   return (
-    <nav id="nav" aria-label="Course lessons" ref={ref}>
+    <nav id="nav" aria-label={t('Course lessons')} ref={ref}>
       <div className="nav-head">
-        <a className="back" href="/"><Icon name="arrow-left"/>All courses</a>
+        <a className="back" href="/"><Icon name="arrow-left"/>{t('All courses')}</a>
         <h2 className="course-title"><Logo course={meta} size="sm"/><span>{course.title}</span></h2>
-        <Meter n={done} total={flat.length} label="Course progress"/>
-        <p className="meta">{done} of {flat.length} lessons complete</p>
+        <Meter n={done} total={flat.length} label={t('Course progress')}/>
+        <p className="meta">{t('{n} of {total} lessons complete', {n:done, total:flat.length})}</p>
       </div>
       <div className="chapters">
         {course.chapters.map((ch, ci) => {
@@ -34,12 +35,12 @@ export default function Sidebar({course, cur, flat}) {
               </summary>
               <ol className="lessons">
                 {ch.lessons.map(l => {
-                  const [ic, name] = TYPES[l.type] || ['book-open', 'Lesson'], ok = isDone(l.uuid);
+                  const [ic, name] = TYPES[l.type] || ['book-open', N_('Lesson')], ok = isDone(l.uuid);
                   return (
                     <li key={l.uuid}><a href={lessonPath(course.slug, l.uuid)} className={ok ? 'done' : ''} aria-current={l === cur ? 'page' : undefined}>
-                      <Icon name={ok ? 'circle-check' : 'circle'} cls="status"/>{ok && <span className="sr">Completed: </span>}
+                      <Icon name={ok ? 'circle-check' : 'circle'} cls="status"/>{ok && <span className="sr">{t('Completed:')} </span>}
                       <span className="l-title">{l.title}</span>
-                      <span className="l-type" title={name}><Icon name={ic}/><span className="sr">, {name}</span></span>
+                      <span className="l-type" title={t(name)}><Icon name={ic}/><span className="sr">, {t(name)}</span></span>
                     </a></li>
                   );
                 })}

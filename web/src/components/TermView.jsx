@@ -1,5 +1,6 @@
 /* A browser terminal (xterm.js) on the server's /api/term WebSocket. xterm is its own chunk, loaded on first use. */
 import {useEffect, useRef} from 'react';
+import {t} from '../lib/i18n.js';
 import {settings} from '../store.js';
 
 let xtermModules;
@@ -39,7 +40,7 @@ export default function TermView({url, className = '', label}) {
       };
       ws.onopen = () => { resize(); term.focus(); };
       ws.onmessage = e => term.write(new Uint8Array(e.data));
-      ws.onclose = () => term.write('\r\n\x1b[90m[connection closed]\x1b[0m\r\n');
+      ws.onclose = () => term.write('\r\n\x1b[90m' + t('[connection closed]') + '\x1b[0m\r\n');
       term.onData(d => send('0', d));
       const ro = new ResizeObserver(resize);
       ro.observe(host.current);

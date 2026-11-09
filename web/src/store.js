@@ -1,5 +1,6 @@
 /* Catalog + progress, shared by every component. Saved to the server's progress.json. */
 import {useEffect, useState, useSyncExternalStore} from 'react';
+import {fx} from './lib/fx.js';
 
 export const post = (url, body) => fetch(url, {method:'POST', body:JSON.stringify(body)}).then(r => {
   if (r.status === 401) location.assign('/signin');  // session ended
@@ -28,7 +29,8 @@ export function save(key, data) {
 
 /* Settings (app:settings) and the profile people fill in (app:profile). */
 export const ACCENTS = {blue:'#7AA7FF', violet:'#B8A6EE', teal:'#5CC8BE', green:'#62BE8C', amber:'#E2B66B', rose:'#F08A9C'};
-export const settings = () => ({accent:'blue', codeSize:14, toasts:true, photo:true, leaderboard:true, ...store.progress['app:settings']});
+export const settings = () => ({accent:'blue', codeSize:14, toasts:true, photo:true, leaderboard:true, sound:true, volume:60, effects:true,
+                                 ...store.progress['app:settings']});
 export const profile = () => store.progress['app:profile'] || {};
 export function applySettings() {
   const s = settings(), hex = ACCENTS[s.accent] || ACCENTS.blue, n = parseInt(hex.slice(1), 16);
@@ -48,9 +50,11 @@ export function toast(t) {
 }
 export function reward(events = []) {
   bump();
+  if (events.some(e => e.kind === 'level')) fx.level();
+  if (events.some(e => e.kind === 'achievement')) fx.achievement();
   if (!events.length || !settings().toasts) return;
   const xp = events.filter(e => e.kind === 'xp');
-  if (xp.length) toast({kind:'xp', xp:xp.reduce((n, e) => n + e.xp, 0), reason:xp[0].reason + (xp.length > 1 ? ' + bonuses' : '')});
+  if (xp.length) toast({kind:'xp', xp:xp.reduce((n, e) => n + e.xp, 0), first:xp[0], more:xp.length > 1});
   events.filter(e => e.kind !== 'xp').forEach(toast);
 }
 export const markDone = uuid => save(uuid, {done:true});

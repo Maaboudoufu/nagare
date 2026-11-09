@@ -16,7 +16,7 @@
   --danger:#F08A82; --danger-soft:rgba(240,138,130,.12); --warn:#E2B66B; --person:#B8A6EE;
   --primary:#ECECEE; --primary-hover:#FFFFFF; --on-primary:#131315;
   --code:#D4D4D8;
-  --sans:'IBM Plex Sans', system-ui, sans-serif; --mono:'JetBrains Mono', ui-monospace, monospace;
+  --sans:'IBM Plex Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Noto Sans CJK JP', 'Yu Gothic UI', 'Meiryo', system-ui, sans-serif; --mono:'JetBrains Mono', ui-monospace, monospace;
   --radius:8px; --radius-lg:12px; --nav-w:300px; --ease:cubic-bezier(.2,.8,.2,1);
   --shadow:0 1px 0 rgba(255,255,255,.03) inset, 0 8px 24px rgba(0,0,0,.25);
 }
@@ -585,3 +585,39 @@ input:focus-visible, textarea:focus-visible { outline:2px solid var(--accent); o
   .lb-row { grid-template-columns:28px 32px minmax(0,1fr) auto; gap:10px; }
   .lb-row .lb-stat, .lb-row .level-chip { display:none; }
 }
+
+/* ---------- result effects, shortcuts ---------- */
+.fx-edge { position:fixed; inset:0; z-index:70; pointer-events:none; opacity:0;
+           box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--fx) 55%, transparent), inset 0 0 90px color-mix(in srgb, var(--fx) 16%, transparent); }
+.output-head [role="status"] { display:inline-block; }
+
+.kbd-caption { max-width:70ch; margin:-28px auto 32px; padding:0 40px; font-size:12px; color:var(--faint); text-align:center; }
+.kbd-caption kbd { font-size:10px; padding:0 5px; }
+.shortcuts { width:min(460px, calc(100vw - 32px)); padding:24px; border:1px solid var(--border); border-radius:var(--radius-lg);
+             background:var(--surface); color:var(--text); box-shadow:var(--shadow); }
+.shortcuts::backdrop { background:rgba(0,0,0,.55); backdrop-filter:blur(2px); }
+.shortcuts[open] { animation:pop .16s var(--ease); }
+.shortcuts h2 { font:600 16px var(--sans); margin:0 0 16px; }
+.shortcuts dl { display:grid; gap:10px; margin:0 0 20px; }
+.shortcuts dl > div { display:grid; grid-template-columns:150px 1fr; gap:12px; align-items:center; }
+.shortcuts dt { display:flex; gap:4px; }
+.shortcuts dd { margin:0; color:var(--muted); font-size:14px; }
+.shortcuts .btn { float:right; }
+.volume { display:flex; align-items:flex-end; gap:12px; }
+.volume .field { flex:1; }
+.volume input[type="range"] { padding:0; border:0; background:none; accent-color:var(--accent); }
+.sound-test { display:flex; flex-wrap:wrap; gap:4px; margin:-8px 0 0 -14px; }
+@media (pointer:coarse) { .kbd-caption { display:none; } }
+
+/* Language switcher: globe button left of the account menu, and top right of the sign-in page. */
+.topbar-end { display:flex; align-items:center; gap:4px; }
+.lang-menu { position:relative; }
+.lang-menu .menu { min-width:160px; }
+.menu .icon.off { visibility:hidden; }
+.signin { position:relative; }
+.signin > .lang-menu { position:absolute; top:16px; right:16px; }
+
+/* Japanese: no tightened tracking (it suits Latin headings, not kana and kanji). */
+html:lang(ja) :is(h1, h2, h3, .brand, .course-title, .level-num, .stat-value) { letter-spacing:0; }
+html:lang(ja) :is(.ach-date, .empty em, .toast em) { font-style:normal; }
+html:lang(ja) .empty em { font-weight:600; }

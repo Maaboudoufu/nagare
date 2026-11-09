@@ -67,11 +67,12 @@ def now_in(tz):
         return datetime.datetime.now(datetime.timezone.utc)
 
 
-def _add_xp(s, n, reason, today, events):
+def _add_xp(s, n, why, today, events):
+    """why: {'key': 'login' | 'lesson' | 'course' | 'achievement', ...params}; the UI words it in its language."""
     before = level(s['xp'])
     s['xp'] += n
     s['days'][today] = s['days'].get(today, 0) + n
-    events.append({'kind': 'xp', 'xp': n, 'reason': reason})
+    events.append({'kind': 'xp', 'xp': n, **why})
     if level(s['xp']) > before:
         events.append({'kind': 'level', 'level': level(s['xp'])})
 
@@ -83,7 +84,7 @@ def _unlock(prog, s, lessons, now, events):
         for a in new:
             s['achievements'][a[0]] = now.isoformat(timespec='seconds')
             events.append({'kind': 'achievement', 'id': a[0], 'name': a[1], 'tier': a[3], 'icon': a[4]})
-            _add_xp(s, TIER_XP[a[3]], f'Achievement: {a[1]}', now.date().isoformat(), events)
+            _add_xp(s, TIER_XP[a[3]], {'key': 'achievement', 'name': a[1]}, now.date().isoformat(), events)
         if not new:
             break
 
@@ -120,7 +121,7 @@ def login(prog, lessons, tz=None):
         s['streak'] = s['streak'] + 1 if s['last'] == yesterday else 1
         s['best'] = max(s['best'], s['streak'])
         s['last'] = today
-        _add_xp(s, LOGIN_XP, 'Daily visit' + (f' · {s["streak"]}-day streak' if s['streak'] > 1 else ''), today, events)
+        _add_xp(s, LOGIN_XP, {'key': 'login', 'streak': s['streak']}, today, events)
     _unlock(prog, s, lessons, now, events)
     return events
 
@@ -134,14 +135,14 @@ def saved(prog, lessons, key, data):
     p = prog.get(key)
     if key in lessons and data.get('done') and not p.get('doneAt'):
         p['doneAt'] = now.isoformat(timespec='seconds')
-        _add_xp(s, lesson_xp(lessons[key]), 'Lesson complete', today, events)
+        _add_xp(s, lesson_xp(lessons[key]), {'key': 'lesson'}, today, events)
         if now.hour < 4:
             s['flags']['night'] = 1
         elif now.hour < 7:
             s['flags']['early'] = 1
         course = COURSE_OF.get(key)
         if course and all((prog.get(u) or {}).get('done') for u in course['lessons']):
-            _add_xp(s, COURSE_XP, f'Finished {course["title"]}', today, events)
+            _add_xp(s, COURSE_XP, {'key': 'course', 'title': course['title']}, today, events)
     if key == 'app:profile' and sum(bool(str(v).strip()) for v in p.values()) >= 3:
         s['flags']['profile'] = 1
     _unlock(prog, s, lessons, now, events)
@@ -166,7 +167,7 @@ if __name__ == '__main__':
     prog['app:settings'] = {'tz': 'America/Los_Angeles'}
     prog['b'] = {'done': True}
     ev = saved(prog, lessons, 'b', {'done': True})
-    assert ev[0] == {'kind': 'xp', 'xp': 10, 'reason': 'Lesson complete'}, ev
+    assert ev[0] == {'kind': 'xp', 'xp': 10, 'key': 'lesson'}, ev
     assert saved(prog, lessons, 'b', {'done': True}) == []  # no XP twice for one lesson
     prog['app:profile'] = {'name': 'A', 'bio': 'b', 'location': 'c'}
     assert any(e.get('id') == 'make-it-yours' for e in saved(prog, lessons, 'app:profile', prog['app:profile']))
