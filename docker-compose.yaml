@@ -2,8 +2,8 @@
 #   docker compose up -d   -> http://localhost:8000
 # The lesson media (~11 GB) downloads in the background on first start. Lessons work in the meantime.
 #
-# Hosting: put an HTTPS reverse proxy in front and set BASE_URL=https://<domain>. From a proxy container, join the
-# nagare_default network and forward to nagare-app-1:8000. Enable websockets (the terminal uses them).
+# Hosting: put an HTTPS reverse proxy in front and set BASE_URL=https://<domain>. Proxy on this host: forward to
+# 127.0.0.1:8000 (or join nagare_default and use nagare-app-1:8000). Proxy elsewhere: set NAGARE_PORT. Enable websockets.
 
 name: nagare
 
@@ -22,7 +22,7 @@ services:
       SANDBOX_IMAGE: *image
       HOME: /tmp
     ports:
-      - "127.0.0.1:8000:8000"
+      - "${NAGARE_PORT:-127.0.0.1:8000}:8000" # proxy on another machine: NAGARE_PORT=8000 in .env, firewall it
     volumes:
       # Runs users' containers. This socket is root on the host: give this app its own host.
       - /var/run/docker.sock:/var/run/docker.sock
