@@ -130,7 +130,7 @@ export default function Profile({id = 'me'}) {
     return () => { live = false; };
   }, [id, id === 'me' && xp, lang()]);
   const name = p && (p.name || (p.self ? t('You') : t('Learner')));
-  useEffect(() => { if (name) document.title = `${name} · ${t('nagare')}`; }, [name]);
+  useEffect(() => { if (name) document.title = `${name} · ${t('nagare')}`; }, [name, lang()]);
 
   if (p === undefined) return <main id="home" className="page"><Topbar/><p className="empty">{t('Loading…')}</p></main>;
   if (p === null) return <main id="home" className="page"><Topbar/><h1>{t('Profile not available')}</h1>

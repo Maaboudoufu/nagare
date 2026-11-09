@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {N_, locale, t} from '../lib/i18n.js';
+import {N_, lang, locale, t} from '../lib/i18n.js';
 import {stats} from '../lib/xp.js';
 import {useStore} from '../store.js';
 import {Topbar} from './Account.jsx';
@@ -51,7 +51,7 @@ export function AchievementRow({a}) {
 
 export default function Achievements() {
   const list = useAchievements();
-  useEffect(() => { document.title = `${t('Achievements')} · ${t('nagare')}`; }, []);
+  useEffect(() => { document.title = `${t('Achievements')} · ${t('nagare')}`; }, [lang()]);
   const got = (list || []).filter(a => a.unlocked).sort((a, b) => b.unlocked.localeCompare(a.unlocked));
   const left = (list || []).filter(a => !a.unlocked).sort((a, b) => b.value / b.goal - a.value / a.goal);  // closest first
   const group = (title, items) => items.length > 0 && (

@@ -52,7 +52,7 @@ function ProfileForm() {
 
 export default function Settings() {
   useStore();
-  useEffect(() => { document.title = `${t('Settings')} · ${t('nagare')}`; }, []);
+  useEffect(() => { document.title = `${t('Settings')} · ${t('nagare')}`; }, [lang()]);
   const s = settings();
   const set = data => { save('app:settings', data); applySettings(); };
   const download = () => {

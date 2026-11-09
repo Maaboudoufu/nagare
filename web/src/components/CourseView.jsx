@@ -19,12 +19,12 @@ export default function CourseView({slug, uuid}) {
   useEffect(() => {
     if (!cur) return;
     if (cur.uuid !== uuid) navigate(lessonPath(slug, cur.uuid), {replace:true});
-    document.title = `${cur.title} · ${course.title}`;
     setNavOpen(false);
     save('app:last', {slug, uuid:cur.uuid, title:cur.title, course:course.title, at:Date.now()});
     if (mounted.current) lessonRef.current?.focus({preventScroll:true});  // move focus to the new lesson, not on first load
     mounted.current = true;
   }, [cur?.uuid]);
+  useEffect(() => { if (cur) document.title = `${cur.title} · ${course.title}`; }, [cur, course]);  // and again on a language switch
 
   useEffect(() => {
     if (!navOpen) return;

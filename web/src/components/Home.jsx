@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {locale, t} from '../lib/i18n.js';
+import {lang, locale, t} from '../lib/i18n.js';
 import {currentPath, pathCourses, paths} from '../paths.js';
 import {isDone, lessonPath, pct, save, store, useStore} from '../store.js';
 import {Topbar} from './Account.jsx';
@@ -11,7 +11,7 @@ export default function Home() {
   useStore();
   const [picking, setPicking] = useState(false);
   const path = currentPath(), list = pathCourses(path);
-  useEffect(() => { document.title = `${path.title} · ${t('nagare')}`; }, [path.title]);
+  useEffect(() => { document.title = `${path.title} · ${t('nagare')}`; }, [path.title, lang()]);
   const total = list.reduce((n, c) => n + c.lessons.length, 0);
   const done = list.reduce((n, c) => n + c.lessons.filter(isDone).length, 0);
 

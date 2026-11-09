@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {N_, t} from '../lib/i18n.js';
+import {N_, lang, t} from '../lib/i18n.js';
 import {Topbar} from './Account.jsx';
 import {Icon} from './ui.jsx';
 
@@ -19,7 +19,7 @@ const Face = ({row}) => row.picture
 export default function Leaderboard() {
   const [period, setPeriod] = useState('week');
   const [rows, setRows] = useState(null);
-  useEffect(() => { document.title = `${t('Leaderboard')} · ${t('nagare')}`; }, []);
+  useEffect(() => { document.title = `${t('Leaderboard')} · ${t('nagare')}`; }, [lang()]);
   useEffect(() => {
     let live = true;
     setRows(null);
