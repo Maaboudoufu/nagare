@@ -27,4 +27,13 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - run: python3 tools/check_i18n.py
+      - name: Translated courses keep every code block, link and quiz intact
+        run: |
+          shopt -s nullglob
+          for f in courses/*/index.json; do
+            dir=$(dirname "$f")
+            for c in "$dir"/*.json; do
+              [ "$c" = "$f" ] || python3 tools/check_course_translation.py "$(basename "$c" .json)" "$c"
+            done
+          done
       - run: python3 server/gamify.py

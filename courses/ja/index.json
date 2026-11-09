@@ -1,0 +1,8 @@
+{
+ "courses": {
+  "learn-python-beginners": {
+   "title": "Python 入門",
+   "description": "関数、ループ、データ構造、デバッグ、問題解決まで、手を動かしながら Python をゼロから学べるコースです。"
+  }
+ }
+}
