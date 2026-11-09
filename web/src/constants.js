@@ -17,7 +17,7 @@ export const CALLOUTS = {info:['info', N_('Info'), 'info'], note:['info', N_('No
 // Simple Icons (one color) for most brands; AWS and Power BI aren't in Simple Icons, so their official logos are files.
 export const BRANDS = {
   python:['python', '#3776AB', 'Python'], go:['go', '#00ADD8', 'Go'], typescript:['typescript', '#3178C6', 'TypeScript'],
-  javascript:['javascript', '#F7DF1E', 'JavaScript'], c:['c', '#A8B9CC', 'C'], git:['git', '#F03C2E', 'Git'],
+  javascript:['javascript', '#F7DF1E', 'JavaScript'], c:[null, '#1E2B3C', 'C', false, '/vendor/logos/c.svg'], git:['git', '#F03C2E', 'Git'],
   shell:['gnubash', '#4EAA25', 'Shell'], sql:['sqlite', '#003B57', 'SQL'], docker:['docker', '#2496ED', 'Docker'],
   kubernetes:['kubernetes', '#326CE5', 'Kubernetes'], pandas:['pandas', '#150458', 'pandas'],
   rabbitmq:['rabbitmq', '#FF6600', 'RabbitMQ'], githubactions:['githubactions', '#2088FF', 'GitHub Actions'],
