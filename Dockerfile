@@ -66,6 +66,8 @@ USER root
 WORKDIR /app
 COPY server/support/sandbox.bashrc /etc/sandbox.bashrc
 COPY courses courses
+COPY media.lock.json ./
+COPY tools/fetch_media.py tools/
 COPY server server
 COPY --from=web /web/dist web/dist
 COPY --from=gateway /nagare-gateway /usr/local/bin/nagare-gateway

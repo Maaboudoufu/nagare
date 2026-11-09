@@ -3,6 +3,8 @@
 !server
 !courses
 !gateway
+!tools/fetch_media.py
+!media.lock.json
 web/node_modules
 web/dist
 **/__pycache__
