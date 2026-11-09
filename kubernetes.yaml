@@ -1,0 +1,172 @@
+# kubectl apply -f kubernetes.yaml   (fill in every CHANGE-ME first)
+#
+# Users' containers run in a docker:dind sidecar (privileged: give this app its own node). One replica only:
+# sessions and running containers live in this pod. The image comes from .github/workflows/image.yml; make the
+# ghcr.io package public, or the sidecar can't pull it for workspaces.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nagare
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: nagare-env
+  namespace: nagare
+stringData: # CHANGE-ME
+  GOOGLE_CLIENT_ID: ""
+  GOOGLE_CLIENT_SECRET: ""
+  ALLOWED_EMAILS: ""
+  BASE_URL: https://learn.example.com
+  WORKSPACE_IDLE_MINUTES: "15"
+  MAX_WORKSPACES: "50"
+  WORKSPACE_CPUS: "1"
+  WORKSPACE_MEMORY: 1g
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nagare-data
+  namespace: nagare
+spec:
+  accessModes: [ReadWriteOnce]
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nagare-media
+  namespace: nagare
+spec:
+  accessModes: [ReadWriteOnce]
+  resources:
+    requests:
+      storage: 15Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nagare-docker
+  namespace: nagare
+spec:
+  accessModes: [ReadWriteOnce]
+  resources:
+    requests:
+      storage: 100Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nagare
+  namespace: nagare
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate # the volumes can't be shared by two pods at once
+  selector:
+    matchLabels:
+      app: nagare
+  template:
+    metadata:
+      labels:
+        app: nagare
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: app
+          image: ghcr.io/maaboudoufu/nagare:main # CHANGE-ME: or :sha-<commit> / :1.2.3 to pin a build
+          command: [sh, -c, 'until docker info >/dev/null 2>&1; do sleep 1; done; docker pull -q "$SANDBOX_IMAGE" >/dev/null && exec nagare-gateway']
+          envFrom:
+            - secretRef:
+                name: nagare-env
+          env:
+            - name: ADDR
+              value: 0.0.0.0:8000
+            - name: SANDBOX_IMAGE
+              value: ghcr.io/maaboudoufu/nagare:main # CHANGE-ME: same as image above
+            - name: HOME
+              value: /tmp
+          ports:
+            - containerPort: 8000
+          readinessProbe:
+            tcpSocket:
+              port: 8000
+            periodSeconds: 5
+          resources:
+            requests: {cpu: 250m, memory: 256Mi}
+            limits: {memory: 1Gi}
+          volumeMounts:
+            - name: docker-socket
+              mountPath: /var/run
+            - name: data
+              mountPath: /app/data
+            - name: media # fill it once: python3 tools/fetch_media.py, then copy media/ in (kubectl cp)
+              mountPath: /app/media
+        - name: docker
+          image: docker:29.9.2-dind@sha256:9e79b879b177fbd72c34376a3dd3d91747da5db49e1f560f76aea59561471977
+          securityContext:
+            privileged: true
+          env:
+            - name: DOCKER_TLS_CERTDIR
+              value: ""
+          args: [--host=unix:///var/run/docker.sock]
+          resources:
+            # Users' containers count against this: about WORKSPACE_MEMORY per active user.
+            requests: {cpu: "1", memory: 2Gi}
+            limits: {memory: 32Gi}
+          volumeMounts:
+            - name: docker-socket
+              mountPath: /var/run
+            - name: docker-data
+              mountPath: /var/lib/docker
+      volumes:
+        - name: docker-socket
+          emptyDir: {}
+        - name: data
+          persistentVolumeClaim:
+            claimName: nagare-data
+        - name: media
+          persistentVolumeClaim:
+            claimName: nagare-media
+        - name: docker-data
+          persistentVolumeClaim:
+            claimName: nagare-docker
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nagare
+  namespace: nagare
+spec:
+  selector:
+    app: nagare
+  ports:
+    - port: 80
+      targetPort: 8000
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nagare
+  namespace: nagare
+  annotations:
+    # cert-manager.io/cluster-issuer: letsencrypt  # CHANGE-ME if you use cert-manager
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600" # terminals are long-lived WebSockets
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+spec:
+  rules:
+    - host: learn.example.com # CHANGE-ME: same host as BASE_URL
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: nagare
+                port:
+                  number: 80
+  tls:
+    - hosts: [learn.example.com] # CHANGE-ME
+      secretName: nagare-tls
