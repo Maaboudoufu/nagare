@@ -1,0 +1,5 @@
+# Python packages the lessons use (Learn Pandas etc.). Pinned to what the lessons were checked against;
+# requirements.lock (with hashes) is generated from this: see the Dockerfile comment.
+pandas==2.3.3
+polars==2.1.0
+pyarrow==26.0.1
