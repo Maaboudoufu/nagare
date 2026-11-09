@@ -5,9 +5,8 @@ import {MOD} from '../lib/keys.js';
 const ROWS = [
   [[MOD, 'Enter'], N_('Run code, run checks, or submit a sandbox')],
   [[MOD, 'Shift', 'Enter'], N_('Submit code for grading')],
+  [[MOD, 'Enter'], N_('After passing: go to the next lesson')],
   [['A'], N_('Pick an answer in a quiz (A–H or 1–8)')],
-  [['['], N_('Previous lesson')],
-  [[']'], N_('Next lesson')],
   [['?'], N_('Show this list (Esc closes it)')],
 ];
 

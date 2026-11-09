@@ -2,6 +2,7 @@
 import {useId, useState} from 'react';
 import {brandOf} from '../constants.js';
 import {fx} from '../lib/fx.js';
+import {MOD, hasAction, runAction} from '../lib/keys.js';
 import {t} from '../lib/i18n.js';
 import {isDone, markDone, pct, useStore} from '../store.js';
 
@@ -72,6 +73,15 @@ export function DoneButton({lesson}) {
       <Icon name={done ? 'circle-check' : 'check'}/>{done ? t('Completed') : t('Mark complete')}
     </button>
   );
+}
+
+// Shown once a lesson's checks pass: the way on, with the shortcut that does it from anywhere.
+export function NextStep({show}) {
+  if (!show || !hasAction('next')) return null;
+  return <>
+    <button className="btn primary next-step" onClick={() => runAction('next')}>{t('Next lesson')}<Icon name="chevron-right"/></button>
+    <span className="kbd-hint">{t('{mod} {enter} next lesson', {mod:<kbd>{MOD}</kbd>, enter:<kbd>Enter</kbd>})}</span>
+  </>;
 }
 
 export function CopyButton({text}) {

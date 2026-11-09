@@ -4,9 +4,9 @@ import {MODES} from '../../constants.js';
 import CodeMirror from '../../lib/codemirror.js';
 import {fx} from '../../lib/fx.js';
 import {t} from '../../lib/i18n.js';
-import {MOD, useShortcut} from '../../lib/keys.js';
+import {MOD, useContinue, useShortcut} from '../../lib/keys.js';
 import {markDone, post, save, store, useStore} from '../../store.js';
-import {Chip, DoneButton, Icon} from '../ui.jsx';
+import {Chip, DoneButton, Icon, NextStep} from '../ui.jsx';
 
 function Output({lesson: l, out, sql}) {
   if (out) return <>
@@ -26,6 +26,8 @@ export default function CodeWorkspace({lesson: l}) {
   const [status, setStatus] = useState(null);
   const [out, setOut] = useState(null);  // null: show the intro text
   const [busy, setBusy] = useState(false);
+  const [passed, setPassed] = useState(false);
+  useContinue(passed);
   const [vimMode, setVimMode] = useState('');
   const host = useRef(), ed = useRef(), docs = useRef(), statusEl = useRef();
   const vim = !!store.progress['app:settings']?.vim;
@@ -41,7 +43,7 @@ export default function CodeWorkspace({lesson: l}) {
       if (!submit) {
         setStatus(r.ok === false ? {kind:'fail', text:t('Errors or failing tests'), icon:'circle-x'} : {kind:'info', text:t('Finished'), icon:'check'});
         if (r.ok === false) fx.fail(statusEl.current);
-      } else if (r.passed) { setStatus({kind:'pass', text:t('Passed'), icon:'circle-check'}); fx.pass(statusEl.current); markDone(l.uuid); }
+      } else if (r.passed) { setStatus({kind:'pass', text:t('Passed'), icon:'circle-check'}); fx.pass(statusEl.current); markDone(l.uuid); setPassed(true); }
       else { setStatus({kind:'fail', text:t('Failed'), icon:'circle-x'}); fx.fail(statusEl.current); }
     } catch {
       setStatus({kind:'fail', text:t('Local server not reachable'), icon:'circle-x'});
@@ -62,7 +64,7 @@ export default function CodeWorkspace({lesson: l}) {
     });
     cm.on('vim-mode-change', e => setVimMode(`-- ${e.mode.toUpperCase()}${e.subMode ? ' ' + e.subMode.toUpperCase() : ''} --`));
     let t;
-    cm.on('change', () => { clearTimeout(t); t = setTimeout(() => save(l.uuid, {code:code()}), 600); });
+    cm.on('change', () => { setPassed(false); clearTimeout(t);  /* edited since passing: Mod+Enter runs again */ t = setTimeout(() => save(l.uuid, {code:code()}), 600); });
     const el = host.current;
     return () => { clearTimeout(t); el.innerHTML = ''; };
   }, [l.uuid]);
@@ -106,8 +108,8 @@ export default function CodeWorkspace({lesson: l}) {
         <button className="btn" disabled={busy} title={t('Run ({mod}+Enter)', {mod:MOD})} onClick={() => go(false)}><Icon name="play"/>{t('Run')}</button>
         {sql ? <DoneButton lesson={l}/>
              : <button className="btn primary" disabled={busy} title={t('Submit ({mod}+Shift+Enter)', {mod:MOD})} onClick={() => go(true)}><Icon name="send"/>{t('Submit')}</button>}
-        <span className="kbd-hint">{sql ? t('{mod} {enter} run', {mod:<kbd>{MOD}</kbd>, enter:<kbd>Enter</kbd>})
-                                     : t('{mod} {enter} run · {shift} to submit', {mod:<kbd>{MOD}</kbd>, enter:<kbd>Enter</kbd>, shift:<kbd>Shift</kbd>})}</span>
+        {passed ? <NextStep show/> : <span className="kbd-hint">{sql ? t('{mod} {enter} run', {mod:<kbd>{MOD}</kbd>, enter:<kbd>Enter</kbd>})
+                                     : t('{mod} {enter} run · {shift} to submit', {mod:<kbd>{MOD}</kbd>, enter:<kbd>Enter</kbd>, shift:<kbd>Shift</kbd>})}</span>}
         <span className="vim-mode" aria-live="polite">{vimMode}</span>
         <button className="switch" role="switch" aria-checked={vim} title={t('Vim key bindings')}
                 onClick={() => { save('app:settings', {vim:!vim}); ed.current.focus(); }}><span className="knob"></span>Vim</button>

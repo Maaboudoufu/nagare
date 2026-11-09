@@ -2,10 +2,10 @@
 import {useRef, useState} from 'react';
 import {fx} from '../../lib/fx.js';
 import {t} from '../../lib/i18n.js';
-import {MOD, useShortcut} from '../../lib/keys.js';
+import {MOD, useContinue, useShortcut} from '../../lib/keys.js';
 import {markDone, post} from '../../store.js';
 import TermView from '../TermView.jsx';
-import {DoneButton, Icon} from '../ui.jsx';
+import {DoneButton, Icon, NextStep} from '../ui.jsx';
 
 function CheckResults({result}) {
   if (result.error) return <p className="field-err">{result.error}</p>;
@@ -33,6 +33,8 @@ export default function Sandbox({lesson: l}) {
   const [result, setResult] = useState(null);
   const [checking, setChecking] = useState(false);
   const resultEl = useRef();
+  const [passed, setPassed] = useState(false);
+  useContinue(passed);
   const reset = async () => {
     if (!confirm(t('Reset the sandbox? Files you changed in it are lost.'))) return;
     await post('/api/sandbox/reset', {uuid:l.uuid});
@@ -45,7 +47,7 @@ export default function Sandbox({lesson: l}) {
     try {
       const r = await post('/api/sandbox/check', {uuid:l.uuid});
       setResult(r);
-      if (r.passed) { fx.pass(resultEl.current); markDone(l.uuid); }
+      if (r.passed) { fx.pass(resultEl.current); markDone(l.uuid); setPassed(true); }
       else if (!r.review) fx.fail(resultEl.current);
     } catch {
       setResult({error:t('Local server not reachable.')});
@@ -71,7 +73,7 @@ export default function Sandbox({lesson: l}) {
         <div className="actions">
           <button className="btn primary" disabled={checking} onClick={submit} title={t('Submit ({mod}+Enter)', {mod:MOD})}><Icon name="send"/>{t('Submit')}</button>
           <DoneButton lesson={l}/>
-          <span className="kbd-hint">{t('{mod} {enter} submit', {mod:<kbd>{MOD}</kbd>, enter:<kbd>Enter</kbd>})}</span>
+          {passed ? <NextStep show/> : <span className="kbd-hint">{t('{mod} {enter} submit', {mod:<kbd>{MOD}</kbd>, enter:<kbd>Enter</kbd>})}</span>}
         </div>
       </section>
     </section>

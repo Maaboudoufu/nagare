@@ -3,10 +3,10 @@ import {useRef, useState} from 'react';
 import {STEP_TITLES} from '../../constants.js';
 import {fx} from '../../lib/fx.js';
 import {t} from '../../lib/i18n.js';
-import {MOD, useShortcut} from '../../lib/keys.js';
+import {MOD, useContinue, useShortcut} from '../../lib/keys.js';
 import {markDone, post, save, store, useStore} from '../../store.js';
 import TermView from '../TermView.jsx';
-import {CopyButton, DoneButton, Icon} from '../ui.jsx';
+import {CopyButton, DoneButton, Icon, NextStep} from '../ui.jsx';
 
 function StepResult({res}) {
   if (!res) return <span className="skipped">{t('Skipped: an earlier step failed.')}</span>;
@@ -27,6 +27,8 @@ export default function StepsWorkspace({lesson: l, courseSlug}) {
   const [error, setError] = useState('');
   const [results, setResults] = useState(null);
   const [running, setRunning] = useState(false);
+  const [passed, setPassed] = useState(false);
+  useContinue(passed);
   const folder = dir.trim() || '~';  // empty = your home folder
   const [termDir, setTermDir] = useState(cli ? folder : null);  // CLI lessons open a terminal right away
   const [termGen, setTermGen] = useState(0);  // Restart terminal remounts it
@@ -43,7 +45,7 @@ export default function StepsWorkspace({lesson: l, courseSlug}) {
       if (r.error) { setError(r.error); fx.fail(actionsEl.current); dirInput.current?.focus(); }
       else {
         setResults(r.results);
-        if (r.passed) { fx.pass(actionsEl.current); markDone(l.uuid); }
+        if (r.passed) { fx.pass(actionsEl.current); markDone(l.uuid); setPassed(true); }
         else if (!r.review) fx.fail(actionsEl.current);
       }
     } catch {
@@ -106,7 +108,7 @@ export default function StepsWorkspace({lesson: l, courseSlug}) {
           <button className="btn" onClick={restartTerminal}><Icon name="rotate-ccw"/>{t('Restart terminal')}</button>
         </>}
         <DoneButton lesson={l}/>
-        {cli && <span className="kbd-hint">{t('{mod} {enter} run checks', {mod:<kbd>{MOD}</kbd>, enter:<kbd>Enter</kbd>})}</span>}
+        {passed ? <NextStep show/> : cli && <span className="kbd-hint">{t('{mod} {enter} run checks', {mod:<kbd>{MOD}</kbd>, enter:<kbd>Enter</kbd>})}</span>}
       </div>
     </div></section>
   );

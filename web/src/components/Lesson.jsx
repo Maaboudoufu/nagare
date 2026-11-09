@@ -22,8 +22,7 @@ export default function Lesson({course, cur, flat, onMenu, focusRef}) {
   const i = flat.indexOf(cur), prev = flat[i - 1], next = flat[i + 1];
   const ci = course.chapters.findIndex(ch => ch.lessons.includes(cur)), ch = course.chapters[ci];
   const href = l => lessonPath(course.slug, l.uuid);
-  useShortcut('prev', prev && (() => navigate(href(prev))));
-  useShortcut('next', next && (() => navigate(href(next))));
+  useShortcut('next', next && (() => navigate(href(next))));  // used by Mod+Enter after a pass (lib/keys.js)
   return (
     <main id="lesson" tabIndex="-1" ref={focusRef}>
       <header className="lesson-bar">

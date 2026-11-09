@@ -1,20 +1,23 @@
 import {marked} from 'marked';
 import {t} from '../../lib/i18n.js';
 import {fx} from '../../lib/fx.js';
-import {useShortcut} from '../../lib/keys.js';
+import {useContinue, useShortcut} from '../../lib/keys.js';
+import {useState} from 'react';
 import {markDone, save, store, useStore} from '../../store.js';
-import {Icon} from '../ui.jsx';
+import {Icon, NextStep} from '../ui.jsx';
 
 export default function Quiz({lesson: l}) {
   useStore();
   const answers = store.progress[l.uuid]?.answers || [];
+  const [passed, setPassed] = useState(false);
+  useContinue(passed);
   const pick = (qi, a, el) => {
     const next = [...answers];
     next[qi] = a;
     save(l.uuid, {answers:next});
     const all = l.questions.every((q, j) => next[j] === q.answer);
     if (a !== l.questions[qi].answer) fx.fail(el);
-    else if (all) { fx.pass(el); markDone(l.uuid); }
+    else if (all) { fx.pass(el); markDone(l.uuid); setPassed(true); }
     else fx.correct(el);
   };
   // A–H / 1–8 answer the first question that isn't right yet.
@@ -49,6 +52,7 @@ export default function Quiz({lesson: l}) {
           </div>
         );
       })}
+      <div className="actions"><NextStep show={passed}/></div>
     </div></section>
   );
 }
