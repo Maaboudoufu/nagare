@@ -2,17 +2,20 @@
 import {useEffect, useMemo, useRef, useState} from 'react';
 import {MODES} from '../../constants.js';
 import CodeMirror from '../../lib/codemirror.js';
+import {fx} from '../../lib/fx.js';
+import {t} from '../../lib/i18n.js';
+import {MOD, useShortcut} from '../../lib/keys.js';
 import {markDone, post, save, store, useStore} from '../../store.js';
 import {Chip, DoneButton, Icon} from '../ui.jsx';
 
 function Output({lesson: l, out, sql}) {
   if (out) return <>
-    {out.diff && <><span className="exp">Expected:</span>{'\n' + (l.expected || '') + '\n'}<span className="exp">Got:</span>{'\n'}</>}
+    {out.diff && <><span className="exp">{t('Expected:')}</span>{'\n' + (l.expected || '') + '\n'}<span className="exp">{t('Got:')}</span>{'\n'}</>}
     {out.text}
   </>;
-  if (l.expected != null) return <><span className="exp">Expected output:</span>{'\n' + l.expected}</>;
-  if (sql) return <span className="exp">SQL lessons have no stored solution to grade against. Run to see your results, then mark the lesson complete.</span>;
-  return <span className="exp">Run to see test output.</span>;
+  if (l.expected != null) return <><span className="exp">{t('Expected output:')}</span>{'\n' + l.expected}</>;
+  if (sql) return <span className="exp">{t('SQL lessons have no stored solution to grade against. Run to see your results, then mark the lesson complete.')}</span>;
+  return <span className="exp">{t('Run to see test output.')}</span>;
 }
 
 export default function CodeWorkspace({lesson: l}) {
@@ -24,38 +27,38 @@ export default function CodeWorkspace({lesson: l}) {
   const [out, setOut] = useState(null);  // null: show the intro text
   const [busy, setBusy] = useState(false);
   const [vimMode, setVimMode] = useState('');
-  const host = useRef(), ed = useRef(), docs = useRef(), goRef = useRef();
+  const host = useRef(), ed = useRef(), docs = useRef(), statusEl = useRef();
   const vim = !!store.progress['app:settings']?.vim;
   const code = () => Object.fromEntries(files.filter(f => !f.isReadonly).map(f => [f.name, docs.current[f.name].getValue()]));
 
   const go = async submit => {
     if (busy) return;
     setBusy(true);
-    setStatus({kind:'busy', text:submit ? 'Submitting…' : 'Running…', icon:'loader-circle'});
+    setStatus({kind:'busy', text:submit ? t('Submitting…') : t('Running…'), icon:'loader-circle'});
     try {
       const r = await post('/api/run', {uuid:l.uuid, code:code(), submit});
-      setOut({text:r.output || r.error || '(no output)', diff:submit && !r.passed && l.type === 'type_code'});
-      if (!submit) setStatus(r.ok === false ? {kind:'fail', text:'Errors or failing tests', icon:'circle-x'} : {kind:'info', text:'Finished', icon:'check'});
-      else if (r.passed) { setStatus({kind:'pass', text:'Passed', icon:'circle-check'}); markDone(l.uuid); }
-      else setStatus({kind:'fail', text:'Failed', icon:'circle-x'});
+      setOut({text:r.output || r.error || t('(no output)'), diff:submit && !r.passed && l.type === 'type_code'});
+      if (!submit) {
+        setStatus(r.ok === false ? {kind:'fail', text:t('Errors or failing tests'), icon:'circle-x'} : {kind:'info', text:t('Finished'), icon:'check'});
+        if (r.ok === false) fx.fail(statusEl.current);
+      } else if (r.passed) { setStatus({kind:'pass', text:t('Passed'), icon:'circle-check'}); fx.pass(statusEl.current); markDone(l.uuid); }
+      else { setStatus({kind:'fail', text:t('Failed'), icon:'circle-x'}); fx.fail(statusEl.current); }
     } catch {
-      setStatus({kind:'fail', text:'Local server not reachable', icon:'circle-x'});
+      setStatus({kind:'fail', text:t('Local server not reachable'), icon:'circle-x'});
     }
     setBusy(false);
   };
-  goRef.current = go;
+  useShortcut('run', () => go(false));
+  useShortcut('submit', sql ? null : () => go(true));
 
   useEffect(() => {  // CodeMirror lives outside React: create it once per lesson
     const saved = store.progress[l.uuid]?.code || {};
     docs.current = Object.fromEntries(files.map(f => [f.name, CodeMirror.Doc(saved[f.name] ?? f.content, MODES[l.lang])]));
-    const submitKey = () => goRef.current(!sql);
     const cm = ed.current = CodeMirror(host.current, {
       theme:'material-darker', lineNumbers:true, indentUnit:{py:4, go:4, c:4}[l.lang] || 2, tabSize:4, indentWithTabs:tabs,
       matchBrackets:true, keyMap:vim ? 'vim' : 'default', showCursorWhenSelecting:true,
       extraKeys:{Tab:c => c.state.vim && !c.state.vim.insertMode ? CodeMirror.Pass  // Vim normal mode keeps its own Tab
-                         : c.execCommand(tabs ? 'insertTab' : 'insertSoftTab'),
-                 'Ctrl-Enter':() => goRef.current(false), 'Cmd-Enter':() => goRef.current(false),
-                 'Shift-Ctrl-Enter':submitKey, 'Shift-Cmd-Enter':submitKey},
+                         : c.execCommand(tabs ? 'insertTab' : 'insertSoftTab')},
     });
     cm.on('vim-mode-change', e => setVimMode(`-- ${e.mode.toUpperCase()}${e.subMode ? ' ' + e.subMode.toUpperCase() : ''} --`));
     let t;
@@ -68,7 +71,7 @@ export default function CodeWorkspace({lesson: l}) {
     const file = files.find(f => f.name === active);
     ed.current.swapDoc(docs.current[active]);
     ed.current.setOption('readOnly', file.isReadonly);
-    ed.current.getInputField().setAttribute('aria-label', `Code editor: ${active}`);
+    ed.current.getInputField().setAttribute('aria-label', t('Code editor: {file}', {file:active}));
   }, [active, l.uuid]);
 
   useEffect(() => {
@@ -84,33 +87,34 @@ export default function CodeWorkspace({lesson: l}) {
     e.currentTarget.parentElement.children[j].focus();
   };
   const reset = () => {
-    if (!confirm('Reset this lesson to the starter code? Your changes will be lost.')) return;
+    if (!confirm(t('Reset this lesson to the starter code? Your changes will be lost.'))) return;
     files.forEach(f => docs.current[f.name].setValue(f.content));
   };
 
   return (
-    <section id="work" aria-label="Workspace">
-      <div className="work-head" role="tablist" aria-label="Files">
+    <section id="work" aria-label={t('Workspace')}>
+      <div className="work-head" role="tablist" aria-label={t('Files')}>
         {files.map((f, i) => (
           <button key={f.name} className="tab" role="tab" aria-controls="ed" aria-selected={f.name === active} tabIndex={f.name === active ? 0 : -1}
                   onClick={() => setActive(f.name)} onKeyDown={e => onTabKey(e, i)}>
-            <Icon name={f.isReadonly ? 'lock' : 'code-xml'}/>{f.name}{f.isReadonly && <span className="sr"> (read-only)</span>}
+            <Icon name={f.isReadonly ? 'lock' : 'code-xml'}/>{f.name}{f.isReadonly && <span className="sr"> {t('(read-only)')}</span>}
           </button>
         ))}
       </div>
       <div id="ed" role="tabpanel" ref={host}></div>
       <div className="toolbar">
-        <button className="btn" disabled={busy} title="Run (Ctrl+Enter)" onClick={() => go(false)}><Icon name="play"/>Run</button>
+        <button className="btn" disabled={busy} title={t('Run ({mod}+Enter)', {mod:MOD})} onClick={() => go(false)}><Icon name="play"/>{t('Run')}</button>
         {sql ? <DoneButton lesson={l}/>
-             : <button className="btn primary" disabled={busy} title="Submit (Ctrl+Shift+Enter)" onClick={() => go(true)}><Icon name="send"/>Submit</button>}
-        <span className="kbd-hint"><kbd>Ctrl</kbd> <kbd>Enter</kbd> run{!sql && <> · <kbd>Shift</kbd> to submit</>}</span>
+             : <button className="btn primary" disabled={busy} title={t('Submit ({mod}+Shift+Enter)', {mod:MOD})} onClick={() => go(true)}><Icon name="send"/>{t('Submit')}</button>}
+        <span className="kbd-hint">{sql ? t('{mod} {enter} run', {mod:<kbd>{MOD}</kbd>, enter:<kbd>Enter</kbd>})
+                                     : t('{mod} {enter} run · {shift} to submit', {mod:<kbd>{MOD}</kbd>, enter:<kbd>Enter</kbd>, shift:<kbd>Shift</kbd>})}</span>
         <span className="vim-mode" aria-live="polite">{vimMode}</span>
-        <button className="switch" role="switch" aria-checked={vim} title="Vim key bindings"
+        <button className="switch" role="switch" aria-checked={vim} title={t('Vim key bindings')}
                 onClick={() => { save('app:settings', {vim:!vim}); ed.current.focus(); }}><span className="knob"></span>Vim</button>
-        <button className="btn ghost" onClick={reset}><Icon name="rotate-ccw"/>Reset</button>
+        <button className="btn ghost" onClick={reset}><Icon name="rotate-ccw"/>{t('Reset')}</button>
       </div>
-      <section className="output" aria-label="Output">
-        <div className="output-head"><span>Output</span><span role="status" aria-live="polite">{status && <Chip {...status}/>}</span></div>
+      <section className="output" aria-label={t('Output')}>
+        <div className="output-head"><span>{t('Output')}</span><span role="status" aria-live="polite" ref={statusEl}>{status && <Chip {...status}/>}</span></div>
         <pre id="out"><Output lesson={l} out={out} sql={sql}/></pre>
       </section>
     </section>

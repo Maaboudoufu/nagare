@@ -1,19 +1,31 @@
 import {marked} from 'marked';
+import {t} from '../../lib/i18n.js';
+import {fx} from '../../lib/fx.js';
+import {useShortcut} from '../../lib/keys.js';
 import {markDone, save, store, useStore} from '../../store.js';
 import {Icon} from '../ui.jsx';
 
 export default function Quiz({lesson: l}) {
   useStore();
   const answers = store.progress[l.uuid]?.answers || [];
-  const pick = (qi, a) => {
+  const pick = (qi, a, el) => {
     const next = [...answers];
     next[qi] = a;
     save(l.uuid, {answers:next});
-    if (l.questions.every((q, j) => next[j] === q.answer)) markDone(l.uuid);
+    const all = l.questions.every((q, j) => next[j] === q.answer);
+    if (a !== l.questions[qi].answer) fx.fail(el);
+    else if (all) { fx.pass(el); markDone(l.uuid); }
+    else fx.correct(el);
   };
+  // A–H / 1–8 answer the first question that isn't right yet.
+  useShortcut('answer', ai => {
+    const qi = l.questions.findIndex((q, j) => answers[j] !== q.answer);
+    const a = l.questions[qi]?.answers[ai];
+    if (a != null) pick(qi, a, document.querySelectorAll('#work .q')[qi]?.querySelectorAll('.option')[ai]);
+  });
   return (
-    <section id="work" aria-label="Workspace"><div className="pane">
-      <h2 className="pane-title"><Icon name="list-checks"/>Quiz</h2>
+    <section id="work" aria-label={t('Workspace')}><div className="pane">
+      <h2 className="pane-title"><Icon name="list-checks"/>{t('Quiz')}</h2>
       {l.questions.map((q, qi) => {
         const chosen = answers[qi], right = chosen === q.answer;
         return (
@@ -23,7 +35,7 @@ export default function Quiz({lesson: l}) {
               {q.answers.map((a, ai) => {
                 const mine = chosen === a;
                 return (
-                  <button key={ai} className={'option' + (mine ? (right ? ' right' : ' wrong') : '')} aria-pressed={mine} onClick={() => pick(qi, a)}>
+                  <button key={ai} className={'option' + (mine ? (right ? ' right' : ' wrong') : '')} aria-pressed={mine} onClick={e => pick(qi, a, e.currentTarget)}>
                     <span className="key" aria-hidden="true">{'ABCDEFGH'[ai]}</span>
                     <span className="opt-text" dangerouslySetInnerHTML={{__html:marked.parseInline(a)}}></span>
                     <span className="opt-icon">{mine && <Icon name={right ? 'circle-check' : 'circle-x'}/>}</span>
@@ -32,7 +44,7 @@ export default function Quiz({lesson: l}) {
               })}
             </div>
             <p className={'feedback' + (chosen == null ? '' : right ? ' pass' : ' fail')} role="status" aria-live="polite">
-              {chosen != null && (right ? <><Icon name="circle-check"/>Correct</> : <><Icon name="circle-x"/>Not quite. Try another answer.</>)}
+              {chosen != null && (right ? <><Icon name="circle-check"/>{t('Correct')}</> : <><Icon name="circle-x"/>{t('Not quite. Try another answer.')}</>)}
             </p>
           </div>
         );
