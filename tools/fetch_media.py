@@ -89,7 +89,7 @@ def rewrite(lock):
             for l in ch['lessons']:
                 for obj, key in lesson_texts(l):
                     if obj.get(key):
-                        obj[key] = EMBED.sub(lambda m: m.group(1) + ('/media/' + lock[m.group(2)]['path'] if m.group(2) in lock else m.group(2)), obj[key])
+                        obj[key] = EMBED.sub(lambda m: m.group(1) + ('/media/' + urllib.parse.quote(lock[m.group(2)]['path'], safe="/*:@!$&'+,;=~") if m.group(2) in lock else m.group(2)), obj[key])
         if json.dumps(c) != before:
             json.dump(c, open(p, 'w'))
             changed += 1
