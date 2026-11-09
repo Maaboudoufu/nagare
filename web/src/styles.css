@@ -75,7 +75,8 @@ kbd { display:inline-block; min-width:1.7em; padding:.1em .45em; font:500 11px/1
 #nav, #lesson, #work { overflow:auto; min-height:0; }
 #nav { background:var(--surface); border-right:1px solid var(--border); display:flex; flex-direction:column; }
 #lesson { border-right:1px solid var(--border); outline:none; }
-#work { display:flex; flex-direction:column; background:var(--bg); }
+#work { display:flex; flex-direction:column; background:var(--bg); outline:none; }
+#lesson.pane-active, #work.pane-active { outline:2px solid var(--accent); outline-offset:-2px; border-radius:0; }  /* Ctrl+H / Ctrl+L in Vim mode */
 .scrim { position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:19; }
 .menu-btn { display:none; }
 

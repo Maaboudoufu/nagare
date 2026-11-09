@@ -52,6 +52,7 @@ export default function CodeWorkspace({lesson: l}) {
   };
   useShortcut('run', () => go(false));
   useShortcut('submit', sql ? null : () => go(true));
+  useShortcut('focusWork', () => ed.current.focus());  // Ctrl+L in Vim mode (lib/keys.js)
 
   useEffect(() => {  // CodeMirror lives outside React: create it once per lesson
     const saved = store.progress[l.uuid]?.code || {};
@@ -63,6 +64,7 @@ export default function CodeWorkspace({lesson: l}) {
                          : c.execCommand(tabs ? 'insertTab' : 'insertSoftTab')},
     });
     cm.on('vim-mode-change', e => setVimMode(`-- ${e.mode.toUpperCase()}${e.subMode ? ' ' + e.subMode.toUpperCase() : ''} --`));
+    if (vim) cm.focus();  // Vim users land in the editor on every lesson, no click needed
     let t;
     cm.on('change', () => { setPassed(false); clearTimeout(t);  /* edited since passing: Mod+Enter runs again */ t = setTimeout(() => save(l.uuid, {code:code()}), 600); });
     const el = host.current;
