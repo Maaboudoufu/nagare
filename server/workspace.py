@@ -274,6 +274,14 @@ def check_sandbox(user, uuid):
 
 # ---- lifecycle ----
 
+def remove_user(user):
+    """Stop one user's workspace and sandboxes (an admin signed them out). Their files stay."""
+    with boxes_lock:
+        mine = [b for b in boxes.values() if b.user == user]
+    for b in mine:
+        _stop(b)
+
+
 def remove_all():
     """Remove every workspace and sandbox container (volumes, i.e. users' files, stay)."""
     ids = _docker('ps', '-aq', '--filter', 'label=nagare').stdout.split()

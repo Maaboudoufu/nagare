@@ -45,22 +45,22 @@ type pending struct {
 
 // ponytail: sessions live in memory, so restarting the app signs you out. Persist them if that gets annoying.
 type auth struct {
-	conf     *oauth2.Config // nil = sign-in off, everyone is let in
-	allowed  map[string]bool
+	conf     *oauth2.Config  // nil = sign-in off, everyone is let in
+	allowed  map[string]bool // ALLOWED_EMAILS
+	admins   map[string]bool // ADMIN_EMAILS
+	dataDir  string
+	access   access            // admin.go
+	members  map[string]member // id -> who has signed in
 	userinfo string
 	mu       sync.Mutex
 	sessions map[string]session
 	logins   map[string]pending // OAuth state -> PKCE verifier, while the user is at Google
 }
 
-func newAuth(conf *oauth2.Config, allowedEmails string) *auth {
-	a := &auth{conf: conf, allowed: map[string]bool{}, userinfo: userinfoURL,
-		sessions: map[string]session{}, logins: map[string]pending{}}
-	for _, e := range strings.Split(allowedEmails, ",") {
-		if e = strings.ToLower(strings.TrimSpace(e)); e != "" {
-			a.allowed[e] = true
-		}
-	}
+func newAuth(conf *oauth2.Config, allowedEmails, adminEmails, dataDir string) *auth {
+	a := &auth{conf: conf, allowed: emailSet(allowedEmails), admins: emailSet(adminEmails), dataDir: dataDir,
+		members: map[string]member{}, userinfo: userinfoURL, sessions: map[string]session{}, logins: map[string]pending{}}
+	a.load()
 	return a
 }
 
@@ -91,7 +91,11 @@ func (a *auth) userID(r *http.Request) string {
 	if u == nil {
 		return "anonymous" // not reached: /api requires a user
 	}
-	sum := sha256.Sum256([]byte(u.Email))
+	return idOf(u.Email)
+}
+
+func idOf(email string) string {
+	sum := sha256.Sum256([]byte(email))
 	return hex.EncodeToString(sum[:8])
 }
 
@@ -190,21 +194,28 @@ func (a *auth) callback(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	info.Email = strings.ToLower(info.Email)
-	if !info.EmailVerified || (len(a.allowed) > 0 && !a.allowed[info.Email]) {
+	a.mu.Lock()
+	if !info.EmailVerified || !a.canSignIn(info.Email) {
+		a.mu.Unlock()
 		failLogin(w, r, "not_allowed")
 		return
 	}
-
-	sid := randomToken()
-	a.mu.Lock()
-	a.sessions[sid] = session{info.User, time.Now().Add(sessionTTL)}
+	sid, now := randomToken(), time.Now()
+	a.sessions[sid] = session{info.User, now.Add(sessionTTL)}
+	m, seen := a.members[idOf(info.Email)]
+	if !seen {
+		m.First = now
+	}
+	m.Email, m.Name, m.Picture, m.Last = info.Email, info.Name, info.Picture, now
+	a.members[idOf(info.Email)] = m
+	a.saveMembers()
 	a.mu.Unlock()
 	setCookie(w, stateCookie, "", -1)
 	setCookie(w, sessionCookie, sid, sessionTTL)
 	http.Redirect(w, r, "/", http.StatusFound)
 }
 
-// GET /auth/me: {"enabled": bool, "user": {...} | null}
+// GET /auth/me: {"enabled": bool, "user": {...} | null, "admin": bool}
 func (a *auth) me(w http.ResponseWriter, r *http.Request) {
 	var u *User
 	if a.enabled() {
@@ -212,7 +223,7 @@ func (a *auth) me(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Cache-Control", "no-store")
-	json.NewEncoder(w).Encode(map[string]any{"enabled": a.enabled(), "user": u})
+	json.NewEncoder(w).Encode(map[string]any{"enabled": a.enabled(), "user": u, "admin": a.isAdmin(r)})
 }
 
 // POST /auth/logout (POST, so another site can't sign you out with a link).

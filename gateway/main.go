@@ -36,9 +36,12 @@ type app struct {
 	courses string // course JSON + diagrams
 	media   string // lesson images and videos, downloaded by tools/fetch_media.py
 	api     http.Handler
-	hosts   map[string]bool // Host headers we answer to (blocks DNS rebinding)
-	origins map[string]bool // Origins allowed to call us (blocks other sites: CSRF)
-	gz      sync.Map        // file path -> gzCache
+	appAddr string // the Python worker
+	// internalToken lets only us call the worker's /internal/ routes (kick); passed to it at startup.
+	internalToken string
+	hosts         map[string]bool // Host headers we answer to (blocks DNS rebinding)
+	origins       map[string]bool // Origins allowed to call us (blocks other sites: CSRF)
+	gz            sync.Map        // file path -> gzCache
 }
 
 type gzCache struct {
@@ -51,6 +54,12 @@ var courseSlug = regexp.MustCompile(`^[a-z0-9-]+$`)
 func (a *app) routes() http.Handler {
 	mux := http.NewServeMux()
 	mux.HandleFunc("GET /{$}", a.page)
+	for _, p := range []string{"profile", "settings", "achievements", "leaderboard"} {
+		mux.HandleFunc("GET /"+p, a.page)
+	}
+	mux.HandleFunc("GET /admin", a.requireAdmin(a.index))
+	mux.HandleFunc("GET /admin/api/state", a.requireAdmin(a.adminState))
+	mux.HandleFunc("POST /admin/api/action", a.requireAdmin(a.adminAction))
 	mux.HandleFunc("GET /learn/{course}", a.coursePage)
 	mux.HandleFunc("GET /learn/{course}/{lesson}", a.coursePage)
 	mux.HandleFunc("GET /signin", a.signinPage)
@@ -197,6 +206,7 @@ func apiProxy(addr string, au *auth) http.Handler {
 		Rewrite: func(pr *httputil.ProxyRequest) {
 			pr.SetURL(target)
 			pr.Out.Header.Del("Origin") // checked by guard; the worker only trusts requests from here
+			pr.Out.Header.Del("X-Internal-Token")
 			// Who this is, for per-user progress and containers. Always set here, so a browser can't pick it.
 			pr.Out.Header.Set("X-User", au.userID(pr.In))
 		},
@@ -233,11 +243,14 @@ func main() {
 		}
 	}
 	a := &app{
-		auth: newAuth(conf, os.Getenv("ALLOWED_EMAILS")), web: env("WEB_DIR", "web/dist"), courses: env("COURSES_DIR", "courses"), media: env("MEDIA_DIR", "media"),
+		auth: newAuth(conf, os.Getenv("ALLOWED_EMAILS"), os.Getenv("ADMIN_EMAILS"), env("DATA_DIR", "data")), appAddr: appAddr, internalToken: randomToken(), web: env("WEB_DIR", "web/dist"), courses: env("COURSES_DIR", "courses"), media: env("MEDIA_DIR", "media"),
 		hosts:   map[string]bool{"localhost:" + port: true, "127.0.0.1:" + port: true},
 		origins: map[string]bool{"http://localhost:5173": true}, // the Vite dev server (cd web && bun run dev)
 	}
 	a.api = apiProxy(appAddr, a.auth)
+	if len(a.auth.admins) > 0 && !a.auth.enabled() {
+		log.Printf("ADMIN_EMAILS is set but Google sign-in is off: the admin page needs sign-in")
+	}
 	// Hosted: BASE_URL is the public address (e.g. https://learn.example.com, TLS ended by a reverse proxy).
 	if base := os.Getenv("BASE_URL"); base != "" {
 		u, err := url.Parse(base)
@@ -255,7 +268,7 @@ func main() {
 	// The worker runs code and terminals; it dies with us and we die with it.
 	_, appPort, _ := net.SplitHostPort(appAddr)
 	worker := exec.Command("python3", "server/serve.py")
-	worker.Env = append(os.Environ(), "PORT="+appPort)
+	worker.Env = append(os.Environ(), "PORT="+appPort, "INTERNAL_TOKEN="+a.internalToken)
 	worker.Stdout, worker.Stderr = os.Stdout, os.Stderr
 	if err := worker.Start(); err != nil {
 		log.Fatalf("starting the Python worker: %v", err)

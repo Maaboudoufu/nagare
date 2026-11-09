@@ -16,6 +16,8 @@ import (
 	"golang.org/x/oauth2"
 )
 
+var kicks []string // bodies of the worker's /internal/kick calls
+
 // testApp: a fake built UI, course data and Python worker in a temp dir. conf nil = sign-in off.
 func testApp(t *testing.T, conf *oauth2.Config, allowed string) (*app, http.Handler) {
 	t.Helper()
@@ -32,12 +34,18 @@ func testApp(t *testing.T, conf *oauth2.Config, allowed string) (*app, http.Hand
 	write("courses/shell/abc.json", `{"secret":true}`)
 	write("media/host/v.mp4", strings.Repeat("v", 1000))
 	worker := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		io.WriteString(w, "worker:"+r.URL.Path+" origin="+r.Header.Get("Origin")+" user="+r.Header.Get("X-User"))
+		if r.URL.Path == "/internal/kick" && r.Header.Get("X-Internal-Token") == "internal" {
+			b, _ := io.ReadAll(r.Body)
+			kicks = append(kicks, string(b))
+			return
+		}
+		io.WriteString(w, "worker:"+r.URL.Path+" token="+r.Header.Get("X-Internal-Token")+" origin="+r.Header.Get("Origin")+" user="+r.Header.Get("X-User"))
 	}))
 	t.Cleanup(worker.Close)
-	a := &app{auth: newAuth(conf, allowed), web: filepath.Join(dir, "web"), courses: filepath.Join(dir, "courses"), media: filepath.Join(dir, "media"),
+	a := &app{auth: newAuth(conf, allowed, "admin@example.com", filepath.Join(dir, "data")), web: filepath.Join(dir, "web"), courses: filepath.Join(dir, "courses"), media: filepath.Join(dir, "media"),
 		hosts: map[string]bool{"localhost:8000": true}, origins: map[string]bool{}}
-	a.api = apiProxy(strings.TrimPrefix(worker.URL, "http://"), a.auth)
+	a.appAddr, a.internalToken = strings.TrimPrefix(worker.URL, "http://"), "internal"
+	a.api = apiProxy(a.appAddr, a.auth)
 	return a, a.routes()
 }
 
@@ -83,6 +91,9 @@ func TestRoutesSignInOff(t *testing.T) {
 	c := &client{h: h}
 	expect(t, c.do("GET", "/"), 200, "")
 	expect(t, c.do("GET", "/learn/learn-go/some-lesson"), 200, "")
+	expect(t, c.do("GET", "/settings"), 200, "")
+	expect(t, c.do("GET", "/settingsx"), 404, "")
+	expect(t, c.do("GET", "/admin"), 404, "") // no sign-in, no admins
 	expect(t, c.do("GET", "/learn/no-such-course"), 404, "")
 	expect(t, c.do("GET", "/learn/..%2fweb"), 404, "")
 	expect(t, c.do("GET", "/signin"), 302, "/")            // nothing to sign in to
@@ -104,7 +115,7 @@ func TestRoutesSignInOff(t *testing.T) {
 
 	// The worker gets /api calls without the browser's Origin, as user "local", whatever the browser claims.
 	rec := c.do("POST", "/api/run", "Origin", "http://localhost:8000", "X-User", "someone-else")
-	if body := rec.Body.String(); rec.Code != 200 || body != "worker:/api/run origin= user=local" {
+	if body := rec.Body.String(); rec.Code != 200 || body != "worker:/api/run token= origin= user=local" {
 		t.Fatalf("proxy: %d %q", rec.Code, body)
 	}
 
@@ -155,6 +166,7 @@ func TestSignIn(t *testing.T) {
 	c := &client{h: h}
 	expect(t, c.do("GET", "/"), 302, "/signin")
 	expect(t, c.do("GET", "/learn/learn-go"), 302, "/signin")
+	expect(t, c.do("GET", "/profile"), 302, "/signin")
 	expect(t, c.do("GET", "/signin"), 200, "")
 	expect(t, c.do("GET", "/courses/index.json"), 401, "")
 	expect(t, c.do("GET", "/media/host/v.mp4"), 401, "")
@@ -205,4 +217,105 @@ func TestSignIn(t *testing.T) {
 	email = "someone@else.com"
 	state = login(c)
 	expect(t, c.do("GET", "/auth/callback?code=c&state="+state), 302, "not_allowed")
+}
+
+// Admin routes: invisible to everyone but ADMIN_EMAILS, JSON-only, and bans/sign-outs take effect at once.
+func TestAdmin(t *testing.T) {
+	var email string
+	google := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		if r.URL.Path == "/token" {
+			io.WriteString(w, `{"access_token":"tok","token_type":"Bearer","expires_in":3600}`)
+			return
+		}
+		json.NewEncoder(w).Encode(map[string]any{"email": email, "email_verified": true, "name": email})
+	}))
+	defer google.Close()
+	conf := &oauth2.Config{ClientID: "id", ClientSecret: "secret", RedirectURL: "http://localhost:8000/auth/callback",
+		Endpoint: oauth2.Endpoint{AuthURL: google.URL + "/auth", TokenURL: google.URL + "/token"}}
+	a, h := testApp(t, conf, "")
+	a.auth.userinfo = google.URL + "/userinfo"
+	signIn := func(who string) (*client, *httptest.ResponseRecorder) {
+		email = who
+		c := &client{h: h}
+		loc, _ := url.Parse(c.do("GET", "/auth/login").Header().Get("Location"))
+		return c, c.do("GET", "/auth/callback?code=c&state="+loc.Query().Get("state"))
+	}
+	post := func(c *client, body string, hdr ...string) *httptest.ResponseRecorder {
+		req := httptest.NewRequest("POST", "http://localhost:8000/admin/api/action", strings.NewReader(body))
+		req.Header.Set("Content-Type", "application/json")
+		for i := 0; i+1 < len(hdr); i += 2 {
+			req.Header.Set(hdr[i], hdr[i+1])
+		}
+		for _, ck := range c.cookies {
+			req.AddCookie(ck)
+		}
+		rec := httptest.NewRecorder()
+		h.ServeHTTP(rec, req)
+		return rec
+	}
+
+	anon := &client{h: h}
+	member, _ := signIn("member@example.com")
+	admin, _ := signIn("Admin@Example.com")
+
+	// Not an admin: every admin route is a 404, whatever the request claims.
+	for _, c := range []*client{anon, member} {
+		expect(t, c.do("GET", "/admin"), 404, "")
+		expect(t, c.do("GET", "/admin/api/state"), 404, "")
+		expect(t, post(c, `{"action":"ban","email":"admin@example.com"}`), 404, "")
+	}
+	expect(t, member.do("GET", "/admin/api/state", "X-User", "admin"), 404, "")
+	var me struct{ Admin bool }
+	json.NewDecoder(member.do("GET", "/auth/me").Body).Decode(&me)
+	if me.Admin {
+		t.Fatal("member reported as admin")
+	}
+
+	// Admin: the page and state open up; forms from other sites and non-JSON bodies are refused.
+	json.NewDecoder(admin.do("GET", "/auth/me").Body).Decode(&me)
+	if !me.Admin {
+		t.Fatal("admin not reported as admin")
+	}
+	expect(t, admin.do("GET", "/admin"), 200, "")
+	expect(t, admin.do("GET", "/admin/api/state"), 200, "")
+	expect(t, post(admin, `{"action":"ban","email":"member@example.com"}`, "Origin", "https://evil.example"), 403, "")
+	expect(t, post(admin, `{"action":"ban","email":"member@example.com"}`, "Content-Type", "text/plain"), 415, "")
+	expect(t, post(admin, `{"action":"ban","email":"not an email"}`), 400, "")
+	expect(t, post(admin, `{"action":"ban","email":"admin@example.com"}`), 403, "") // admins come from .env
+	expect(t, post(admin, `{"action":"nuke","email":"member@example.com"}`), 400, "")
+
+	// Ban: the member is signed out at once, their containers are stopped, and they can't sign back in.
+	kicks = nil
+	expect(t, post(admin, `{"action":"ban","email":"Member@Example.com"}`), 200, "")
+	expect(t, member.do("GET", "/"), 302, "/signin")
+	if len(kicks) != 1 || !strings.Contains(kicks[0], idOf("member@example.com")) {
+		t.Fatalf("kicks = %v", kicks)
+	}
+	if _, rec := signIn("member@example.com"); !strings.Contains(rec.Header().Get("Location"), "not_allowed") {
+		t.Fatal("banned member signed in")
+	}
+	expect(t, post(admin, `{"action":"unban","email":"member@example.com"}`), 200, "")
+	member, _ = signIn("member@example.com")
+	expect(t, member.do("GET", "/"), 200, "")
+
+	// Allow-list mode signs out whoever isn't listed; admins stay. Allowing them lets them back in.
+	expect(t, post(admin, `{"action":"mode","mode":"list"}`), 200, "")
+	expect(t, member.do("GET", "/"), 302, "/signin")
+	expect(t, admin.do("GET", "/admin/api/state"), 200, "")
+	expect(t, post(admin, `{"action":"allow","email":"member@example.com"}`), 200, "")
+	member, _ = signIn("member@example.com")
+	expect(t, member.do("GET", "/"), 200, "")
+
+	// The access rules survive a restart.
+	if !newAuth(conf, "", "admin@example.com", a.auth.dataDir).canSignIn("member@example.com") {
+		t.Fatal("allow list not saved")
+	}
+
+	// A browser can't reach the worker's internal routes or pass its token through the proxy.
+	rec := member.do("POST", "/api/run", "X-Internal-Token", "internal")
+	if strings.Contains(rec.Body.String(), "token=internal") {
+		t.Fatal("internal token forwarded")
+	}
+	expect(t, member.do("POST", "/internal/kick"), 404, "")
 }
