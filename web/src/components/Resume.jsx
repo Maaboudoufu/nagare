@@ -1,5 +1,6 @@
 /* The home page's "pick up where you left off": the lesson you were on, or the next unfinished one after it. */
-import {locale, t} from '../lib/i18n.js';
+import {t} from '../lib/i18n.js';
+import {ago} from '../lib/time.js';
 import {isDone, lessonPath, pct, store, useCourse} from '../store.js';
 import {Icon, Logo, Meter} from './ui.jsx';
 
@@ -13,16 +14,6 @@ function target(list) {
   }
   const c = list.find(c => c.lessons.some(isDone) && !c.lessons.every(isDone)) || list.find(c => !c.lessons.every(isDone));
   return c && {course:c, uuid:c.lessons.find(u => !isDone(u)), kind:c.lessons.some(isDone) ? 'next' : 'start'};
-}
-
-function ago(at) {
-  const s = (Date.now() - at) / 1000, rtf = new Intl.RelativeTimeFormat(locale(), {numeric:'auto'});
-  if (s < 60) return rtf.format(0, 'minute');
-  for (const [unit, n] of [['minute', 60], ['hour', 24], ['day', 7], ['week', 4.35], ['month', 12]]) {
-    const v = s / {minute:60, hour:3600, day:86400, week:604800, month:2629800}[unit];
-    if (v < n) return rtf.format(-Math.floor(v), unit);
-  }
-  return rtf.format(-Math.floor(s / 31557600), 'year');
 }
 
 export default function Resume({list}) {

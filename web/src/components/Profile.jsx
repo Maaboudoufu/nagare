@@ -1,10 +1,12 @@
-import {useEffect, useRef} from 'react';
-import {locale, t} from '../lib/i18n.js';
-import {currentStreak, dayKey, level, levelStart, stats} from '../lib/xp.js';
-import {isDone, lessonPath, profile, store, useStore} from '../store.js';
-import {AchievementRow, formatDate, useAchievements} from './Achievements.jsx';
-import {Avatar, displayName, Topbar} from './Account.jsx';
-import {Icon, Logo, Ring} from './ui.jsx';
+import {useEffect, useRef, useState} from 'react';
+import {lang, locale, t} from '../lib/i18n.js';
+import {ago} from '../lib/time.js';
+import {dayKey, levelStart, stats} from '../lib/xp.js';
+import {lessonPath, pct, store, useStore} from '../store.js';
+import {AchievementRow, formatDate} from './Achievements.jsx';
+import {Avatar, Topbar} from './Account.jsx';
+import {BRANDS} from '../constants.js';
+import {Icon, Logo, Meter, Ring} from './ui.jsx';
 
 const WEEKS = 53;
 const shade = xp => !xp ? 0 : xp < 25 ? 1 : xp < 75 ? 2 : xp < 150 ? 3 : 4;
@@ -49,75 +51,144 @@ const Stat = ({label, value, sub}) => (
   </div>
 );
 
-function CourseList({title, courses, empty}) {
+// Every course they've started, furthest along first; finished ones at the end.
+function Courses({list}) {
+  const catalog = Object.fromEntries(store.catalog.courses.map(c => [c.slug, c]));
+  const rows = list.filter(c => catalog[c.slug]).map(c => ({...c, course:catalog[c.slug], p:pct(c.done, c.total)}))
+    .sort((a, b) => (a.p === 100) - (b.p === 100) || b.p - a.p);
+  const finished = rows.filter(r => r.p === 100).length;
   return (
     <section className="card">
-      <div className="card-head"><h2>{title}</h2><span className="meta">{courses.length}</span></div>
-      {courses.length ? (
-        <ul className="done-list">
-          {courses.map(c => <li key={c.slug}><a href={lessonPath(c.slug)}><Logo course={c} size="sm"/>{c.title}</a></li>)}
+      <div className="card-head"><h2>{t('Courses')}</h2>
+        <span className="meta">{t('{n} started · {done} finished', {n:rows.length, done:finished})}</span></div>
+      {rows.length ? (
+        <ul className="course-progress">
+          {rows.map(r => (
+            <li key={r.slug}><a href={lessonPath(r.slug)}>
+              <Logo course={r.course} size="sm"/>
+              <span className="cp-text">
+                <span className="cp-title">{r.course.title}</span>
+                <span className="cp-bar"><Meter n={r.done} total={r.total} label={r.course.title}/>
+                  <span className="meta">{r.p === 100 ? <><Icon name="circle-check"/>{t('Finished')}</> : t('{n} / {total} · {pct}%', {n:r.done, total:r.total, pct:r.p})}</span></span>
+              </span>
+            </a></li>
+          ))}
         </ul>
-      ) : <p className="empty">{empty}</p>}
+      ) : <p className="empty">{t('No courses started… {yet}.', {yet:<em>{t('yet')}</em>})}</p>}
     </section>
   );
 }
 
-export default function Profile() {
-  useStore();
-  const achievements = useAchievements();
-  useEffect(() => { document.title = `${displayName()} · ${t('nagare')}`; }, []);
-  const s = stats(), p = profile(), lvl = level(s.xp), from = levelStart(lvl), to = levelStart(lvl + 1);
-  const lessons = Object.keys(store.progress).filter(isDone).length;
-  const finished = store.catalog.courses.filter(c => c.lessons.length && c.lessons.every(isDone));
-  const recent = (achievements || []).filter(a => a.unlocked).sort((a, b) => b.unlocked.localeCompare(a.unlocked)).slice(0, 3);
-  const streak = currentStreak(s);
+// Lessons done per language, as a share of all their lessons.
+function Languages({langs}) {
+  const rows = Object.entries(langs).sort((a, b) => b[1] - a[1]), total = rows.reduce((n, [, v]) => n + v, 0);
+  if (!rows.length) return null;
+  return (
+    <section className="card">
+      <div className="card-head"><h2>{t('Languages')}</h2></div>
+      <ul className="langs">
+        {rows.map(([lang, n]) => (
+          <li key={lang}>
+            <Logo course={{slug:'', language:lang}} size="sm"/>
+            <span className="lang-name">{BRANDS[lang]?.[2] || lang}</span>
+            <span className="lang-bar"><span style={{width:`${100 * n / rows[0][1]}%`}}/></span>
+            <span className="meta">{t('{n} lessons', {n})} · {pct(n, total)}%</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
 
+function Recent({items}) {
+  if (!items.length) return null;
+  return (
+    <section className="card">
+      <div className="card-head"><h2>{t('Recent activity')}</h2></div>
+      <ul className="recent">
+        {items.slice(0, 6).map(r => (
+          <li key={r.uuid}><a href={lessonPath(r.slug, r.uuid)}>
+            <Icon name="circle-check"/>
+            <span className="recent-title">{r.title}</span>
+            <span className="meta recent-when" title={store.catalog.courses.find(c => c.slug === r.slug)?.title}>
+              {r.at.length > 10 ? ago(Date.parse(r.at)) : formatDate(r.at)}</span>
+          </a></li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+// /profile is yours; /u/<id> is another member's, if they share it. Everything comes from the server's public view.
+export default function Profile({id = 'me'}) {
+  useStore();
+  const [p, setP] = useState();
+  const xp = stats().xp;
+  useEffect(() => {
+    let live = true;
+    fetch(`/api/profile/${encodeURIComponent(id)}?lang=${lang()}`, {cache:'no-store'}).then(r => r.ok ? r.json() : null).then(d => live && setP(d));
+    return () => { live = false; };
+  }, [id, id === 'me' && xp, lang()]);
+  const name = p && (p.name || (p.self ? t('You') : t('Learner')));
+  useEffect(() => { if (name) document.title = `${name} · ${t('nagare')}`; }, [name]);
+
+  if (p === undefined) return <main id="home" className="page"><Topbar/><p className="empty">{t('Loading…')}</p></main>;
+  if (p === null) return <main id="home" className="page"><Topbar/><h1>{t('Profile not available')}</h1>
+    <p className="path-desc">{t('This member hid their profile, or it doesn\'t exist.')}</p></main>;
+
+  const from = levelStart(p.level), to = levelStart(p.level + 1);
+  const unlocked = p.achievements.filter(a => a.unlocked).sort((a, b) => b.unlocked.localeCompare(a.unlocked));
   return (
     <main id="home" className="page">
       <Topbar/>
       <section className="card hero">
-        <Avatar size={96}/>
+        {p.self ? <Avatar size={96}/> : <Avatar size={96} picture={p.picture} name={name}/>}
         <div className="hero-text">
-          <h1>{displayName()}</h1>
+          <h1>{name}</h1>
           <ul className="hero-meta">
             {p.handle && <li><Icon name="at-sign"/>{p.handle}</li>}
             {p.location && <li><Icon name="map-pin"/>{p.location}</li>}
-            {p.website && <li><Icon name="link"/><a href={safeUrl(p.website)} rel="noopener noreferrer" target="_blank">{p.website.replace(/^https?:\/\//i, '')}</a></li>}
+            {p.website && <li><Icon name="link"/><a href={safeUrl(p.website)} rel="noopener noreferrer nofollow" target="_blank">{p.website.replace(/^https?:\/\//i, '')}</a></li>}
             {p.github && <li><svg className="icon gh" aria-hidden="true"><use href="/vendor/brands.svg?v=5#github"/></svg>
-              <a href={`https://github.com/${encodeURIComponent(p.github)}`} rel="noopener noreferrer" target="_blank">{p.github}</a></li>}
+              <a href={`https://github.com/${encodeURIComponent(p.github)}`} rel="noopener noreferrer nofollow" target="_blank">{p.github}</a></li>}
           </ul>
           {p.bio && <p className="hero-bio">{p.bio}</p>}
-          <a className="btn ghost hero-edit" href="/settings"><Icon name="pen-line"/>{t('Edit profile')}</a>
+          {p.self && <a className="btn ghost hero-edit" href="/settings"><Icon name="pen-line"/>{t('Edit profile')}</a>}
         </div>
         <div className="hero-level">
-          <Ring n={s.xp - from} total={to - from} size={72} label={t('Progress to the next level')}><span className="level-num">{lvl}</span></Ring>
+          <Ring n={p.xp - from} total={to - from} size={72} label={t('Progress to the next level')}><span className="level-num">{p.level}</span></Ring>
           <div className="level-text">
-            <span className="level-title">{t('Level {n}', {n:lvl})}</span>
-            <span className="meta">{t('{n} XP to level {next}', {n:(to - s.xp).toLocaleString(), next:lvl + 1})}</span>
-            <span className="meta">{t('{n} / {total} XP', {n:s.xp.toLocaleString(), total:to.toLocaleString()})}</span>
+            <span className="level-title">{t('Level {n}', {n:p.level})}</span>
+            <span className="meta">{t('{n} XP to level {next}', {n:(to - p.xp).toLocaleString(), next:p.level + 1})}</span>
+            <span className="meta">{t('{n} / {total} XP', {n:p.xp.toLocaleString(), total:to.toLocaleString()})}</span>
           </div>
         </div>
       </section>
 
       <dl className="card stats">
-        <Stat label={t('Lessons done')} value={lessons.toLocaleString()}/>
-        <Stat label={t('XP earned')} value={s.xp.toLocaleString()}/>
-        <Stat label={t('Streak')} value={streak === 1 ? t('{n} day', {n:streak}) : t('{n} days', {n:streak})} sub={t('Best: {n}', {n:s.best || 0})}/>
-        <Stat label={t('Joined')} value={s.joined ? formatDate(s.joined) : '—'}/>
+        <Stat label={t('Lessons done')} value={p.lessons.toLocaleString()}/>
+        <Stat label={t('XP earned')} value={p.xp.toLocaleString()}/>
+        <Stat label={t('Streak')} value={p.streak === 1 ? t('{n} day', {n:p.streak}) : t('{n} days', {n:p.streak})} sub={t('Best: {n}', {n:p.best || 0})}/>
+        <Stat label={t('Joined')} value={p.joined ? formatDate(p.joined) : '—'}/>
       </dl>
 
-      <Heatmap days={s.days || {}}/>
+      <Heatmap days={p.days || {}}/>
 
       <div className="profile-cols">
         <div className="col">
-          <CourseList title={t('Courses completed')} courses={finished.filter(c => !c.slug.startsWith('build-'))} empty={t('No finished courses… {yet}.', {yet:<em>{t('yet')}</em>})}/>
-          <CourseList title={t('Projects completed')} courses={finished.filter(c => c.slug.startsWith('build-'))} empty={t('No finished projects… {yet}.', {yet:<em>{t('yet')}</em>})}/>
+          <Courses list={p.courses}/>
+          <Recent items={p.recent}/>
         </div>
-        <section className="card">
-          <div className="card-head"><h2>{t('Achievements')}</h2><a className="view-all" href="/achievements">{t('View all')}</a></div>
-          {recent.length ? <ul className="ach-list">{recent.map(a => <AchievementRow key={a.id} a={a}/>)}</ul>
-            : <p className="empty">{achievements ? t('None unlocked… {yet}.', {yet:<em>{t('yet')}</em>}) : t('Loading…')}</p>}
-        </section>
+        <div className="col">
+          <Languages langs={p.languages}/>
+          <section className="card">
+            <div className="card-head"><h2>{t('Achievements')}</h2>
+              {p.self ? <a className="view-all" href="/achievements">{t('View all')}</a>
+                : <span className="meta">{t('{n} of {total}', {n:unlocked.length, total:p.achievements.length})}</span>}</div>
+            {unlocked.length ? <ul className="ach-list">{unlocked.slice(0, p.self ? 3 : 6).map(a => <AchievementRow key={a.id} a={a}/>)}</ul>
+              : <p className="empty">{t('None unlocked… {yet}.', {yet:<em>{t('yet')}</em>})}</p>}
+          </section>
+        </div>
       </div>
     </main>
   );
