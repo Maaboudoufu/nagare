@@ -1,0 +1,1 @@
+{"cwd": "/home/user", "root": "/home/user/worldbanc", "dirs": [], "files": [], "init": [], "checks": [{"matchCommand": {"lastContains": ["echo"]}}]}
