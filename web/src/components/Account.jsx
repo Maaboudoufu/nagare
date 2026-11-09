@@ -1,9 +1,9 @@
 /* The signed-in person: avatar, the menu behind it, and the top bar every page shares. */
 import {useEffect, useRef, useState} from 'react';
-import {LANGS, lang, setLang, t} from '../lib/i18n.js';
-import {level, stats} from '../lib/xp.js';
+import {LANGS, contentPct, lang, setLang, t} from '../lib/i18n.js';
+import {level, levelStart, stats} from '../lib/xp.js';
 import {profile, settings, signOut, store, useStore} from '../store.js';
-import {Brand, Icon} from './ui.jsx';
+import {Brand, Icon, Ring} from './ui.jsx';
 
 export const displayName = () => profile().name || store.user?.name || store.user?.email.split('@')[0] || t('You');
 
@@ -46,6 +46,7 @@ export function LangMenu() {
           {LANGS.map(([code, name]) => (
             <button key={code} role="menuitemradio" aria-checked={code === cur} lang={code} onClick={() => { setLang(code); setOpen(false); }}>
               <Icon name="check" cls={code === cur ? '' : 'off'}/>{name}
+              {code !== 'en' && <span className="menu-meta" title={t('{pct}% of lessons translated', {pct:contentPct(code)})}>{contentPct(code)}%</span>}
             </button>
           ))}
         </div>
@@ -57,12 +58,13 @@ export function LangMenu() {
 function AccountMenu() {
   useStore();
   const [open, setOpen, ref] = useMenu();
+  const xp = stats().xp, lvl = level(xp);
   const item = (href, icon, label) => <a role="menuitem" href={href} onClick={() => setOpen(false)}><Icon name={icon}/>{label}</a>;
   return (
     <div className="account" ref={ref}>
       <button className="account-btn" aria-haspopup="menu" aria-expanded={open} onClick={() => setOpen(!open)}>
-        <span className="level-chip" title={t('{n} XP', {n:stats().xp.toLocaleString()})}>{t('Lv {n}', {n:level(stats().xp)})}</span>
-        <Avatar/>
+        <span className="level-chip">{t('Lv {n}', {n:lvl})}</span>
+        <Ring n={xp - levelStart(lvl)} total={levelStart(lvl + 1) - levelStart(lvl)} size={38} stroke={2}><Avatar/></Ring>
         <span className="account-name">{displayName()}</span>
         <Icon name="chevron-down"/>
       </button>

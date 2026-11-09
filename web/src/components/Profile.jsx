@@ -4,7 +4,7 @@ import {currentStreak, dayKey, level, levelStart, stats} from '../lib/xp.js';
 import {isDone, lessonPath, profile, store, useStore} from '../store.js';
 import {AchievementRow, formatDate, useAchievements} from './Achievements.jsx';
 import {Avatar, displayName, Topbar} from './Account.jsx';
-import {Icon, Logo, Meter} from './ui.jsx';
+import {Icon, Logo, Ring} from './ui.jsx';
 
 const WEEKS = 53;
 const shade = xp => !xp ? 0 : xp < 25 ? 1 : xp < 75 ? 2 : xp < 150 ? 3 : 4;
@@ -42,11 +42,10 @@ function Heatmap({days}) {
   );
 }
 
-const Stat = ({icon, label, value, sub}) => (
-  <div className="card stat">
-    <span className="stat-label">{label}<Icon name={icon}/></span>
-    <span className="stat-value">{value}</span>
-    {sub && <span className="meta">{sub}</span>}
+const Stat = ({label, value, sub}) => (
+  <div className="stat">
+    <dt className="meta">{label}</dt>
+    <dd><span className="stat-value">{value}</span>{sub && <span className="meta">{sub}</span>}</dd>
   </div>
 );
 
@@ -91,19 +90,21 @@ export default function Profile() {
           <a className="btn ghost hero-edit" href="/settings"><Icon name="pen-line"/>{t('Edit profile')}</a>
         </div>
         <div className="hero-level">
-          <span className="stat-label">{t('Level')}</span>
-          <span className="level-num">{lvl}</span>
-          <Meter n={s.xp - from} total={to - from} label={t('Progress to the next level')}/>
-          <span className="meta level-range"><span>{t('{n} XP', {n:s.xp.toLocaleString()})}</span><span>{t('{n} XP', {n:to.toLocaleString()})}</span></span>
+          <Ring n={s.xp - from} total={to - from} size={72} label={t('Progress to the next level')}><span className="level-num">{lvl}</span></Ring>
+          <div className="level-text">
+            <span className="level-title">{t('Level {n}', {n:lvl})}</span>
+            <span className="meta">{t('{n} XP to level {next}', {n:(to - s.xp).toLocaleString(), next:lvl + 1})}</span>
+            <span className="meta">{t('{n} / {total} XP', {n:s.xp.toLocaleString(), total:to.toLocaleString()})}</span>
+          </div>
         </div>
       </section>
 
-      <div className="stats">
-        <Stat icon="circle-check" label={t('Lessons done')} value={lessons.toLocaleString()}/>
-        <Stat icon="trending-up" label={t('XP earned')} value={s.xp.toLocaleString()}/>
-        <Stat icon="flame" label={t('Streak')} value={streak === 1 ? t('{n} day', {n:streak}) : t('{n} days', {n:streak})} sub={t('Best: {n}', {n:s.best || 0})}/>
-        <Stat icon="calendar" label={t('Joined')} value={s.joined ? formatDate(s.joined) : '—'}/>
-      </div>
+      <dl className="card stats">
+        <Stat label={t('Lessons done')} value={lessons.toLocaleString()}/>
+        <Stat label={t('XP earned')} value={s.xp.toLocaleString()}/>
+        <Stat label={t('Streak')} value={streak === 1 ? t('{n} day', {n:streak}) : t('{n} days', {n:streak})} sub={t('Best: {n}', {n:s.best || 0})}/>
+        <Stat label={t('Joined')} value={s.joined ? formatDate(s.joined) : '—'}/>
+      </dl>
 
       <Heatmap days={s.days || {}}/>
 

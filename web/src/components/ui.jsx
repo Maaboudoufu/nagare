@@ -36,6 +36,22 @@ export const Meter = ({n, total, label, hidden}) => (
        aria-valuemin="0" aria-valuemax={total} aria-valuenow={n}><div style={{width:`${pct(n, total)}%`}}></div></div>
 );
 
+// A thin circular progress ring, optionally around something (a level number, an avatar).
+export function Ring({n, total, size = 64, stroke = 3, label, children}) {
+  const r = (size - stroke) / 2, c = 2 * Math.PI * r, f = total ? Math.min(n / total, 1) : 0;
+  return (
+    <span className="ring" style={{width:size, height:size}} role={label ? 'progressbar' : undefined} aria-label={label}
+          aria-valuemin={label ? 0 : undefined} aria-valuemax={label ? total : undefined} aria-valuenow={label ? n : undefined}>
+      <svg viewBox={`0 0 ${size} ${size}`} aria-hidden="true">
+        <circle className="ring-track" cx={size / 2} cy={size / 2} r={r} strokeWidth={stroke}/>
+        <circle className="ring-fill" cx={size / 2} cy={size / 2} r={r} strokeWidth={stroke}
+                strokeDasharray={c} strokeDashoffset={c * (1 - f)} transform={`rotate(-90 ${size / 2} ${size / 2})`}/>
+      </svg>
+      {children && <span className="ring-inner">{children}</span>}
+    </span>
+  );
+}
+
 export function Logo({course, size = 'md'}) {
   const [sym, hex, name, lucide, img] = brandOf(course);
   const n = parseInt(hex.slice(1), 16), lum = (0.299 * (n >> 16) + 0.587 * (n >> 8 & 255) + 0.114 * (n & 255)) / 255;
