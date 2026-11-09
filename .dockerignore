@@ -1,0 +1,8 @@
+*
+!web
+!server
+!courses
+!gateway
+web/node_modules
+web/dist
+**/__pycache__
