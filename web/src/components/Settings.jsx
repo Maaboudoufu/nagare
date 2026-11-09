@@ -123,9 +123,11 @@ export default function Settings() {
           {t('Show XP, level-up and achievement pop-ups')}</label>
       </Section>
 
-      <Section title={t('Leaderboard')} desc={t('Your name, photo, level and XP. Never your email.')}>
+      <Section title={t('Privacy')} desc={t('Other members can see your name, photo, profile, XP, course progress and achievements. Never your email or your code.')}>
         <label className="check"><input type="checkbox" checked={s.leaderboard} onChange={e => set({leaderboard:e.target.checked})}/>
           {t('Show me on the leaderboard')}</label>
+        <label className="check"><input type="checkbox" checked={s.publicProfile} onChange={e => set({publicProfile:e.target.checked})}/>
+          {t('Let other members see my profile')}</label>
       </Section>
 
       <Section title={t('Time zone')} desc={t('Decides when your day starts, for streaks and the activity graph.')}>

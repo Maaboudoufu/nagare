@@ -59,6 +59,7 @@ func (a *app) routes() http.Handler {
 	for _, p := range []string{"profile", "settings", "achievements", "leaderboard"} {
 		mux.HandleFunc("GET /"+p, a.page)
 	}
+	mux.HandleFunc("GET /u/{id}", a.page) // a member's profile; the worker decides what's visible
 	mux.HandleFunc("GET /admin", a.requireAdmin(a.index))
 	mux.HandleFunc("GET /admin/api/state", a.requireAdmin(a.adminState))
 	mux.HandleFunc("POST /admin/api/action", a.requireAdmin(a.adminAction))

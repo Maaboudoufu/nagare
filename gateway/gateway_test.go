@@ -93,6 +93,7 @@ func TestRoutesSignInOff(t *testing.T) {
 	expect(t, c.do("GET", "/"), 200, "")
 	expect(t, c.do("GET", "/learn/learn-go/some-lesson"), 200, "")
 	expect(t, c.do("GET", "/settings"), 200, "")
+	expect(t, c.do("GET", "/u/0123456789abcdef"), 200, "")
 	expect(t, c.do("GET", "/settingsx"), 404, "")
 	expect(t, c.do("GET", "/admin"), 404, "") // no sign-in, no admins
 	if body := c.do("GET", "/").Body.String(); !strings.Contains(body, `content="http://localhost:8000/og.png"`) {

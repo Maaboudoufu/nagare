@@ -30,7 +30,7 @@ export function save(key, data) {
 
 /* Settings (app:settings) and the profile people fill in (app:profile). */
 export const ACCENTS = {blue:'#7AA7FF', violet:'#B8A6EE', teal:'#5CC8BE', green:'#62BE8C', amber:'#E2B66B', rose:'#F08A9C'};
-export const settings = () => ({accent:'blue', codeSize:14, toasts:true, photo:true, leaderboard:true, sound:true, volume:60, effects:true,
+export const settings = () => ({accent:'blue', codeSize:14, toasts:true, photo:true, leaderboard:true, publicProfile:true, sound:true, volume:60, effects:true,
                                  ...store.progress['app:settings']});
 export const profile = () => store.progress['app:profile'] || {};
 export function applySettings() {

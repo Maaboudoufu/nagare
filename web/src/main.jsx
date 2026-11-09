@@ -18,7 +18,7 @@ const json = url => fetch(url, {cache:'no-store'}).then(r => {
 addEventListener('click', e => {
   const a = e.target.closest?.('a[href]');
   if (!a || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || a.target || a.origin !== location.origin) return;
-  if (!/^\/(learn\/|profile$|settings$|achievements$|leaderboard$|admin$|$)/.test(a.pathname)) return;
+  if (!/^\/(learn\/|profile$|settings$|achievements$|leaderboard$|admin$|u\/|$)/.test(a.pathname)) return;
   if (a.pathname === location.pathname && a.hash) return;  // in-page anchors
   e.preventDefault();
   navigate(a.pathname);

@@ -14,6 +14,7 @@ export default function App() {
   useStore();
   const [, section, slug, uuid] = usePath().split('/');  // /learn/{slug}/{uuid}
   const Page = PAGES[section];
+  if (section === 'u' && slug) return <><Profile key={slug} id={slug}/><Toasts/></>;  // /u/{member id}
   return (
     <>
       {Page ? <Page/> : section === 'learn' && store.catalog.courses.some(c => c.slug === slug) ? <CourseView slug={slug} uuid={uuid}/> : <Home/>}

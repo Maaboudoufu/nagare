@@ -51,20 +51,66 @@ def save_progress(user, key, data):
     return update_progress(user, apply)
 
 
+# Lesson titles in other languages (courses/<lang>/<slug>.json), for activity lists in the reader's language.
+TITLES = {}
+for p in glob.glob(os.path.join(COURSES, '*', '*.json')):
+    lang, name = os.path.basename(os.path.dirname(p)), os.path.basename(p)
+    if name != 'index.json' and lang.isalpha() and len(lang) <= 3:
+        TITLES.setdefault(lang, {}).update({u: l['title'] for u, l in json.load(open(p)).get('lessons', {}).items() if l.get('title')})
+
+
+def members():
+    try:
+        return json.load(open(os.path.join(DATA_DIR, 'users.json')))
+    except (FileNotFoundError, ValueError):
+        return {}
+
+
+def public_profile(me, uid, lang='en'):
+    """What anyone signed in may see of a member: name, profile fields, XP, activity, course progress, achievements.
+    Never their email or code. None (404) for unknown or banned members, or ones who hid their profile (Settings)."""
+    if uid == 'me':
+        uid = me
+    if not workspace.USER_ID.match(uid or ''):
+        return None
+    m = members().get(uid, {})
+    prog = load_progress(uid)
+    s, st, pr = prog.get('app:stats'), prog.get('app:settings') or {}, prog.get('app:profile') or {}
+    if not s or m.get('banned') or (uid != me and st.get('publicProfile') is False):
+        return None
+    done = {u: p for u, p in prog.items() if u in LESSONS and isinstance(p, dict) and p.get('done')}
+    courses = [{'slug': c['slug'], 'done': n, 'total': len(c['lessons'])}
+               for c in gamify.CATALOG if (n := sum(u in done for u in c['lessons']))]
+    langs = {}
+    for u in done:
+        code = gamify.COURSE_OF.get(u, {}).get('language')
+        if code and code != 'any':
+            langs[code] = langs.get(code, 0) + 1
+    recent = sorted(((p.get('doneAt') or '', u) for u, p in done.items() if p.get('doneAt')), reverse=True)[:8]
+    now = gamify.now_in(gamify.tz_of(prog)).date()
+    live = s.get('last') in (now.isoformat(), (now - datetime.timedelta(days=1)).isoformat())
+    return {'id': uid, 'self': uid == me, 'name': pr.get('name') or m.get('name') or '', 'handle': pr.get('handle', ''),
+            'bio': pr.get('bio', ''), 'location': pr.get('location', ''), 'website': pr.get('website', ''), 'github': pr.get('github', ''),
+            'picture': m.get('picture', '') if st.get('photo', True) else '',
+            'xp': s.get('xp', 0), 'level': gamify.level(s.get('xp', 0)), 'streak': s.get('streak', 0) if live else 0,
+            'best': s.get('best', 0), 'joined': s.get('joined'), 'days': s.get('days', {}), 'lessons': len(done),
+            'courses': courses, 'languages': langs,
+            'recent': [{'uuid': u, 'slug': gamify.COURSE_OF.get(u, {}).get('slug'), 'title': TITLES.get(lang, {}).get(u) or LESSONS[u]['title'], 'at': at}
+                       for at, u in recent],
+            'achievements': gamify.achievements(prog, LESSONS)}
+
+
 # ponytail: reads every progress file per request; cache it if there are ever thousands of users
 def leaderboard(me, period):
     """Everyone who hasn't opted out (Settings) or been banned, ranked by XP: all time, or the last 7 or 30 days.
     Names come from their profile or Google account (data/users.json, written by the gateway); never emails."""
-    try:
-        members = json.load(open(os.path.join(DATA_DIR, 'users.json')))
-    except (FileNotFoundError, ValueError):
-        members = {}
+    known = members()
     days = {'week': 7, 'month': 30}.get(period)
     since = (datetime.date.today() - datetime.timedelta(days=days - 1)).isoformat() if days else None
     rows = []
     for path in glob.glob(os.path.join(PROGRESS_DIR, '*.json')):
         uid = os.path.basename(path)[:-5]
-        m = members.get(uid, {})
+        m = known.get(uid, {})
         try:
             prog = json.load(open(path))
         except ValueError:
@@ -76,7 +122,8 @@ def leaderboard(me, period):
         rows.append({'name': pr.get('name') or m.get('name') or '', 'handle': pr.get('handle', ''),
                      'picture': m.get('picture', '') if st.get('photo', True) else '', 'xp': xp, 'level': gamify.level(s.get('xp', 0)),
                      'streak': s.get('streak', 0), 'lessons': sum(1 for k, v in prog.items() if isinstance(v, dict) and v.get('done') and k in LESSONS),
-                     'you': uid == me, 'hidden': st.get('leaderboard') is False})
+                     'you': uid == me, 'hidden': st.get('leaderboard') is False,
+                     'id': uid if uid == me or st.get('publicProfile') is not False else None})  # links to their profile
     rows.sort(key=lambda r: (-r['xp'], -r['lessons'], r['name'].lower()))  # the UI names nameless rows
     for i, r in enumerate(rows):
         r['rank'] = i + 1
@@ -139,6 +186,9 @@ class Handler(SimpleHTTPRequestHandler):
             return self.send_json({**prog, 'app:events': events})  # app:events isn't saved
         if url.path == '/api/leaderboard':
             return self.send_json(leaderboard(user, urllib.parse.parse_qs(url.query).get('period', ['all'])[0]))
+        if url.path.startswith('/api/profile/'):
+            p = public_profile(user, url.path[len('/api/profile/'):], urllib.parse.parse_qs(url.query).get('lang', ['en'])[0])
+            return self.send_json(p) if p else self.send_error(404)
         if url.path == '/api/achievements':
             return self.send_json(gamify.achievements(load_progress(user), LESSONS))
         if url.path.startswith('/courses/shell/'):  # sandbox files are for the server only

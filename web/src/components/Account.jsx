@@ -8,12 +8,15 @@ import {Brand, Icon, Ring} from './ui.jsx';
 export const displayName = () => profile().name || store.user?.name || store.user?.email.split('@')[0] || t('You');
 
 // The Google profile photo, or the name's first letter if there isn't one (or it fails to load).
-export function Avatar({size = 32}) {
+// Yours by default; pass picture and name for someone else's.
+export function Avatar({size = 32, picture, name}) {
   const [broken, setBroken] = useState(false);
-  const pic = settings().photo && store.user?.picture;
+  const self = picture === undefined;
+  const pic = self ? settings().photo && store.user?.picture : picture;
+  const label = (self ? displayName() : name) || '?';
   const style = {width:size, height:size, fontSize:size * .42};
   if (pic && !broken) return <img className="avatar" style={style} src={pic} alt="" referrerPolicy="no-referrer" onError={() => setBroken(true)}/>;
-  return <span className="avatar" style={style} aria-hidden="true">{displayName()[0].toUpperCase()}</span>;
+  return <span className="avatar" style={style} aria-hidden="true">{label[0].toUpperCase()}</span>;
 }
 
 // Open/closed state for a dropdown that closes on Escape or a click outside it.

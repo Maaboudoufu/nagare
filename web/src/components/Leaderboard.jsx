@@ -8,6 +8,8 @@ const PERIODS = [
   ['month', N_('This month'), N_('Ranked by XP earned this month. Lessons, streaks and achievements all count.')],
   ['all', N_('All time'), N_('Ranked by XP. Lessons, streaks and achievements all count.')],
 ];
+// A row links to the member's profile, unless they've hidden it.
+const Row = ({href, children}) => href ? <a className="lb-row" href={href}>{children}</a> : <div className="lb-row">{children}</div>;
 const nameOf = r => r.name || (r.you ? t('You') : t('Learner'));
 
 const Face = ({row}) => row.picture
@@ -38,7 +40,8 @@ export default function Leaderboard() {
       {!rows ? <p className="empty">{t('Loading…')}</p> : !rows.length ? <p className="empty">{t('Nobody has earned XP yet.')}</p> : (
         <ol className="card lb">
           {rows.map(r => (
-            <li key={r.rank + r.name} className={'lb-row' + (r.you ? ' you' : '') + (r.rank <= 3 ? ` top top-${r.rank}` : '')}>
+            <li key={r.rank + r.name} className={'lb-item' + (r.you ? ' you' : '') + (r.rank <= 3 ? ` top top-${r.rank}` : '')}>
+              <Row href={r.id && `/u/${r.id}`}>
               <span className="lb-rank">{r.rank}</span>
               <Face row={r}/>
               <span className="lb-name">{nameOf(r)}{r.you && r.name && <span className="meta"> {t('(you)')}</span>}
@@ -47,6 +50,7 @@ export default function Leaderboard() {
               <span className="lb-stat meta" title={t('Lessons done')}><Icon name="circle-check"/>{r.lessons}</span>
               <span className="lb-stat meta" title={t('Current streak')}><Icon name="flame"/>{r.streak}</span>
               <span className="lb-xp">{t('{n} XP', {n:r.xp.toLocaleString()})}</span>
+              </Row>
             </li>
           ))}
         </ol>
