@@ -1,0 +1,29 @@
+# docker compose up -d --build   -> http://localhost:8000   (settings: .env, see .env.example)
+#
+# Hosting: put an HTTPS reverse proxy in front and set BASE_URL=https://<domain>. From a proxy container, join the
+# nagare_default network and forward to nagare-app-1:8000. Enable websockets (the terminal uses them).
+
+name: nagare
+
+services:
+  app:
+    build: .
+    image: nagare
+    init: true
+    restart: unless-stopped
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      ADDR: 0.0.0.0:8000
+      SANDBOX_IMAGE: nagare
+      HOME: /tmp
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      # Runs users' containers. This socket is root on the host: give this app its own host.
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./data:/app/data
+      - ./media:/app/media:ro # python3 tools/fetch_media.py
+    stop_grace_period: 30s
+
