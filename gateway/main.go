@@ -8,6 +8,7 @@ import (
 	"compress/gzip"
 	"context"
 	"errors"
+	"html"
 	"io"
 	"log"
 	"net"
@@ -36,6 +37,7 @@ type app struct {
 	courses string // course JSON + diagrams
 	media   string // lesson images and videos, downloaded by tools/fetch_media.py
 	api     http.Handler
+	baseURL string // BASE_URL without a trailing slash, or "" (then the request's host)
 	appAddr string // the Python worker
 	// internalToken lets only us call the worker's /internal/ routes (kick); passed to it at startup.
 	internalToken string
@@ -66,6 +68,7 @@ func (a *app) routes() http.Handler {
 	mux.HandleFunc("GET /assets/", a.static(a.web, "public, max-age=31536000, immutable")) // hashed file names
 	mux.HandleFunc("GET /vendor/", a.static(a.web, "no-cache"))
 	mux.HandleFunc("GET /favicon.svg", a.static(a.web, "public, max-age=86400"))
+	mux.HandleFunc("GET /og.png", a.static(a.web, "public, max-age=86400")) // link preview image, public like the favicon
 	mux.HandleFunc("GET /courses/", a.requireUser(a.courseData))
 	mux.HandleFunc("GET /media/", a.requireUser(a.mediaFile))
 	mux.HandleFunc("GET /auth/login", a.auth.login)
@@ -105,9 +108,20 @@ func (a *app) requireUser(next http.HandlerFunc) http.HandlerFunc {
 	}
 }
 
+// index serves the app's page with __BASE_URL__ filled in: link previews need absolute URLs.
 func (a *app) index(w http.ResponseWriter, r *http.Request) {
+	b, err := os.ReadFile(filepath.Join(a.web, "index.html"))
+	if err != nil {
+		http.NotFound(w, r)
+		return
+	}
+	base := a.baseURL
+	if base == "" {
+		base = "http://" + r.Host // guard already limited Host to the ones we answer to
+	}
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	w.Header().Set("Cache-Control", "no-cache")
-	a.serveFile(w, r, filepath.Join(a.web, "index.html"))
+	w.Write(bytes.ReplaceAll(b, []byte("__BASE_URL__"), []byte(html.EscapeString(base))))
 }
 
 func (a *app) page(w http.ResponseWriter, r *http.Request) {
@@ -258,6 +272,7 @@ func main() {
 			log.Fatalf("BASE_URL: %q isn't a URL", base)
 		}
 		a.hosts[u.Host] = true
+		a.baseURL = strings.TrimRight(base, "/")
 		a.origins[u.Scheme+"://"+u.Host] = true
 		secureCookies = u.Scheme == "https"
 	}

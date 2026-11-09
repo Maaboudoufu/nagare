@@ -27,7 +27,8 @@ func testApp(t *testing.T, conf *oauth2.Config, allowed string) (*app, http.Hand
 		os.MkdirAll(filepath.Dir(p), 0o755)
 		os.WriteFile(p, []byte(body), 0o644)
 	}
-	write("web/index.html", "<!doctype html><div id=root></div>")
+	write("web/index.html", `<!doctype html><meta property="og:image" content="__BASE_URL__/og.png"><div id=root></div>`)
+	write("web/og.png", "png")
 	write("web/assets/app.js", strings.Repeat("console.log(1);", 100))
 	write("courses/index.json", `{"courses":[]}`)
 	write("courses/learn-go.json", `{"slug":"learn-go"}`)
@@ -94,6 +95,10 @@ func TestRoutesSignInOff(t *testing.T) {
 	expect(t, c.do("GET", "/settings"), 200, "")
 	expect(t, c.do("GET", "/settingsx"), 404, "")
 	expect(t, c.do("GET", "/admin"), 404, "") // no sign-in, no admins
+	if body := c.do("GET", "/").Body.String(); !strings.Contains(body, `content="http://localhost:8000/og.png"`) {
+		t.Fatalf("link preview URL not filled in: %s", body)
+	}
+	expect(t, c.do("GET", "/og.png"), 200, "")
 	expect(t, c.do("GET", "/learn/no-such-course"), 404, "")
 	expect(t, c.do("GET", "/learn/..%2fweb"), 404, "")
 	expect(t, c.do("GET", "/signin"), 302, "/")            // nothing to sign in to
@@ -168,6 +173,7 @@ func TestSignIn(t *testing.T) {
 	expect(t, c.do("GET", "/learn/learn-go"), 302, "/signin")
 	expect(t, c.do("GET", "/profile"), 302, "/signin")
 	expect(t, c.do("GET", "/signin"), 200, "")
+	expect(t, c.do("GET", "/og.png"), 200, "") // link previews work for signed-out visitors (and crawlers)
 	expect(t, c.do("GET", "/courses/index.json"), 401, "")
 	expect(t, c.do("GET", "/media/host/v.mp4"), 401, "")
 	expect(t, c.do("POST", "/api/run"), 401, "")
