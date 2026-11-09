@@ -1,6 +1,7 @@
 /* Catalog + progress, shared by every component. Saved to the server's progress.json. */
 import {useEffect, useState, useSyncExternalStore} from 'react';
 import {fx} from './lib/fx.js';
+import {isTranslated, lang, localizeCourse} from './lib/i18n.js';
 
 export const post = (url, body) => fetch(url, {method:'POST', body:JSON.stringify(body)}).then(r => {
   if (r.status === 401) location.assign('/signin');  // session ended
@@ -75,14 +76,21 @@ const onRoute = cb => {
 export const usePath = () => useSyncExternalStore(onRoute, () => location.pathname);
 export const lessonPath = (slug, uuid) => `/learn/${slug}` + (uuid ? `/${uuid}` : '');
 
-const courseCache = {};
+// A course in the current language: the English course, with its translation laid over it when there is one.
+const courseCache = {}, english = {};
 export function useCourse(slug) {
-  const [course, setCourse] = useState(courseCache[slug]);
+  const l = isTranslated(slug) ? lang() : 'en', key = `${slug}:${l}`;
+  const [course, setCourse] = useState(courseCache[key]);
   useEffect(() => {
-    if (courseCache[slug]) return setCourse(courseCache[slug]);
+    if (courseCache[key]) return setCourse(courseCache[key]);
     let live = true;
-    fetch(`/courses/${slug}.json`).then(r => r.json()).then(c => { courseCache[slug] = c; if (live) setCourse(c); });
+    english[slug] ??= fetch(`/courses/${slug}.json`).then(r => r.json());
+    const tr = l === 'en' ? null : fetch(`/courses/${l}/${slug}.json`).then(r => r.ok ? r.json() : null, () => null);
+    Promise.all([english[slug], tr]).then(([c, t]) => {
+      courseCache[key] = t ? localizeCourse(c, t, l) : c;
+      if (live) setCourse(courseCache[key]);
+    });
     return () => { live = false; };
-  }, [slug]);
+  }, [key]);
   return course?.slug === slug ? course : null;
 }

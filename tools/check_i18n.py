@@ -8,7 +8,7 @@ KEY = re.compile(r"\b(?:t|N_)\('((?:[^'\\]|\\.)*)'")
 sys.path.insert(0, os.path.join(ROOT, 'server'))
 import gamify  # noqa: E402
 
-SERVER = {a[i] for a in gamify.ACHIEVEMENTS for i in (1, 2, 3)} | {
+SERVER = {a[i] for a in gamify.ACHIEVEMENTS for i in (1, 2)} | {
     # gateway/admin.go errors, shown in the admin page's notices
     "That isn't an email address", "Admins are set in .env and can't be signed out, banned or removed here",
     "That email is in ALLOWED_EMAILS in .env; remove it there", 'Bad mode', 'Unknown action', 'Bad request', 'JSON only'}

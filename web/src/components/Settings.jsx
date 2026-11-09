@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import {ACCENTS, applySettings, profile, save, settings, store, toast, useStore} from '../store.js';
 import {sound} from '../lib/fx.js';
-import {LANGS, N_, lang, setLang, t} from '../lib/i18n.js';
+import {LANGS, N_, contentPct, lang, setLang, t} from '../lib/i18n.js';
 import {Avatar, Topbar} from './Account.jsx';
 import {Icon} from './ui.jsx';
 
@@ -78,8 +78,9 @@ export default function Settings() {
       <Section title={t('Appearance')}>
         {LANGS.length > 1 && <label className="field"><span>{t('Language')}</span>
           <select value={lang()} onChange={e => setLang(e.target.value)}>
-            {LANGS.map(([code, name]) => <option key={code} value={code} lang={code}>{name}</option>)}
+            {LANGS.map(([code, name]) => <option key={code} value={code} lang={code}>{code === 'en' ? name : `${name} (${contentPct(code)}%)`}</option>)}
           </select>
+          {lang() !== 'en' && <span className="meta">{t('The interface is fully translated; {pct}% of lessons are so far. The rest show in English.', {pct:contentPct(lang())})}</span>}
         </label>}
         <fieldset className="field">
           <legend>{t('Accent color')}</legend>

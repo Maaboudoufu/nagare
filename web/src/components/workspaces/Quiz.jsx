@@ -37,7 +37,7 @@ export default function Quiz({lesson: l}) {
                 return (
                   <button key={ai} className={'option' + (mine ? (right ? ' right' : ' wrong') : '')} aria-pressed={mine} onClick={e => pick(qi, a, e.currentTarget)}>
                     <span className="key" aria-hidden="true">{'ABCDEFGH'[ai]}</span>
-                    <span className="opt-text" dangerouslySetInnerHTML={{__html:marked.parseInline(a)}}></span>
+                    <span className="opt-text" dangerouslySetInnerHTML={{__html:marked.parseInline(q.labels?.[ai] ?? a)}}></span>
                     <span className="opt-icon">{mine && <Icon name={right ? 'circle-check' : 'circle-x'}/>}</span>
                   </button>
                 );

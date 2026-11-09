@@ -39,7 +39,7 @@ export default function Lesson({course, cur, flat, onMenu, focusRef}) {
         </div>
       </header>
       {/* key: a fresh <article> per lesson, so React never diffs against the DOM enhanceProse rewrote */}
-      <article key={cur.uuid} lang="en" className="prose" ref={article} dangerouslySetInnerHTML={body}></article>
+      <article key={cur.uuid} lang={course.lang || 'en'} className="prose" ref={article} dangerouslySetInnerHTML={body}></article>
       <nav className="lesson-foot" aria-label={t('Previous and next lesson')}>
         {prev && (
           <a className="foot-link" href={href(prev)}>

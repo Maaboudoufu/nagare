@@ -1,7 +1,7 @@
 import {createRoot} from 'react-dom/client';
 import App from './App.jsx';
 import SignIn from './components/SignIn.jsx';
-import {lang} from './lib/i18n.js';
+import {lang, loadContent} from './lib/i18n.js';
 import {applySettings, lessonPath, navigate, reward, save, store} from './store.js';
 import './lib/codemirror.js';  // its CSS first, so styles.css can override it
 import './styles.css';
@@ -32,13 +32,14 @@ if (location.pathname === '/signin') {
   const old = location.hash.match(/^#([a-z0-9-]+)(?:\/([\w-]+))?$/);
   if (old) navigate(lessonPath(old[1], old[2]), {replace:true});
   const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  Promise.all([json('/auth/me'), json('/courses/index.json'), json(`/api/progress?tz=${encodeURIComponent(tz)}`)]).then(([auth, catalog, progress]) => {
+  Promise.all([json('/auth/me'), json('/courses/index.json'), json(`/api/progress?tz=${encodeURIComponent(tz)}`)]).then(async ([auth, catalog, progress]) => {
     const {'app:events':events, ...rest} = progress;
     store.user = auth.user;
     store.admin = auth.admin;
     store.catalog = catalog;
     store.progress = rest;
     document.documentElement.lang = lang();  // the saved setting wins once it's loaded
+    await loadContent();  // translated course titles before the first render
     applySettings();
     root.render(<App/>);
     if (!rest['app:settings']?.tz) save('app:settings', {tz});  // streaks and the activity graph use your days
