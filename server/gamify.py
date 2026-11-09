@@ -1,0 +1,176 @@
+"""XP, levels, streaks and achievements. Kept in each user's progress under 'app:stats', which only the server writes."""
+import datetime, json, os, zoneinfo
+
+COURSES = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'courses')
+CATALOG = json.load(open(os.path.join(COURSES, 'index.json')))['courses']
+COURSE_OF = {uuid: c for c in CATALOG for uuid in c['lessons']}
+
+LOGIN_XP, COURSE_XP, DEFAULT_XP = 10, 250, 25
+LESSON_XP = {'type_choice': 10, 'type_text_input': 15, 'type_interview_chat': 15}
+TIER_XP = {'bronze': 25, 'silver': 50, 'gold': 100}
+GROUPS = {'type_cli': 'terminal', 'type_shell': 'terminal', 'type_choice': 'quiz', 'type_code_tests': 'tests',
+          'type_code': 'code', 'type_code_sql': 'sql'}
+
+
+def level(xp):
+    """Level n starts at 50·n·(n-1) XP: 0, 100, 300, 600, 1000, ..."""
+    n = 1
+    while xp >= 50 * (n + 1) * n:
+        n += 1
+    return n
+
+
+def tally(prog, lessons):
+    done = {u for u, p in prog.items() if isinstance(p, dict) and p.get('done') and u in lessons}
+    t = {'lessons': len(done), 'terminal': 0, 'quiz': 0, 'tests': 0, 'code': 0, 'sql': 0}
+    for u in done:
+        g = GROUPS.get(lessons[u].get('type'))
+        if g:
+            t[g] += 1
+    t['languages'] = len({COURSE_OF[u]['language'] for u in done if u in COURSE_OF} - {'any'})
+    finished = [c for c in CATALOG if c['lessons'] and all(u in done for u in c['lessons'])]
+    t['courses'] = len(finished)
+    t['projects'] = sum(c['slug'].startswith('build-') for c in finished)
+    return t
+
+
+# (id, name, description, tier, icon, value(tally, stats), goal)
+ACHIEVEMENTS = [
+    ('first-light', 'First Light', 'Complete your first lesson', 'bronze', 'play', lambda t, s: t['lessons'], 1),
+    ('getting-warm', 'Getting Warm', 'Complete 10 lessons', 'bronze', 'check', lambda t, s: t['lessons'], 10),
+    ('in-the-flow', 'In the Flow', 'Complete 50 lessons', 'silver', 'waves', lambda t, s: t['lessons'], 50),
+    ('riverbed', 'Carving the Riverbed', 'Complete 200 lessons', 'gold', 'mountain', lambda t, s: t['lessons'], 200),
+    ('ripple', 'Ripple', 'Show up 3 days in a row', 'bronze', 'flame', lambda t, s: s['best'], 3),
+    ('steady-current', 'Steady Current', 'Show up 7 days in a row', 'silver', 'flame', lambda t, s: s['best'], 7),
+    ('tidal-force', 'Tidal Force', 'Show up 30 days in a row', 'gold', 'flame', lambda t, s: s['best'], 30),
+    ('headwaters', 'Headwaters', 'Finish a course', 'silver', 'book-open', lambda t, s: t['courses'], 1),
+    ('confluence', 'Confluence', 'Finish 3 courses', 'gold', 'trophy', lambda t, s: t['courses'], 3),
+    ('builder', 'Builder', 'Finish a project course', 'silver', 'rocket', lambda t, s: t['projects'], 1),
+    ('shell-shocked', 'Shell Shocked', 'Complete 25 terminal lessons', 'silver', 'terminal', lambda t, s: t['terminal'], 25),
+    ('sharp-eye', 'Sharp Eye', 'Answer 50 quizzes', 'silver', 'list-checks', lambda t, s: t['quiz'], 50),
+    ('test-pilot', 'Test Pilot', 'Pass 25 test-graded coding lessons', 'silver', 'code-xml', lambda t, s: t['tests'], 25),
+    ('query-crafter', 'Query Crafter', 'Complete 10 SQL lessons', 'bronze', 'database', lambda t, s: t['sql'], 10),
+    ('polyglot', 'Polyglot', 'Complete lessons in 3 different languages', 'silver', 'languages', lambda t, s: t['languages'], 3),
+    ('night-owl', 'Night Owl', 'Complete a lesson between midnight and 4 a.m.', 'bronze', 'moon', lambda t, s: s['flags'].get('night', 0), 1),
+    ('early-bird', 'Early Bird', 'Complete a lesson between 4 and 7 a.m.', 'bronze', 'sun', lambda t, s: s['flags'].get('early', 0), 1),
+    ('deep-dive', 'Deep Dive', 'Earn 300 XP in one day', 'silver', 'zap', lambda t, s: max(s['days'].values(), default=0), 300),
+    ('make-it-yours', 'Make It Yours', 'Fill in your profile', 'bronze', 'pen-line', lambda t, s: s['flags'].get('profile', 0), 1),
+    ('rising', 'Rising', 'Reach level 5', 'silver', 'star', lambda t, s: level(s['xp']), 5),
+    ('wellspring', 'Wellspring', 'Reach level 10', 'gold', 'star', lambda t, s: level(s['xp']), 10),
+]
+
+
+def now_in(tz):
+    try:
+        return datetime.datetime.now(zoneinfo.ZoneInfo(tz or 'UTC'))
+    except (zoneinfo.ZoneInfoNotFoundError, ValueError):
+        return datetime.datetime.now(datetime.timezone.utc)
+
+
+def _add_xp(s, n, reason, today, events):
+    before = level(s['xp'])
+    s['xp'] += n
+    s['days'][today] = s['days'].get(today, 0) + n
+    events.append({'kind': 'xp', 'xp': n, 'reason': reason})
+    if level(s['xp']) > before:
+        events.append({'kind': 'level', 'level': level(s['xp'])})
+
+
+def _unlock(prog, s, lessons, now, events):
+    t = tally(prog, lessons)
+    for _ in range(3):  # an unlock's XP can unlock a level achievement
+        new = [a for a in ACHIEVEMENTS if a[0] not in s['achievements'] and a[5](t, s) >= a[6]]
+        for a in new:
+            s['achievements'][a[0]] = now.isoformat(timespec='seconds')
+            events.append({'kind': 'achievement', 'id': a[0], 'name': a[1], 'tier': a[3], 'icon': a[4]})
+            _add_xp(s, TIER_XP[a[3]], f'Achievement: {a[1]}', now.date().isoformat(), events)
+        if not new:
+            break
+
+
+def lesson_xp(lesson):
+    return LESSON_XP.get(lesson.get('type'), DEFAULT_XP)
+
+
+def _stats(prog, lessons, now):
+    """The user's stats, created on first use. Lessons finished before XP existed count, but not on the activity graph."""
+    if 'app:stats' not in prog:
+        today = now.date().isoformat()
+        s = {'joined': today, 'xp': 0, 'days': {}, 'streak': 0, 'best': 0, 'last': None, 'achievements': {}, 'flags': {}}
+        for u, p in prog.items():
+            if u in lessons and isinstance(p, dict) and p.get('done'):
+                s['xp'] += lesson_xp(lessons[u])
+                p['doneAt'] = today
+        s['xp'] += COURSE_XP * tally(prog, lessons)['courses']
+        prog['app:stats'] = s
+    return prog['app:stats']
+
+
+def tz_of(prog, fallback=None):
+    return (prog.get('app:settings') or {}).get('tz') or fallback
+
+
+def login(prog, lessons, tz=None):
+    """First visit of the day: login XP and the streak."""
+    now = now_in(tz_of(prog, tz))
+    events = []
+    s = _stats(prog, lessons, now)
+    today, yesterday = now.date().isoformat(), (now.date() - datetime.timedelta(days=1)).isoformat()
+    if s['last'] != today:
+        s['streak'] = s['streak'] + 1 if s['last'] == yesterday else 1
+        s['best'] = max(s['best'], s['streak'])
+        s['last'] = today
+        _add_xp(s, LOGIN_XP, 'Daily visit' + (f' · {s["streak"]}-day streak' if s['streak'] > 1 else ''), today, events)
+    _unlock(prog, s, lessons, now, events)
+    return events
+
+
+def saved(prog, lessons, key, data):
+    """After a progress save: XP for a newly finished lesson (and its course), then achievements."""
+    now = now_in(tz_of(prog))
+    events = []
+    s = _stats(prog, lessons, now)
+    today = now.date().isoformat()
+    p = prog.get(key)
+    if key in lessons and data.get('done') and not p.get('doneAt'):
+        p['doneAt'] = now.isoformat(timespec='seconds')
+        _add_xp(s, lesson_xp(lessons[key]), 'Lesson complete', today, events)
+        if now.hour < 4:
+            s['flags']['night'] = 1
+        elif now.hour < 7:
+            s['flags']['early'] = 1
+        course = COURSE_OF.get(key)
+        if course and all((prog.get(u) or {}).get('done') for u in course['lessons']):
+            _add_xp(s, COURSE_XP, f'Finished {course["title"]}', today, events)
+    if key == 'app:profile' and sum(bool(str(v).strip()) for v in p.values()) >= 3:
+        s['flags']['profile'] = 1
+    _unlock(prog, s, lessons, now, events)
+    return events
+
+
+def achievements(prog, lessons):
+    s = _stats(prog, lessons, now_in(tz_of(prog)))
+    t = tally(prog, lessons)
+    return [{'id': a[0], 'name': a[1], 'description': a[2], 'tier': a[3], 'icon': a[4], 'goal': a[6],
+             'value': min(a[5](t, s), a[6]), 'unlocked': s['achievements'].get(a[0])} for a in ACHIEVEMENTS]
+
+
+if __name__ == '__main__':
+    lessons = {'a': {'type': 'type_code'}, 'b': {'type': 'type_choice'}}
+    assert [level(x) for x in (0, 99, 100, 299, 300, 1000)] == [1, 1, 2, 2, 3, 5]
+    prog = {'a': {'done': True}}
+    ev = login(prog, lessons, 'America/Los_Angeles')
+    s = prog['app:stats']
+    assert s['streak'] == 1 and prog['a']['doneAt'] and 'first-light' in s['achievements'], s
+    assert login(prog, lessons, 'America/Los_Angeles') == [] and s['streak'] == 1  # same day: nothing new
+    prog['app:settings'] = {'tz': 'America/Los_Angeles'}
+    prog['b'] = {'done': True}
+    ev = saved(prog, lessons, 'b', {'done': True})
+    assert ev[0] == {'kind': 'xp', 'xp': 10, 'reason': 'Lesson complete'}, ev
+    assert saved(prog, lessons, 'b', {'done': True}) == []  # no XP twice for one lesson
+    prog['app:profile'] = {'name': 'A', 'bio': 'b', 'location': 'c'}
+    assert any(e.get('id') == 'make-it-yours' for e in saved(prog, lessons, 'app:profile', prog['app:profile']))
+    s['last'] = (now_in(tz_of(prog, 'America/Los_Angeles')).date() - datetime.timedelta(days=1)).isoformat()
+    login(prog, lessons, 'America/Los_Angeles')
+    assert s['streak'] == 2, s
+    print('ok: gamify')
