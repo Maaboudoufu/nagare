@@ -5,7 +5,6 @@ media/
 tools/raw/
 
 # Python
-.venv/
 __pycache__/
 *.pyc
 
@@ -19,6 +18,9 @@ __pycache__/
 web/node_modules/
 web/dist/
 
-# Secrets and local build
+# Secrets
 .env
-gateway/nagare-gateway
+
+
+# Claude Code session files
+.claude/

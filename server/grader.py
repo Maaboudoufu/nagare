@@ -5,8 +5,7 @@ import urllib.error, urllib.parse, urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SUPPORT = os.path.join(HERE, 'support')
-VENV_PY = os.path.join(os.path.dirname(HERE), '.venv', 'bin', 'python')
-PY = VENV_PY if os.path.exists(VENV_PY) else sys.executable
+PY = sys.executable
 
 
 def run_sql(d, files):
@@ -93,8 +92,6 @@ def run(lesson, code, submit):
             out += p.stdout + p.stderr
             if p.returncode:
                 break
-    if 'No module named pytest' in out:
-        out += '\nInstall pytest: python3 -m venv .venv && .venv/bin/python -m pip install pytest'
     ok = p.returncode == 0 and '✘ Fail' not in out  # JS/TS test helpers print failures but exit 0
     passed = ok if is_test else p.returncode == 0 and p.stdout.strip() == (lesson.get('expected') or '').strip()
     return {'output': out, 'passed': passed if submit else None, 'ok': ok}

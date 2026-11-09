@@ -4,7 +4,7 @@ Usage (from the project root):  python3 tools/fetch_media.py [--images-only]
   - Files land in media/<host>/<path> (about 11 GB, mostly lesson videos; git-ignored, mounted into the app).
   - media.lock.json records each file's SHA-256 and size; a later run verifies against it, so the media
     set is the same every time. Commit that file.
-  - The lessons in courses/*.json are rewritten to /media/... links (tools/build.py does the same on a rebuild).
+  - The lessons in courses/*.json are rewritten to /media/... links.
 Safe to re-run: it skips files already downloaded and verified, and retries rate-limited hosts.
 """
 import concurrent.futures, glob, hashlib, json, os, re, sys, time, urllib.parse, urllib.request

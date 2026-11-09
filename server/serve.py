@@ -1,9 +1,7 @@
 """The app worker: the /api behind the Go gateway (gateway/main.go), which signs people in and passes the user
 as X-User. Code runs, CLI checks and terminals happen in that user's own container (workspace.py); progress is
-saved per user in data/progress/<user>.json. python3 server/serve.py also runs it alone at http://localhost:8000.
-Without Docker, build the UI first: cd web && bun install && bun run build   (UI dev with hot reload: bun run dev -> :5173)
-Self-check: python3 server/serve.py --check  (re-submits your saved code, tests the CLI grader)
-Without Docker, Python lessons need pytest: python3 -m venv .venv && .venv/bin/python -m pip install pytest"""
+saved per user in data/progress/<user>.json.
+Self-check: python3 server/serve.py --check  (re-submits your saved code, tests the CLI grader)"""
 import datetime, email.utils, glob, gzip, hmac, json, os, signal, sys, tempfile, threading
 import urllib.parse
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -75,11 +73,11 @@ def leaderboard(me, period):
         if m.get('banned') or (st.get('leaderboard') is False and uid != me) or not s:
             continue
         xp = sum(v for d, v in s.get('days', {}).items() if d >= since) if since else s.get('xp', 0)
-        rows.append({'name': pr.get('name') or m.get('name') or ('You' if uid == me else 'Learner'), 'handle': pr.get('handle', ''),
+        rows.append({'name': pr.get('name') or m.get('name') or '', 'handle': pr.get('handle', ''),
                      'picture': m.get('picture', '') if st.get('photo', True) else '', 'xp': xp, 'level': gamify.level(s.get('xp', 0)),
                      'streak': s.get('streak', 0), 'lessons': sum(1 for k, v in prog.items() if isinstance(v, dict) and v.get('done') and k in LESSONS),
                      'you': uid == me, 'hidden': st.get('leaderboard') is False})
-    rows.sort(key=lambda r: (-r['xp'], -r['lessons'], r['name'].lower()))
+    rows.sort(key=lambda r: (-r['xp'], -r['lessons'], r['name'].lower()))  # the UI names nameless rows
     for i, r in enumerate(rows):
         r['rank'] = i + 1
     return [r for r in rows if r['rank'] <= 50 or r['you']]
