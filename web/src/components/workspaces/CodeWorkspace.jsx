@@ -65,10 +65,15 @@ export default function CodeWorkspace({lesson: l}) {
     });
     cm.on('vim-mode-change', e => setVimMode(`-- ${e.mode.toUpperCase()}${e.subMode ? ' ' + e.subMode.toUpperCase() : ''} --`));
     if (vim) cm.focus();  // Vim users land in the editor on every lesson, no click needed
-    let t;
-    cm.on('change', () => { setPassed(false); clearTimeout(t);  /* edited since passing: Mod+Enter runs again */ t = setTimeout(() => save(l.uuid, {code:code()}), 600); });
+    let pending;  // the code saves once you pause typing, or at once if you leave the lesson first
+    const saveNow = () => { clearTimeout(pending); pending = null; save(l.uuid, {code:code()}); };
+    cm.on('change', () => {
+      setPassed(false);  // edited since passing: Mod+Enter runs again
+      clearTimeout(pending);
+      pending = setTimeout(saveNow, 600);
+    });
     const el = host.current;
-    return () => { clearTimeout(t); el.innerHTML = ''; };
+    return () => { if (pending) saveNow(); el.innerHTML = ''; };
   }, [l.uuid]);
 
   useEffect(() => {
