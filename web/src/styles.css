@@ -476,6 +476,8 @@ dialog h2 { font:600 1.0625rem var(--sans); letter-spacing:-.01em; }
 .prose li::marker { color:var(--faint); }
 .prose li > input[type=checkbox] { accent-color:var(--accent); margin:0 8px 0 2px; vertical-align:-2px; }
 .prose img { max-width:100%; height:auto; border-radius:var(--r); }
+/* Wikimedia diagrams are drawn in black for a white page. */
+.prose img[src*="/diagrams/neetcode/commons-"] { background:#fff; padding:16px; box-sizing:border-box; max-height:420px; width:auto; }
 .lesson-video { display:block; width:100%; max-height:70vh; margin:0 0 16px; border-radius:var(--r); background:#000; }
 .prose hr { border:0; border-top:1px solid var(--line); margin:32px 0; }
 :is(.prose, .q-text, .option, .help, .check-list) :not(pre) > code {
