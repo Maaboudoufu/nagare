@@ -8,13 +8,14 @@ import {MOD, useContinue, useShortcut} from '../../lib/keys.js';
 import {markDone, post, save, store, useStore} from '../../store.js';
 import {Chip, DoneButton, Icon, NextStep} from '../ui.jsx';
 
-function Output({lesson: l, out, sql}) {
+function Output({lesson: l, out, sql, ungraded}) {
   if (out) return <>
     {out.diff && <><span className="exp">{t('Expected:')}</span>{'\n' + (l.expected || '') + '\n'}<span className="exp">{t('Got:')}</span>{'\n'}</>}
     {out.text}
   </>;
   if (l.expected != null) return <><span className="exp">{t('Expected output:')}</span>{'\n' + l.expected}</>;
   if (sql) return <span className="exp">{t('SQL lessons have no stored solution to grade against. Run to see your results, then mark the lesson complete.')}</span>;
+  if (ungraded) return <span className="exp">{t('This lesson has no tests yet. Run your code, then mark the lesson complete.')}</span>;
   return <span className="exp">{t('Run to see test output.')}</span>;
 }
 
@@ -22,6 +23,7 @@ export default function CodeWorkspace({lesson: l}) {
   useStore();
   const files = useMemo(() => l.files.filter(f => !f.isHidden), [l]);
   const sql = l.lang === 'sql', tabs = l.lang === 'go';
+  const ungraded = sql || (l.type === 'type_code' && l.expected == null);  // no solution to grade against: mark done by hand
   const [active, setActive] = useState(() => (files.find(f => !f.isReadonly) || files[0]).name);
   const [status, setStatus] = useState(null);
   const [out, setOut] = useState(null);  // null: show the intro text
@@ -51,7 +53,7 @@ export default function CodeWorkspace({lesson: l}) {
     setBusy(false);
   };
   useShortcut('run', () => go(false));
-  useShortcut('submit', sql ? null : () => go(true));
+  useShortcut('submit', ungraded ? null : () => go(true));
   useShortcut('focusWork', () => ed.current.focus());  // Ctrl+L in Vim mode (lib/keys.js)
 
   useEffect(() => {  // CodeMirror lives outside React: create it once per lesson
@@ -119,15 +121,15 @@ export default function CodeWorkspace({lesson: l}) {
       <div id="ed" role="tabpanel" ref={host}></div>
       <div className="toolbar">
         <button className="btn" disabled={busy} title={t('Run ({mod}+Enter)', {mod:MOD})} onClick={() => go(false)}><Icon name="play"/>{t('Run')}</button>
-        {sql ? <DoneButton lesson={l}/>
+        {ungraded ? <DoneButton lesson={l}/>
              : <button className={passed ? 'btn' : 'btn primary'} disabled={busy} title={t('Submit ({mod}+Shift+Enter)', {mod:MOD})} onClick={() => go(true)}><Icon name="send"/>{t('Submit')}</button>}
-        {passed ? <NextStep show/> : <span className="kbd-hint">{sql ? t('{mod} {enter} run', {mod:<kbd>{MOD}</kbd>, enter:<kbd>Enter</kbd>})
+        {passed ? <NextStep show/> : <span className="kbd-hint">{ungraded ? t('{mod} {enter} run', {mod:<kbd>{MOD}</kbd>, enter:<kbd>Enter</kbd>})
                                      : t('{mod} {enter} run · {shift} to submit', {mod:<kbd>{MOD}</kbd>, enter:<kbd>Enter</kbd>, shift:<kbd>Shift</kbd>})}</span>}
         <span className="vim-mode" aria-live="polite">{vimMode}</span>
       </div>
       <section className="output" aria-label={t('Output')}>
         <div className="output-head"><span>{t('Output')}</span><span role="status" aria-live="polite" ref={statusEl}>{status && <Chip {...status}/>}</span></div>
-        <pre id="out"><Output lesson={l} out={out} sql={sql}/></pre>
+        <pre id="out"><Output lesson={l} out={out} sql={sql} ungraded={ungraded}/></pre>
       </section>
     </section>
   );

@@ -224,6 +224,7 @@
  "Run these in your terminal": "ターミナルで次のコマンドを実行してください",
  "Run to see test output.": "実行するとテストの出力が表示されます。",
  "Running…": "実行中…",
+ "This lesson has no tests yet. Run your code, then mark the lesson complete.": "このレッスンにはまだテストがありません。コードを実行したら、レッスンを完了にしてください。",
  "SQL lessons have no stored solution to grade against. Run to see your results, then mark the lesson complete.": "SQL のレッスンには採点用の正解データがありません。実行して結果を確認したら、レッスンを完了にしてください。",
  "Save profile": "プロフィールを保存",
  "Saved automatically.": "自動で保存されます。",
