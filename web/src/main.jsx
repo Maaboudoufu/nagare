@@ -3,7 +3,9 @@ import App from './App.jsx';
 import SignIn from './components/SignIn.jsx';
 import {lang, loadContent} from './lib/i18n.js';
 import {applySettings, lessonPath, navigate, reward, save, store} from './store.js';
-import './lib/codemirror.js';  // its CSS first, so styles.css can override it
+import 'codemirror/lib/codemirror.css';  // before styles.css, which restyles the editor
+import 'codemirror/theme/material-darker.css';
+import 'codemirror/addon/dialog/dialog.css';
 import './styles.css';
 
 document.documentElement.lang = lang();
