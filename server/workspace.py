@@ -75,7 +75,12 @@ class Box:
                     return json.loads(line)
                 self.agent.kill()
                 self.agent = None
-            return {'error': 'Your workspace stopped while running that. Try again.'}
+        try:
+            if not _running(self.name):  # the container itself is gone: forget it, so the next request starts a new one
+                _stop(self)
+        except (RuntimeError, subprocess.TimeoutExpired):
+            pass  # Docker didn't answer: the reaper sorts it out
+        return {'error': 'Your workspace stopped while running that. Try again.'}
 
     def start_aws(self):
         """Start Floci in this workspace (once). About 60 ms; ~140 MB, so only for people doing the AWS course."""
@@ -95,6 +100,12 @@ user_locks = {}  # name -> lock, so two requests don't both create the same cont
 def _name_lock(name):
     with boxes_lock:
         return user_locks.setdefault(name, threading.Lock())
+
+
+def _running(*names):
+    """Which of our containers are running right now (all of them if no names are given)."""
+    out = _check(_docker('ps', '--filter', 'label=nagare', '--format', '{{.Names}}'), 'ps').split()
+    return set(out) & set(names) if names else set(out)
 
 
 def _stop(box):
@@ -264,9 +275,12 @@ def check_sandbox(user, uuid):
             results.append({'kind': 'match', 'ok': not missing, 'want': want, 'last': last,
                             'message': f"Your last command should contain: {', '.join(want)}"})
         if c.get('runCommand'):
-            r = _docker('exec', '-u', 'user', '-w', spec['cwd'], box.name, 'bash', '-c', c['runCommand'], timeout=20)
-            results.append({'kind': 'run', 'ok': None, 'command': c['runCommand'],
-                            'output': (r.stdout + r.stderr).decode(errors='replace')[:4000]})
+            try:
+                r = _docker('exec', '-u', 'user', '-w', spec['cwd'], box.name, 'bash', '-c', c['runCommand'], timeout=20)
+                output = (r.stdout + r.stderr).decode(errors='replace')[:4000]
+            except subprocess.TimeoutExpired:
+                output = 'Timed out after 20s'
+            results.append({'kind': 'run', 'ok': None, 'command': c['runCommand'], 'output': output})
     graded = [r for r in results if r['ok'] is not None]
     return {'results': results, 'passed': all(r['ok'] for r in graded) and len(graded) == len(results),
             'review': any(r['ok'] is None for r in results) and all(r['ok'] for r in graded)}
@@ -291,14 +305,24 @@ def remove_all():
         boxes.clear()
 
 
+def _reap():
+    """Stop idle containers, and forget ones that died on their own (out of memory, removed by hand)."""
+    now = time.monotonic()
+    with boxes_lock:
+        known = list(boxes.values())  # before asking Docker: a container started meanwhile isn't mistaken for dead
+    running = _running()
+    for b in known:
+        if now - b.used > IDLE_S or b.name not in running:
+            _stop(b)
+
+
 def _reaper():
     while True:
         time.sleep(30)
-        now = time.monotonic()
-        with boxes_lock:
-            idle = [b for b in boxes.values() if now - b.used > IDLE_S]
-        for b in idle:
-            _stop(b)
+        try:
+            _reap()
+        except Exception as e:  # Docker hiccup: try again next round rather than never reaping again
+            print(f'workspace reaper: {e}', flush=True)
 
 
 def start():
