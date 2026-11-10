@@ -43,7 +43,8 @@ func testApp(t *testing.T, conf *oauth2.Config, allowed string) (*app, http.Hand
 		io.WriteString(w, "worker:"+r.URL.Path+" token="+r.Header.Get("X-Internal-Token")+" origin="+r.Header.Get("Origin")+" user="+r.Header.Get("X-User"))
 	}))
 	t.Cleanup(worker.Close)
-	a := &app{auth: newAuth(conf, allowed, "admin@example.com", filepath.Join(dir, "data")), web: filepath.Join(dir, "web"), courses: filepath.Join(dir, "courses"), media: filepath.Join(dir, "media"),
+	a := &app{auth: newAuth(conf, allowed, "admin@example.com", filepath.Join(dir, "data")),
+		web: filepath.Join(dir, "web"), courses: filepath.Join(dir, "courses"), media: filepath.Join(dir, "media"),
 		hosts: map[string]bool{"localhost:8000": true}, origins: map[string]bool{}}
 	a.appAddr, a.internalToken = strings.TrimPrefix(worker.URL, "http://"), "internal"
 	a.api = apiProxy(a.appAddr, a.auth)
@@ -98,6 +99,10 @@ func TestRoutesSignInOff(t *testing.T) {
 	expect(t, c.do("GET", "/admin"), 404, "") // no sign-in, no admins
 	if body := c.do("GET", "/").Body.String(); !strings.Contains(body, `content="http://localhost:8000/og.png"`) {
 		t.Fatalf("link preview URL not filled in: %s", body)
+	}
+	// Pages may only load from this app, and open WebSockets (terminals) back to it.
+	if csp := c.do("GET", "/").Header().Get("Content-Security-Policy"); !strings.Contains(csp, "default-src 'self'") || !strings.Contains(csp, "ws://localhost:8000") {
+		t.Fatalf("content security policy: %q", csp)
 	}
 	expect(t, c.do("GET", "/og.png"), 200, "")
 	expect(t, c.do("GET", "/learn/no-such-course"), 404, "")
