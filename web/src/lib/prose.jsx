@@ -2,12 +2,12 @@
 import {marked} from 'marked';
 import {createRoot} from 'react-dom/client';
 import {CALLOUTS, FENCE_MODES} from '../constants.js';
-import {CopyButton} from '../components/ui.jsx';
+import {CopyButton, iconHref} from '../components/ui.jsx';
 import CodeMirror from './codemirror.js';
 import {t} from './i18n.js';
 
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;'}[c]));
-const iconHtml = name => `<svg class="icon" aria-hidden="true"><use href="/vendor/icons.svg?v=5#${name}"/></svg>`;
+const iconHtml = name => `<svg class="icon" aria-hidden="true"><use href="${iconHref(name)}"/></svg>`;
 
 // Lesson markdown -> HTML. Videos are written as images (![title](clip.mp4){captions="captions.vtt"}): make them
 // video players. The {captions=...} attribute is dropped: those caption files were never published.
@@ -25,7 +25,7 @@ export function enhanceProse(root) {
   root.querySelectorAll('pre > code').forEach(code => {
     const pre = code.parentElement, text = code.textContent;
     const mode = FENCE_MODES[code.className.match(/language-(\S+)/)?.[1].toLowerCase()];
-    pre.classList.add('cm-s-material-darker');
+    pre.classList.add('cm-s-nagare');
     if (mode) CodeMirror.runMode(text, mode, code);
     const wrap = document.createElement('div');
     wrap.className = 'code-block';

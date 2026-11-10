@@ -1,4 +1,4 @@
-/* The signed-in person: avatar, the menu behind it, and the top bar every page shares. */
+/* The signed-in person: avatar, the menu behind it, and the frame every page outside a lesson shares. */
 import {useEffect, useRef, useState} from 'react';
 import {LANGS, contentPct, lang, setLang, t} from '../lib/i18n.js';
 import {level, levelStart, stats} from '../lib/xp.js';
@@ -85,4 +85,13 @@ function AccountMenu() {
   );
 }
 
-export const Topbar = () => <div className="topbar"><Brand/><div className="topbar-end"><LangMenu/><AccountMenu/></div></div>;
+// A page: the top bar, then its content. title also names the browser tab.
+export function Page({title, className = '', children}) {
+  useEffect(() => { if (title) document.title = `${title} · ${t('nagare')}`; }, [title]);
+  return (
+    <main className={'page ' + className}>
+      <div className="topbar"><Brand/><div className="topbar-end"><LangMenu/><AccountMenu/></div></div>
+      {children}
+    </main>
+  );
+}

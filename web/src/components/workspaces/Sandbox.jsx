@@ -71,7 +71,7 @@ export default function Sandbox({lesson: l}) {
         {!result?.results && <ul className="expects">{(l.steps[0]?.expects || []).map((c, i) => <li key={i}>{c}</li>)}</ul>}
         <div aria-live="polite" ref={resultEl}>{result && <CheckResults result={result}/>}</div>
         <div className="actions">
-          <button className="btn primary" disabled={checking} onClick={submit} title={t('Submit ({mod}+Enter)', {mod:MOD})}><Icon name="send"/>{t('Submit')}</button>
+          <button className={passed ? 'btn' : 'btn primary'} disabled={checking} onClick={submit} title={t('Submit ({mod}+Enter)', {mod:MOD})}><Icon name="send"/>{t('Submit')}</button>
           <DoneButton lesson={l}/>
           {passed ? <NextStep show/> : <span className="kbd-hint">{t('{mod} {enter} submit', {mod:<kbd>{MOD}</kbd>, enter:<kbd>Enter</kbd>})}</span>}
         </div>

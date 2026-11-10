@@ -1,5 +1,6 @@
 """XP, levels, streaks and achievements. Kept in each user's progress under 'app:stats', which only the server writes."""
 import datetime, json, os, zoneinfo
+from typing import Callable, NamedTuple
 
 COURSES = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'courses')
 CATALOG = json.load(open(os.path.join(COURSES, 'index.json')))['courses']
@@ -20,8 +21,13 @@ def level(xp):
     return n
 
 
+def done_lessons(prog, lessons):
+    """{uuid: saved progress} for every lesson the user finished."""
+    return {u: p for u, p in prog.items() if u in lessons and isinstance(p, dict) and p.get('done')}
+
+
 def tally(prog, lessons):
-    done = {u for u, p in prog.items() if isinstance(p, dict) and p.get('done') and u in lessons}
+    done = done_lessons(prog, lessons)
     t = {'lessons': len(done), 'terminal': 0, 'quiz': 0, 'tests': 0, 'code': 0, 'sql': 0}
     for u in done:
         g = GROUPS.get(lessons[u].get('type'))
@@ -34,8 +40,17 @@ def tally(prog, lessons):
     return t
 
 
-# (id, name, description, tier, icon, value(tally, stats), goal)
-ACHIEVEMENTS = [
+class Achievement(NamedTuple):
+    id: str
+    name: str
+    description: str
+    tier: str
+    icon: str
+    value: Callable  # (tally, stats) -> how far along
+    goal: int
+
+
+ACHIEVEMENTS = [Achievement(*a) for a in [
     ('first-light', 'First Light', 'Complete your first lesson', 'bronze', 'play', lambda t, s: t['lessons'], 1),
     ('getting-warm', 'Getting Warm', 'Complete 10 lessons', 'bronze', 'check', lambda t, s: t['lessons'], 10),
     ('in-the-flow', 'In the Flow', 'Complete 50 lessons', 'silver', 'waves', lambda t, s: t['lessons'], 50),
@@ -57,7 +72,7 @@ ACHIEVEMENTS = [
     ('make-it-yours', 'Make It Yours', 'Fill in your profile', 'bronze', 'pen-line', lambda t, s: s['flags'].get('profile', 0), 1),
     ('rising', 'Rising', 'Reach level 5', 'silver', 'star', lambda t, s: level(s['xp']), 5),
     ('wellspring', 'Wellspring', 'Reach level 10', 'gold', 'star', lambda t, s: level(s['xp']), 10),
-]
+]]
 
 
 def now_in(tz):
@@ -80,11 +95,11 @@ def _add_xp(s, n, why, today, events):
 def _unlock(prog, s, lessons, now, events):
     t = tally(prog, lessons)
     for _ in range(3):  # an unlock's XP can unlock a level achievement
-        new = [a for a in ACHIEVEMENTS if a[0] not in s['achievements'] and a[5](t, s) >= a[6]]
+        new = [a for a in ACHIEVEMENTS if a.id not in s['achievements'] and a.value(t, s) >= a.goal]
         for a in new:
-            s['achievements'][a[0]] = now.isoformat(timespec='seconds')
-            events.append({'kind': 'achievement', 'id': a[0], 'name': a[1], 'tier': a[3], 'icon': a[4]})
-            _add_xp(s, TIER_XP[a[3]], {'key': 'achievement', 'name': a[1]}, now.date().isoformat(), events)
+            s['achievements'][a.id] = now.isoformat(timespec='seconds')
+            events.append({'kind': 'achievement', 'id': a.id, 'name': a.name, 'tier': a.tier, 'icon': a.icon})
+            _add_xp(s, TIER_XP[a.tier], {'key': 'achievement', 'name': a.name}, now.date().isoformat(), events)
         if not new:
             break
 
@@ -98,10 +113,9 @@ def _stats(prog, lessons, now):
     if 'app:stats' not in prog:
         today = now.date().isoformat()
         s = {'joined': today, 'xp': 0, 'days': {}, 'streak': 0, 'best': 0, 'last': None, 'achievements': {}, 'flags': {}}
-        for u, p in prog.items():
-            if u in lessons and isinstance(p, dict) and p.get('done'):
-                s['xp'] += lesson_xp(lessons[u])
-                p['doneAt'] = today
+        for u, p in done_lessons(prog, lessons).items():
+            s['xp'] += lesson_xp(lessons[u])
+            p['doneAt'] = today
         s['xp'] += COURSE_XP * tally(prog, lessons)['courses']
         prog['app:stats'] = s
     return prog['app:stats']
@@ -158,8 +172,8 @@ def saved(prog, lessons, key, data):
 def achievements(prog, lessons):
     s = _stats(prog, lessons, now_in(tz_of(prog)))
     t = tally(prog, lessons)
-    return [{'id': a[0], 'name': a[1], 'description': a[2], 'tier': a[3], 'icon': a[4], 'goal': a[6],
-             'value': min(a[5](t, s), a[6]), 'unlocked': s['achievements'].get(a[0])} for a in ACHIEVEMENTS]
+    return [{'id': a.id, 'name': a.name, 'description': a.description, 'tier': a.tier, 'icon': a.icon, 'goal': a.goal,
+             'value': min(a.value(t, s), a.goal), 'unlocked': s['achievements'].get(a.id)} for a in ACHIEVEMENTS]
 
 
 if __name__ == '__main__':

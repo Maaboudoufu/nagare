@@ -66,8 +66,7 @@ func (a *app) routes() http.Handler {
 	mux.HandleFunc("GET /learn/{course}", a.coursePage)
 	mux.HandleFunc("GET /learn/{course}/{lesson}", a.coursePage)
 	mux.HandleFunc("GET /signin", a.signinPage)
-	mux.HandleFunc("GET /assets/", a.static(a.web, "public, max-age=31536000, immutable")) // hashed file names
-	mux.HandleFunc("GET /vendor/", a.static(a.web, "no-cache"))
+	mux.HandleFunc("GET /assets/", a.static(a.web, "public, max-age=31536000, immutable")) // hashed file names: scripts, styles, fonts, icons
 	mux.HandleFunc("GET /favicon.svg", a.static(a.web, "public, max-age=86400"))
 	mux.HandleFunc("GET /og.png", a.static(a.web, "public, max-age=86400")) // link preview image, public like the favicon
 	mux.HandleFunc("GET /courses/", a.requireUser(a.courseData))
@@ -79,6 +78,12 @@ func (a *app) routes() http.Handler {
 	mux.Handle("/api/", a.requireUser(a.api.ServeHTTP))
 	return a.guard(mux)
 }
+
+// contentPolicy keeps the app self-contained: pages load scripts, styles, fonts and lesson media from here only
+// (Google profile photos are the one exception), and can't be framed. Styles allow inline: the terminal injects its own.
+const contentPolicy = "default-src 'self'; img-src 'self' data: https://*.googleusercontent.com; " +
+	"style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; " +
+	"connect-src 'self' " // + the terminals' WebSocket, added per request
 
 // guard: only this app's own pages, on localhost, may use it.
 func (a *app) guard(next http.Handler) http.Handler {
@@ -95,6 +100,7 @@ func (a *app) guard(next http.Handler) http.Handler {
 		h.Set("X-Content-Type-Options", "nosniff")
 		h.Set("X-Frame-Options", "DENY")
 		h.Set("Referrer-Policy", "same-origin")
+		h.Set("Content-Security-Policy", contentPolicy+"ws://"+r.Host+" wss://"+r.Host) // Host is one of ours (checked above)
 		next.ServeHTTP(w, r)
 	})
 }
@@ -258,9 +264,14 @@ func main() {
 		}
 	}
 	a := &app{
-		auth: newAuth(conf, os.Getenv("ALLOWED_EMAILS"), os.Getenv("ADMIN_EMAILS"), env("DATA_DIR", "data")), appAddr: appAddr, internalToken: randomToken(), web: env("WEB_DIR", "web/dist"), courses: env("COURSES_DIR", "courses"), media: env("MEDIA_DIR", "media"),
-		hosts:   map[string]bool{"localhost:" + port: true, "127.0.0.1:" + port: true},
-		origins: map[string]bool{"http://localhost:5173": true}, // the Vite dev server (cd web && bun run dev)
+		auth:          newAuth(conf, os.Getenv("ALLOWED_EMAILS"), os.Getenv("ADMIN_EMAILS"), env("DATA_DIR", "data")),
+		web:           env("WEB_DIR", "web/dist"),
+		courses:       env("COURSES_DIR", "courses"),
+		media:         env("MEDIA_DIR", "media"),
+		appAddr:       appAddr,
+		internalToken: randomToken(),
+		hosts:         map[string]bool{"localhost:" + port: true, "127.0.0.1:" + port: true},
+		origins:       map[string]bool{"http://localhost:5173": true}, // the Vite dev server (cd web && bun run dev)
 	}
 	a.api = apiProxy(appAddr, a.auth)
 	if len(a.auth.admins) > 0 && !a.auth.enabled() {

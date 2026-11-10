@@ -102,7 +102,7 @@ export default function StepsWorkspace({lesson: l, courseSlug}) {
       </ol>
       <div className="actions" ref={actionsEl}>
         {cli && <>
-          <button className="btn primary" disabled={running} onClick={runChecks} title={t('Run checks ({mod}+Enter)', {mod:MOD})}>
+          <button className={passed ? 'btn' : 'btn primary'} disabled={running} onClick={runChecks} title={t('Run checks ({mod}+Enter)', {mod:MOD})}>
             <Icon name={running ? 'loader-circle' : 'play'} cls={running ? 'spin' : ''}/>{running ? t('Running…') : t('Run checks')}
           </button>
           <button className="btn" onClick={restartTerminal}><Icon name="rotate-ccw"/>{t('Restart terminal')}</button>

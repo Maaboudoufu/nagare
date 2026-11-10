@@ -37,3 +37,4 @@ jobs:
             done
           done
       - run: python3 server/gamify.py
+      - run: python3 server/terminal.py

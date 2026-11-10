@@ -1,3 +1,6 @@
+import aws from './assets/logos/aws.svg';
+import c from './assets/logos/c.svg';
+import powerbi from './assets/logos/powerbi.svg';
 import {N_} from './lib/i18n.js';
 
 export const MODES = {go:'go', py:'python', sql:'text/x-sqlite', js:'javascript', ts:'text/typescript', c:'text/x-csrc'};
@@ -13,16 +16,25 @@ export const CALLOUTS = {info:['info', N_('Info'), 'info'], note:['info', N_('No
                          warning:['triangle-alert', N_('Warning'), 'warning'], danger:['triangle-alert', N_('Danger'), 'danger'],
                          windows:['terminal', 'Windows', 'os'], linux:['terminal', 'Linux', 'os'], macos:['terminal', 'macOS', 'os'],
                          mobile:['info', N_('Mobile'), 'os'], desktop:['info', N_('Desktop'), 'os']};
-// Course logos: [sprite symbol, tile color, name, from the Lucide sprite, full-color logo file].
-// Simple Icons (one color) for most brands; AWS and Power BI aren't in Simple Icons, so their official logos are files.
+// Course logos, shown on a tile of the brand's color. icon: a symbol in assets/brands.svg (Simple Icons, one color).
+// img: a full-color logo file, for the brands Simple Icons doesn't have. lucide: the icon is from the UI's own set.
 export const BRANDS = {
-  python:['python', '#3776AB', 'Python'], go:['go', '#00ADD8', 'Go'], typescript:['typescript', '#3178C6', 'TypeScript'],
-  javascript:['javascript', '#F7DF1E', 'JavaScript'], c:[null, '#1E2B3C', 'C', false, '/vendor/logos/c.svg'], git:['git', '#F03C2E', 'Git'],
-  shell:['gnubash', '#4EAA25', 'Shell'], sql:['sqlite', '#003B57', 'SQL'], docker:['docker', '#2496ED', 'Docker'],
-  kubernetes:['kubernetes', '#326CE5', 'Kubernetes'], pandas:['pandas', '#150458', 'pandas'],
-  rabbitmq:['rabbitmq', '#FF6600', 'RabbitMQ'], githubactions:['githubactions', '#2088FF', 'GitHub Actions'],
-  aws:[null, '#232F3E', 'AWS', false, '/vendor/logos/aws.svg'], powerbi:[null, '#2B2B30', 'Power BI', false, '/vendor/logos/powerbi.svg'],
-  any:['rocket', '#3A3A40', N_('Project'), true],
+  python:{name:'Python', color:'#3776AB', icon:'python'},
+  go:{name:'Go', color:'#00ADD8', icon:'go'},
+  typescript:{name:'TypeScript', color:'#3178C6', icon:'typescript'},
+  javascript:{name:'JavaScript', color:'#F7DF1E', icon:'javascript'},
+  c:{name:'C', color:'#1E2B3C', img:c},
+  git:{name:'Git', color:'#F03C2E', icon:'git'},
+  shell:{name:'Shell', color:'#4EAA25', icon:'gnubash'},
+  sql:{name:'SQL', color:'#003B57', icon:'sqlite'},
+  docker:{name:'Docker', color:'#2496ED', icon:'docker'},
+  kubernetes:{name:'Kubernetes', color:'#326CE5', icon:'kubernetes'},
+  pandas:{name:'pandas', color:'#150458', icon:'pandas'},
+  rabbitmq:{name:'RabbitMQ', color:'#FF6600', icon:'rabbitmq'},
+  githubactions:{name:'GitHub Actions', color:'#2088FF', icon:'githubactions'},
+  aws:{name:'AWS', color:'#232F3E', img:aws},
+  powerbi:{name:'Power BI', color:'#2B2B30', img:powerbi},
+  any:{name:N_('Project'), color:'#3A3A40', icon:'rocket', lucide:true},
 };
 export const SHORT_NAMES = {'backend-python-golang':N_('Backend (Go)'), 'backend-python-typescript':N_('Backend (TypeScript)'),
                             'devops-python-golang':N_('DevOps'), 'data-analyst-python':N_('Data Analyst')};

@@ -3,12 +3,14 @@
   project  a shell in the user's workspace (CLI lessons: aws, git, go...), in the folder they chose.
   sandbox  the user's Learn Linux sandbox for the lesson.
 Typing counts as activity, so an open terminal someone is using keeps its container alive.
+Self-check: python3 server/terminal.py
 """
-import base64, fcntl, hashlib, json, os, pty, signal, socket, struct, subprocess, termios, threading
+import base64, fcntl, hashlib, io, json, os, pty, signal, socket, struct, subprocess, termios, threading
 
 import workspace
 
 WS_GUID = '258EAFA5-E914-47DA-95CA-C5AB0DC85B11'
+MAX_FRAME = 1 << 20  # bytes; keystrokes and pastes are far smaller
 
 
 # ---- WebSocket framing ----
@@ -37,16 +39,22 @@ def _read_exact(rfile, n):
 
 def _read_frame(rfile):
     """(opcode, payload) of the next client frame, or (None, None) once the connection is gone."""
+    gone = None, None
     head = _read_exact(rfile, 2)
     if not head:
-        return None, None
+        return gone
     n = head[1] & 0x7F
-    if n == 126:
-        n = struct.unpack('>H', _read_exact(rfile, 2))[0]
-    elif n == 127:
-        n = struct.unpack('>Q', _read_exact(rfile, 8))[0]
+    if n >= 126:  # the length follows, in 2 or 8 bytes
+        size = _read_exact(rfile, 2 if n == 126 else 8)
+        if not size:
+            return gone
+        n = int.from_bytes(size, 'big')
+    if n > MAX_FRAME:
+        return gone
     mask = _read_exact(rfile, 4) if head[1] & 0x80 else b'\0\0\0\0'
-    data = _read_exact(rfile, n) or b''
+    data = _read_exact(rfile, n) if n else b''
+    if mask is None or data is None:
+        return gone
     if n:  # unmask in one big-integer XOR instead of a slow per-byte loop
         m = (mask * (n // 4 + 1))[:n]
         data = (int.from_bytes(data, 'big') ^ int.from_bytes(m, 'big')).to_bytes(n, 'big')
@@ -166,3 +174,21 @@ def serve(handler, query, user):
     except (RuntimeError, ValueError, OSError, subprocess.TimeoutExpired) as e:
         return _fail(handler, f'Could not start your workspace: {e}')
     _bridge(handler, argv, kick, on_input=box.touch)
+
+
+if __name__ == '__main__':
+    def client_frame(payload, mask=b'\x01\x02\x03\x04'):
+        n = len(payload)
+        size = bytes([0x80 | n]) if n < 126 else bytes([0x80 | 126]) + n.to_bytes(2, 'big') if n < 65536 else bytes([0x80 | 127]) + n.to_bytes(8, 'big')
+        return bytes([0x81]) + size + mask + bytes(b ^ mask[i % 4] for i, b in enumerate(payload))
+
+    read = lambda raw: _read_frame(io.BytesIO(raw))
+    for payload in (b'0ls\n', b'x' * 300, b'y' * 70000):  # the three length encodings
+        assert read(client_frame(payload)) == (1, payload)
+        assert read(_frame(0x2, payload)) == (2, payload)  # our own frames are unmasked
+    gone = (None, None)
+    assert read(b'') == gone
+    assert read(client_frame(b'abc')[:5]) == gone  # cut off mid-frame
+    assert read(bytes([0x81, 0x80 | 126, 0x01])) == gone  # cut off in the length
+    assert read(bytes([0x81, 0x80 | 127]) + (MAX_FRAME + 1).to_bytes(8, 'big')) == gone  # too big to buffer
+    print('ok: websocket frames')

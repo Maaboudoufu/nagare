@@ -1,12 +1,12 @@
-import {useEffect, useRef, useState} from 'react';
+import {useEffect, useRef} from 'react';
+import {BRANDS} from '../constants.js';
 import {lang, locale, t} from '../lib/i18n.js';
 import {ago} from '../lib/time.js';
 import {dayKey, levelStart, stats} from '../lib/xp.js';
-import {lessonPath, pct, store, useStore} from '../store.js';
+import {lessonPath, pct, store, useFetch, useStore} from '../store.js';
 import {AchievementRow, formatDate} from './Achievements.jsx';
-import {Avatar, Topbar} from './Account.jsx';
-import {BRANDS} from '../constants.js';
-import {Icon, Logo, Meter, Ring} from './ui.jsx';
+import {Avatar, Page} from './Account.jsx';
+import {BrandIcon, Icon, Logo, Meter, Ring} from './ui.jsx';
 
 const WEEKS = 53;
 const shade = xp => !xp ? 0 : xp < 25 ? 1 : xp < 75 ? 2 : xp < 150 ? 3 : 4;
@@ -28,8 +28,8 @@ function Heatmap({days}) {
   }
   const active = Object.values(days).filter(Boolean).length;
   return (
-    <section className="card heat-card" aria-label={t('Activity over the last year')}>
-      <div className="card-head"><h2>{t('Activity')}</h2><span className="meta">{active === 1 ? t('{n} active day this year', {n:active}) : t('{n} active days this year', {n:active})}</span></div>
+    <section className="section" aria-label={t('Activity over the last year')}>
+      <div className="section-head"><h2>{t('Activity')}</h2><span className="meta">{active === 1 ? t('{n} active day this year', {n:active}) : t('{n} active days this year', {n:active})}</span></div>
       <div className="heat-scroll" ref={scroller}>
         <div className="heat">
           <div className="heat-months" aria-hidden="true">
@@ -58,8 +58,8 @@ function Courses({list}) {
     .sort((a, b) => (a.p === 100) - (b.p === 100) || b.p - a.p);
   const finished = rows.filter(r => r.p === 100).length;
   return (
-    <section className="card">
-      <div className="card-head"><h2>{t('Courses')}</h2>
+    <section className="section">
+      <div className="section-head"><h2>{t('Courses')}</h2>
         <span className="meta">{t('{n} started · {done} finished', {n:rows.length, done:finished})}</span></div>
       {rows.length ? (
         <ul className="course-progress">
@@ -84,13 +84,13 @@ function Languages({langs}) {
   const rows = Object.entries(langs).sort((a, b) => b[1] - a[1]), total = rows.reduce((n, [, v]) => n + v, 0);
   if (!rows.length) return null;
   return (
-    <section className="card">
-      <div className="card-head"><h2>{t('Languages')}</h2></div>
+    <section className="section">
+      <div className="section-head"><h2>{t('Languages')}</h2></div>
       <ul className="langs">
         {rows.map(([lang, n]) => (
           <li key={lang}>
             <Logo course={{slug:'', language:lang}} size="sm"/>
-            <span className="lang-name">{BRANDS[lang]?.[2] || lang}</span>
+            <span className="lang-name">{BRANDS[lang]?.name || lang}</span>
             <span className="lang-bar"><span style={{width:`${100 * n / rows[0][1]}%`}}/></span>
             <span className="meta">{t('{n} lessons', {n})} · {pct(n, total)}%</span>
           </li>
@@ -103,10 +103,10 @@ function Languages({langs}) {
 function Recent({items}) {
   if (!items.length) return null;
   return (
-    <section className="card">
-      <div className="card-head"><h2>{t('Recent activity')}</h2></div>
+    <section className="section">
+      <div className="section-head"><h2>{t('Recent activity')}</h2></div>
       <ul className="recent">
-        {items.slice(0, 6).map(r => (
+        {items.map(r => (
           <li key={r.uuid}><a href={lessonPath(r.slug, r.uuid)}>
             <Icon name="circle-check"/>
             <span className="recent-title">{r.title}</span>
@@ -122,26 +122,18 @@ function Recent({items}) {
 // /profile is yours; /u/<id> is another member's, if they share it. Everything comes from the server's public view.
 export default function Profile({id = 'me'}) {
   useStore();
-  const [p, setP] = useState();
-  const xp = stats().xp;
-  useEffect(() => {
-    let live = true;
-    fetch(`/api/profile/${encodeURIComponent(id)}?lang=${lang()}`, {cache:'no-store'}).then(r => r.ok ? r.json() : null).then(d => live && setP(d));
-    return () => { live = false; };
-  }, [id, id === 'me' && xp, lang()]);
+  const p = useFetch(`/api/profile/${encodeURIComponent(id)}?lang=${lang()}`, id === 'me' && stats().xp);  // yours: again when you earn XP
   const name = p && (p.name || (p.self ? t('You') : t('Learner')));
-  useEffect(() => { if (name) document.title = `${name} · ${t('nagare')}`; }, [name, lang()]);
 
-  if (p === undefined) return <main id="home" className="page"><Topbar/><p className="empty">{t('Loading…')}</p></main>;
-  if (p === null) return <main id="home" className="page"><Topbar/><h1>{t('Profile not available')}</h1>
-    <p className="path-desc">{t('This member hid their profile, or it doesn\'t exist.')}</p></main>;
+  if (p === undefined) return <Page><p className="empty">{t('Loading…')}</p></Page>;
+  if (p === null) return <Page title={t('Profile not available')}><h1>{t('Profile not available')}</h1>
+    <p className="lede">{t('This member hid their profile, or it doesn\'t exist.')}</p></Page>;
 
   const from = levelStart(p.level), to = levelStart(p.level + 1);
   const unlocked = p.achievements.filter(a => a.unlocked).sort((a, b) => b.unlocked.localeCompare(a.unlocked));
   return (
-    <main id="home" className="page">
-      <Topbar/>
-      <section className="card hero">
+    <Page title={name} className="profile">
+      <section className="hero">
         {p.self ? <Avatar size={96}/> : <Avatar size={96} picture={p.picture} name={name}/>}
         <div className="hero-text">
           <h1>{name}</h1>
@@ -149,7 +141,7 @@ export default function Profile({id = 'me'}) {
             {p.handle && <li><Icon name="at-sign"/>{p.handle}</li>}
             {p.location && <li><Icon name="map-pin"/>{p.location}</li>}
             {p.website && <li><Icon name="link"/><a href={safeUrl(p.website)} rel="noopener noreferrer nofollow" target="_blank">{p.website.replace(/^https?:\/\//i, '')}</a></li>}
-            {p.github && <li><svg className="icon gh" aria-hidden="true"><use href="/vendor/brands.svg?v=5#github"/></svg>
+            {p.github && <li><BrandIcon name="github"/>
               <a href={`https://github.com/${encodeURIComponent(p.github)}`} rel="noopener noreferrer nofollow" target="_blank">{p.github}</a></li>}
           </ul>
           {p.bio && <p className="hero-bio">{p.bio}</p>}
@@ -159,15 +151,15 @@ export default function Profile({id = 'me'}) {
           <Ring n={p.xp - from} total={to - from} size={72} label={t('Progress to the next level')}><span className="level-num">{p.level}</span></Ring>
           <div className="level-text">
             <span className="level-title">{t('Level {n}', {n:p.level})}</span>
-            <span className="meta">{t('{n} XP to level {next}', {n:(to - p.xp).toLocaleString(), next:p.level + 1})}</span>
-            <span className="meta">{t('{n} / {total} XP', {n:p.xp.toLocaleString(), total:to.toLocaleString()})}</span>
+            <span className="meta">{t('{n} XP to level {next}', {n:(to - p.xp).toLocaleString(locale()), next:p.level + 1})}</span>
+            <span className="meta">{t('{n} / {total} XP', {n:p.xp.toLocaleString(locale()), total:to.toLocaleString(locale())})}</span>
           </div>
         </div>
       </section>
 
-      <dl className="card stats">
-        <Stat label={t('Lessons done')} value={p.lessons.toLocaleString()}/>
-        <Stat label={t('XP earned')} value={p.xp.toLocaleString()}/>
+      <dl className="stats">
+        <Stat label={t('Lessons done')} value={p.lessons.toLocaleString(locale())}/>
+        <Stat label={t('XP earned')} value={p.xp.toLocaleString(locale())}/>
         <Stat label={t('Streak')} value={p.streak === 1 ? t('{n} day', {n:p.streak}) : t('{n} days', {n:p.streak})} sub={t('Best: {n}', {n:p.best || 0})}/>
         <Stat label={t('Joined')} value={p.joined ? formatDate(p.joined) : '—'}/>
       </dl>
@@ -181,15 +173,15 @@ export default function Profile({id = 'me'}) {
         </div>
         <div className="col">
           <Languages langs={p.languages}/>
-          <section className="card">
-            <div className="card-head"><h2>{t('Achievements')}</h2>
-              {p.self ? <a className="view-all" href="/achievements">{t('View all')}</a>
+          <section className="section">
+            <div className="section-head"><h2>{t('Achievements')}</h2>
+              {p.self ? <a href="/achievements">{t('View all')}</a>
                 : <span className="meta">{t('{n} of {total}', {n:unlocked.length, total:p.achievements.length})}</span>}</div>
             {unlocked.length ? <ul className="ach-list">{unlocked.slice(0, p.self ? 3 : 6).map(a => <AchievementRow key={a.id} a={a}/>)}</ul>
               : <p className="empty">{t('None unlocked… {yet}.', {yet:<em>{t('yet')}</em>})}</p>}
           </section>
         </div>
       </div>
-    </main>
+    </Page>
   );
 }

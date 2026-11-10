@@ -1,12 +1,27 @@
-/* Catalog + progress, shared by every component. Saved to the server's progress.json. */
+/* Catalog + progress, shared by every component. Saved on the server (data/progress/<user>.json). */
 import {useEffect, useState, useSyncExternalStore} from 'react';
 import {fx} from './lib/fx.js';
 import {isTranslated, lang, localizeCourse, t} from './lib/i18n.js';
 
-export const post = (url, body) => fetch(url, {method:'POST', body:JSON.stringify(body)}).then(r => {
-  if (r.status === 401) location.assign('/signin');  // session ended
-  return r.json();
-});
+async function request(url, init) {
+  const r = await fetch(url, init);
+  if (r.status !== 401) return r;
+  location.assign('/signin');  // session ended: leaving, so nothing waits on this answer
+  return new Promise(() => {});
+}
+// get: the JSON, or null if the server said no. post: the JSON answer, whatever the status. Both reject if it's unreachable.
+export const get = url => request(url).then(r => r.ok ? r.json() : null);
+export const post = (url, body) => request(url, {method:'POST', body:JSON.stringify(body)}).then(r => r.json());
+// Data for a page: undefined while loading, null if it can't be had. Fetched again when url or refresh changes.
+export function useFetch(url, refresh) {
+  const [data, setData] = useState();
+  useEffect(() => {
+    let live = true;
+    get(url).catch(() => null).then(d => live && setData(d));
+    return () => { live = false; };
+  }, [url, refresh]);
+  return data;
+}
 export const signOut = () => fetch('/auth/logout', {method:'POST'}).then(() => location.assign('/signin'));
 export const pct = (n, total) => total ? Math.round(100 * n / total) : 0;
 
@@ -91,10 +106,11 @@ export function useCourse(slug) {
     if (!slug) return;
     if (courseCache[key]) return setCourse(courseCache[key]);
     let live = true;
-    english[slug] ??= fetch(`/courses/${slug}.json`).then(r => r.json());
-    const tr = l === 'en' ? null : fetch(`/courses/${l}/${slug}.json`).then(r => r.ok ? r.json() : null, () => null);
-    Promise.all([english[slug], tr]).then(([c, t]) => {
-      courseCache[key] = t ? localizeCourse(c, t, l) : c;
+    english[slug] ??= get(`/courses/${slug}.json`).catch(() => null);
+    const translation = l === 'en' ? null : get(`/courses/${l}/${slug}.json`).catch(() => null);
+    Promise.all([english[slug], translation]).then(([c, tr]) => {
+      if (!c) return delete english[slug];  // didn't load: ask again next time
+      courseCache[key] = tr ? localizeCourse(c, tr, l) : c;
       if (live) setCourse(courseCache[key]);
     });
     return () => { live = false; };

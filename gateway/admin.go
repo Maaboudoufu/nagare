@@ -141,13 +141,15 @@ func (a *auth) signOutEverywhere(email string) {
 	}
 }
 
+var workerClient = &http.Client{Timeout: 10 * time.Second} // the worker is local: no answer means it's stuck
+
 // kick stops a user's workspace and sandboxes, which also closes their terminals. The worker only accepts this
 // with the token we gave it at startup, on a path the /api/ proxy never forwards.
 func (a *app) kick(ids ...string) {
 	for _, id := range ids {
 		req, _ := http.NewRequest("POST", "http://"+a.appAddr+"/internal/kick", bytes.NewReader([]byte(`{"user":"`+id+`"}`)))
 		req.Header.Set("X-Internal-Token", a.internalToken)
-		if resp, err := http.DefaultClient.Do(req); err != nil {
+		if resp, err := workerClient.Do(req); err != nil {
 			log.Printf("admin: kick %s: %v", id, err)
 		} else {
 			resp.Body.Close()

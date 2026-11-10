@@ -1,8 +1,8 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import {ACCENTS, applySettings, profile, save, settings, store, toast, useStore} from '../store.js';
 import {sound} from '../lib/fx.js';
 import {LANGS, N_, contentPct, lang, setLang, t} from '../lib/i18n.js';
-import {Avatar, Topbar} from './Account.jsx';
+import {Avatar, Page} from './Account.jsx';
 import {Icon} from './ui.jsx';
 
 const FIELDS = [
@@ -17,9 +17,9 @@ const SOUNDS = [['pass', N_('Pass')], ['fail', N_('Miss')], ['level', N_('Level 
 const ZONES = Intl.supportedValuesOf?.('timeZone') || [];
 
 const Section = ({title, desc, children}) => (
-  <section className="card settings-section">
-    <div className="settings-head"><h2>{title}</h2>{desc && <p className="meta">{desc}</p>}</div>
-    <div className="settings-body">{children}</div>
+  <section className="section setting">
+    <div className="setting-head"><h2>{title}</h2>{desc && <p className="meta">{desc}</p>}</div>
+    <div className="setting-body">{children}</div>
   </section>
 );
 
@@ -52,7 +52,6 @@ function ProfileForm() {
 
 export default function Settings() {
   useStore();
-  useEffect(() => { document.title = `${t('Settings')} · ${t('nagare')}`; }, [lang()]);
   const s = settings();
   const set = data => { save('app:settings', data); applySettings(); };
   const download = () => {
@@ -62,8 +61,7 @@ export default function Settings() {
   };
 
   return (
-    <main id="home" className="page settings">
-      <Topbar/>
+    <Page title={t('Settings')} className="narrow">
       <h1>{t('Settings')}</h1>
 
       <Section title={t('Profile')} desc={t('What shows on your profile page. Fill in three fields for an achievement.')}>
@@ -141,6 +139,6 @@ export default function Settings() {
       <Section title={t('Your data')} desc={t('Everything saved for you: progress, code, profile, settings and XP.')}>
         <button className="btn" onClick={download}><Icon name="download"/>{t('Download as JSON')}</button>
       </Section>
-    </main>
+    </Page>
   );
 }
