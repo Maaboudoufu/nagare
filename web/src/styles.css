@@ -407,7 +407,12 @@ dialog h2 { font:600 1.0625rem var(--sans); letter-spacing:-.01em; }
 #nav { display:flex; flex-direction:column; background:var(--surface); border-right:1px solid var(--line); }
 #lesson { border-right:1px solid var(--line); outline:none; }
 #work { display:flex; flex-direction:column; outline:none; }
-#lesson.pane-active, #work.pane-active { outline:2px solid var(--accent); outline-offset:-2px; border-radius:0; }  /* Ctrl+H / Ctrl+L in Vim mode */
+/* Ctrl+H / Ctrl+L in Vim mode: a frame around the pane. In the lesson it starts below the sticky 56px bar (which is
+   translucent, so a frame behind it would show through): a sticky overlay that takes no room in the flow. */
+#work { transition:box-shadow .18s ease-out; }
+#work.pane-active { box-shadow:inset 0 0 0 2px var(--accent); }
+#lesson.pane-active::before { content:''; display:block; position:sticky; top:56px; z-index:1; height:calc(100dvh - 56px);
+                              margin-bottom:calc(56px - 100dvh); border:2px solid var(--accent); box-sizing:border-box; pointer-events:none; }
 .scrim { position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:19; }
 .menu-btn { display:none; }
 
