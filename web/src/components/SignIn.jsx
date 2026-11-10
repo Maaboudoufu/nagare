@@ -27,15 +27,13 @@ export default function SignIn() {
   const code = new URLSearchParams(location.search).get('auth_error');
   const error = code && (ERRORS[code] ? t(ERRORS[code]) : t('Sign-in failed. Please try again.'));
   return (
-    <main className="signin">
+    <main className="center">
       <LangMenu/>
-      <div className="signin-card">
-        <BrandMark className="signin-mark"/>
-        <h1>{t('Sign in to {app}', {app:t('nagare')})}</h1>
-        <p className="meta">{t('Continue with your Google account to pick up where you left off.')}</p>
-        {error && <p className="signin-err" role="alert"><Icon name="circle-x"/>{error}</p>}
-        <a className="btn google" href="/auth/login"><GoogleG/>{t('Continue with Google')}</a>
-      </div>
+      <BrandMark className="center-mark"/>
+      <h1>{t('Sign in to {app}', {app:t('nagare')})}</h1>
+      <p className="meta">{t('Continue with your Google account to pick up where you left off.')}</p>
+      {error && <p className="signin-err" role="alert"><Icon name="circle-x"/>{error}</p>}
+      <a className="btn google" href="/auth/login"><GoogleG/>{t('Continue with Google')}</a>
     </main>
   );
 }

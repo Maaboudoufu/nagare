@@ -38,7 +38,7 @@ export default function Sidebar({course, cur, flat}) {
                   const [ic, name] = TYPES[l.type] || ['book-open', N_('Lesson')], ok = isDone(l.uuid);
                   return (
                     <li key={l.uuid}><a href={lessonPath(course.slug, l.uuid)} className={ok ? 'done' : ''} aria-current={l === cur ? 'page' : undefined}>
-                      <Icon name={ok ? 'circle-check' : 'circle'} cls="status"/>{ok && <span className="sr">{t('Completed:')} </span>}
+                      <span className="dot" aria-hidden="true"/>{ok && <span className="sr">{t('Completed:')} </span>}
                       <span className="l-title">{l.title}</span>
                       <span className="l-type" title={t(name)}><Icon name={ic}/><span className="sr">, {t(name)}</span></span>
                     </a></li>

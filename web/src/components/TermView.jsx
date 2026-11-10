@@ -10,8 +10,8 @@ const loadXterm = () => xtermModules ??= Promise.all([
 ]);
 
 // Same muted palette as the code editor (styles.css).
-const THEME = {background:'#0F0F11', foreground:'#D4D4D8', cursor:'#ECECEE', cursorAccent:'#0F0F11', selectionBackground:'#2E3A52',
-               black:'#26262B', brightBlack:'#74747E', red:'#E39B9B', brightRed:'#F0B0AA', green:'#8FBF8A', brightGreen:'#A9C99A',
+const THEME = {background:'#0B0D11', foreground:'#D4D7DC', cursor:'#E9EBEE', cursorAccent:'#0B0D11', selectionBackground:'#2E3A52',
+               black:'#262C36', brightBlack:'#737C89', red:'#E39B9B', brightRed:'#F0B0AA', green:'#8FBF8A', brightGreen:'#A9C99A',
                yellow:'#D9B27C', brightYellow:'#E6C590', blue:'#8FAEE0', brightBlue:'#A9C2EC', magenta:'#C3A9E0', brightMagenta:'#D3BDEB',
                cyan:'#8CC2C2', brightCyan:'#A6D3D3', white:'#D4D4D8', brightWhite:'#ECECEE'};
 

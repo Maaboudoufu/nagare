@@ -11,7 +11,7 @@ export default function CustomPicker({onClose}) {
   const set = custom => save('app:path', {id:'custom', custom});
   const toggle = slug => set(store.catalog.courses.map(c => c.slug).filter(s => s === slug ? !picked.has(s) : picked.has(s)));
   return (
-    <dialog id="picker" ref={dlg} aria-label={t('Custom path courses')} onClose={onClose}>
+    <dialog className="picker" ref={dlg} aria-label={t('Custom path courses')} onClose={onClose}>
       <form method="dialog">
         <header className="picker-head"><h2>{t('Custom path')}</h2><p className="meta">{t('Pick the courses to show. They stay in catalog order.')}</p></header>
         <ul className="picker-list">

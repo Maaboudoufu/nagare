@@ -345,5 +345,8 @@
  "{pct}% of lessons translated": "レッスンの {pct}% を翻訳済み",
  "{reason} + bonuses": "{reason} ＋ボーナス",
  "{tier} · {xp} XP": "{tier} · {xp} XP",
- "~ (your home folder)": "~（ホームフォルダ）"
+ "~ (your home folder)": "~（ホームフォルダ）",
+ "Can't reach the server": "サーバーに接続できません",
+ "Check that it's running and that you're online, then try again.": "サーバーが起動していること、ネットワークに接続していることを確認して、もう一度お試しください。",
+ "Try again": "もう一度試す"
 }

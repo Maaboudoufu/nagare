@@ -20,7 +20,7 @@ export default function Resume({list}) {
   const tg = target(list);
   const full = useCourse(tg?.course.slug);  // chapter and lesson titles; also warms the cache for the click
   const href = tg && lessonPath(tg.course.slug, tg.uuid);
-  if (!tg) return <div className="resume-gap"></div>;
+  if (!tg) return null;
 
   const ci = full?.chapters.findIndex(ch => ch.lessons.some(l => l.uuid === tg.uuid)) ?? -1;
   const ch = full?.chapters[ci], lesson = ch?.lessons.find(l => l.uuid === tg.uuid);
@@ -30,21 +30,17 @@ export default function Resume({list}) {
 
   return (
     <a className="resume" href={href}>
-      <Logo course={tg.course}/>
-      <span className="resume-text">
-        <span className="resume-label">{label}{tg.at && <span className="meta"> · {ago(tg.at)}</span>}</span>
-        <span className="resume-title">{title || ' '}</span>
-        <span className="meta resume-where">
-          {tg.course.title}{ch && <> · {t('Chapter {n} · {title}', {n:ci + 1, title:ch.title})}</>}
-        </span>
-        <span className="resume-progress">
-          <Meter n={done} total={total} label={t('Course progress')}/>
-          <span className="meta">{t('{n} of {total} lessons done', {n:done, total})} · {pct(done, total)}%</span>
-        </span>
+      <span className="resume-label">{label}{tg.at && <span className="meta">{ago(tg.at)}</span>}</span>
+      <span className="resume-title">{title || '\u00a0'}</span>
+      <span className="resume-where">
+        <Logo course={tg.course} size="sm"/>
+        <span className="meta">{tg.course.title}{ch && <><br/>{t('Chapter {n} · {title}', {n:ci + 1, title:ch.title})}</>}</span>
       </span>
-      <span className="resume-go">
-        <span className="btn primary">{tg.kind === 'start' ? t('Start') : t('Resume')}<Icon name="chevron-right"/></span>
+      <span className="resume-progress">
+        <Meter n={done} total={total} label={t('Course progress')}/>
+        <span className="meta">{t('{n} of {total} lessons done', {n:done, total})} · {pct(done, total)}%</span>
       </span>
+      <span className="btn primary">{tg.kind === 'start' ? t('Start') : t('Resume')}<Icon name="chevron-right"/></span>
     </a>
   );
 }

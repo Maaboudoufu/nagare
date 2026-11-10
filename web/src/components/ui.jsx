@@ -18,9 +18,9 @@ export function BrandMark({className = 'brand-mark'}) {
     <svg className={className} viewBox="0 0 34 24" aria-hidden="true">
       <defs>
         <linearGradient id={id} gradientUnits="userSpaceOnUse" x1="3" y1="0" x2="31" y2="0">
-          <stop offset="0" stopColor="#74747E" stopOpacity=".55"/>
-          <stop offset=".55" stopColor="#A9C2EC"/>
-          <stop offset="1" stopColor="#7AA7FF"/>
+          <stop offset="0" stopColor="var(--faint)" stopOpacity=".55"/>
+          <stop offset=".55" stopColor="color-mix(in srgb, var(--accent) 60%, #fff)"/>
+          <stop offset="1" stopColor="var(--accent)"/>
         </linearGradient>
       </defs>
       <g fill="none" stroke={`url(#${id})`} strokeWidth="2" strokeLinecap="round">
@@ -34,7 +34,7 @@ export const Brand = () => <a className="brand" href="/" aria-label={t('nagare, 
 
 export const iconHref = name => `${icons}#${name}`;
 export const Icon = ({name, cls = ''}) => <svg className={'icon ' + cls} aria-hidden="true"><use href={iconHref(name)}/></svg>;
-export const BrandIcon = ({name, cls = 'brand'}) => <svg className={cls} aria-hidden="true"><use href={`${brands}#${name}`}/></svg>;
+export const BrandIcon = ({name}) => <svg className="brand-icon" aria-hidden="true"><use href={`${brands}#${name}`}/></svg>;
 
 export const Meter = ({n, total, label, hidden}) => (
   <div className="meter" role={hidden ? undefined : 'progressbar'} aria-hidden={hidden ? 'true' : undefined} aria-label={label}
@@ -62,7 +62,7 @@ export function Logo({course, size = 'md'}) {
   const n = parseInt(color.slice(1), 16), lum = (0.299 * (n >> 16) + 0.587 * (n >> 8 & 255) + 0.114 * (n & 255)) / 255;
   return (
     <span className={`logo logo-${size}`} style={{background:color, color:lum > 0.6 ? '#131315' : '#FFFFFF'}} title={t(name)}>
-      {img ? <img className="brand-img" src={img} alt=""/> : lucide ? <Icon name={icon}/> : <BrandIcon name={icon}/>}
+      {img ? <img src={img} alt=""/> : lucide ? <Icon name={icon}/> : <BrandIcon name={icon}/>}
       <span className="sr">{t(name)}</span>
     </span>
   );

@@ -25,7 +25,7 @@ export function enhanceProse(root) {
   root.querySelectorAll('pre > code').forEach(code => {
     const pre = code.parentElement, text = code.textContent;
     const mode = FENCE_MODES[code.className.match(/language-(\S+)/)?.[1].toLowerCase()];
-    pre.classList.add('cm-s-material-darker');
+    pre.classList.add('cm-s-nagare');
     if (mode) CodeMirror.runMode(text, mode, code);
     const wrap = document.createElement('div');
     wrap.className = 'code-block';
