@@ -32,7 +32,7 @@ export default function Leaderboard() {
     <main id="home" className="page leaderboard">
       <Topbar/>
       <h1>{t('Leaderboard')}</h1>
-      <p className="path-desc">Ranked by XP{t(PERIODS.find(p => p[0] === period)[2])}</p>
+      <p className="path-desc">{t(PERIODS.find(p => p[0] === period)[2])}</p>
       <div className="path-tabs" role="group" aria-label={t('Period')}>
         {PERIODS.map(([id, label]) => <button key={id} className="path-tab" aria-pressed={id === period} onClick={() => setPeriod(id)}>{t(label)}</button>)}
       </div>
