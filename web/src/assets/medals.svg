@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+<!-- nagare's own achievement glyphs, one per achievement id (server/gamify.py). 24px grid, 2px round strokes;
+     the stroke styles come from .medal-glyph in styles.css. Filled dots say so themselves. -->
+<symbol id="first-light" viewBox="0 0 24 24"><path d="M3 16h18" /> <path d="M7 16a5 5 0 0 1 10 0" /> <path d="M12 4v3" /> <path d="m4.9 8.9 2.1 2.1" /> <path d="m19.1 8.9-2.1 2.1" /> <path d="M8 20h8" /></symbol>
+<symbol id="getting-warm" viewBox="0 0 24 24"><path d="M12 3c3.2 3.8 6 6.8 6 10.2a6 6 0 0 1-12 0C6 9.8 8.8 6.8 12 3z" /> <path d="M9.5 14a2.5 2.5 0 0 0 2.5 2.5" /></symbol>
+<symbol id="in-the-flow" viewBox="0 0 24 24"><path d="M3 7c2-2 4-2 6 0s4 2 6 0 4-2 6 0" /> <path d="M3 12c2-2 4-2 6 0s4 2 6 0 4-2 6 0" /> <path d="M3 17c2-2 4-2 6 0s4 2 6 0 4-2 6 0" /></symbol>
+<symbol id="riverbed" viewBox="0 0 24 24"><path d="m2 16 6-10 4 6 3-4 7 8" /> <path d="M4 20.5c2.7-1.5 5.3 1.5 8 0s5.3-1.5 8 0" /></symbol>
+<symbol id="ripple" viewBox="0 0 24 24"><path d="M12 3v4" /> <circle cx="12" cy="14" r="1" fill="currentColor" stroke="none" /> <ellipse cx="12" cy="14" rx="4.5" ry="2" /> <ellipse cx="12" cy="14" rx="9.5" ry="4.5" /></symbol>
+<symbol id="steady-current" viewBox="0 0 24 24"><path d="M3 7h9" /> <path d="M3 12h18" /> <path d="m17 8 4 4-4 4" /> <path d="M3 17h7" /></symbol>
+<symbol id="tidal-force" viewBox="0 0 24 24"><path d="M2 17c4 0 4.5-3 5.5-6C8.7 7.4 11.5 5 15 5c2.8 0 5 1.8 5 4-1.3-1.2-3.6-1.2-4.8.2-1.4 1.7-.7 4.3 1.3 5.3 1.6.8 3.5.5 5.5.5" /> <path d="M2 21c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0" /></symbol>
+<symbol id="headwaters" viewBox="0 0 24 24"><path d="m3 20 9-15 9 15" /> <path d="M12 11c-1.5 1.7 1.5 3.3 0 5s-1.5 2.3-1.5 4" /></symbol>
+<symbol id="confluence" viewBox="0 0 24 24"><path d="M5 3c0 6 7 6.5 7 12.5V21" /> <path d="M19 3c0 6-7 6.5-7 12.5" /> <path d="M12 3v7" /></symbol>
+<symbol id="builder" viewBox="0 0 24 24"><rect x="3" y="13" width="8" height="6" rx="1" /> <rect x="13" y="13" width="8" height="6" rx="1" /> <rect x="8" y="5" width="8" height="6" rx="1" /></symbol>
+<symbol id="shell-shocked" viewBox="0 0 24 24"><path d="m4 7 6 5-6 5" /> <path d="M13 17h7" /></symbol>
+<symbol id="sharp-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z" /> <circle cx="12" cy="12" r="3" /></symbol>
+<symbol id="test-pilot" viewBox="0 0 24 24"><path d="M21 3 3 10.5l7 3 3 7L21 3z" /> <path d="m10 13.5 5-5" /></symbol>
+<symbol id="query-crafter" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="3" /> <path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6" /> <path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3" /></symbol>
+<symbol id="polyglot" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /> <ellipse cx="12" cy="12" rx="4" ry="9" /> <path d="M3 12h18" /></symbol>
+<symbol id="night-owl" viewBox="0 0 24 24"><path d="M19.5 14.5A8 8 0 1 1 9.5 4.5a6.5 6.5 0 0 0 10 10z" /> <path d="M17 3v4" /> <path d="M15 5h4" /></symbol>
+<symbol id="early-bird" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" /> <path d="M12 2.5v2.5" /> <path d="M12 19v2.5" /> <path d="M2.5 12H5" /> <path d="M19 12h2.5" /> <path d="m5.3 5.3 1.8 1.8" /> <path d="m16.9 16.9 1.8 1.8" /> <path d="m18.7 5.3-1.8 1.8" /> <path d="m7.1 16.9-1.8 1.8" /></symbol>
+<symbol id="deep-dive" viewBox="0 0 24 24"><path d="M3 5c2-2 4-2 6 0s4 2 6 0 4-2 6 0" /> <path d="M12 11.5V21" /> <path d="m7.5 16.5 4.5 4.5 4.5-4.5" /></symbol>
+<symbol id="make-it-yours" viewBox="0 0 24 24"><path d="m4 20 1-5L16 4l4 4L9 19l-5 1z" /> <path d="m13.5 6.5 4 4" /></symbol>
+<symbol id="rising" viewBox="0 0 24 24"><path d="m5 12 7-7 7 7" /> <path d="m5 19 7-7 7 7" /></symbol>
+<symbol id="wellspring" viewBox="0 0 24 24"><path d="M12 21V9" /> <path d="M12 9c0-3-1.8-5-4.3-5S4 5.8 4 8.5" /> <path d="M12 9c0-3 1.8-5 4.3-5S20 5.8 20 8.5" /> <path d="M4 13v0" /> <path d="M20 13v0" /> <path d="M7 17h10" /> <path d="M4 21h16" /></symbol>
+<symbol id="deep-water" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2" /> <path d="M12 7v14" /> <path d="M8 11h8" /> <path d="M4 14a8 8 0 0 0 16 0" /></symbol>
+<symbol id="open-sea" viewBox="0 0 24 24"><path d="M12 3v14" /> <path d="m12 4 6.5 10H12" /> <path d="M12 8l-5 6h5" /> <path d="M3 17h18l-3 4H6z" /></symbol>
+<symbol id="perennial" viewBox="0 0 24 24"><path d="M12 12c-2-3-3.5-4.5-6-4.5a4.5 4.5 0 0 0 0 9c2.5 0 4-1.5 6-4.5s3.5-4.5 6-4.5a4.5 4.5 0 0 1 0 9c-2.5 0-4-1.5-6-4.5z" /></symbol>
+<symbol id="watermark" viewBox="0 0 24 24"><path d="M6 3v12" /> <path d="M6 4h4" /> <path d="M6 8h7" /> <path d="M6 12h4" /> <path d="M3 19c2-2 4-2 6 0s4 2 6 0 4-2 6 0" /></symbol>
+<symbol id="four-seasons" viewBox="0 0 24 24"><path d="M5 19C5 10 10 5 19 5c0 9-5 14-14 14z" /> <path d="M5 19 14 10" /> <path d="M10 14V9.5" /> <path d="M10 14h4.5" /></symbol>
+<symbol id="delta" viewBox="0 0 24 24"><path d="M12 3v18" /> <path d="M12 8c0 6-7 6.5-7 13" /> <path d="M12 8c0 6 7 6.5 7 13" /></symbol>
+<symbol id="shipwright" viewBox="0 0 24 24"><path d="m14 3 7 7-3.5 3.5-7-7z" /> <path d="M12.5 8.5 3.5 17.5l3 3 9-9" /></symbol>
+<symbol id="helmsman" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" /> <circle cx="12" cy="12" r="1.5" /> <path d="M12 2v8.5" /> <path d="M12 13.5V22" /> <path d="M2 12h8.5" /> <path d="M13.5 12H22" /> <path d="m4.9 4.9 6 6" /> <path d="m13.1 13.1 6 6" /> <path d="m19.1 4.9-6 6" /> <path d="m10.9 13.1-6 6" /></symbol>
+<symbol id="clear-water" viewBox="0 0 24 24"><path d="M7 4h10l5 6-10 11L2 10z" /> <path d="M2 10h20" /> <path d="m9 10 3 11 3-11" /> <path d="m7 4 2 6" /> <path d="m17 4-2 6" /></symbol>
+<symbol id="flight-hours" viewBox="0 0 24 24"><path d="M3.5 18a9 9 0 1 1 17 0" /> <path d="m12 15 4-6" /> <circle cx="12" cy="15" r="1" fill="currentColor" stroke="none" /> <path d="M12 6v1.5" /> <path d="M5.5 12H7" /> <path d="M17 12h1.5" /> <path d="M3.5 21h17" /></symbol>
+<symbol id="hello-world" viewBox="0 0 24 24"><path d="M9 4C7 4 6 5 6 7v2.5C6 11 5 12 3.5 12 5 12 6 13 6 14.5V17c0 2 1 3 3 3" /> <path d="M15 4c2 0 3 1 3 3v2.5c0 1.5 1 2.5 2.5 2.5-1.5 0-2.5 1-2.5 2.5V17c0 2-1 3-3 3" /></symbol>
+<symbol id="sounding-board" viewBox="0 0 24 24"><path d="M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-8l-5 4v-4H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" /> <path d="M8 9h8" /> <path d="M8 12.5h5" /></symbol>
+<symbol id="pythonista" viewBox="0 0 24 24"><path d="M18 5h-7.5a3.5 3.5 0 0 0 0 7h3a3.5 3.5 0 0 1 0 7H5" /> <path d="m18 5 3-1.5" /> <path d="m18 5 3 1.5" /></symbol>
+<symbol id="gopher" viewBox="0 0 24 24"><path d="M5 21v-9a7 7 0 0 1 14 0v9" /> <circle cx="6" cy="6" r="2" /> <circle cx="18" cy="6" r="2" /> <circle cx="9.5" cy="11.5" r="1" fill="currentColor" stroke="none" /> <circle cx="14.5" cy="11.5" r="1" fill="currentColor" stroke="none" /> <path d="M10.5 15h3v3h-3z" /></symbol>
+<symbol id="type-safe" viewBox="0 0 24 24"><path d="m12 3 7.5 3v5.5c0 4.5-3 8-7.5 9.5-4.5-1.5-7.5-5-7.5-9.5V6z" /> <path d="m8.5 12 2.5 2.5 4.5-5" /></symbol>
+<symbol id="low-level" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5" /> <path d="M10 3v4" /> <path d="M14 3v4" /> <path d="M10 17v4" /> <path d="M14 17v4" /> <path d="M3 10h4" /> <path d="M3 14h4" /> <path d="M17 10h4" /> <path d="M17 14h4" /></symbol>
+<symbol id="version-controlled" viewBox="0 0 24 24"><circle cx="6" cy="5" r="2" /> <circle cx="6" cy="19" r="2" /> <circle cx="18" cy="8" r="2" /> <path d="M6 7v10" /> <path d="M18 10c0 4.5-6 3-11 6.5" /></symbol>
+<symbol id="seven-seas" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" /> <path d="m12 5.5 2.5 6.5-2.5 6.5L9.5 12z" /> <path d="M9.5 12h5" /></symbol>
+<symbol id="weekend-tide" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 18 0z" /> <path d="M12 3v15" /> <path d="M3 21c2-2 4-2 6 0s4 2 6 0 4-2 6 0" /></symbol>
+<symbol id="flash-flood" viewBox="0 0 24 24"><path d="M13 2 6 10.5h5L10 16l7-8.5h-5z" /> <path d="M3 21c2-2 4-2 6 0s4 2 6 0 4-2 6 0" /></symbol>
+</svg>

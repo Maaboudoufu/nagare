@@ -325,7 +325,7 @@ dialog h2 { font:600 1.0625rem var(--sans); letter-spacing:-.01em; }
 .lang-bar { height:3px; border-radius:999px; background:var(--surface-3); overflow:hidden; }
 .lang-bar span { display:block; height:100%; background:var(--accent); border-radius:999px; }
 
-/* Achievements: the icon on a plain tile; its border takes the tier's color once unlocked. */
+/* Achievements: a medal in the tier's metal (Badge in Achievements.jsx); a dotted outline until it's unlocked. */
 .tier-bronze { --tier:var(--bronze); } .tier-silver { --tier:var(--silver); } .tier-gold { --tier:var(--gold); }
 .ach { display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:14px; align-items:center; padding:12px 0; }
 .ach-text { display:grid; gap:1px; min-width:0; }
@@ -335,10 +335,12 @@ dialog h2 { font:600 1.0625rem var(--sans); letter-spacing:-.01em; }
 .tier-dot { width:6px; height:6px; border-radius:50%; background:var(--tier); }
 .ach-side { display:grid; justify-items:end; gap:6px; min-width:72px; text-align:right; }
 .ach-side .meter { width:72px; }
-.ach-tile { display:grid; place-items:center; flex:none; border-radius:var(--r); background:var(--surface-2);
-            border:1px solid color-mix(in srgb, var(--tier, var(--line)) 60%, var(--line)); color:var(--text); }
-.ach-tile .icon { width:45%; height:45%; }
-.ach-tile.locked { color:var(--faint); opacity:.6; }
+.medal { flex:none; color:var(--tier); fill:none; stroke-linecap:round; stroke-linejoin:round; }
+.medal-rim { fill:color-mix(in srgb, var(--tier) 13%, transparent); stroke:var(--tier); stroke-width:1.5; }
+.medal-ring { stroke:color-mix(in srgb, var(--tier) 40%, transparent); stroke-width:1; }
+.medal-glyph { stroke:currentColor; stroke-width:2; }
+.medal.locked { color:var(--faint); }
+.medal.locked .medal-rim { fill:none; stroke:var(--line-strong); stroke-dasharray:1 4; }
 
 /* Leaderboard */
 .lb-note { display:flex; align-items:center; gap:8px; margin-bottom:16px; }

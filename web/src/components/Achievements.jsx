@@ -1,19 +1,26 @@
 import {N_, locale, t} from '../lib/i18n.js';
 import {stats} from '../lib/xp.js';
+import medals from '../assets/medals.svg?no-inline';  // a sprite: <use> needs a real file
 import {useFetch, useStore} from '../store.js';
 import {Page} from './Account.jsx';
-import {Icon, Meter} from './ui.jsx';
+import {Meter} from './ui.jsx';
 
 export const formatDate = iso => new Date(iso.length === 10 ? iso + 'T12:00' : iso).toLocaleDateString(locale(), {month:'short', day:'numeric', year:'numeric'});
 
 const TIER_XP = {bronze:25, silver:50, gold:100};
 const TIERS = {bronze:N_('Bronze'), silver:N_('Silver'), gold:N_('Gold')};
 
-// The achievement's icon on a plain tile; its border takes the tier's color once unlocked.
+/* A medal: the achievement's own glyph (assets/medals.svg, by id) in a frame whose shape is the tier, so the tier
+   doesn't hang on color alone: bronze a circle, silver a hexagon, gold a seal. Locked ones are a dotted outline. */
+const RIM = {bronze:<circle cx="24" cy="24" r="22.5"/>, silver:<path d="M24 1.5 43.5 12.8v22.4L24 46.5 4.5 35.2V12.8Z"/>,
+             gold:<path d="M24 1.2 30.2 4.8 37.4 5.6 40.3 12.1 45.7 17 44.2 24 45.7 31 40.3 35.9 37.4 42.4 30.2 43.2 24 46.8 17.8 43.2 10.6 42.4 7.7 35.9 2.3 31 3.8 24 2.3 17 7.7 12.1 10.6 5.6 17.8 4.8Z"/>};
+const RING = {bronze:<circle cx="24" cy="24" r="18.5"/>, silver:<path d="M24 6 39.6 15v18L24 42 8.4 33V15Z"/>, gold:<circle cx="24" cy="24" r="17"/>};
 export const Badge = ({a, size = 40}) => (
-  <span className={'ach-tile' + (a.unlocked ? ` tier-${a.tier}` : ' locked')} style={{width:size, height:size}}>
-    <Icon name={a.icon}/>
-  </span>
+  <svg className={`medal tier-${a.tier}` + (a.unlocked ? '' : ' locked')} width={size} height={size} viewBox="0 0 48 48" aria-hidden="true">
+    <g className="medal-rim">{RIM[a.tier]}</g>
+    {a.unlocked && <g className="medal-ring">{RING[a.tier]}</g>}
+    <use className="medal-glyph" href={`${medals}#${a.id}`} x="12" y="12" width="24" height="24"/>
+  </svg>
 );
 
 export function AchievementRow({a}) {
