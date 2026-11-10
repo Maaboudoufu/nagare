@@ -158,6 +158,15 @@ input[type=range] { width:100%; accent-color:var(--accent); }
 .menu-meta { margin-left:auto; padding-left:16px; font-size:.75rem; color:var(--faint); }
 @keyframes pop { from { opacity:0; transform:translateY(-4px) scale(.97); } }
 
+/* Arrivals: new content fades in over a 4px rise, once, and never loops. Things that leave just go (exits are instant).
+   The reduced-motion rule at the bottom of this file turns all of it off. */
+@keyframes enter { from { opacity:0; transform:translateY(4px); } }
+@keyframes fade { from { opacity:0; } }
+.page, .prose, .pane { animation:enter .22s var(--ease); }              /* a page, a lesson's text (new per lesson), a quiz */
+.chapter[open] .lessons { animation:enter .18s var(--ease); }           /* a chapter opening in the sidebar */
+.check-list li, .step-result:not(:empty), .next-step, .done-badge { animation:enter .2s var(--ease); }  /* results coming back */
+.scrim, dialog[open]::backdrop, .pane-active::before { animation:fade .18s ease-out; }
+
 dialog { padding:0; border:1px solid var(--line); border-radius:var(--r-lg); background:var(--surface); color:var(--text);
          box-shadow:var(--shadow); }
 dialog[open] { animation:pop .18s var(--ease); }
@@ -425,7 +434,7 @@ dialog h2 { font:600 1.0625rem var(--sans); letter-spacing:-.01em; }
 .nav-head .meta { font-size:.75rem; }
 .chapters { padding:8px 8px 24px; }
 .chapter summary { display:flex; align-items:center; gap:10px; padding:8px; border-radius:var(--r-sm); cursor:pointer; list-style:none;
-                   font-size:.8125rem; font-weight:600; }
+                   font-size:.8125rem; font-weight:600; transition:background-color .15s; }
 .chapter summary::-webkit-details-marker { display:none; }
 .chapter summary:hover { background:var(--surface-2); }
 .ch-num { width:20px; text-align:center; color:var(--faint); font-weight:500; }
@@ -437,10 +446,11 @@ dialog h2 { font:600 1.0625rem var(--sans); letter-spacing:-.01em; }
 .lessons { position:relative; list-style:none; margin:2px 0 10px; padding:0; }
 .lessons::before { content:''; position:absolute; left:17.5px; top:18px; bottom:18px; width:1px; background:var(--surface-3); }
 .lessons a { position:relative; display:flex; align-items:center; gap:14px; min-height:36px; padding:6px 8px 6px 13px; border-radius:var(--r-sm);
-             color:var(--muted); font-size:.875rem; line-height:1.35; text-decoration:none; }
+             color:var(--muted); font-size:.875rem; line-height:1.35; text-decoration:none; transition:background-color .15s, color .15s; }
 .lessons a:hover { background:var(--surface-2); color:var(--text); }
 .lessons a[aria-current="page"] { background:var(--surface-3); color:var(--text); font-weight:500; }
-.dot { flex:none; width:10px; height:10px; border-radius:50%; background:var(--surface); box-shadow:inset 0 0 0 1.5px var(--faint); }
+.dot { flex:none; width:10px; height:10px; border-radius:50%; background:var(--surface); box-shadow:inset 0 0 0 1.5px var(--faint);
+       transition:background-color .2s, box-shadow .2s; }
 .done .dot { background:var(--success); box-shadow:none; }
 [aria-current="page"] .dot { background:var(--surface-3); box-shadow:inset 0 0 0 2px var(--accent); }
 [aria-current="page"].done .dot { background:var(--success); box-shadow:0 0 0 3px var(--accent-soft); }
