@@ -6,7 +6,7 @@ import {lessonPath, pct, store, useStore} from '../store.js';
 import {AchievementRow, formatDate} from './Achievements.jsx';
 import {Avatar, Topbar} from './Account.jsx';
 import {BRANDS} from '../constants.js';
-import {Icon, Logo, Meter, Ring} from './ui.jsx';
+import {BrandIcon, Icon, Logo, Meter, Ring} from './ui.jsx';
 
 const WEEKS = 53;
 const shade = xp => !xp ? 0 : xp < 25 ? 1 : xp < 75 ? 2 : xp < 150 ? 3 : 4;
@@ -90,7 +90,7 @@ function Languages({langs}) {
         {rows.map(([lang, n]) => (
           <li key={lang}>
             <Logo course={{slug:'', language:lang}} size="sm"/>
-            <span className="lang-name">{BRANDS[lang]?.[2] || lang}</span>
+            <span className="lang-name">{BRANDS[lang]?.name || lang}</span>
             <span className="lang-bar"><span style={{width:`${100 * n / rows[0][1]}%`}}/></span>
             <span className="meta">{t('{n} lessons', {n})} · {pct(n, total)}%</span>
           </li>
@@ -149,7 +149,7 @@ export default function Profile({id = 'me'}) {
             {p.handle && <li><Icon name="at-sign"/>{p.handle}</li>}
             {p.location && <li><Icon name="map-pin"/>{p.location}</li>}
             {p.website && <li><Icon name="link"/><a href={safeUrl(p.website)} rel="noopener noreferrer nofollow" target="_blank">{p.website.replace(/^https?:\/\//i, '')}</a></li>}
-            {p.github && <li><svg className="icon gh" aria-hidden="true"><use href="/vendor/brands.svg?v=5#github"/></svg>
+            {p.github && <li><BrandIcon name="github" cls="icon gh"/>
               <a href={`https://github.com/${encodeURIComponent(p.github)}`} rel="noopener noreferrer nofollow" target="_blank">{p.github}</a></li>}
           </ul>
           {p.bio && <p className="hero-bio">{p.bio}</p>}

@@ -1,5 +1,7 @@
 /* Small shared pieces: icons, logos, progress meters, buttons. */
 import {useId, useState} from 'react';
+import brands from '../assets/brands.svg?no-inline';  // sprites: <use> needs a real file, never a data: URL
+import icons from '../assets/icons.svg?no-inline';
 import {brandOf} from '../constants.js';
 import {fx} from '../lib/fx.js';
 import {MOD, hasAction, runAction} from '../lib/keys.js';
@@ -30,7 +32,9 @@ export function BrandMark({className = 'brand-mark'}) {
 
 export const Brand = () => <a className="brand" href="/" aria-label={t('nagare, home')}><BrandMark/><span aria-hidden="true">{t('nagare')}</span></a>;
 
-export const Icon = ({name, cls = ''}) => <svg className={'icon ' + cls} aria-hidden="true"><use href={`/vendor/icons.svg?v=5#${name}`}/></svg>;
+export const iconHref = name => `${icons}#${name}`;
+export const Icon = ({name, cls = ''}) => <svg className={'icon ' + cls} aria-hidden="true"><use href={iconHref(name)}/></svg>;
+export const BrandIcon = ({name, cls = 'brand'}) => <svg className={cls} aria-hidden="true"><use href={`${brands}#${name}`}/></svg>;
 
 export const Meter = ({n, total, label, hidden}) => (
   <div className="meter" role={hidden ? undefined : 'progressbar'} aria-hidden={hidden ? 'true' : undefined} aria-label={label}
@@ -54,12 +58,11 @@ export function Ring({n, total, size = 64, stroke = 3, label, children}) {
 }
 
 export function Logo({course, size = 'md'}) {
-  const [sym, hex, name, lucide, img] = brandOf(course);
-  const n = parseInt(hex.slice(1), 16), lum = (0.299 * (n >> 16) + 0.587 * (n >> 8 & 255) + 0.114 * (n & 255)) / 255;
+  const {name, color, icon, img, lucide} = brandOf(course);
+  const n = parseInt(color.slice(1), 16), lum = (0.299 * (n >> 16) + 0.587 * (n >> 8 & 255) + 0.114 * (n & 255)) / 255;
   return (
-    <span className={`logo logo-${size}`} style={{background:hex, color:lum > 0.6 ? '#131315' : '#FFFFFF'}} title={t(name)}>
-      {img ? <img className="brand-img" src={img} alt="" aria-hidden="true"/>
-           : <svg className={lucide ? 'icon' : 'brand'} aria-hidden="true"><use href={`/vendor/${lucide ? 'icons' : 'brands'}.svg?v=5#${sym}`}/></svg>}
+    <span className={`logo logo-${size}`} style={{background:color, color:lum > 0.6 ? '#131315' : '#FFFFFF'}} title={t(name)}>
+      {img ? <img className="brand-img" src={img} alt=""/> : lucide ? <Icon name={icon}/> : <BrandIcon name={icon}/>}
       <span className="sr">{t(name)}</span>
     </span>
   );
