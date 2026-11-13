@@ -1,4 +1,5 @@
-/* Learn Linux shell lessons: a terminal in this lesson's own Docker sandbox, graded from your shell history. */
+/* Learn Linux shell lessons: a terminal in this lesson's own Docker sandbox.
+   One match check grades the last history line. Two or more grade recorded commands, in order. */
 import {useRef, useState} from 'react';
 import {fx} from '../../lib/fx.js';
 import {t} from '../../lib/i18n.js';
@@ -7,16 +8,43 @@ import {markDone, post} from '../../store.js';
 import TermView from '../TermView.jsx';
 import {DoneButton, Icon, NextStep} from '../ui.jsx';
 
+// Course text says "Your last command should contain" on every match step. One check shows that
+// string unchanged. Two or more are separate commands, in order.
+const LAST_EXPECT = 'Your last command should contain: ';
+
+function InitialExpects({expects}) {
+  const commands = expects.filter(e => e.startsWith(LAST_EXPECT)).map(e => e.slice(LAST_EXPECT.length));
+  if (commands.length >= 2 && commands.length === expects.length) {
+    return <ul className="expects">{commands.map((need, i) => <li key={i}>{i
+      ? t('Then a later command should contain: {need}', {need})
+      : t('A command should contain: {need}', {need})}</li>)}</ul>;
+  }
+  return <ul className="expects">{expects.map((c, i) => <li key={i}>{c}</li>)}</ul>;
+}
+
+function MatchItem({c}) {
+  const need = (c.want || []).join(', ');
+  // One check keeps the server sentence. Ordered checks are separate commands; `after` means a miss
+  // that searched past an earlier matched step.
+  const title = c.scope === 'last' ? c.message : c.want ? t('A command should contain: {need}', {need}) : c.message;
+  const detail = c.ok ? null
+    : c.scope === 'last' ? t('Your last command: {cmd}', {cmd:<code>{c.last || t('(none yet)')}</code>})
+    : c.after ? t('No matching command occurred after the previous matched step.')
+    : c.want ? t('No command contained {need}', {need:<code>{need}</code>})
+    : null;
+  return (
+    <li className={c.ok ? 'pass' : 'fail'}>
+      <Icon name={c.ok ? 'circle-check' : 'circle-x'}/>
+      <span>{title}{detail && <><br/><span className="meta">{detail}</span></>}</span>
+    </li>
+  );
+}
+
 function CheckResults({result}) {
   if (result.error) return <p className="field-err">{result.error}</p>;
   return <>
     <ul className="check-list">
-      {result.results.map((c, i) => c.kind === 'match' ? (
-        <li key={i} className={c.ok ? 'pass' : 'fail'}>
-          <Icon name={c.ok ? 'circle-check' : 'circle-x'}/>
-          <span>{c.message}{!c.ok && <><br/><span className="meta">{t('Your last command: {cmd}', {cmd:<code>{c.last || t('(none yet)')}</code>})}</span></>}</span>
-        </li>
-      ) : (
+      {result.results.map((c, i) => c.kind === 'match' ? <MatchItem key={i} c={c}/> : (
         <li key={i} className="review">
           <Icon name="info"/>
           <span>{t('Check the result of {cmd} against the assignment.', {cmd:<code>{c.command}</code>})}<pre>{c.output || t('(no output)')}</pre></span>
@@ -68,7 +96,7 @@ export default function Sandbox({lesson: l}) {
       </div>
       <TermView key={generation} url={`/api/term?kind=sandbox&uuid=${l.uuid}&g=${generation}`} label={t('Linux sandbox terminal')}/>
       <section className="sandbox-checks" aria-label={t('Lesson checks')}>
-        {!result?.results && <ul className="expects">{(l.steps[0]?.expects || []).map((c, i) => <li key={i}>{c}</li>)}</ul>}
+        {!result?.results && <InitialExpects expects={l.steps[0]?.expects || []}/>}
         <div aria-live="polite" ref={resultEl}>{result && <CheckResults result={result}/>}</div>
         <div className="actions">
           <button className={passed ? 'btn' : 'btn primary'} disabled={checking} onClick={submit} title={t('Submit ({mod}+Enter)', {mod:MOD})}><Icon name="send"/>{t('Submit')}</button>

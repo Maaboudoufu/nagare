@@ -42,6 +42,9 @@ jobs:
       - name: CLI grader self-check
         run: docker run --rm nagare:ci python3 -c "import sys; sys.path.insert(0, 'server'); import serve; serve.check_cli()"
 
+      - name: Shell grader self-check
+        run: docker run --rm nagare:ci python3 server/workspace.py
+
       - name: Smoke test
         run: |
           docker run -d --name smoke -e ADDR=0.0.0.0:8000 -p 127.0.0.1:8000:8000 nagare:ci
