@@ -184,6 +184,11 @@ def shell_spec(uuid):
     return spec
 
 
+def _match_count(spec):
+    """Match checks in this lesson. More than one turns on command recording."""
+    return sum(1 for c in spec['checks'] if (c.get('matchCommand') or {}).get('lastContains'))
+
+
 def _seed_tar(spec):
     """Starter files as a tar owned by the sandbox user (uid 1000), with every parent folder so it's writable."""
     root = spec['root'].strip('/')
@@ -233,10 +238,13 @@ def sandbox(user, uuid):
         for old in mine[:max(0, len(mine) - SANDBOXES_PER_USER + 1)]:  # keep the few most recent
             _stop(old)
         spec = shell_spec(uuid)
+        # One check still reads the last history line, so those shells keep the original prompt.
+        record = ['-e', 'NAGARE_RECORD_COMMANDS=1'] if _match_count(spec) > 1 else []
         cid = _check(_docker('create', '-it', '--label', 'nagare=sandbox', '--label', f'nagare.user={user}', '--name', name,
                              '--network', 'none', '--memory', '256m', '--pids-limit', '128', '--cpus', '0.5',
                              *RUNTIME,
                              '--hostname', 'worldbanc', '--user', 'user', '-w', spec['cwd'], '-e', 'TERM=xterm-256color',
+                             *record,
                              IMAGE, 'bash', '--rcfile', '/etc/sandbox.bashrc', '-i'), 'create')
         try:
             _check(_docker('cp', '-a', '-', f'{cid}:/', data=_seed_tar(spec)), 'cp')
@@ -259,21 +267,95 @@ def reset_sandbox(user, uuid):
         _docker('rm', '-f', name)
 
 
+# Bound grading memory even if an interactive loop produces a large command log.
+SHELL_LOG_LIMIT = 1 << 20
+
+
+def _nul_records(raw):
+    """Read only completed records; a concurrent append may leave an unfinished tail."""
+    return [part.decode(errors='replace') for part in raw.split(b'\0')[:-1]]
+
+
+def _claim_command(commands, start, want):
+    """Earliest command at or after start that contains every token, and the index after it.
+
+    A miss leaves start unchanged, so a later check can still match a command this one did not take.
+    One command satisfies only one check: the next check begins after it.
+    """
+    for i in range(start, len(commands)):
+        if all(token in commands[i] for token in want):
+            return commands[i], i + 1
+    return '', start
+
+
+def _read_commands(box):
+    """The DEBUG log, or None when history exists and this log does not.
+
+    None means this sandbox is not recording (an older image, or it was created without the
+    recording env). An empty list means the learner has not run a recorded command.
+    """
+    r = _docker('exec', box.name, 'sh', '-c',
+                f'if [ -f /tmp/.shell_commands ]; then head -c {SHELL_LOG_LIMIT + 1} /tmp/.shell_commands; '
+                'elif [ -s /tmp/.shell_history ]; then exit 3; fi')
+    if r.returncode == 3:
+        return None
+    if r.returncode:
+        raise RuntimeError('Could not read your commands. Try submitting again.')
+    if len(r.stdout) > SHELL_LOG_LIMIT:
+        raise RuntimeError('The command log is full. Reset the sandbox and run the assignment again.')
+    return _nul_records(r.stdout)
+
+
+_STALE_SANDBOX = 'This sandbox needs an update. Reset it and run the assignment again.'
+
+
 def check_sandbox(user, uuid):
-    """Grade a Learn Linux lesson: 'last command contains' exactly, 'run this' by showing the output."""
+    """One match check uses the last history line; several claim recorded commands in order.
+
+    Each command can satisfy one check. A miss leaves the cursor unchanged. `after` means
+    a failed check searched after an earlier matched step. Matching tests text, not success.
+    Only a multi-check sandbox sets a DEBUG trap, for direct interactive commands. Function,
+    script, and subshell bodies and skipped conditional branches stay out of that log.
+    Run checks keep their manual-review behavior.
+
+    Rebuild SANDBOX_IMAGE when sandbox.bashrc changes, then reset existing sandboxes.
+    An older image with history but no command log returns an update error.
+    """
     box = boxes.get(_sandbox_name(user, uuid))
     if not box:
         return {'error': 'Open the terminal and run your commands first.'}
     box.touch()
     spec = shell_spec(uuid)
-    last = _docker('exec', box.name, 'sh', '-c', 'tail -n 1 /tmp/.shell_history 2>/dev/null').stdout.decode().strip()
+    nmatch = _match_count(spec)
+    commands, last_line = None, ''
+    if nmatch > 1:
+        try:
+            commands = _read_commands(box)
+        except subprocess.TimeoutExpired:
+            return {'error': 'Reading your commands timed out. Try submitting again.'}
+        except RuntimeError as e:
+            return {'error': str(e)}
+        if commands is None:
+            return {'error': _STALE_SANDBOX}
+    elif nmatch == 1:
+        last_line = _docker('exec', box.name, 'sh', '-c', 'tail -n 1 /tmp/.shell_history 2>/dev/null').stdout.decode().strip()
+    cursor, claimed = 0, False
     results = []
     for c in spec['checks']:
         want = (c.get('matchCommand') or {}).get('lastContains')
         if want:
-            missing = [w for w in want if w not in last]
-            results.append({'kind': 'match', 'ok': not missing, 'want': want, 'last': last,
-                            'message': f"Your last command should contain: {', '.join(want)}"})
+            if nmatch > 1:
+                command, cursor = _claim_command(commands, cursor, want)
+                ok = bool(command)
+                after = (not ok) and claimed
+                if ok:
+                    claimed = True
+                scope = 'ordered'
+            else:
+                command, ok, after, scope = last_line, all(token in last_line for token in want), False, 'last'
+            lead = 'Your last command should contain' if scope == 'last' else 'A command should contain'
+            results.append({'kind': 'match', 'ok': ok, 'want': want, 'last': command, 'scope': scope,
+                            'after': after, 'message': f"{lead}: {', '.join(want)}"})
         if c.get('runCommand'):
             try:
                 r = _docker('exec', '-u', 'user', '-w', spec['cwd'], box.name, 'bash', '-c', c['runCommand'], timeout=20)
@@ -330,3 +412,294 @@ def start():
     remove_all()
     _ensure_network()
     threading.Thread(target=_reaper, daemon=True).start()
+
+
+if __name__ == '__main__':
+    # Real lesson ids. Records below are the commands those assignments ask for.
+    EXPR = 'f9d0dadb-59f8-489b-af77-f6693000d569'          # expr 123456, then expr 420
+    ECHO_HIST = '498e7b52-9044-4c03-996f-6452eeeb4730'    # echo, then history
+    ECHO_CLEAR = '317def47-df3a-4fb3-b3df-f01c1b180b6d'   # echo, then clear
+    HEAD_TAIL = '96b5e0ce-37f8-44c2-b219-ebdae3655f23'    # head 2023.csv, then tail 2023.csv
+    PWD_LS = 'f5f6762e-9736-4d2f-aaff-423088dbbf47'       # pwd, then ls worldbanc
+    PATH_GEN = '25411224-2384-4c13-93d2-0eeb5ad30eb1'     # echo PATH, then genids.sh
+    STDERR = '1c360eb8-4b1c-46ae-a123-2b92e67f0ac9'       # process_transactions.sh ... 2>, then cat the log
+    PWD = 'aa6b8b23-8be0-41a8-930f-5375f2026699'          # one check: pwd
+    # Separate commands, including steps the assignment runs between the two checks.
+    SEPARATE = {
+        EXPR: ['expr 123456 + 7890', 'expr 420 - 69'],
+        ECHO_HIST: ['echo Investigating WorldBanc', 'whoami', 'history'],
+        ECHO_CLEAR: ['echo Case file: WorldBanc', 'echo Case file: WorldBanc', 'clear'],
+        HEAD_TAIL: ['cd worldbanc/private/transactions', 'cat 2023.csv', 'head -n 6 2023.csv', 'tail -n 5 2023.csv'],
+        PWD_LS: ['pwd', 'ls', 'ls worldbanc'],
+        PATH_GEN: ['export PATH="$PATH:$HOME/worldbanc/private/bin"', 'echo "$PATH"', 'cd ~', 'genids.sh'],
+        STDERR: ['worldbanc/private/bin/process_transactions.sh worldbanc/private/transactions/2020.csv 2> /tmp/worldbanc.log',
+                 'cat /tmp/worldbanc.log'],
+    }
+
+    def grade(uuid, *, last='', records=None, output=b'ok\n', stale=False, raw=None, read_code=0, read_timeout=False):
+        user = 't3test'
+        name = _sandbox_name(user, uuid)
+        boxes[name] = Box(name, 'sandbox', user)
+        calls = []
+        packed = b'' if not records else ('\0'.join(records) + '\0').encode()
+
+        def fake(*args, **kwargs):
+            calls.append(args)
+            script = args[args.index('-c') + 1] if '-c' in args else ''
+            if script.startswith('if [ -f /tmp/.shell_commands ]'):
+                if read_timeout:
+                    raise subprocess.TimeoutExpired(args, 60)
+                code = 3 if stale else read_code
+                return subprocess.CompletedProcess(args, code, b'' if stale else packed if raw is None else raw, b'')
+            if script.startswith('tail -n 1 /tmp/.shell_history'):
+                return subprocess.CompletedProcess(args, 0, (last + '\n').encode() if last else b'', b'')
+            return subprocess.CompletedProcess(args, 0, output, b'')
+
+        global _docker
+        old = _docker
+        _docker = fake
+        try:
+            return check_sandbox(user, uuid), calls, name
+        finally:
+            _docker = old
+            boxes.pop(name, None)
+
+    def rows(uuid, records):
+        res, calls, name = grade(uuid, records=records)
+        got = [(r['ok'], r['after'], r['scope']) for r in res['results']]
+        assert len(calls) == 1 and calls[0][1] == name and '/tmp/.shell_commands' in calls[0][-1], calls
+        assert 'tail -n 1' not in calls[0][-1]
+        assert res['review'] is False and res['passed'] is all(ok for ok, _, _ in got) and 'error' not in res
+        return got, res
+
+    def expect(uuid, records, want):
+        got, res = rows(uuid, records)
+        assert got == [(ok, after, 'ordered') for ok, after in want], (records, got, res)
+        return res
+
+    assert check_sandbox('t3test', EXPR) == {'error': 'Open the terminal and run your commands first.'}
+    bare, empty = rows(EXPR, [])
+    assert bare == [(False, False, 'ordered'), (False, False, 'ordered')]
+    assert [r['want'] for r in empty['results']] == [['expr', '123456'], ['expr', '420']]
+    assert empty['results'][0]['message'] == 'A command should contain: expr, 123456'
+
+    both, one, none = [(True, False), (True, False)], [(True, False), (False, True)], [(False, False), (False, False)]
+    # The multi-check lessons, each command recorded on its own.
+    seen = set()
+    for uuid, records in SEPARATE.items():
+        expect(uuid, records, both)
+        seen.add(uuid)
+    # Two recorded commands (what `;` and `&&` produce). One string cannot satisfy both checks.
+    expect(EXPR, ['expr 123456 + 7890', 'expr 420 - 69'], both)
+    expect(EXPR, ['echo "expr 123456 + 7890; expr 420 - 69"'], one)
+    expect(EXPR, ["echo 'expr 123456 + 7890 && expr 420 - 69'"], one)
+    expect(EXPR, ['expr 123456 + 7890\\; expr 420 - 69'], one)
+    expect(EXPR, ['expr 123456 + 420'], one)
+    expect(ECHO_HIST, ['echo history'], one)
+    expect(EXPR, ['expr 123456 + 7890', 'ls', 'expr 420 - 69'], both)             # unrelated command in between
+    expect(EXPR, ['expr 420 - 69', 'expr 123456 + 7890', 'expr 420 - 69'], both)  # retry after a reversed pair
+    expect(EXPR, ['expr 420 - 69', 'expr 123456 + 7890'], [(True, False), (False, True)])
+    expect(ECHO_HIST, ['history', 'echo Investigating WorldBanc'], [(True, False), (False, True)])
+    expect(EXPR, ['expr 123456 + 7890'], [(True, False), (False, True)])          # second is missing
+    expect(EXPR, ['expr 420 - 69'], [(False, False), (True, False)])              # first is missing, second still matches
+    expect(ECHO_HIST, ['history'], [(False, False), (True, False)])
+    expect(EXPR, [], none)
+    stale, stale_calls, _ = grade(EXPR, last='expr 123456 + 7890', stale=True)
+    assert stale == {'error': _STALE_SANDBOX}, stale
+    assert len(stale_calls) == 1 and stale_calls[0][-1].startswith('if [ -f /tmp/.shell_commands ]')
+
+    assert _nul_records(b'echo hello\0unfinished') == ['echo hello']
+    assert _nul_records(b'echo \xff\0') == ['echo \ufffd']
+    failed, _, _ = grade(EXPR, read_code=1)
+    timed_out, _, _ = grade(EXPR, read_timeout=True)
+    full, calls, _ = grade(EXPR, raw=b'x' * (SHELL_LOG_LIMIT + 1))
+    assert failed == {'error': 'Could not read your commands. Try submitting again.'}
+    assert timed_out == {'error': 'Reading your commands timed out. Try submitting again.'}
+    assert full == {'error': 'The command log is full. Reset the sandbox and run the assignment again.'}
+    assert f'head -c {SHELL_LOG_LIMIT + 1}' in calls[0][-1]
+
+    # Every one-check lesson grades only the last history line. An earlier match is not read.
+    sentinel, single, run_lessons, discovered = '___nope___', 0, 0, set()
+    run_uuid = None
+    for name in sorted(os.listdir(SHELL_DIR)):
+        if not name.endswith('.json') or name == '_fallback.json':
+            continue
+        uuid = name[:-5]
+        spec = shell_spec(uuid)
+        match = [w for w in ((c.get('matchCommand') or {}).get('lastContains') for c in spec['checks']) if w]
+        runs = [c['runCommand'] for c in spec['checks'] if c.get('runCommand')]
+        assert not (match and runs), uuid
+        if len(match) > 1:
+            discovered.add(uuid)
+        elif len(match) == 1:
+            single += 1
+            want = match[0]
+            assert all(token not in sentinel for token in want), want
+            line = ' '.join(want)
+            for last, ok in ((sentinel, False), (line, True)):
+                res, calls, name_box = grade(uuid, last=last)
+                assert [(r['ok'], r['after'], r['scope'], r['last']) for r in res['results']] == [(ok, False, 'last', last)]
+                assert res['results'][0]['message'] == f"Your last command should contain: {', '.join(want)}"
+                assert res['passed'] is ok and res['review'] is False and 'error' not in res
+                assert [c[-1] for c in calls] == ['tail -n 1 /tmp/.shell_history 2>/dev/null']
+                assert name_box == calls[0][1]
+        else:
+            run_lessons += 1
+            if run_uuid is None:
+                run_uuid = uuid
+            res, calls, name_box = grade(uuid, last='echo leftover', records=['echo leftover'])
+            assert res['passed'] is False and res['review'] is True and 'error' not in res, uuid
+            assert [r['ok'] for r in res['results']] == [None] * len(runs)
+            assert [r['command'] for r in res['results']] == runs
+            assert [r['output'] for r in res['results']] == ['ok\n'] * len(runs)
+            assert [c[c.index('-c') + 1] for c in calls] == runs, (uuid, calls)
+            assert all(c[c.index('-u') + 1] == 'user' and c[c.index('-w') + 1] == spec['cwd'] for c in calls)
+            assert all(name_box in c for c in calls)
+            assert not any('/tmp/.shell_' in str(c) for c in calls)
+    assert seen == discovered, sorted(discovered ^ seen)  # every multi-check lesson has a command fixture
+    assert single > 0 and run_lessons > 0  # both other check shapes are still exercised
+
+    def create_args(uuid):
+        calls = []
+
+        def fake(*args, **kwargs):
+            calls.append(args)
+            out = b'cid\n' if args and args[0] == 'create' else b''
+            return subprocess.CompletedProcess(args, 0, out, b'')
+
+        global _docker
+        old, _docker = _docker, fake
+        name = _sandbox_name('t3test', uuid)
+        try:
+            sandbox('t3test', uuid)
+        finally:
+            _docker = old
+            boxes.pop(name, None)
+        return next(c for c in calls if c and c[0] == 'create')
+
+    # Recording is a create-time env var. Single-check and run-only shells do not get it.
+    assert 'NAGARE_RECORD_COMMANDS=1' in create_args(EXPR)
+    assert 'NAGARE_RECORD_COMMANDS=1' not in create_args(PWD)
+    assert 'NAGARE_RECORD_COMMANDS=1' not in create_args(run_uuid)
+    # The whole last line, not a split of it.
+    for last, ok in (('pwd; ls', True), ('ls; pwd', True), ('ls', False)):
+        res, calls, _ = grade(PWD, last=last)
+        assert res['results'][0]['ok'] is ok and res['results'][0]['last'] == last and res['results'][0]['scope'] == 'last'
+        assert calls[0][-1] == 'tail -n 1 /tmp/.shell_history 2>/dev/null'
+
+    def bash_records(typed, record=True):
+        """Source the real rcfile with temp paths. Do not read the user's profile.
+
+        record=True sets NAGARE_RECORD_COMMANDS, as a multi-check sandbox does. False leaves the original shell.
+        """
+        import shutil, tempfile
+        bash = shutil.which('bash')
+        assert bash, 'bash is required'
+        rc_text = open(os.path.join(HERE, 'support', 'sandbox.bashrc')).read()
+        init_text = 'echo INIT_MARKER_SHOULD_NOT_APPEAR\nexpr 999999 + 1\n'
+        with tempfile.TemporaryDirectory() as d:
+            hist, log, init = (os.path.join(d, n) for n in ('history', 'commands', 'init.sh'))
+            rc_path = os.path.join(d, 'bashrc')
+            patched = (rc_text.replace('/tmp/.shell_history', hist)
+                       .replace('/tmp/.shell_commands', log)
+                       .replace('/tmp/.lesson_init.sh', init))
+            for token in ('/tmp/.shell_history', '/tmp/.shell_commands', '/tmp/.lesson_init.sh'):
+                assert token not in patched, token
+            open(init, 'w').write(init_text)
+            os.chmod(init, 0o755)
+            open(rc_path, 'w').write(patched)
+            env = {'PATH': '/usr/bin:/bin:/usr/local/bin', 'TERM': 'dumb', 'HOME': d, 'LANG': 'C'}
+            if record:
+                env['NAGARE_RECORD_COMMANDS'] = '1'
+            proc = subprocess.run([bash, '--noprofile', '--rcfile', rc_path, '-i'],
+                                  input=typed.encode(), capture_output=True, env=env, timeout=15)
+            assert proc.returncode == 0, proc.stderr.decode(errors='replace')
+            assert not os.path.exists(init), 'lesson init did not run'
+            transcript = proc.stdout.decode(errors='replace')
+            logged = os.path.exists(log)
+            assert logged is record, (record, logged)
+            raw = open(log, 'rb').read() if logged else b''
+            history = open(hist).read() if os.path.exists(hist) else ''
+            return _nul_records(raw), history, transcript
+
+    typed = """\
+expr 123456 + 7890
+expr 420 - 69
+expr 123456 + 7890; expr 420 - 69
+expr 123456 + 7890 && expr 420 - 69
+false && echo SKIPPED
+echo "expr 123456 + 7890; expr 420 - 69"
+echo 'expr 123456 + 7890 && expr 420 - 69'
+expr 123456 + 7890\\; expr 420 - 69
+false
+echo STATUS:$?
+exit
+"""
+
+    records, history, transcript = bash_records(typed)
+    assert records == [
+        'expr 123456 + 7890',
+        'expr 420 - 69',
+        'expr 123456 + 7890',
+        'expr 420 - 69',
+        'expr 123456 + 7890',
+        'expr 420 - 69',
+        'false',
+        'echo "expr 123456 + 7890; expr 420 - 69"',
+        "echo 'expr 123456 + 7890 && expr 420 - 69'",
+        'expr 123456 + 7890\\; expr 420 - 69',
+        'false',
+        'echo STATUS:$?',
+        'exit',
+    ], records
+    assert 'echo SKIPPED' not in records
+    assert not any(r == '_nagare_prompt' or 'history -a' in r or 'INIT_MARKER' in r or '999999' in r for r in records)
+    assert history.splitlines() == [
+        'expr 123456 + 7890',
+        'expr 420 - 69',
+        'expr 123456 + 7890; expr 420 - 69',
+        'expr 123456 + 7890 && expr 420 - 69',
+        'false && echo SKIPPED',
+        'echo "expr 123456 + 7890; expr 420 - 69"',
+        "echo 'expr 123456 + 7890 && expr 420 - 69'",
+        'expr 123456 + 7890\\; expr 420 - 69',
+        'false',
+        'echo STATUS:$?',
+        'exit',
+    ], history.splitlines()
+    assert 'STATUS:1' in transcript and 'STATUS:0' not in transcript, transcript
+    assert 'INIT_MARKER_SHOULD_NOT_APPEAR' not in transcript
+    # Native `;` and `&&` become two records; a quoted or escaped separator stays one, and grading uses those records.
+    expect(EXPR, records[0:2], both)
+    expect(EXPR, records[2:4], both)
+    expect(EXPR, records[4:6], both)
+    expect(EXPR, [records[7]], one)
+    expect(EXPR, [records[8]], one)
+    expect(EXPR, [records[9]], one)
+    records, _, transcript = bash_records("""\
+echo Investigating WorldBanc
+history
+true || echo SKIPPED_OR
+cat <<< "hello"
+cat <<'EOF.txt'
+echo BODY_ONLY
+EOF.txt
+expr 123456 + 7890; expr 420 - 69
+f() { echo FUNCTION_BODY; }
+f
+(echo SUBSHELL_BODY)
+exit
+""")
+    expect(ECHO_HIST, records[:2], both)
+    assert records[:4] == ['echo Investigating WorldBanc', 'history', 'true', 'cat <<< "hello"'], records
+    # Bash versions format the here-document text differently; its body stays in one record.
+    assert records[4].startswith('cat ') and 'BODY_ONLY' in records[4], records
+    assert records[5:] == ['expr 123456 + 7890', 'expr 420 - 69', 'f', 'exit'], records
+    expect(EXPR, records[5:7], both)
+    assert 'FUNCTION_BODY' in transcript and 'SUBSHELL_BODY' in transcript
+    # Single-check and run-only shells keep history -a and do not write a command log.
+    off, off_hist, off_out = bash_records('pwd; ls\nfalse\necho STATUS:$?\nexit\n', record=False)
+    assert off == []
+    assert off_hist.splitlines() == ['pwd; ls', 'false', 'echo STATUS:$?', 'exit'], off_hist.splitlines()
+    assert 'STATUS:1' in off_out and 'STATUS:0' not in off_out and 'INIT_MARKER_SHOULD_NOT_APPEAR' not in off_out, off_out
+    print('ok: sandbox checks')
