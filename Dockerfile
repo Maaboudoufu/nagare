@@ -55,6 +55,20 @@ RUN arch=$(uname -m) && case $arch in x86_64) sum=$AWSCLI_SHA256_x86_64 ;; aarch
     && echo "$sum  /tmp/aws.zip" | sha256sum -c - \
     && unzip -q /tmp/aws.zip -d /tmp && /tmp/aws/install && rm -rf /tmp/aws /tmp/aws.zip
 
+# OpenTofu for the Terraform course. The two providers its lessons use are mirrored into the image and checked against
+# server/support/tofu/.terraform.lock.hcl, so `tofu init` in a workspace needs no network.
+ARG TOFU_VERSION=1.13.9
+ARG TOFU_SHA256_x86_64=bc44eb6b06446ba83bd4072114891987f590f66cca712737a7f1147c50c539ce
+ARG TOFU_SHA256_aarch64=04f7c93828b859d420269ed30f923ffebf09157b5d7fb95bf8d88a4d208b7fa3
+RUN arch=$(uname -m) && case $arch in x86_64) a=amd64 sum=$TOFU_SHA256_x86_64 ;; aarch64) a=arm64 sum=$TOFU_SHA256_aarch64 ;; *) exit 1 ;; esac \
+    && curl -fsSL "https://github.com/opentofu/opentofu/releases/download/v${TOFU_VERSION}/tofu_${TOFU_VERSION}_linux_${a}.zip" -o /tmp/tofu.zip \
+    && echo "$sum  /tmp/tofu.zip" | sha256sum -c - \
+    && unzip -q /tmp/tofu.zip tofu -d /usr/local/bin && rm /tmp/tofu.zip
+COPY server/support/tofu /opt/tofu
+RUN cd /opt/tofu && tofu providers mirror providers \
+    && TF_CLI_CONFIG_FILE=/opt/tofu/tofurc tofu init -lockfile=readonly && rm -rf .terraform
+ENV TF_CLI_CONFIG_FILE=/opt/tofu/tofurc
+
 ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1
 # New workspace volumes copy /home/user: a warm Go build cache makes the first Go run ~1s instead of ~10s.
 USER user

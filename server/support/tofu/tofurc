@@ -1,0 +1,10 @@
+# OpenTofu CLI settings in workspaces (TF_CLI_CONFIG_FILE): the course's providers install from the image.
+provider_installation {
+  filesystem_mirror {
+    path    = "/opt/tofu/providers"
+    include = ["registry.opentofu.org/hashicorp/local", "registry.opentofu.org/hashicorp/random"]
+  }
+  direct {
+    exclude = ["registry.opentofu.org/hashicorp/local", "registry.opentofu.org/hashicorp/random"]
+  }
+}
