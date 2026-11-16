@@ -21,17 +21,11 @@ export default function TermView({url, className = '', label}) {
     let closed = false, cleanup = () => {};
     loadXterm().then(([{Terminal}, {FitAddon}, {WebglAddon}]) => {
       if (closed) return;
-      const term = new Terminal({fontFamily:'"JetBrains Mono", "Symbols Nerd Font Mono", monospace', fontSize:settings().codeSize, lineHeight:1.15, cursorBlink:true, scrollback:5000, theme:THEME});
+      const term = new Terminal({fontFamily:'"JetBrains Mono", monospace', fontSize:settings().codeSize, lineHeight:1.15, cursorBlink:true, scrollback:5000, theme:THEME});
       const fit = new FitAddon();
       term.loadAddon(fit);
       term.open(host.current);
       try { term.loadAddon(new WebglAddon()); } catch {}  // GPU text rendering when available
-      // The icon font (about 1 MB) loads behind the terminal instead of holding it up; icons drawn before it arrived are redrawn.
-      document.fonts.load('14px "Symbols Nerd Font Mono"', '\uf015').then(() => {
-        if (closed) return;
-        term.clearTextureAtlas();
-        term.refresh(0, term.rows - 1);
-      }, () => {});
       const ws = new WebSocket(`${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.host}${url}`);
       ws.binaryType = 'arraybuffer';
       const send = (kind, data) => ws.readyState === WebSocket.OPEN && ws.send(kind + data);
