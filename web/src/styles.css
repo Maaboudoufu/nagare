@@ -185,6 +185,7 @@ dialog h2 { font:600 1.0625rem var(--sans); letter-spacing:-.01em; }
 .shortcuts { width:min(460px, calc(100vw - 32px)); }
 .shortcuts form { display:grid; gap:18px; padding:24px; }
 .shortcuts dl { display:grid; gap:10px; margin:0; }
+.shortcuts h3 { font:600 .8125rem var(--sans); color:var(--muted); }
 .shortcuts dl > div { display:grid; grid-template-columns:150px 1fr; gap:12px; align-items:center; }
 .shortcuts dt { display:flex; gap:4px; }
 .shortcuts dd { margin:0; color:var(--muted); font-size:.875rem; }
