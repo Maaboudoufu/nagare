@@ -49,6 +49,16 @@
   "sha256": "79249303523a502f86c2cb3b90a669832c7585c3fcc4e3d83c06f35a81b9c13b",
   "size": 32440
  },
+ "https://raw.githubusercontent.com/opentofu/brand-artifacts/main/full/transparent/SVG/on-dark.svg": {
+  "path": "raw.githubusercontent.com/opentofu/brand-artifacts/main/full/transparent/SVG/on-dark.svg",
+  "sha256": "7072691be0671ac41100e3ee238291bdfc8aa34edd2cf54864f463670d9286ca",
+  "size": 5283
+ },
+ "https://raw.githubusercontent.com/opentofu/opentofu/v1.13.9/website/docs/images/graph-example.png": {
+  "path": "raw.githubusercontent.com/opentofu/opentofu/v1.13.9/website/docs/images/graph-example.png",
+  "sha256": "c94402ddf985f38c703467aa7d5ddbb9cb9d0c6e97b515da8106a34f7e755b3e",
+  "size": 27282
+ },
  "https://raw.githubusercontent.com/pavankat/big-o-in-plain-english/master/most-of-them.png": {
   "path": "raw.githubusercontent.com/pavankat/big-o-in-plain-english/master/most-of-them.png",
   "sha256": "654b6227d1b083a97c6de2897038dd86a382935839c8c4a17065a52ff892bc3b",
@@ -2258,6 +2268,16 @@
   "path": "upload.wikimedia.org/wikipedia/commons/7/7f/Depth-First-Search.gif",
   "sha256": "86f05c6224231bd30bd878c656815e66e3abf2436c0f1b9d72bb8043028a6866",
   "size": 13447
+ },
+ "https://web-unified-docs-hashicorp.vercel.app/api/assets/terraform/latest/img/docs/intro-terraform-apis.png": {
+  "path": "web-unified-docs-hashicorp.vercel.app/api/assets/terraform/latest/img/docs/intro-terraform-apis.png",
+  "sha256": "fb0d4ff367ae084f72d2a175728f7e656053f409d1668c8b7918a7b4e768024e",
+  "size": 115073
+ },
+ "https://web-unified-docs-hashicorp.vercel.app/api/assets/terraform/latest/img/docs/intro-terraform-workflow.png": {
+  "path": "web-unified-docs-hashicorp.vercel.app/api/assets/terraform/latest/img/docs/intro-terraform-workflow.png",
+  "sha256": "5f0fffc692bd1da4a2503f2330bd37f018cdf42f6818f98d8b029e74c9981ccf",
+  "size": 347426
  },
  "https://www.mathsisfun.com/algebra/images/function-max-global.svg": {
   "path": "www.mathsisfun.com/algebra/images/function-max-global.svg",
