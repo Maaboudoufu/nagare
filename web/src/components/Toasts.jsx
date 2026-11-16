@@ -51,7 +51,7 @@ export default function Toasts() {
           {x.kind === 'xp' && <><span className="toast-xp">{t('+{n} XP', {n:x.xp})}</span><span className="meta">{x.more ? t('{reason} + bonuses', {reason:reason(x.first)}) : reason(x.first)}</span></>}
           {x.kind === 'note' && <><span className="toast-icon"><Icon name={x.icon || 'check'}/></span><span>{x.text}</span></>}
           {x.kind === 'level' && <><span className="toast-icon"><Icon name="star"/></span><span><strong>{t('Level {n}', {n:x.level})}</strong><span className="meta">{t('You leveled up.')}</span></span></>}
-          {x.kind === 'achievement' && <><Badge a={{...x, unlocked:true}} size={36}/><span><span className="meta">{t('Achievement unlocked')}</span><strong>{t(x.name)}</strong></span></>}
+          {x.kind === 'achievement' && <><Badge a={{...x, unlocked:true}}/><span><span className="meta">{t('Achievement unlocked')}</span><strong>{t(x.name)}</strong></span></>}
         </Toast>
       ))}
     </div>
