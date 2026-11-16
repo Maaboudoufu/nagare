@@ -2,7 +2,7 @@ import {useEffect, useRef, useState} from 'react';
 import {TYPES} from '../constants.js';
 import {N_, t} from '../lib/i18n.js';
 import {isDone, lessonPath, store, useStore} from '../store.js';
-import {Icon, Logo, Meter} from './ui.jsx';
+import {Beta, Icon, Logo, Meter} from './ui.jsx';
 
 const openChapters = new Set();  // chapters you expanded, remembered while the page is open
 
@@ -18,7 +18,7 @@ export default function Sidebar({course, cur, flat}) {
     <nav id="nav" aria-label={t('Course lessons')} ref={ref}>
       <div className="nav-head">
         <a className="back" href="/"><Icon name="arrow-left"/>{t('All courses')}</a>
-        <h2 className="course-title"><Logo course={meta} size="sm"/><span>{course.title}</span></h2>
+        <h2 className="course-title"><Logo course={meta} size="sm"/><span>{course.title}{meta.beta && <Beta/>}</span></h2>
         <Meter n={done} total={flat.length} label={t('Course progress')}/>
         <p className="meta">{t('{n} of {total} lessons complete', {n:done, total:flat.length})}</p>
       </div>

@@ -5,7 +5,7 @@ import {isDone, lessonPath, pct, save, store, useStore} from '../store.js';
 import {Page} from './Account.jsx';
 import CustomPicker from './CustomPicker.jsx';
 import Resume from './Resume.jsx';
-import {Icon, Logo, Meter, Ring} from './ui.jsx';
+import {Beta, Icon, Logo, Meter, Ring} from './ui.jsx';
 
 // One course on the path. Its node on the line shows how far along you are: empty, a filling ring, then a check.
 function Course({course: c}) {
@@ -16,7 +16,7 @@ function Course({course: c}) {
         <span className="node">{complete ? <Icon name="check"/> : <Ring n={done} total={total} size={18} stroke={2}/>}</span>
         <Logo course={c}/>
         <span className="course-text">
-          <span className="course-name">{c.title}</span>
+          <span className="course-name">{c.title}{c.beta && <Beta/>}</span>
           <span className="course-desc">{c.description}</span>
         </span>
         <span className="course-count" aria-hidden="true">{complete ? t('Done') : `${done}/${total}`}</span>
