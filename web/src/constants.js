@@ -29,6 +29,7 @@ export const BRANDS = {
   sql:{name:'SQL', color:'#003B57', icon:'sqlite'},
   docker:{name:'Docker', color:'#2496ED', icon:'docker'},
   kubernetes:{name:'Kubernetes', color:'#326CE5', icon:'kubernetes'},
+  terraform:{name:'Terraform', color:'#844FBA', icon:'terraform'},
   pandas:{name:'pandas', color:'#150458', icon:'pandas'},
   rabbitmq:{name:'RabbitMQ', color:'#FF6600', icon:'rabbitmq'},
   githubactions:{name:'GitHub Actions', color:'#2088FF', icon:'githubactions'},
