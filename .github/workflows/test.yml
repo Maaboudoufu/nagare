@@ -39,3 +39,9 @@ jobs:
       - run: python3 server/gamify.py
       - run: python3 server/terminal.py
       - run: python3 server/workspace.py
+      - run: python3 -c "import sys; sys.path.insert(0, 'server'); import serve; serve.check_saves()"
+      - name: The Terraform course file matches its source
+        run: |
+          python3 tools/build_terraform_course.py
+          python3 tools/fetch_media.py --rewrite-only
+          git diff --exit-code -- courses/learn-terraform.json courses/index.json

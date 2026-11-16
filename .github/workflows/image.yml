@@ -45,6 +45,21 @@ jobs:
       - name: Shell grader self-check
         run: docker run --rm nagare:ci python3 server/workspace.py
 
+      # What learners use in the terminal, run the way they run it: as the workspace user, with no network.
+      - name: Terraform course, every hands-on lesson
+        run: |
+          docker run --rm --network none --user 1000:1000 -w / \
+            -v "$PWD/tools/build_terraform_course.py:/app/tools/build_terraform_course.py:ro" \
+            nagare:ci python3 /app/tools/build_terraform_course.py test /tmp/tofu-test
+
+      - name: Editors
+        run: |
+          docker run --rm --network none --user 1000:1000 -e HOME=/home/user -w /tmp nagare:ci sh -ec '
+            printf "resource \"local_file\" \"hello\" {\n  filename = \"hello.txt\"\n}\n" > main.tf
+            nvim --headless main.tf -c "luafile /opt/nvim/config/nvim/check.lua"
+            vim --version | head -n 1
+            test ! -e "$HOME/.config/nvim"'
+
       - name: Smoke test
         run: |
           docker run -d --name smoke -e ADDR=0.0.0.0:8000 -p 127.0.0.1:8000:8000 nagare:ci
