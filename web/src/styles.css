@@ -542,6 +542,26 @@ dialog h2 { font:600 1.0625rem var(--sans); letter-spacing:-.01em; }
 .cm-s-nagare .cm-error { color:var(--danger); }
 .CodeMirror-dialog { background:var(--surface); color:var(--text); font:.8125rem var(--mono); }
 .CodeMirror-dialog input { width:auto; padding:0; border:0; background:none; color:var(--text); font:inherit; }
+.CodeMirror-dialog button { margin-left:4px; padding:1px 8px; border:1px solid var(--line); border-radius:4px; background:var(--surface-2);
+                            color:var(--text); font:inherit; cursor:pointer; }
+/* What the editor points out: the line you're on, the other uses of the word under the cursor, search matches. */
+.cm-s-nagare .CodeMirror-activeline-background { background:color-mix(in srgb, var(--text) 4%, transparent); }
+.cm-s-nagare .CodeMirror-activeline-gutter .CodeMirror-linenumber { color:var(--muted); }
+.cm-s-nagare .cm-matchhighlight { background:color-mix(in srgb, var(--accent) 16%, transparent); border-radius:2px; }
+.cm-s-nagare .cm-searching { background:color-mix(in srgb, var(--warn) 32%, transparent); border-radius:2px; }
+/* Folding: an arrow in the gutter beside each block, and a marker where one is folded away. */
+.CodeMirror-foldgutter { width:14px; }
+:is(.CodeMirror-foldgutter-open, .CodeMirror-foldgutter-folded) { color:#5B6470; text-align:center; cursor:pointer; }
+:is(.CodeMirror-foldgutter-open, .CodeMirror-foldgutter-folded):hover { color:var(--text); }
+.CodeMirror-foldgutter-open::after { content:'\25BE'; }
+.CodeMirror-foldgutter-folded::after { content:'\25B8'; }
+.CodeMirror-foldmarker { margin:0 4px; padding:0 6px; border-radius:4px; background:var(--surface-3); color:var(--muted); cursor:pointer; }
+/* The suggestion list is a floating surface, like the menus; CodeMirror puts it on <body>. */
+.CodeMirror-hints { position:absolute; z-index:40; max-height:14em; margin:0; padding:4px; overflow-y:auto; list-style:none;
+                    border:1px solid var(--line); border-radius:var(--r-sm); background:var(--surface-2); box-shadow:var(--shadow);
+                    font:var(--code-size, 14px)/1.6 var(--mono); }
+.CodeMirror-hint { padding:0 8px; border-radius:4px; color:var(--code); white-space:pre; cursor:pointer; }
+.CodeMirror-hint-active { background:var(--accent-soft); color:var(--text); }
 
 /* Workspaces without an editor: quizzes, written answers, steps to run. */
 .pane { max-width:720px; padding:24px; }

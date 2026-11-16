@@ -1,12 +1,16 @@
-/* Code lessons: CodeMirror editor, Run / Submit against the local runners, optional Vim keys. */
+/* Code lessons: CodeMirror editor (Sublime keys, or Vim), Run / Submit against the local runners. */
 import {useEffect, useMemo, useRef, useState} from 'react';
 import {MODES} from '../../constants.js';
 import CodeMirror from '../../lib/codemirror.js';
 import {fx} from '../../lib/fx.js';
-import {t} from '../../lib/i18n.js';
+import {N_, t} from '../../lib/i18n.js';
 import {MOD, useContinue, useShortcut} from '../../lib/keys.js';
-import {markDone, post, save, store, useStore} from '../../store.js';
+import {markDone, post, save, settings, store, useStore} from '../../store.js';
 import {Chip, DoneButton, Icon, NextStep} from '../ui.jsx';
+
+// What CodeMirror's find, replace and go-to-line prompts say.
+const PHRASES = [N_('Search:'), N_('(Use /re/ syntax for regexp search)'), N_('Replace:'), N_('Replace all:'), N_('With:'), N_('Replace with:'),
+                 N_('Replace?'), N_('Yes'), N_('No'), N_('All'), N_('Stop'), N_('Jump to line:'), N_('(Use line:column or scroll% syntax)')];
 
 function Output({lesson: l, out, sql}) {
   if (out) return <>
@@ -57,11 +61,16 @@ export default function CodeWorkspace({lesson: l}) {
   useEffect(() => {  // CodeMirror lives outside React: create it once per lesson
     const saved = store.progress[l.uuid]?.code || {};
     docs.current = Object.fromEntries(files.map(f => [f.name, CodeMirror.Doc(saved[f.name] ?? f.content, MODES[l.lang])]));
+    const typing = c => !c.state.vim || c.state.vim.insertMode;  // Vim normal mode keeps its own keys
     const cm = ed.current = CodeMirror(host.current, {
       theme:'nagare', lineNumbers:true, indentUnit:{py:4, go:4, c:4}[l.lang] || 2, tabSize:4, indentWithTabs:tabs,
-      matchBrackets:true, keyMap:vim ? 'vim' : 'default', showCursorWhenSelecting:true,
-      extraKeys:{Tab:c => c.state.vim && !c.state.vim.insertMode ? CodeMirror.Pass  // Vim normal mode keeps its own Tab
-                         : c.execCommand(tabs ? 'insertTab' : 'insertSoftTab')},
+      matchBrackets:true, autoCloseBrackets:true, styleActiveLine:true, keyMap:vim ? 'vim' : 'sublime', showCursorWhenSelecting:true,
+      highlightSelectionMatches:{showToken:/[\w$]/, delay:250},  // the other uses of the word under the cursor
+      foldGutter:true, gutters:['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
+      suggest:settings().suggest, phrases:Object.fromEntries(PHRASES.map(p => [p, t(p)])),
+      extraKeys:{Tab:c => typing(c) ? c.execCommand(tabs ? 'insertTab' : 'insertSoftTab') : CodeMirror.Pass,
+                 'Ctrl-Space':c => typing(c) ? c.execCommand('autocomplete') : CodeMirror.Pass,
+                 'Ctrl-/':'toggleCommentIndented', 'Cmd-/':'toggleCommentIndented'},  // here rather than in the keymap, so Vim mode has it too
     });
     cm.on('vim-mode-change', e => setVimMode(`-- ${e.mode.toUpperCase()}${e.subMode ? ' ' + e.subMode.toUpperCase() : ''} --`));
     if (vim) cm.focus();  // Vim users land in the editor on every lesson, no click needed
@@ -84,7 +93,7 @@ export default function CodeWorkspace({lesson: l}) {
   }, [active, l.uuid]);
 
   useEffect(() => {
-    ed.current.setOption('keyMap', vim ? 'vim' : 'default');
+    ed.current.setOption('keyMap', vim ? 'vim' : 'sublime');
     setVimMode(vim ? '-- NORMAL --' : '');
   }, [vim]);
 

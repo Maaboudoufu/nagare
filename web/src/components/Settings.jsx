@@ -96,6 +96,8 @@ export default function Settings() {
             {[12, 13, 14, 15, 16, 18].map(n => <option key={n} value={n}>{n === 14 ? t('{n}px (default)', {n}) : `${n}px`}</option>)}
           </select>
         </label>
+        <label className="check"><input type="checkbox" checked={s.suggest} onChange={e => set({suggest:e.target.checked})}/>
+          {t('Suggest completions as I type in the code editor')}</label>
       </Section>
 
       <Section title={t('Sound and effects')} desc={t('Played when you pass or miss a check, level up, or unlock an achievement.')}>
