@@ -24,6 +24,7 @@ const (
 	stateCookie   = "oauth_state"
 	sessionTTL    = 30 * 24 * time.Hour
 	loginTTL      = 10 * time.Minute
+	maxLogins     = 10000 // sign-ins in progress at once; more than this is someone hammering /auth/login
 	userinfoURL   = "https://openidconnect.googleapis.com/v1/userinfo"
 )
 
@@ -136,6 +137,11 @@ func (a *auth) login(w http.ResponseWriter, r *http.Request) {
 		if now.After(p.expires) {
 			delete(a.logins, k)
 		}
+	}
+	if len(a.logins) >= maxLogins { // unauthenticated requests mustn't grow this without bound
+		a.mu.Unlock()
+		http.Error(w, "Too many sign-ins in progress. Try again in a few minutes.", http.StatusServiceUnavailable)
+		return
 	}
 	a.logins[state] = pending{verifier, now.Add(loginTTL)}
 	a.mu.Unlock()
