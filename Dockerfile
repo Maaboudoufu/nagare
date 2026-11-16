@@ -34,7 +34,7 @@ RUN sed -i -e "s#http://deb.debian.org/debian-security#http://snapshot.debian.or
     && apt-get -o Acquire::Check-Valid-Until=false update \
     && apt-get install -y --no-install-recommends \
         python3 python3-pytest jq postgresql-client sqlite3 gh unzip zip nodejs npm \
-        less nano vim ripgrep fd-find netcat-openbsd sudo procps man-db file tree \
+        less nano vim python3-pylsp ripgrep fd-find netcat-openbsd sudo procps man-db file tree \
     && rm -rf /var/lib/apt/lists/*
 # Sandbox user; passwordless sudo for the Learn Linux permissions lessons.
 RUN useradd -m -u 1000 -s /bin/bash user && echo 'user ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/user
@@ -69,33 +69,29 @@ RUN cd /opt/tofu && tofu providers mirror providers \
     && TF_CLI_CONFIG_FILE=/opt/tofu/tofurc tofu init -lockfile=readonly && rm -rf .terraform
 ENV TF_CLI_CONFIG_FILE=/opt/tofu/tofurc
 
-# Neovim with LazyVim for the workspace terminal, all of it in the image: the plugins at the commits in
-# server/support/nvim/lazy-lock.json, and the syntax parsers compiled here (tree-sitter is only needed for that step).
-# To update the plugins: run `nvim --headless "+Lazy! sync" +qa` with that folder as the config and commit the lock file.
+# The terminal's editor: Neovim with no plugins (server/support/nvim), and the language servers it talks to. tofu-ls is
+# what formats and completes Terraform; gopls comes from the Go checksum database at this exact version; pylsp is the
+# Debian package above. Nothing is fetched when the editor runs.
 ARG NVIM_VERSION=0.12.6
 ARG NVIM_SHA256_x86_64=474430d53e6264f6d6dd18db42d6dc9df3a1b56ca9e88a325bbf860e1a811d87
 ARG NVIM_SHA256_aarch64=8f1f64a0bdb97247034038c3823c6cbad5bdf9ecd5751b85494b71c3ee04c815
-ARG TREE_SITTER_VERSION=0.27.2
-ARG TREE_SITTER_SHA256_x86_64=7ed56d152c52437397b9fcaa43cf341f49933cecc1ca291843f0d347c6e2cb3a
-ARG TREE_SITTER_SHA256_aarch64=34fcc5c4fa7bdd2058a2a45a03b6eb9a49b03a93b6d52ec750f99b1516d98d33
-COPY server/support/nvim /opt/nvim/config/nvim
+ARG TOFU_LS_VERSION=0.5.3
+ARG TOFU_LS_SHA256_x86_64=ccf8d85881f493483c9c20ac010d320bf455fdc9dcc39ba0af515206cb488460
+ARG TOFU_LS_SHA256_aarch64=d30430f86720100e6fc6d16881fcf16bc9e4cb3c4d221fafc1aa992f01387db0
+ARG GOPLS_VERSION=0.24.0
 RUN arch=$(uname -m) && case $arch in \
-        x86_64) n=x86_64 t=x64 nsum=$NVIM_SHA256_x86_64 tsum=$TREE_SITTER_SHA256_x86_64 ;; \
-        aarch64) n=arm64 t=arm64 nsum=$NVIM_SHA256_aarch64 tsum=$TREE_SITTER_SHA256_aarch64 ;; \
+        x86_64) n=x86_64 nsum=$NVIM_SHA256_x86_64 lsum=$TOFU_LS_SHA256_x86_64 ;; \
+        aarch64) n=arm64 nsum=$NVIM_SHA256_aarch64 lsum=$TOFU_LS_SHA256_aarch64 ;; \
         *) exit 1 ;; esac \
     && curl -fsSL "https://github.com/neovim/neovim/releases/download/v${NVIM_VERSION}/nvim-linux-${n}.tar.gz" -o /tmp/nvim.tar.gz \
     && echo "$nsum  /tmp/nvim.tar.gz" | sha256sum -c - \
-    && tar -xzf /tmp/nvim.tar.gz -C /opt/nvim --strip-components=1 \
-    && curl -fsSL "https://github.com/tree-sitter/tree-sitter/releases/download/v${TREE_SITTER_VERSION}/tree-sitter-linux-${t}.gz" -o /tmp/tree-sitter.gz \
-    && echo "$tsum  /tmp/tree-sitter.gz" | sha256sum -c - \
-    && mkdir /tmp/ts && gunzip -c /tmp/tree-sitter.gz > /tmp/ts/tree-sitter && chmod +x /tmp/ts/tree-sitter \
-    && git clone -q --filter=blob:none https://github.com/folke/lazy.nvim /opt/nvim/lazy/lazy.nvim \
-    && git -C /opt/nvim/lazy/lazy.nvim checkout -q "$(jq -r '."lazy.nvim".commit' /opt/nvim/config/nvim/lazy-lock.json)" \
-    && HOME=/tmp/nvim-home PATH=/tmp/ts:$PATH NVIM_BUILD=1 XDG_CONFIG_HOME=/opt/nvim/config \
-        /opt/nvim/bin/nvim --headless -c 'luafile /opt/nvim/config/nvim/build.lua' \
-    && git config --system --add safe.directory '/opt/nvim/lazy/*' \
-    && rm -rf /tmp/nvim.tar.gz /tmp/tree-sitter.gz /tmp/ts /tmp/nvim-home
-COPY server/support/nvim.sh /usr/local/bin/nvim
+    && mkdir /opt/nvim && tar -xzf /tmp/nvim.tar.gz -C /opt/nvim --strip-components=1 && ln -s /opt/nvim/bin/nvim /usr/local/bin/nvim \
+    && curl -fsSL "https://github.com/opentofu/tofu-ls/releases/download/v${TOFU_LS_VERSION}/tofu-ls_Linux_${n}.tar.gz" -o /tmp/tofu-ls.tar.gz \
+    && echo "$lsum  /tmp/tofu-ls.tar.gz" | sha256sum -c - \
+    && tar -xzf /tmp/tofu-ls.tar.gz -C /usr/local/bin tofu-ls \
+    && GOBIN=/usr/local/bin GOFLAGS=-mod=mod go install "golang.org/x/tools/gopls@v${GOPLS_VERSION}" \
+    && go clean -modcache && rm -rf /tmp/nvim.tar.gz /tmp/tofu-ls.tar.gz /root/.cache/go-build
+COPY server/support/nvim /etc/xdg/nvim
 
 ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1
 # New workspace volumes copy /home/user: a warm Go build cache makes the first Go run ~1s instead of ~10s.

@@ -55,10 +55,16 @@ jobs:
       - name: Editors
         run: |
           docker run --rm --network none --user 1000:1000 -e HOME=/home/user -w /tmp nagare:ci sh -ec '
-            printf "resource \"local_file\" \"hello\" {\n  filename = \"hello.txt\"\n}\n" > main.tf
-            nvim --headless main.tf -c "luafile /opt/nvim/config/nvim/check.lua"
+            mkdir tf go py
+            printf "resource \"local_file\" \"hello\" {\nfilename = \"hello.txt\"\n}\n" > tf/main.tf
+            printf "module x\n\ngo 1.22\n" > go/go.mod
+            printf "package main\nfunc main() {\nprintln(  1 )\n}\n" > go/main.go
+            printf "x = 1\n" > py/a.py
+            (cd tf && nvim --headless main.tf -c "luafile /etc/xdg/nvim/check.lua")
+            (cd go && nvim --headless main.go -c "luafile /etc/xdg/nvim/check.lua")
+            (cd py && nvim --headless a.py -c "lua assert(vim.wait(20000, function() return #vim.lsp.get_clients({bufnr = 0}) > 0 end), [[pylsp did not attach]])" -c "qa!")
             vim --version | head -n 1
-            test ! -e "$HOME/.config/nvim"'
+            test ! -e "$HOME/.config/nvim" && test ! -e "$HOME/.local/share/nvim/lazy"'
 
       - name: Smoke test
         run: |

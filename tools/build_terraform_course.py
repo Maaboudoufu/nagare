@@ -112,7 +112,7 @@ cli('Welcome to Learn Terraform', f'''
 
     - The terminal on the right is yours. Files you create are kept between visits.
     - Each chapter gets its own folder inside `~/tofu`, so one chapter's mistakes never break the next.
-    - Edit files with `nvim` (Neovim, set up with LazyVim), `vim`, or `nano`. The first lesson that needs one shows you how.
+    - Edit files with `nvim` (Neovim), `vim`, or `nano`. The first lesson that needs one shows you how.
     - **Run checks** tests your work and marks the lesson complete when it passes.
 
     > [!info]
@@ -302,6 +302,8 @@ cli('Init', '''
     | Stop typing              | [[Esc]]                                 |
     | Save and quit            | `:wq` then [[Enter]]                    |
     | Quit without saving      | `:q!` then [[Enter]]                    |
+
+    In `nvim`, `.tf` files get suggestions as you type, problems are underlined, and saving tidies the formatting. [[Space]] then `?` lists more keys.
 
     Rather not learn that today? `nano main.tf` works like a plain text box: [[Ctrl]]+[[O]] saves, [[Ctrl]]+[[X]] quits.
 
@@ -781,7 +783,7 @@ cli('Format and Validate', '''
 
     ## Assignment
 
-    1. [ ] Add this badly formatted resource to `~/tofu/pets/main.tf`, exactly as written:
+    1. [ ] Add this badly formatted resource to `~/tofu/pets/main.tf`, exactly as written. Use `nano` for this one: `nvim` would tidy it for you the moment you save.
        ```hcl
        resource "random_integer" "lucky" {
        min=1
