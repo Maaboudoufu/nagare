@@ -1,30 +1,23 @@
 -- CI, in the built image with no network and as the workspace user:
---   nvim --headless main.tf -c "luafile /opt/nvim/config/nvim/check.lua"
--- Fails unless every plugin is there, the file is highlighted by its parser, and nothing complained on the way.
-vim.wait(5000, function()
-  return false
-end) -- let the lazy-loaded plugins and anything they start in the background settle
-local problems = {}
-for name, plugin in pairs(require("lazy.core.config").plugins) do
-  if not plugin._.installed then
-    problems[#problems + 1] = "plugin not installed: " .. name
-  end
+--   nvim --headless main.tf -c "luafile /etc/xdg/nvim/check.lua"
+-- Opens a badly formatted file and fails unless the language server attaches, saving formats it, and nothing complained.
+local function fail(why)
+  io.stderr:write(why .. "\nmessages: " .. vim.fn.execute("messages") .. "\n")
+  vim.cmd("cquit 1")
 end
-if not vim.treesitter.highlighter.active[vim.api.nvim_get_current_buf()] then
-  problems[#problems + 1] = "no syntax parser running for filetype '" .. vim.bo.filetype .. "'"
+local attached = vim.wait(20000, function() return #vim.lsp.get_clients({ bufnr = 0 }) > 0 end, 100)
+if not attached then
+  fail("no language server attached for filetype '" .. vim.bo.filetype .. "'")
+end
+local before = table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false), "\n")
+vim.cmd("silent write")
+local after = table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false), "\n")
+if after == before then
+  fail("saving did not format the file")
 end
 local messages = vim.trim(vim.fn.execute("messages"))
 if messages ~= "" then
-  problems[#problems + 1] = "messages: " .. messages
+  fail("unexpected messages")
 end
-for _, note in ipairs(Snacks.notifier.get_history()) do
-  if note.level == "error" or note.level == "warn" then
-    problems[#problems + 1] = "notification: " .. tostring(note.msg)
-  end
-end
-if #problems > 0 then
-  io.stderr:write(table.concat(problems, "\n") .. "\n")
-  vim.cmd("cquit 1")
-end
-io.stdout:write(("ok: LazyVim, %d plugins, %s highlighted\n"):format(require("lazy").stats().count, vim.bo.filetype))
+io.stdout:write(("ok: %s, formatted on save by %s\n"):format(vim.bo.filetype, vim.lsp.get_clients({ bufnr = 0 })[1].name))
 vim.cmd("qa!")
