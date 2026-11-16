@@ -34,7 +34,7 @@ RUN sed -i -e "s#http://deb.debian.org/debian-security#http://snapshot.debian.or
     && apt-get -o Acquire::Check-Valid-Until=false update \
     && apt-get install -y --no-install-recommends \
         python3 python3-pytest jq postgresql-client sqlite3 gh unzip zip nodejs npm \
-        less nano vim ripgrep fd-find sudo procps man-db file tree \
+        less nano vim ripgrep fd-find netcat-openbsd sudo procps man-db file tree \
     && rm -rf /var/lib/apt/lists/*
 # Sandbox user; passwordless sudo for the Learn Linux permissions lessons.
 RUN useradd -m -u 1000 -s /bin/bash user && echo 'user ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/user
@@ -105,6 +105,10 @@ RUN mkdir -p /tmp/warm && cd /tmp/warm && go mod init warm \
     && printf 'package main\nimport "testing"\nfunc TestX(t *testing.T) {}\n' > main_test.go \
     && GOTOOLCHAIN=local go build -o /dev/null . && GOTOOLCHAIN=local go test -count=1 . >/dev/null && cd / && rm -rf /tmp/warm
 USER root
+# What a learner installs themselves (go install, npm install -g) goes in their home folder, which is their volume:
+# it's still there after the container is replaced. npm's own default (/usr/local) isn't theirs to write to.
+ENV GOPATH=/home/user/go NPM_CONFIG_PREFIX=/home/user/.npm-global
+ENV PATH=/home/user/go/bin:/home/user/.npm-global/bin:$PATH
 WORKDIR /app
 COPY server/support/sandbox.bashrc /etc/sandbox.bashrc
 COPY courses courses
