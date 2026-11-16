@@ -13,6 +13,7 @@ DATA_DIR = os.environ.get('DATA_DIR', os.path.join(ROOT, 'data'))
 PROGRESS_DIR = os.path.join(DATA_DIR, 'progress')
 INTERNAL_TOKEN = os.environ.get('INTERNAL_TOKEN', '')  # from the gateway, for /internal/ calls only it makes
 MAX_BODY = 1 << 20  # bytes; a save is one lesson's code or answers
+MAX_PROGRESS = 32 << 20  # bytes; one user's whole progress file (every lesson's saved code)
 lock = threading.Lock()  # ponytail: one lock for every user's progress file; per-user locks if saves ever queue up
 
 
@@ -58,10 +59,38 @@ def update_progress(user, fn):
         return prog, out
 
 
-def save_progress(user, key, data):
+# What a browser may save, besides lessons. Everything arrives from the user's browser, so nothing about it is assumed:
+# the profile and the time zone are shown to, or computed for, other members.
+PROFILE_LIMITS = {'name': 60, 'handle': 30, 'location': 60, 'website': 120, 'github': 39, 'bio': 160}
+COURSE_SLUGS = {c['slug'] for c in gamify.CATALOG}
+
+
+def savable(key):
+    return (key in LESSONS or key in ('app:settings', 'app:profile', 'app:path', 'app:last')
+            or (key.startswith('course:') and key[len('course:'):] in COURSE_SLUGS))
+
+
+def clean(key, data):
+    """The part of a save that's kept."""
     data = {k: v for k, v in data.items() if k != 'doneAt'}  # set by the server only
+    if key == 'app:profile':  # text only, no longer than the form allows
+        data = {k: v.strip()[:PROFILE_LIMITS[k]] for k, v in data.items() if k in PROFILE_LIMITS and isinstance(v, str)}
+    elif key == 'app:settings' and not isinstance(data.get('tz', ''), str):
+        del data['tz']
+    return data
+
+
+class TooBig(Exception):
+    """This save would take the user's progress file past MAX_PROGRESS."""
+
+
+def save_progress(user, key, data):
+    data = clean(key, data)
     def apply(prog):
-        prog.setdefault(key, {}).update(data)
+        before = prog.get(key)
+        prog[key] = {**(before if isinstance(before, dict) else {}), **data}
+        if len(json.dumps(prog)) > MAX_PROGRESS:
+            raise TooBig
         return gamify.saved(prog, LESSONS, key, data)
     return update_progress(user, apply)
 
@@ -79,10 +108,15 @@ def parts(prog):
     return prog.get('app:stats') or {}, prog.get('app:settings') or {}, prog.get('app:profile') or {}
 
 
+def text(v, limit=200):
+    """A saved value as short text. Profiles saved before saves were checked can hold anything."""
+    return v[:limit] if isinstance(v, str) else ''
+
+
 def public_fields(prog, member):
     """What any signed-in member may see of another in a list. Never their email or code."""
     stats, settings, profile = parts(prog)
-    return {'name': profile.get('name') or member.get('name') or '', 'handle': profile.get('handle', ''),
+    return {'name': text(profile.get('name')) or text(member.get('name')), 'handle': text(profile.get('handle')),
             'picture': member.get('picture', '') if settings.get('photo', True) else '',
             'level': gamify.level(stats.get('xp', 0)), 'streak': gamify.live_streak(prog),
             'lessons': len(gamify.done_lessons(prog, LESSONS))}
@@ -108,7 +142,7 @@ def public_profile(me, uid, lang='en'):
     recent = sorted(((p['doneAt'], u) for u, p in done.items() if p.get('doneAt')), reverse=True)[:6]
     titles = TITLES.get(lang, {})
     return {**public_fields(prog, member), 'id': uid, 'self': uid == me,
-            **{k: profile.get(k, '') for k in ('bio', 'location', 'website', 'github')},
+            **{k: text(profile.get(k)) for k in ('bio', 'location', 'website', 'github')},
             'xp': stats.get('xp', 0), 'best': stats.get('best', 0), 'joined': stats.get('joined'),
             'days': stats.get('days', {}), 'languages': languages,
             'courses': [{'slug': c['slug'], 'done': n, 'total': len(c['lessons'])}
@@ -199,8 +233,11 @@ class Handler(BaseHTTPRequestHandler):
 
     def read_body(self):
         """The request's JSON object, or None if it's too big or isn't one."""
-        size = int(self.headers.get('Content-Length') or 0)
-        if size > MAX_BODY:
+        try:
+            size = int(self.headers.get('Content-Length') or 0)
+        except ValueError:
+            return None
+        if not 0 <= size <= MAX_BODY:  # a negative length would read until the connection closes
             return None
         try:
             body = json.loads(self.rfile.read(size) or b'{}')
@@ -240,13 +277,15 @@ class Handler(BaseHTTPRequestHandler):
                 workspace.reset_sandbox(user, uuid)
                 res = {'ok': True}
             elif (self.path == '/api/progress' and isinstance(uuid, str) and isinstance(body.get('data'), dict)
-                  and uuid not in ('app:stats', 'app:events')):  # stats are the server's
+                  and savable(uuid)):  # lessons, settings, profile; never app:stats, which is the server's
                 prog, events = save_progress(user, uuid, body['data'])
                 res = {'ok': True, 'events': events, 'stats': prog['app:stats']}
             else:
                 return self.send_error(404)
         except workspace.Busy as e:
             return self.send_json({'error': str(e), 'output': str(e), 'passed': False}, 503)
+        except TooBig:
+            return self.send_error(413)
         self.send_json(res)
 
 
@@ -285,6 +324,51 @@ def check_cli():
     print(f'ok: CLI grader passes {len(steps)} sample checks and catches a failing one')
 
 
+def check_saves():
+    """What browsers send is checked, and what's already on disk can't break pages other members load."""
+    global DATA_DIR, PROGRESS_DIR
+    lesson = next(iter(LESSONS))
+    assert savable(lesson) and savable('app:profile') and savable('course:' + gamify.CATALOG[0]['slug'])
+    assert not any(savable(k) for k in ('app:stats', 'app:events', 'course:nope', 'anything-else', ''))
+    old = DATA_DIR, PROGRESS_DIR
+    with tempfile.TemporaryDirectory() as d:
+        DATA_DIR, PROGRESS_DIR = d, os.path.join(d, 'progress')
+        try:
+            save_progress('aa', 'app:profile', {'name': {'not': 'text'}, 'handle': 'h' * 500, 'bio': 5, 'website': ' example.com ', 'extra': 'x'})
+            save_progress('aa', 'app:settings', {'tz': ['not', 'a', 'zone'], 'sound': False})
+            prog = load_progress('aa')
+            assert prog['app:profile'] == {'handle': 'h' * 30, 'website': 'example.com'}, prog['app:profile']
+            assert prog['app:settings'] == {'sound': False}, prog['app:settings']
+            prog, _ = save_progress('aa', lesson, {'done': True, 'doneAt': '1999-01-01'})
+            assert not prog[lesson]['doneAt'].startswith('1999')  # the server's stamp, not the browser's
+            # A file from before saves were checked: a profile and a time zone that aren't text.
+            with open(progress_path('bb'), 'w') as f:
+                json.dump({'app:stats': {**load_progress('aa')['app:stats'], 'xp': 50}, 'app:settings': {'tz': 5},
+                           'app:profile': {'name': {'a': 1}, 'handle': ['x'], 'website': 7, 'bio': 'hi'}}, f)
+            for period in ('all', 'week', 'month'):
+                rows = leaderboard('aa', period)
+                assert {r['you'] for r in rows} == {True, False} and all(isinstance(r['name'], str) and isinstance(r['handle'], str) for r in rows), rows
+            them = public_profile('aa', 'bb')
+            assert (them['name'], them['handle'], them['website'], them['bio']) == ('', '', '', 'hi'), them
+            try:
+                save_progress('aa', 'app:last', {'x': 'y' * (MAX_PROGRESS + 1)})
+                raise AssertionError('an oversized save was kept')
+            except TooBig:
+                pass
+        finally:
+            DATA_DIR, PROGRESS_DIR = old
+
+    class Body(Handler):  # just enough of a request to read a body from
+        def __init__(self, length, data=b'{}'):
+            self.headers, self.rfile = {'Content-Length': length}, tempfile.SpooledTemporaryFile()
+            self.rfile.write(data)
+            self.rfile.seek(0)
+    assert Body('2').read_body() == {} and Body(None).read_body() == {}
+    assert Body('-1').read_body() is None and Body('x').read_body() is None and Body(str(MAX_BODY + 1)).read_body() is None
+    assert Body('2', b'[]').read_body() is None
+    print('ok: saves are checked, and old data can\'t break the leaderboard or profiles')
+
+
 def check():
     prog = load_progress('local')
     passed = 0
@@ -298,6 +382,7 @@ def check():
     assert passed, 'no saved code passed locally'
     print(f'ok: {passed} completed lessons pass locally')
     check_cli()
+    check_saves()
 
 
 if __name__ == '__main__':

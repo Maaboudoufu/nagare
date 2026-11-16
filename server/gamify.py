@@ -102,7 +102,7 @@ ACHIEVEMENTS = [Achievement(*a) for a in [
 def now_in(tz):
     try:
         return datetime.datetime.now(zoneinfo.ZoneInfo(tz or 'UTC'))
-    except (zoneinfo.ZoneInfoNotFoundError, ValueError):
+    except (zoneinfo.ZoneInfoNotFoundError, ValueError, TypeError, OSError):  # unknown, malformed, or not even text
         return datetime.datetime.now(datetime.timezone.utc)
 
 
@@ -146,7 +146,9 @@ def _stats(prog, lessons, now):
 
 
 def tz_of(prog, fallback=None):
-    return (prog.get('app:settings') or {}).get('tz') or fallback
+    """The time zone a user picked, if it's text at all (it comes from their browser: anything can be sent)."""
+    tz = (prog.get('app:settings') or {}).get('tz') or fallback
+    return tz if isinstance(tz, str) else None
 
 
 def live_streak(prog):
@@ -224,6 +226,9 @@ if __name__ == '__main__':
     assert live_streak(prog) == 0  # broken streaks don't show
     t = tally({'a': {'done': True, 'doneAt': '2026-01-01T10:00:00'}, 'b': {'done': True, 'doneAt': '2026-01-01'}}, lessons)
     assert t['best_day'] == 1 and t['lang']['python'] == 0, t  # date-only stamps don't count toward a day
+    # A time zone that isn't a name (a number, a list, a path) falls back to UTC instead of raising for everyone.
+    for bad in (5, ['x'], {'a': 1}, '../../etc/passwd', 'x' * 5000, 'No/Such_Zone'):
+        assert now_in(tz_of({'app:settings': {'tz': bad}})).tzinfo is not None and live_streak({'app:settings': {'tz': bad}}) == 0
     medals = open(os.path.join(os.path.dirname(COURSES), 'web', 'src', 'assets', 'medals.svg')).read()
     assert not [a.id for a in ACHIEVEMENTS if f'<symbol id="{a.id}"' not in medals]  # every achievement has its glyph
     assert len({a.id for a in ACHIEVEMENTS}) == len(ACHIEVEMENTS)
