@@ -364,9 +364,11 @@ func TestLimits(t *testing.T) {
 	req := httptest.NewRequest("POST", "http://localhost:8000/api/progress", strings.NewReader(strings.Repeat("x", 1<<20+1)))
 	rec := httptest.NewRecorder()
 	h.ServeHTTP(rec, req)
-	if rec.Code == 200 {
-		t.Fatalf("a body over 1 MiB reached the worker: %q", rec.Body.String())
-	}
+	expect(t, rec, 413, "") // refused before any of it is sent to the worker
+	req = httptest.NewRequest("POST", "http://localhost:8000/api/progress", strings.NewReader(strings.Repeat("x", 1<<20)))
+	rec = httptest.NewRecorder()
+	h.ServeHTTP(rec, req)
+	expect(t, rec, 200, "") // exactly the limit still goes through
 
 	a, h := testApp(t, &oauth2.Config{ClientID: "id", Endpoint: oauth2.Endpoint{AuthURL: "https://accounts.example/auth"}}, "")
 	a.auth.mu.Lock()

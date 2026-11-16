@@ -76,8 +76,7 @@ func (a *app) routes() http.Handler {
 	mux.HandleFunc("GET /auth/callback", a.auth.callback)
 	mux.HandleFunc("GET /auth/me", a.auth.me)
 	mux.HandleFunc("POST /auth/logout", a.auth.logout)
-	// The worker reads at most 1 MiB of a request; stop larger ones here instead of streaming them to it.
-	mux.Handle("/api/", http.MaxBytesHandler(a.requireUser(a.api.ServeHTTP), 1<<20))
+	mux.Handle("/api/", limitBody(a.requireUser(a.api.ServeHTTP), 1<<20))
 	return a.guard(mux)
 }
 
@@ -113,6 +112,19 @@ func (a *app) guard(next http.Handler) http.Handler {
 		h.Set("Referrer-Policy", "same-origin")
 		h.Set("Content-Security-Policy", contentPolicy+"ws://"+r.Host+" wss://"+r.Host) // Host is one of ours (checked above)
 		next.ServeHTTP(w, r)
+	})
+}
+
+// limitBody: the worker reads at most 1 MiB of a request, so larger ones stop here instead of being streamed to it.
+// One that says it's too long is refused outright; one that doesn't say (chunked) is cut off at the limit.
+func limitBody(next http.Handler, max int64) http.Handler {
+	capped := http.MaxBytesHandler(next, max)
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.ContentLength > max {
+			http.Error(w, "Request too large", http.StatusRequestEntityTooLarge)
+			return
+		}
+		capped.ServeHTTP(w, r)
 	})
 }
 
