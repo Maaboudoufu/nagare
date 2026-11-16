@@ -27,6 +27,11 @@ USER_ID = re.compile(r'^[a-z0-9]{1,32}$')
 # The AWS course talks to Floci, a local AWS emulator inside the workspace, never to real AWS.
 AWS_ENV = ['-e', 'AWS_ENDPOINT_URL=http://localhost:4566', '-e', 'AWS_DEFAULT_REGION=us-east-1']
 AWS_CREDENTIALS = '[default]\naws_access_key_id = test\naws_secret_access_key = test\n'
+TERM_ENV = ['-e', 'TERM=xterm-256color', '-e', 'COLORTERM=truecolor']  # the browser terminal shows 24-bit color
+# The user owns their home folder, so they can also lock themselves out of it. Its owner can always undo that.
+HOME_FIX = 'chmod u+rwx "$HOME" 2>/dev/null'
+# Starter credentials for the emulator ($0), unless the user configured their own.
+AWS_SETUP = 'cd "$HOME" && { [ -f .aws/credentials ] || { umask 077 && mkdir -p .aws && printf "%s" "$0" > .aws/credentials; }; }'
 
 
 class Busy(Exception):
@@ -51,7 +56,6 @@ class Box:
         self.used = time.monotonic()
         self.lock = threading.Lock()  # one grading request at a time per workspace
         self.agent = None
-        self.aws = False
 
     def touch(self):
         self.used = time.monotonic()
@@ -62,7 +66,7 @@ class Box:
         with self.lock:
             for attempt in (1, 2):  # a dead agent (e.g. it crashed) is restarted once
                 if not self.agent or self.agent.poll() is not None:
-                    self.agent = subprocess.Popen(['docker', 'exec', '-i', self.name, 'python3', '-u', '/app/server/agent.py'],
+                    self.agent = subprocess.Popen(['docker', 'exec', '-i', '-w', '/', self.name, 'python3', '-u', '/app/server/agent.py'],
                                                   stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
                 try:
                     self.agent.stdin.write((json.dumps(req) + '\n').encode())
@@ -76,20 +80,22 @@ class Box:
                 self.agent.kill()
                 self.agent = None
         try:
-            if not _running(self.name):  # the container itself is gone: forget it, so the next request starts a new one
+            if not responds(self):  # gone, or out of processes: forget it, so the next request starts a new one
                 _stop(self)
-        except (RuntimeError, subprocess.TimeoutExpired):
+        except subprocess.TimeoutExpired:
             pass  # Docker didn't answer: the reaper sorts it out
         return {'error': 'Your workspace stopped while running that. Try again.'}
 
     def start_aws(self):
-        """Start Floci in this workspace (once). About 60 ms; ~140 MB, so only for people doing the AWS course."""
-        if self.aws:
+        """Make sure Floci (the AWS emulator) is running here and the starter credentials exist. Asked on every AWS
+        check and terminal rather than remembered: the user can delete ~/.aws or kill the emulator, and the next use
+        puts them back. Starting it takes about 60 ms; ~140 MB, so only for people doing the AWS course."""
+        up = _docker('exec', '-w', '/', self.name, 'sh', '-c', AWS_SETUP + '; curl -s -o /dev/null -m 2 localhost:4566', AWS_CREDENTIALS)
+        if up.returncode == 0:
             return
-        _docker('exec', '-d', '-w', HOME, self.name, 'sh', '-c',
-                'mkdir -p .floci && cd .floci && exec floci -Dquarkus.http.host=127.0.0.1 >>log 2>&1')
+        _docker('exec', '-d', '-w', '/', self.name, 'sh', '-c',
+                'cd "$HOME" && mkdir -p .floci && cd .floci && exec floci -Dquarkus.http.host=127.0.0.1 >>log 2>&1')
         _docker('exec', self.name, 'sh', '-c', 'for i in $(seq 100); do curl -s -o /dev/null localhost:4566 && exit; sleep 0.05; done')
-        self.aws = True
 
 
 boxes = {}  # container name -> Box
@@ -106,6 +112,22 @@ def _running(*names):
     """Which of our containers are running right now (all of them if no names are given)."""
     out = _check(_docker('ps', '--filter', 'label=nagare', '--format', '{{.Names}}'), 'ps').split()
     return set(out) & set(names) if names else set(out)
+
+
+def responds(box):
+    """Whether the container still runs commands. No: it exited (its shell was closed, a kill -9 -1), or it has no
+    processes left to give (a fork bomb)."""
+    return _docker('exec', box.name, 'true').returncode == 0
+
+
+def usable(get):
+    """get()'s container, replaced by a new one if it stopped responding. A workspace's files are in its volume, so
+    they're all still there; a sandbox starts over from the lesson's files."""
+    box = get()
+    if not responds(box):
+        _stop(box)
+        box = get()
+    return box
 
 
 def _stop(box):
@@ -141,11 +163,11 @@ def workspace(user):
         _check(_docker('run', '-d', '--rm', '--name', name, '--label', 'nagare=workspace', '--label', f'nagare.user={user}',
                        '--hostname', 'workspace', '--network', NETWORK, '--init', '--user', '1000:1000',
                        '--security-opt', 'no-new-privileges',  # no sudo/setuid to root (sandboxes keep sudo: no network)
-                       '-e', f'HOME={HOME}', '-e', 'TERM=xterm-256color', *AWS_ENV, '-w', HOME,
-                       '-v', f'nagare-home-{user}:{HOME}', *LIMITS, IMAGE, 'sleep', 'infinity'), 'run')
-        # Starter AWS credentials for the emulator, unless the user already configured their own.
-        _docker('exec', name, 'sh', '-c', '[ -f .aws/credentials ] || { umask 077 && mkdir -p .aws && printf "%s" "$0" > .aws/credentials; }',
-                AWS_CREDENTIALS)
+                       '-e', f'HOME={HOME}', *TERM_ENV, *AWS_ENV,
+                       # Nothing here starts inside the home folder: the user can make it unreadable (chmod 000 ~),
+                       # and a shell that had to cd into it then never opened again. HOME_FIX puts the permissions back.
+                       '-w', '/', '-v', f'nagare-home-{user}:{HOME}', *LIMITS, IMAGE, 'sleep', 'infinity'), 'run')
+        _docker('exec', '-w', '/', name, 'sh', '-c', HOME_FIX + '; ' + AWS_SETUP, AWS_CREDENTIALS)
         box = Box(name, 'workspace', user)
         with boxes_lock:
             boxes[name] = box
@@ -169,10 +191,15 @@ def user_path(d):
     return posixpath.join(HOME, rel) if rel not in ('', '.') else HOME
 
 
+# Always ends in a shell: a folder that can't be made or entered leaves you in your home folder instead of nowhere.
+TERMINAL = (HOME_FIX + '; cd "$HOME" 2>/dev/null; mkdir -p -- "$1" 2>/dev/null; cd -- "$1" 2>/dev/null; '
+            'exec bash --rcfile "$2" -i')
+PROJECT_RC = '/app/server/support/project.bashrc'  # part of the image, not of the user's files
+
+
 def terminal_argv(box, folder):
-    """A login shell in the user's workspace, in folder (created if missing)."""
-    return ['docker', 'exec', '-it', '-w', HOME, box.name, 'bash', '-c',
-            'mkdir -p -- "$1" && cd -- "$1" && exec bash --rcfile /app/server/support/project.bashrc -i', 'bash', folder]
+    """A shell in the user's workspace, in folder (created if missing)."""
+    return ['docker', 'exec', '-it', '-w', '/', box.name, 'bash', '-c', TERMINAL, 'bash', folder, PROJECT_RC]
 
 
 # ---- Learn Linux sandboxes ----
@@ -243,7 +270,7 @@ def sandbox(user, uuid):
         cid = _check(_docker('create', '-it', '--label', 'nagare=sandbox', '--label', f'nagare.user={user}', '--name', name,
                              '--network', 'none', '--memory', '256m', '--pids-limit', '128', '--cpus', '0.5',
                              *RUNTIME,
-                             '--hostname', 'worldbanc', '--user', 'user', '-w', spec['cwd'], '-e', 'TERM=xterm-256color',
+                             '--hostname', 'worldbanc', '--user', 'user', '-w', spec['cwd'], *TERM_ENV,
                              *record,
                              IMAGE, 'bash', '--rcfile', '/etc/sandbox.bashrc', '-i'), 'create')
         try:
@@ -703,3 +730,72 @@ exit
     assert off_hist.splitlines() == ['pwd; ls', 'false', 'echo STATUS:$?', 'exit'], off_hist.splitlines()
     assert 'STATUS:1' in off_out and 'STATUS:0' not in off_out and 'INIT_MARKER_SHOULD_NOT_APPEAR' not in off_out, off_out
     print('ok: sandbox checks')
+
+    # ---- nothing a user does to their own files or processes leaves them without a workspace ----
+    import shutil, tempfile
+
+    def lands(prepare):
+        """Where the terminal's start-up script ends up, with a home folder prepared like the user might leave it."""
+        with tempfile.TemporaryDirectory() as d:
+            home, rc = os.path.join(d, 'home'), os.path.join(d, 'rc')
+            proj = os.path.join(home, 'proj')
+            os.makedirs(proj)
+            open(rc, 'w').write('echo "AT:$PWD"\nexit\n')
+            prepare(home, proj)
+            try:
+                out = subprocess.run(['bash', '-c', TERMINAL, 'bash', proj, rc], env={**os.environ, 'HOME': home}, cwd='/',
+                                     capture_output=True, text=True, stdin=subprocess.DEVNULL, timeout=20).stdout
+            finally:
+                for path in (home, proj):  # so the temp folder can be removed
+                    if os.path.isdir(path):
+                        os.chmod(path, 0o700)
+            return out.strip().replace(d, '')
+
+    assert lands(lambda home, proj: None) == 'AT:/home/proj'
+    assert lands(lambda home, proj: os.chmod(home, 0)) == 'AT:/home/proj'            # chmod 000 ~
+    assert lands(lambda home, proj: shutil.rmtree(proj)) == 'AT:/home/proj'          # folder deleted: made again
+    assert lands(lambda home, proj: shutil.rmtree(home)) in ('AT:/home/proj', 'AT:/')  # everything deleted
+    if os.geteuid():  # root walks into any folder, so these two only mean something as a normal user
+        assert lands(lambda home, proj: os.chmod(proj, 0)) == 'AT:/home'             # a folder you can't enter: home instead
+    assert lands(lambda home, proj: (shutil.rmtree(proj), open(proj, 'w').close())) == 'AT:/home'  # it's a file
+
+    def with_docker(fake, fn):
+        global _docker
+        old, _docker = _docker, fake
+        try:
+            return fn()
+        finally:
+            _docker = old
+            boxes.clear()
+
+    calls, answers = [], []
+    def scripted(*args, **kwargs):
+        calls.append(args)
+        return subprocess.CompletedProcess(args, answers.pop(0) if answers else 0, b'', b'')
+
+    # A new workspace starts outside the home folder, then repairs it and adds the starter credentials.
+    with_docker(scripted, lambda: workspace('t3test'))
+    run, fix = calls
+    assert run[0] == 'run' and run[run.index('-w') + 1] == '/' and 'COLORTERM=truecolor' in run and 'no-new-privileges' in run, run
+    assert fix[:3] == ('exec', '-w', '/') and HOME_FIX in fix[-2] and '.aws/credentials' in fix[-2] and fix[-1] == AWS_CREDENTIALS, fix
+    # Its shell and its grader don't start in the home folder either.
+    assert terminal_argv(Box('n', 'workspace', 'u'), '/home/user/x')[:5] == ['docker', 'exec', '-it', '-w', '/']
+    # A container that stopped answering (exited, or out of processes) is replaced, once.
+    made = []
+    def get():
+        made.append(Box(f'box{len(made)}', 'workspace', 'u'))
+        return made[-1]
+    calls.clear(); answers[:] = [1]
+    assert with_docker(scripted, lambda: usable(get)).name == 'box1' and calls == [('exec', 'box0', 'true'), ('rm', '-f', 'box0')], calls
+    calls.clear(); made.clear()
+    assert with_docker(scripted, lambda: usable(get)).name == 'box0' and calls == [('exec', 'box0', 'true')], calls
+    # The AWS emulator: asked every time, started only when it isn't answering.
+    calls.clear()
+    with_docker(scripted, lambda: Box('n', 'workspace', 'u').start_aws())
+    assert len(calls) == 1 and 'curl' in calls[0][-2] and '.aws/credentials' in calls[0][-2], calls
+    calls.clear(); answers[:] = [7]
+    with_docker(scripted, lambda: Box('n', 'workspace', 'u').start_aws())
+    assert len(calls) == 3 and calls[1][:2] == ('exec', '-d') and 'floci' in calls[1][-1], calls
+    for script in (HOME_FIX + '; ' + AWS_SETUP, TERMINAL):  # they parse
+        assert subprocess.run(['sh', '-n', '-c', script]).returncode == 0
+    print('ok: workspaces survive what users do to them')

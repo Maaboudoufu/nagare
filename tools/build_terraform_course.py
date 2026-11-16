@@ -1,12 +1,13 @@
 """The Learn Terraform course, as source: writes courses/learn-terraform.json and its entry in courses/index.json.
-Edit the lessons here, not in the JSON.
+Edit the lessons here, not in the JSON (CI checks the two match).
 
 Usage (from the project root):
-  python3 tools/build_terraform_course.py              write the course, then run  python3 tools/fetch_media.py --images-only
-                                                       (it downloads the lesson images and points the lessons at /media/...)
-  python3 tools/build_terraform_course.py test <dir>   also play every hands-on lesson's solution in <dir> (a new, empty
-                                                       folder used as HOME) and run the lesson's checks with server/grader.py.
-                                                       Needs `tofu` on PATH and the hashicorp/local and hashicorp/random providers."""
+  python3 tools/build_terraform_course.py              write the course. New image? Run tools/fetch_media.py --images-only
+                                                       first: it downloads it and records it in media.lock.json.
+  python3 tools/build_terraform_course.py test <dir>   change nothing; play every hands-on lesson's solution in <dir> (a
+                                                       new folder, used as HOME) and run the lesson's checks with
+                                                       server/grader.py. Needs `tofu` and the hashicorp/local and
+                                                       hashicorp/random providers. CI runs this inside the image, offline."""
 import json, os, subprocess, sys, textwrap, uuid
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -111,7 +112,7 @@ cli('Welcome to Learn Terraform', f'''
 
     - The terminal on the right is yours. Files you create are kept between visits.
     - Each chapter gets its own folder inside `~/tofu`, so one chapter's mistakes never break the next.
-    - Edit files with `nano` or `vim`.
+    - Edit files with `nvim` (Neovim, set up with LazyVim), `vim`, or `nano`. The first lesson that needs one shows you how.
     - **Run checks** tests your work and marks the lesson complete when it passes.
 
     > [!info]
@@ -290,13 +291,27 @@ cli('Init', '''
 
     Run `init` once per project, and again whenever you add a provider or module.
 
+    ## Editing Files
+
+    You'll write every file in the terminal. `nvim main.tf` opens the file in Neovim:
+
+    | Do this                  | Keys                                    |
+    | ------------------------ | --------------------------------------- |
+    | Start typing             | `i`                                     |
+    | Paste code you copied    | [[Ctrl]]+[[Shift]]+[[V]], while typing  |
+    | Stop typing              | [[Esc]]                                 |
+    | Save and quit            | `:wq` then [[Enter]]                    |
+    | Quit without saving      | `:q!` then [[Enter]]                    |
+
+    Rather not learn that today? `nano main.tf` works like a plain text box: [[Ctrl]]+[[O]] saves, [[Ctrl]]+[[X]] quits.
+
     ## Assignment
 
     1. [ ] Create a folder for this chapter and move into it:
        ```bash
        mkdir -p ~/tofu/hello && cd ~/tofu/hello
        ```
-    2. [ ] Create `main.tf` with this content:
+    2. [ ] Create `main.tf` (`nvim main.tf`) with this content:
        ```hcl
        terraform {
          required_providers {
@@ -332,7 +347,7 @@ cli('Init', '''
     ''')
 
 cli('Plan', '''
-    `tofu plan` compares your files with what exists and prints what it _would_ do.
+    `tofu plan` compares your files with what exists and prints what it _would_ do. Shortened, it looks like this:
 
     ```
       # local_file.hello will be created
@@ -1228,6 +1243,14 @@ quiz('Remote State', '''
     - Keep it in a private, encrypted bucket.
     - Limit who can read it.
 
+    ## What Goes in Git
+
+    | Commit                          | Never commit                         |
+    | ------------------------------- | ------------------------------------ |
+    | Your `.tf` files                | `terraform.tfstate` and its backups  |
+    | `.terraform.lock.hcl`           | The `.terraform/` folder             |
+    |                                 | `.tfvars` files that hold secrets    |
+
     > [!tip]
     > OpenTofu can encrypt the state file itself, before it leaves your machine. That's one of the features Terraform doesn't have built in.
     ''',
@@ -1467,7 +1490,7 @@ quiz('Conditionals', '''
 cli('Functions and For Expressions', '''
     ## Functions
 
-    HCL has built-in functions for strings, numbers, and collections. You can't define your own.
+    HCL has built-in functions for strings, numbers, and collections. You can't write your own in HCL.
 
     ```hcl
     upper("hello")           # "HELLO"
@@ -1977,13 +2000,16 @@ def build():
     ix = json.load(open(p))
     entry = {'slug': SLUG, 'title': 'Learn Terraform', 'language': 'terraform',
              'description': 'Describe infrastructure in code and build it with one command: providers, resources, variables, state, and modules, hands-on with OpenTofu.',
-             'lessons': [l['uuid'] for ch in CHAPTERS for l in ch['lessons']]}
+             'lessons': [l['uuid'] for ch in CHAPTERS for l in ch['lessons']], 'beta': True}
     ix['courses'] = [c for c in ix['courses'] if c['slug'] != SLUG]
     ix['courses'].insert(next(i for i, c in enumerate(ix['courses']) if c['slug'] == 'learn-kubernetes') + 1, entry)
     for path in ix['paths']:
         if path['slug'] == 'devops-python-golang' and SLUG not in path['courses']:
             path['courses'].insert(path['courses'].index('learn-kubernetes') + 1, SLUG)
     json.dump(ix, open(p, 'w'))
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import fetch_media  # the lessons name images by their web address; the app serves its own copy from /media
+    fetch_media.rewrite(json.load(open(fetch_media.LOCK)))
     kinds = [l['type'] for ch in CHAPTERS for l in ch['lessons']]
     print(f"{len(kinds)} lessons in {len(CHAPTERS)} chapters: {kinds.count('type_cli')} hands-on, {kinds.count('type_choice')} quizzes")
 
@@ -2016,6 +2042,6 @@ def test(home):
 
 
 if __name__ == '__main__':
-    build()
     if sys.argv[1:2] == ['test']:
         sys.exit(test(sys.argv[2]))
+    build()

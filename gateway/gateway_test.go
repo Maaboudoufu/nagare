@@ -10,8 +10,10 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"strconv"
 	"strings"
 	"testing"
+	"time"
 
 	"golang.org/x/oauth2"
 )
@@ -136,6 +138,9 @@ func TestRoutesSignInOff(t *testing.T) {
 	rec = httptest.NewRecorder()
 	h.ServeHTTP(rec, req)
 	expect(t, rec, 403, "")
+
+	// The Vite dev server's origin only counts when DEV_ORIGIN asked for it.
+	expect(t, c.do("POST", "/api/run", "Origin", "http://localhost:5173"), 403, "")
 
 	// Assets: gzipped, cached forever (hashed names).
 	rec = c.do("GET", "/assets/app.js", "Accept-Encoding", "gzip")
@@ -330,4 +335,51 @@ func TestAdmin(t *testing.T) {
 		t.Fatal("internal token forwarded")
 	}
 	expect(t, member.do("POST", "/internal/kick"), 404, "")
+}
+
+// Hosted over https: a plain-http page on the public host isn't ours, and browsers are told to stay on https.
+func TestHostedOrigins(t *testing.T) {
+	a, h := testApp(t, nil, "")
+	a.hosts["learn.example.com"], a.origins["https://learn.example.com"], a.publicHost = true, true, "learn.example.com"
+	secureCookies = true
+	t.Cleanup(func() { secureCookies = false })
+	call := func(host, origin string) *httptest.ResponseRecorder {
+		req := httptest.NewRequest("POST", "http://"+host+"/api/run", nil)
+		req.Header.Set("Origin", origin)
+		rec := httptest.NewRecorder()
+		h.ServeHTTP(rec, req)
+		return rec
+	}
+	expect(t, call("learn.example.com", "https://learn.example.com"), 200, "")
+	expect(t, call("learn.example.com", "http://learn.example.com"), 403, "")
+	expect(t, call("localhost:8000", "http://localhost:8000"), 200, "") // on the server itself
+	if hsts := call("learn.example.com", "https://learn.example.com").Header().Get("Strict-Transport-Security"); hsts == "" {
+		t.Fatal("no Strict-Transport-Security header")
+	}
+}
+
+// Requests the worker would refuse anyway stop at the gateway, and sign-ins in progress are bounded.
+func TestLimits(t *testing.T) {
+	_, h := testApp(t, nil, "")
+	req := httptest.NewRequest("POST", "http://localhost:8000/api/progress", strings.NewReader(strings.Repeat("x", 1<<20+1)))
+	rec := httptest.NewRecorder()
+	h.ServeHTTP(rec, req)
+	expect(t, rec, 413, "") // refused before any of it is sent to the worker
+	req = httptest.NewRequest("POST", "http://localhost:8000/api/progress", strings.NewReader(strings.Repeat("x", 1<<20)))
+	rec = httptest.NewRecorder()
+	h.ServeHTTP(rec, req)
+	expect(t, rec, 200, "") // exactly the limit still goes through
+
+	a, h := testApp(t, &oauth2.Config{ClientID: "id", Endpoint: oauth2.Endpoint{AuthURL: "https://accounts.example/auth"}}, "")
+	a.auth.mu.Lock()
+	for i := 0; i < maxLogins; i++ {
+		a.auth.logins[strconv.Itoa(i)] = pending{"v", time.Now().Add(time.Minute)}
+	}
+	a.auth.mu.Unlock()
+	c := &client{h: h}
+	expect(t, c.do("GET", "/auth/login"), 503, "")
+	a.auth.mu.Lock()
+	clear(a.auth.logins)
+	a.auth.mu.Unlock()
+	expect(t, c.do("GET", "/auth/login"), 302, "accounts.example")
 }

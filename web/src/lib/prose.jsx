@@ -49,6 +49,17 @@ export function enhanceProse(root) {
     bq.className = `callout ${tone}`;
     if (label) bq.insertAdjacentHTML('afterbegin', `<p class="callout-title">${iconHtml(ic)}${esc(CALLOUTS[kind] ? t(label) : label)}</p>`);
   });
+  // Keys are written [[Ctrl]]+[[C]]: show them as keys. Not in code, where [[ ]] is code.
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT), keyed = [];
+  while (walker.nextNode()) {
+    const node = walker.currentNode;
+    if (node.nodeValue.includes('[[') && !node.parentElement.closest('pre, code')) keyed.push(node);
+  }
+  for (const node of keyed) {
+    const span = document.createElement('span');
+    span.innerHTML = esc(node.nodeValue).replace(/\[\[([^\]\n]{1,14})\]\]/g, '<kbd>$1</kbd>');
+    node.replaceWith(...span.childNodes);
+  }
   // Lessons' OS tabs mark headings like "[!linux][!windows] Linux / WSL": the text already says which OS.
   root.querySelectorAll('h1, h2, h3, h4').forEach(h => { if (/\[!\w+\]/.test(h.innerHTML)) h.innerHTML = h.innerHTML.replace(/\[!\w+\]\s*/g, ''); });
   root.querySelectorAll('a[href^="http"]').forEach(a => { a.target = '_blank'; a.rel = 'noopener'; });

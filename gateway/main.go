@@ -43,6 +43,7 @@ type app struct {
 	internalToken string
 	hosts         map[string]bool // Host headers we answer to (blocks DNS rebinding)
 	origins       map[string]bool // Origins allowed to call us (blocks other sites: CSRF)
+	publicHost    string          // BASE_URL's host, when hosted
 	gz            sync.Map        // file path -> gzCache
 }
 
@@ -75,7 +76,7 @@ func (a *app) routes() http.Handler {
 	mux.HandleFunc("GET /auth/callback", a.auth.callback)
 	mux.HandleFunc("GET /auth/me", a.auth.me)
 	mux.HandleFunc("POST /auth/logout", a.auth.logout)
-	mux.Handle("/api/", a.requireUser(a.api.ServeHTTP))
+	mux.Handle("/api/", limitBody(a.requireUser(a.api.ServeHTTP), 1<<20))
 	return a.guard(mux)
 }
 
@@ -92,16 +93,38 @@ func (a *app) guard(next http.Handler) http.Handler {
 			http.Error(w, "Forbidden", http.StatusForbidden)
 			return
 		}
-		if o := r.Header.Get("Origin"); o != "" && !a.origins[o] && o != "http://"+r.Host {
+		// Our own pages call us from the host they were served on. Hosted over https, a plain-http page on that
+		// host isn't ours (someone on the network could serve one), so only the https origin counts there.
+		own := "http://" + r.Host
+		if secureCookies && r.Host == a.publicHost {
+			own = ""
+		}
+		if o := r.Header.Get("Origin"); o != "" && !a.origins[o] && o != own {
 			http.Error(w, "Forbidden", http.StatusForbidden)
 			return
 		}
 		h := w.Header()
+		if secureCookies {
+			h.Set("Strict-Transport-Security", "max-age=31536000") // browsers stop trying plain http for this host
+		}
 		h.Set("X-Content-Type-Options", "nosniff")
 		h.Set("X-Frame-Options", "DENY")
 		h.Set("Referrer-Policy", "same-origin")
 		h.Set("Content-Security-Policy", contentPolicy+"ws://"+r.Host+" wss://"+r.Host) // Host is one of ours (checked above)
 		next.ServeHTTP(w, r)
+	})
+}
+
+// limitBody: the worker reads at most 1 MiB of a request, so larger ones stop here instead of being streamed to it.
+// One that says it's too long is refused outright; one that doesn't say (chunked) is cut off at the limit.
+func limitBody(next http.Handler, max int64) http.Handler {
+	capped := http.MaxBytesHandler(next, max)
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.ContentLength > max {
+			http.Error(w, "Request too large", http.StatusRequestEntityTooLarge)
+			return
+		}
+		capped.ServeHTTP(w, r)
 	})
 }
 
@@ -271,7 +294,12 @@ func main() {
 		appAddr:       appAddr,
 		internalToken: randomToken(),
 		hosts:         map[string]bool{"localhost:" + port: true, "127.0.0.1:" + port: true},
-		origins:       map[string]bool{"http://localhost:5173": true}, // the Vite dev server (cd web && bun run dev)
+		origins:       map[string]bool{},
+	}
+	// Developing the UI: DEV_ORIGIN=http://localhost:5173 lets the Vite dev server (cd web && bun run dev) call us.
+	// Off unless asked for: otherwise whatever happens to be served on that port could use the API and the terminals.
+	if dev := os.Getenv("DEV_ORIGIN"); dev != "" {
+		a.origins[dev] = true
 	}
 	a.api = apiProxy(appAddr, a.auth)
 	if len(a.auth.admins) > 0 && !a.auth.enabled() {
@@ -284,6 +312,7 @@ func main() {
 			log.Fatalf("BASE_URL: %q isn't a URL", base)
 		}
 		a.hosts[u.Host] = true
+		a.publicHost = u.Host
 		a.baseURL = strings.TrimRight(base, "/")
 		a.origins[u.Scheme+"://"+u.Host] = true
 		secureCookies = u.Scheme == "https"
@@ -320,7 +349,8 @@ func main() {
 		}
 	}
 
-	srv := &http.Server{Addr: addr, Handler: a.routes(), ReadHeaderTimeout: 10 * time.Second}
+	// No read or write timeout: terminals are long-lived connections. Idle keep-alive ones are closed.
+	srv := &http.Server{Addr: addr, Handler: a.routes(), ReadHeaderTimeout: 10 * time.Second, IdleTimeout: 2 * time.Minute}
 	go func() {
 		ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 		defer stop()

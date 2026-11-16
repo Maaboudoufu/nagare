@@ -101,4 +101,5 @@ export function CopyButton({text}) {
   );
 }
 
+export const Beta = () => <span className="beta" title={t('Beta: its hands-on lessons are still being fitted to the built-in terminal, so some instructions may not match yet.')}>{t('Beta')}</span>;
 export const Chip = ({kind, text, icon}) => <span className={'chip ' + kind}><Icon name={icon} cls={kind === 'busy' ? 'spin' : ''}/>{text}</span>;

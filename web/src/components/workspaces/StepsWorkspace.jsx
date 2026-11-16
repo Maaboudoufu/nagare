@@ -20,8 +20,13 @@ function StepResult({res}) {
 export default function StepsWorkspace({lesson: l, courseSlug}) {
   useStore();
   const cli = l.type === 'type_cli', key = 'course:' + courseSlug;
-  // AWS lessons talk to an AWS emulator in the workspace (started on demand); their checks don't use a project folder.
+  // AWS lessons talk to an AWS emulator in the workspace (started on demand).
   const aws = courseSlug === 'learn-aws';
+  // The project folder is where the checks run their commands. These courses' checks don't depend on it (AWS: the
+  // emulator; Terraform: full paths), so they always use the home folder; and a lesson whose checks are only web
+  // requests has nothing to run in one, so the field is hidden there too (the terminal keeps the folder you set).
+  const homeOnly = aws || courseSlug === 'learn-terraform';
+  const askFolder = cli && !homeOnly && l.cli?.some(s => s.cliCommand);
   const [dir, setDir] = useState(store.progress[key]?.dir || '');
   const [base, setBase] = useState(store.progress[l.uuid]?.baseURL ?? (l.baseURL === 'override' ? '' : l.baseURL || ''));
   const [error, setError] = useState('');
@@ -29,7 +34,7 @@ export default function StepsWorkspace({lesson: l, courseSlug}) {
   const [running, setRunning] = useState(false);
   const [passed, setPassed] = useState(false);
   useContinue(passed);
-  const folder = dir.trim() || '~';  // empty = your home folder
+  const folder = homeOnly ? '~' : dir.trim() || '~';  // empty = your home folder
   const [termDir, setTermDir] = useState(cli ? folder : null);  // CLI lessons open a terminal right away
   const [termGen, setTermGen] = useState(0);  // Restart terminal remounts it
   const dirInput = useRef(), actionsEl = useRef();
@@ -41,7 +46,8 @@ export default function StepsWorkspace({lesson: l, courseSlug}) {
     setError('');
     setResults(null);
     try {
-      const r = await post('/api/cli', {uuid:l.uuid, dir:folder, baseURL:base.trim(), aws});
+      // Checks that don't run commands don't need the folder to exist: they get the home folder.
+      const r = await post('/api/cli', {uuid:l.uuid, dir:askFolder ? folder : '~', baseURL:base.trim(), aws});
       if (r.error) { setError(r.error); fx.fail(actionsEl.current); dirInput.current?.focus(); }
       else {
         setResults(r.results);
@@ -65,14 +71,14 @@ export default function StepsWorkspace({lesson: l, courseSlug}) {
     <section id="work" aria-label={t('Workspace')}><div className="pane">
       <h2 className="pane-title"><Icon name={ic}/>{t(title)}</h2>
       {cli && <>
-        {!aws && <div className="field">
+        {askFolder && <div className="field">
           <label htmlFor="dir">{t('Project folder')}</label>
           <input id="dir" ref={dirInput} value={dir} placeholder={t('~ (your home folder)')} spellCheck="false" autoComplete="off"
                  aria-describedby="dir-help dir-err" onChange={e => setDir(e.target.value)} onBlur={() => save(key, {dir:dir.trim()})}/>
-          <p className="help" id="dir-help">{t('A folder in your own workspace, where the terminal and the checks run. Your files are kept between visits.')}</p>
+          <p className="help" id="dir-help">{t('Made a folder for this project? Type its name, so the checks run inside it. Otherwise leave this empty.')}</p>
           <p className="field-err" id="dir-err" role="alert">{error}</p>
         </div>}
-        {aws && error && <p className="field-err" role="alert">{error}</p>}
+        {!askFolder && error && <p className="field-err" role="alert">{error}</p>}
         {l.baseURL && (
           <div className="field">
             <label htmlFor="base">{t('Server URL')}</label>

@@ -11,6 +11,9 @@ import workspace
 
 WS_GUID = '258EAFA5-E914-47DA-95CA-C5AB0DC85B11'
 MAX_FRAME = 1 << 20  # bytes; keystrokes and pastes are far smaller
+MAX_TERMINALS = 8  # open at once per user: each one is a docker process and two threads on the server
+open_terminals = {}  # user -> how many
+open_lock = threading.Lock()
 
 
 # ---- WebSocket framing ----
@@ -159,21 +162,31 @@ def serve(handler, query, user):
         return handler.send_error(404)
     if not _handshake(handler):
         return
+    with open_lock:
+        if open_terminals.get(user, 0) >= MAX_TERMINALS:
+            return _fail(handler, 'Too many terminals open. Close a tab and try again.')
+        open_terminals[user] = open_terminals.get(user, 0) + 1
     try:
-        if kind == 'project':
-            box = workspace.workspace(user)
-            if query.get('aws', [''])[0]:
-                box.start_aws()
-            argv, kick = workspace.terminal_argv(box, workspace.user_path(query.get('dir', [''])[0])), b''
-        else:
-            box = workspace.sandbox(user, uuid)
-            # The shell printed its prompt before we attached: Ctrl-L asks it to redraw.
-            argv, kick = ['docker', 'attach', box.name], b'\x0c'
-    except workspace.Busy as e:
-        return _fail(handler, str(e))
-    except (RuntimeError, ValueError, OSError, subprocess.TimeoutExpired) as e:
-        return _fail(handler, f'Could not start your workspace: {e}')
-    _bridge(handler, argv, kick, on_input=box.touch)
+        try:
+            if kind == 'project':
+                box = workspace.usable(lambda: workspace.workspace(user))
+                if query.get('aws', [''])[0]:
+                    box.start_aws()
+                argv, kick = workspace.terminal_argv(box, workspace.user_path(query.get('dir', [''])[0])), b''
+            else:
+                box = workspace.usable(lambda: workspace.sandbox(user, uuid))
+                # The shell printed its prompt before we attached: Ctrl-L asks it to redraw.
+                argv, kick = ['docker', 'attach', box.name], b'\x0c'
+        except workspace.Busy as e:
+            return _fail(handler, str(e))
+        except (RuntimeError, ValueError, OSError, subprocess.TimeoutExpired) as e:
+            return _fail(handler, f'Could not start your workspace: {e}')
+        _bridge(handler, argv, kick, on_input=box.touch)
+    finally:
+        with open_lock:
+            open_terminals[user] -= 1
+            if not open_terminals[user]:
+                del open_terminals[user]
 
 
 if __name__ == '__main__':
