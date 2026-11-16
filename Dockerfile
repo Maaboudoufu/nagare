@@ -108,6 +108,7 @@ USER root
 WORKDIR /app
 COPY server/support/sandbox.bashrc /etc/sandbox.bashrc
 COPY courses courses
+COPY sandboxes sandboxes
 COPY media.lock.json ./
 COPY tools/fetch_media.py tools/
 COPY server server

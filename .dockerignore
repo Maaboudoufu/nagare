@@ -2,6 +2,7 @@
 !web
 !server
 !courses
+!sandboxes
 !gateway
 !tools/fetch_media.py
 !media.lock.json
