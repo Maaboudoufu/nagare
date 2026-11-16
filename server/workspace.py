@@ -13,7 +13,7 @@ A stopped workspace comes back in well under a second with the same files. Setti
 import io, json, os, posixpath, re, subprocess, tarfile, threading, time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SHELL_DIR = os.path.join(os.path.dirname(HERE), 'courses', 'shell')
+SHELL_DIR = os.path.join(os.path.dirname(HERE), 'sandboxes')  # one spec per Learn Linux lesson
 IMAGE = os.environ.get('SANDBOX_IMAGE', 'nagare')
 NETWORK = 'nagare-users'
 HOME = '/home/user'

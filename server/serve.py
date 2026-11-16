@@ -52,9 +52,12 @@ def update_progress(user, fn):
         prog = load_progress(user)
         out = fn(prog)
         os.makedirs(PROGRESS_DIR, exist_ok=True)
+        text = json.dumps(prog, indent=1)
+        if len(text) > MAX_PROGRESS:
+            raise TooBig
         tmp = progress_path(user) + '.tmp'
         with open(tmp, 'w') as f:
-            json.dump(prog, f, indent=1)
+            f.write(text)
         os.replace(tmp, progress_path(user))  # never leave a half-written file
         return prog, out
 
@@ -89,8 +92,6 @@ def save_progress(user, key, data):
     def apply(prog):
         before = prog.get(key)
         prog[key] = {**(before if isinstance(before, dict) else {}), **data}
-        if len(json.dumps(prog)) > MAX_PROGRESS:
-            raise TooBig
         return gamify.saved(prog, LESSONS, key, data)
     return update_progress(user, apply)
 

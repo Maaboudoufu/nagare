@@ -34,7 +34,7 @@ func testApp(t *testing.T, conf *oauth2.Config, allowed string) (*app, http.Hand
 	write("web/assets/app.js", strings.Repeat("console.log(1);", 100))
 	write("courses/index.json", `{"courses":[]}`)
 	write("courses/learn-go.json", `{"slug":"learn-go"}`)
-	write("courses/shell/abc.json", `{"secret":true}`)
+	write("sandboxes/abc.json", `{"secret":true}`)
 	write("media/host/v.mp4", strings.Repeat("v", 1000))
 	worker := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path == "/internal/kick" && r.Header.Get("X-Internal-Token") == "internal" {
@@ -109,9 +109,10 @@ func TestRoutesSignInOff(t *testing.T) {
 	expect(t, c.do("GET", "/og.png"), 200, "")
 	expect(t, c.do("GET", "/learn/no-such-course"), 404, "")
 	expect(t, c.do("GET", "/learn/..%2fweb"), 404, "")
-	expect(t, c.do("GET", "/signin"), 302, "/")            // nothing to sign in to
-	expect(t, c.do("GET", "/courses/index.json"), 200, "") // data
-	expect(t, c.do("GET", "/courses/shell/abc.json"), 404, "")
+	expect(t, c.do("GET", "/signin"), 302, "/")                                  // nothing to sign in to
+	expect(t, c.do("GET", "/courses/index.json"), 200, "")                       // data
+	expect(t, c.do("GET", "/sandboxes/abc.json"), 404, "")                       // the sandbox checks aren't course data
+	expect(t, c.do("GET", "/courses/../sandboxes/abc.json"), 307, "/sandboxes/") // and can't be reached through it
 	expect(t, c.do("GET", "/courses/../web/index.html"), 307, "/web/index.html") // ServeMux cleans ".." ...
 	expect(t, c.do("GET", "/web/index.html"), 404, "")                           // ... to a path that isn't served
 	expect(t, c.do("GET", "/nope"), 404, "")

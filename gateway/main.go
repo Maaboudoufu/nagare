@@ -188,10 +188,6 @@ func (a *app) static(root, cacheControl string) http.HandlerFunc {
 
 func (a *app) courseData(w http.ResponseWriter, r *http.Request) {
 	rel := strings.TrimPrefix(path.Clean(r.URL.Path), "/courses/")
-	if rel == "shell" || strings.HasPrefix(rel, "shell/") {
-		http.NotFound(w, r)
-		return
-	}
 	w.Header().Set("Cache-Control", "no-cache")
 	a.serveFile(w, r, safeJoin(a.courses, rel))
 }
