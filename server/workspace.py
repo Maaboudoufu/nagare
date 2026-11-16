@@ -164,8 +164,8 @@ def workspace(user):
                        '--hostname', 'workspace', '--network', NETWORK, '--init', '--user', '1000:1000',
                        '--security-opt', 'no-new-privileges',  # no sudo/setuid to root (sandboxes keep sudo: no network)
                        '-e', f'HOME={HOME}', *TERM_ENV, *AWS_ENV,
-                       # Started in /, not in the home folder: a home the user made unreadable (chmod 000 ~) would
-                       # otherwise stop the container from starting at all. HOME_FIX puts the permissions back.
+                       # Nothing here starts inside the home folder: the user can make it unreadable (chmod 000 ~),
+                       # and a shell that had to cd into it then never opened again. HOME_FIX puts the permissions back.
                        '-w', '/', '-v', f'nagare-home-{user}:{HOME}', *LIMITS, IMAGE, 'sleep', 'infinity'), 'run')
         _docker('exec', '-w', '/', name, 'sh', '-c', HOME_FIX + '; ' + AWS_SETUP, AWS_CREDENTIALS)
         box = Box(name, 'workspace', user)
