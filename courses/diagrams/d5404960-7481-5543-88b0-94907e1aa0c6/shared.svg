@@ -1,0 +1,21 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 246' width='500' height='246' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
+<defs><marker id='a0' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#8a93a6'/></marker><marker id='a1' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#E2B66B'/></marker><marker id='a2' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#7AA7FF'/></marker><marker id='a3' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#62BE8C'/></marker><marker id='a4' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#F08A9C'/></marker></defs>
+<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
+<rect x='20' y='40' width='210' height='74' rx='6' fill='#22355a' stroke='#7AA7FF' stroke-width='1.8'/>
+<text x='125.0' y='58' fill='#e6e8ee' font-size='13' font-weight='bold' text-anchor='middle'>campus_cafe</text>
+<line x1='20' y1='65' x2='230' y2='65' stroke='#7AA7FF' stroke-width='1'/>
+<text x='125.0' y='82' fill='#e6e8ee' font-size='12' text-anchor='middle'>id = 1</text>
+<text x='125.0' y='100' fill='#e6e8ee' font-size='12' text-anchor='middle'>num_drinks_served = 3</text>
+<line x1='125' y1='114' x2='250' y2='160' stroke='#E2B66B' stroke-width='1.8' marker-end='url(#a1)'/>
+<rect x='270' y='40' width='210' height='74' rx='6' fill='#22355a' stroke='#7AA7FF' stroke-width='1.8'/>
+<text x='375.0' y='58' fill='#e6e8ee' font-size='13' font-weight='bold' text-anchor='middle'>library_cafe</text>
+<line x1='270' y1='65' x2='480' y2='65' stroke='#7AA7FF' stroke-width='1'/>
+<text x='375.0' y='82' fill='#e6e8ee' font-size='12' text-anchor='middle'>id = 2</text>
+<text x='375.0' y='100' fill='#e6e8ee' font-size='12' text-anchor='middle'>num_drinks_served = 0</text>
+<line x1='375' y1='114' x2='270' y2='160' stroke='#E2B66B' stroke-width='1.8' marker-end='url(#a1)'/>
+<rect x='150' y='162' width='220' height='54' rx='6' fill='#5a4520' stroke='#E2B66B' stroke-width='1.8'/>
+<text x='260.0' y='180' fill='#e6e8ee' font-size='14' font-weight='bold' text-anchor='middle'>static: one copy</text>
+<line x1='150' y1='187' x2='370' y2='187' stroke='#E2B66B' stroke-width='1'/>
+<text x='260.0' y='204' fill='#e6e8ee' font-size='13' text-anchor='middle'>BobaCafe::num_open = 2</text>
+<text x='260' y='236' fill='#8a93a6' font-size='11' text-anchor='middle'>each object has its own id; both share num_open</text>
+</svg>
