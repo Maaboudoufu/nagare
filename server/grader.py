@@ -91,7 +91,8 @@ def run(lesson, code, submit):
             return {'output': str(e), 'passed': False}
         for cmd in cmds:  # e.g. compile, then run; stop at the first failure
             try:
-                p = subprocess.run(cmd, cwd=d, capture_output=True, text=True, timeout=30, stdin=subprocess.DEVNULL,
+                p = subprocess.run(cmd, cwd=d, capture_output=True, text=True, errors='replace',  # programs can print any bytes
+                                   timeout=30, stdin=subprocess.DEVNULL,
                                    env={**os.environ, **env})
             except subprocess.TimeoutExpired:
                 return {'output': out + 'Timed out after 30s', 'passed': False}
