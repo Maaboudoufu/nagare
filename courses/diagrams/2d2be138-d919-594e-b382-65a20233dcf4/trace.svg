@@ -1,0 +1,83 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 404' width='512' height='404'>
+<svg x='0' y='0' width='250' height='196' viewBox='0 0 250 196' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
+<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
+<defs><marker id='mn' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M0,0 L10,5 L0,10 z' fill='#8a93a6'/></marker><marker id='mhot' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M0,0 L10,5 L0,10 z' fill='#E2B66B'/></marker><marker id='mcmp' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M0,0 L10,5 L0,10 z' fill='#7AA7FF'/></marker><marker id='mok' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M0,0 L10,5 L0,10 z' fill='#62BE8C'/></marker><marker id='mgone' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M0,0 L10,5 L0,10 z' fill='#F08A9C'/></marker></defs>
+<text x='125.0' y='22' fill='#e6e8ee' font-size='13' text-anchor='middle'>after line 2</text>
+<text x='56' y='46' fill='#8a93a6' font-size='11' text-anchor='middle'>stack</text>
+<text x='190.0' y='46' fill='#8a93a6' font-size='11' text-anchor='middle'>heap</text>
+<rect x='146' y='58' width='88' height='34' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
+<text x='190.0' y='80.0' fill='#e6e8ee' font-size='14' text-anchor='middle'>4</text>
+<text x='190.0' y='105' fill='#8a93a6' font-size='10' text-anchor='middle'>block #1</text>
+<text x='26' y='80.0' fill='#e6e8ee' font-size='14'>p</text>
+<rect x='46' y='58' width='50' height='34' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
+<circle cx='71' cy='75.0' r='4' fill='#8a93a6'/>
+<path d='M75,75.0 C126,75.0 96,75.0 144,75.0' fill='none' stroke='#8a93a6' stroke-width='2' marker-end='url(#mn)'/>
+<text x='26' y='136.0' fill='#e6e8ee' font-size='14'>q</text>
+<rect x='46' y='114' width='50' height='34' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
+<circle cx='71' cy='131.0' r='4' fill='#8a93a6'/>
+<path d='M75,131.0 C126,131.0 96,75.0 144,75.0' fill='none' stroke='#8a93a6' stroke-width='2' marker-end='url(#mn)'/>
+<text x='125.0' y='186' fill='#8a93a6' font-size='11' text-anchor='middle'>two pointers, one block</text>
+</svg>
+<svg x='262' y='0' width='250' height='196' viewBox='0 0 250 196' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
+<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
+<defs><marker id='mn' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M0,0 L10,5 L0,10 z' fill='#8a93a6'/></marker><marker id='mhot' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M0,0 L10,5 L0,10 z' fill='#E2B66B'/></marker><marker id='mcmp' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M0,0 L10,5 L0,10 z' fill='#7AA7FF'/></marker><marker id='mok' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M0,0 L10,5 L0,10 z' fill='#62BE8C'/></marker><marker id='mgone' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M0,0 L10,5 L0,10 z' fill='#F08A9C'/></marker></defs>
+<text x='125.0' y='22' fill='#e6e8ee' font-size='13' text-anchor='middle'>after line 3</text>
+<text x='56' y='46' fill='#8a93a6' font-size='11' text-anchor='middle'>stack</text>
+<text x='190.0' y='46' fill='#8a93a6' font-size='11' text-anchor='middle'>heap</text>
+<rect x='146' y='58' width='88' height='34' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
+<text x='190.0' y='80.0' fill='#e6e8ee' font-size='14' text-anchor='middle'>4</text>
+<text x='190.0' y='105' fill='#8a93a6' font-size='10' text-anchor='middle'>block #1</text>
+<rect x='146' y='114' width='88' height='34' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
+<text x='190.0' y='136.0' fill='#e6e8ee' font-size='14' text-anchor='middle'>9</text>
+<text x='190.0' y='161' fill='#8a93a6' font-size='10' text-anchor='middle'>block #2</text>
+<text x='26' y='80.0' fill='#e6e8ee' font-size='14'>p</text>
+<rect x='46' y='58' width='50' height='34' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
+<circle cx='71' cy='75.0' r='4' fill='#8a93a6'/>
+<path d='M75,75.0 C126,75.0 96,131.0 144,131.0' fill='none' stroke='#8a93a6' stroke-width='2' marker-end='url(#mn)'/>
+<text x='26' y='136.0' fill='#e6e8ee' font-size='14'>q</text>
+<rect x='46' y='114' width='50' height='34' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
+<circle cx='71' cy='131.0' r='4' fill='#8a93a6'/>
+<path d='M75,131.0 C126,131.0 96,75.0 144,75.0' fill='none' stroke='#8a93a6' stroke-width='2' marker-end='url(#mn)'/>
+<text x='125.0' y='186' fill='#8a93a6' font-size='11' text-anchor='middle'>q kept block #1</text>
+</svg>
+<svg x='0' y='208' width='250' height='196' viewBox='0 0 250 196' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
+<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
+<defs><marker id='mn' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M0,0 L10,5 L0,10 z' fill='#8a93a6'/></marker><marker id='mhot' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M0,0 L10,5 L0,10 z' fill='#E2B66B'/></marker><marker id='mcmp' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M0,0 L10,5 L0,10 z' fill='#7AA7FF'/></marker><marker id='mok' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M0,0 L10,5 L0,10 z' fill='#62BE8C'/></marker><marker id='mgone' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M0,0 L10,5 L0,10 z' fill='#F08A9C'/></marker></defs>
+<text x='125.0' y='22' fill='#e6e8ee' font-size='13' text-anchor='middle'>after line 5</text>
+<text x='56' y='46' fill='#8a93a6' font-size='11' text-anchor='middle'>stack</text>
+<text x='190.0' y='46' fill='#8a93a6' font-size='11' text-anchor='middle'>heap</text>
+<rect x='146' y='58' width='88' height='34' rx='5' fill='#3a2328' stroke='#F08A9C' stroke-width='2' stroke-dasharray='5 3'/>
+<text x='190.0' y='80.0' fill='#e6e8ee' font-size='14' text-anchor='middle'>4</text>
+<text x='190.0' y='105' fill='#F08A9C' font-size='10' text-anchor='middle'>#1 freed</text>
+<rect x='146' y='114' width='88' height='34' rx='5' fill='#3a2328' stroke='#F08A9C' stroke-width='2' stroke-dasharray='5 3'/>
+<text x='190.0' y='136.0' fill='#e6e8ee' font-size='14' text-anchor='middle'>9</text>
+<text x='190.0' y='161' fill='#F08A9C' font-size='10' text-anchor='middle'>#2 freed</text>
+<text x='26' y='80.0' fill='#e6e8ee' font-size='14'>p</text>
+<rect x='46' y='58' width='50' height='34' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
+<circle cx='71' cy='75.0' r='4' fill='#F08A9C'/>
+<path d='M75,75.0 C126,75.0 96,131.0 144,131.0' fill='none' stroke='#F08A9C' stroke-width='2' stroke-dasharray='5 3' marker-end='url(#mgone)'/>
+<text x='26' y='136.0' fill='#e6e8ee' font-size='14'>q</text>
+<rect x='46' y='114' width='50' height='34' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
+<circle cx='71' cy='131.0' r='4' fill='#F08A9C'/>
+<path d='M75,131.0 C126,131.0 96,75.0 144,75.0' fill='none' stroke='#F08A9C' stroke-width='2' stroke-dasharray='5 3' marker-end='url(#mgone)'/>
+<text x='125.0' y='186' fill='#8a93a6' font-size='11' text-anchor='middle'>both pointers dangle</text>
+</svg>
+<svg x='262' y='208' width='250' height='196' viewBox='0 0 250 196' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
+<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
+<defs><marker id='mn' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M0,0 L10,5 L0,10 z' fill='#8a93a6'/></marker><marker id='mhot' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M0,0 L10,5 L0,10 z' fill='#E2B66B'/></marker><marker id='mcmp' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M0,0 L10,5 L0,10 z' fill='#7AA7FF'/></marker><marker id='mok' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M0,0 L10,5 L0,10 z' fill='#62BE8C'/></marker><marker id='mgone' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M0,0 L10,5 L0,10 z' fill='#F08A9C'/></marker></defs>
+<text x='125.0' y='22' fill='#e6e8ee' font-size='13' text-anchor='middle'>a leak instead</text>
+<text x='56' y='46' fill='#8a93a6' font-size='11' text-anchor='middle'>stack</text>
+<text x='190.0' y='46' fill='#8a93a6' font-size='11' text-anchor='middle'>heap</text>
+<rect x='146' y='58' width='88' height='34' rx='5' fill='#5a4520' stroke='#E2B66B' stroke-width='2'/>
+<text x='190.0' y='80.0' fill='#e6e8ee' font-size='14' text-anchor='middle'>4</text>
+<text x='190.0' y='105' fill='#E2B66B' font-size='10' text-anchor='middle'>#1 leaked</text>
+<rect x='146' y='114' width='88' height='34' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
+<text x='190.0' y='136.0' fill='#e6e8ee' font-size='14' text-anchor='middle'>9</text>
+<text x='190.0' y='161' fill='#8a93a6' font-size='10' text-anchor='middle'>block #2</text>
+<text x='26' y='80.0' fill='#e6e8ee' font-size='14'>p</text>
+<rect x='46' y='58' width='50' height='34' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
+<circle cx='71' cy='75.0' r='4' fill='#8a93a6'/>
+<path d='M75,75.0 C126,75.0 96,131.0 144,131.0' fill='none' stroke='#8a93a6' stroke-width='2' marker-end='url(#mn)'/>
+<text x='125.0' y='186' fill='#8a93a6' font-size='11' text-anchor='middle'>p = new int(9) with no q = p</text>
+</svg>
+</svg>
