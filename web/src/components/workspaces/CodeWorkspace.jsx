@@ -63,7 +63,7 @@ export default function CodeWorkspace({lesson: l}) {
     docs.current = Object.fromEntries(files.map(f => [f.name, CodeMirror.Doc(saved[f.name] ?? f.content, MODES[l.lang])]));
     const typing = c => !c.state.vim || c.state.vim.insertMode;  // Vim normal mode keeps its own keys
     const cm = ed.current = CodeMirror(host.current, {
-      theme:'nagare', lineNumbers:true, indentUnit:{py:4, go:4, c:4}[l.lang] || 2, tabSize:4, indentWithTabs:tabs,
+      theme:'nagare', lineNumbers:true, indentUnit:{py:4, go:4, c:4, cpp:4}[l.lang] || 2, tabSize:4, indentWithTabs:tabs,
       matchBrackets:true, autoCloseBrackets:true, styleActiveLine:true, keyMap:vim ? 'vim' : 'sublime', showCursorWhenSelecting:true,
       highlightSelectionMatches:{showToken:/[\w$]/, delay:250},  // the other uses of the word under the cursor
       foldGutter:true, gutters:['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
