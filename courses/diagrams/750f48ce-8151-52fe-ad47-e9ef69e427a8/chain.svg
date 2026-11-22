@@ -1,0 +1,74 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 308 438' width='308' height='438' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
+<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
+<text x='154' y='21' fill='#e6e8ee' font-size='13' text-anchor='middle'>sorted input: a chain, not a tree</text>
+<rect x='20.0' y='32' width='28' height='28' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1'/>
+<text x='34.0' y='50.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>1</text>
+<rect x='48.0' y='32' width='28' height='28' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1'/>
+<text x='62.0' y='50.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>2</text>
+<rect x='76.0' y='32' width='28' height='28' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1'/>
+<text x='90.0' y='50.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>3</text>
+<rect x='104.0' y='32' width='28' height='28' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1'/>
+<text x='118.0' y='50.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>4</text>
+<rect x='132.0' y='32' width='28' height='28' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1'/>
+<text x='146.0' y='50.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>5</text>
+<rect x='160.0' y='32' width='28' height='28' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1'/>
+<text x='174.0' y='50.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>6</text>
+<rect x='20.0' y='90' width='28' height='28' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1'/>
+<text x='34.0' y='108.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>1</text>
+<rect x='48.0' y='90' width='28' height='28' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1'/>
+<text x='62.0' y='108.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>2</text>
+<rect x='76.0' y='90' width='28' height='28' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1'/>
+<text x='90.0' y='108.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>3</text>
+<rect x='104.0' y='90' width='28' height='28' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1'/>
+<text x='118.0' y='108.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>4</text>
+<rect x='132.0' y='90' width='28' height='28' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1'/>
+<text x='146.0' y='108.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>5</text>
+<rect x='160.0' y='90' width='28' height='28' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='174.0' y='108.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>6</text>
+<line x1='104.0' y1='60.0' x2='104.0' y2='90.0' stroke='#4a5263' stroke-width='1.5'/>
+<rect x='20.0' y='148' width='28' height='28' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1'/>
+<text x='34.0' y='166.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>1</text>
+<rect x='48.0' y='148' width='28' height='28' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1'/>
+<text x='62.0' y='166.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>2</text>
+<rect x='76.0' y='148' width='28' height='28' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1'/>
+<text x='90.0' y='166.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>3</text>
+<rect x='104.0' y='148' width='28' height='28' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1'/>
+<text x='118.0' y='166.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>4</text>
+<rect x='132.0' y='148' width='28' height='28' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='146.0' y='166.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>5</text>
+<text x='274.0' y='167.0' fill='#8a93a6' font-size='15' text-anchor='middle'>∅</text>
+<line x1='104.0' y1='118.0' x2='90.0' y2='148.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='104.0' y1='118.0' x2='274.0' y2='148.0' stroke='#4a5263' stroke-width='1.5'/>
+<rect x='20.0' y='206' width='28' height='28' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1'/>
+<text x='34.0' y='224.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>1</text>
+<rect x='48.0' y='206' width='28' height='28' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1'/>
+<text x='62.0' y='224.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>2</text>
+<rect x='76.0' y='206' width='28' height='28' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1'/>
+<text x='90.0' y='224.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>3</text>
+<rect x='104.0' y='206' width='28' height='28' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='118.0' y='224.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>4</text>
+<text x='234.0' y='225.0' fill='#8a93a6' font-size='15' text-anchor='middle'>∅</text>
+<line x1='90.0' y1='176.0' x2='76.0' y2='206.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='90.0' y1='176.0' x2='234.0' y2='206.0' stroke='#4a5263' stroke-width='1.5'/>
+<rect x='20.0' y='264' width='28' height='28' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1'/>
+<text x='34.0' y='282.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>1</text>
+<rect x='48.0' y='264' width='28' height='28' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1'/>
+<text x='62.0' y='282.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>2</text>
+<rect x='76.0' y='264' width='28' height='28' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='90.0' y='282.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>3</text>
+<text x='194.0' y='283.0' fill='#8a93a6' font-size='15' text-anchor='middle'>∅</text>
+<line x1='76.0' y1='234.0' x2='62.0' y2='264.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='76.0' y1='234.0' x2='194.0' y2='264.0' stroke='#4a5263' stroke-width='1.5'/>
+<rect x='20.0' y='322' width='28' height='28' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1'/>
+<text x='34.0' y='340.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>1</text>
+<rect x='48.0' y='322' width='28' height='28' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='62.0' y='340.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>2</text>
+<text x='154.0' y='341.0' fill='#8a93a6' font-size='15' text-anchor='middle'>∅</text>
+<line x1='62.0' y1='292.0' x2='48.0' y2='322.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='62.0' y1='292.0' x2='154.0' y2='322.0' stroke='#4a5263' stroke-width='1.5'/>
+<rect x='20.0' y='380' width='28' height='28' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='34.0' y='398.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>1</text>
+<text x='114.0' y='399.0' fill='#8a93a6' font-size='15' text-anchor='middle'>∅</text>
+<line x1='48.0' y1='350.0' x2='34.0' y2='380.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='48.0' y1='350.0' x2='114.0' y2='380.0' stroke='#4a5263' stroke-width='1.5'/>
+</svg>

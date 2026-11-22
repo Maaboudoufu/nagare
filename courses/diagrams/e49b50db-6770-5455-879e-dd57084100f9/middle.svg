@@ -1,0 +1,131 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 506 470' width='506' height='470' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
+<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
+<defs><marker id='a' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M0,0 L10,5 L0,10 z' fill='#8a93a6'/></marker></defs>
+<text x='253' y='21' fill='#e6e8ee' font-size='13' text-anchor='middle'>finding the middle of 7 nodes</text>
+<text x='16' y='44' fill='#8a93a6' font-size='12'>start: slow = head, fast = head-&gt;next</text>
+<rect x='16' y='64' width='40' height='28' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='36.0' y='82.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>8</text>
+<line x1='56' y1='78.0' x2='74' y2='78.0' stroke='#8a93a6' stroke-width='1.5' marker-end='url(#a)'/>
+<rect x='76' y='64' width='40' height='28' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='96.0' y='82.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>3</text>
+<line x1='116' y1='78.0' x2='134' y2='78.0' stroke='#8a93a6' stroke-width='1.5' marker-end='url(#a)'/>
+<rect x='136' y='64' width='40' height='28' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='156.0' y='82.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>6</text>
+<line x1='176' y1='78.0' x2='194' y2='78.0' stroke='#8a93a6' stroke-width='1.5' marker-end='url(#a)'/>
+<rect x='196' y='64' width='40' height='28' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='216.0' y='82.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>1</text>
+<line x1='236' y1='78.0' x2='254' y2='78.0' stroke='#8a93a6' stroke-width='1.5' marker-end='url(#a)'/>
+<rect x='256' y='64' width='40' height='28' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='276.0' y='82.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>9</text>
+<line x1='296' y1='78.0' x2='314' y2='78.0' stroke='#8a93a6' stroke-width='1.5' marker-end='url(#a)'/>
+<rect x='316' y='64' width='40' height='28' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='336.0' y='82.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>4</text>
+<line x1='356' y1='78.0' x2='374' y2='78.0' stroke='#8a93a6' stroke-width='1.5' marker-end='url(#a)'/>
+<rect x='376' y='64' width='40' height='28' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='396.0' y='82.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>7</text>
+<line x1='416' y1='78.0' x2='428' y2='78.0' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='430' y='82.0' fill='#8a93a6' font-size='12'>∅</text>
+<text x='36' y='58' fill='#E2B66B' font-size='12' text-anchor='middle'>slow</text>
+<text x='96' y='107' fill='#7AA7FF' font-size='12' text-anchor='middle'>fast</text>
+<text x='16' y='132' fill='#8a93a6' font-size='12'>step 1: slow +1, fast +2. keep going</text>
+<rect x='16' y='152' width='40' height='28' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='36.0' y='170.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>8</text>
+<line x1='56' y1='166.0' x2='74' y2='166.0' stroke='#8a93a6' stroke-width='1.5' marker-end='url(#a)'/>
+<rect x='76' y='152' width='40' height='28' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='96.0' y='170.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>3</text>
+<line x1='116' y1='166.0' x2='134' y2='166.0' stroke='#8a93a6' stroke-width='1.5' marker-end='url(#a)'/>
+<rect x='136' y='152' width='40' height='28' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='156.0' y='170.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>6</text>
+<line x1='176' y1='166.0' x2='194' y2='166.0' stroke='#8a93a6' stroke-width='1.5' marker-end='url(#a)'/>
+<rect x='196' y='152' width='40' height='28' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='216.0' y='170.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>1</text>
+<line x1='236' y1='166.0' x2='254' y2='166.0' stroke='#8a93a6' stroke-width='1.5' marker-end='url(#a)'/>
+<rect x='256' y='152' width='40' height='28' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='276.0' y='170.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>9</text>
+<line x1='296' y1='166.0' x2='314' y2='166.0' stroke='#8a93a6' stroke-width='1.5' marker-end='url(#a)'/>
+<rect x='316' y='152' width='40' height='28' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='336.0' y='170.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>4</text>
+<line x1='356' y1='166.0' x2='374' y2='166.0' stroke='#8a93a6' stroke-width='1.5' marker-end='url(#a)'/>
+<rect x='376' y='152' width='40' height='28' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='396.0' y='170.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>7</text>
+<line x1='416' y1='166.0' x2='428' y2='166.0' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='430' y='170.0' fill='#8a93a6' font-size='12'>∅</text>
+<text x='96' y='146' fill='#E2B66B' font-size='12' text-anchor='middle'>slow</text>
+<text x='216' y='195' fill='#7AA7FF' font-size='12' text-anchor='middle'>fast</text>
+<text x='16' y='220' fill='#8a93a6' font-size='12'>step 2: slow +1, fast +2. keep going</text>
+<rect x='16' y='240' width='40' height='28' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='36.0' y='258.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>8</text>
+<line x1='56' y1='254.0' x2='74' y2='254.0' stroke='#8a93a6' stroke-width='1.5' marker-end='url(#a)'/>
+<rect x='76' y='240' width='40' height='28' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='96.0' y='258.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>3</text>
+<line x1='116' y1='254.0' x2='134' y2='254.0' stroke='#8a93a6' stroke-width='1.5' marker-end='url(#a)'/>
+<rect x='136' y='240' width='40' height='28' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='156.0' y='258.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>6</text>
+<line x1='176' y1='254.0' x2='194' y2='254.0' stroke='#8a93a6' stroke-width='1.5' marker-end='url(#a)'/>
+<rect x='196' y='240' width='40' height='28' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='216.0' y='258.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>1</text>
+<line x1='236' y1='254.0' x2='254' y2='254.0' stroke='#8a93a6' stroke-width='1.5' marker-end='url(#a)'/>
+<rect x='256' y='240' width='40' height='28' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='276.0' y='258.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>9</text>
+<line x1='296' y1='254.0' x2='314' y2='254.0' stroke='#8a93a6' stroke-width='1.5' marker-end='url(#a)'/>
+<rect x='316' y='240' width='40' height='28' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='336.0' y='258.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>4</text>
+<line x1='356' y1='254.0' x2='374' y2='254.0' stroke='#8a93a6' stroke-width='1.5' marker-end='url(#a)'/>
+<rect x='376' y='240' width='40' height='28' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='396.0' y='258.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>7</text>
+<line x1='416' y1='254.0' x2='428' y2='254.0' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='430' y='258.0' fill='#8a93a6' font-size='12'>∅</text>
+<text x='156' y='234' fill='#E2B66B' font-size='12' text-anchor='middle'>slow</text>
+<text x='336' y='283' fill='#7AA7FF' font-size='12' text-anchor='middle'>fast</text>
+<text x='16' y='308' fill='#8a93a6' font-size='12'>step 3: slow +1, fast +2. fast is nullptr: stop</text>
+<rect x='16' y='328' width='40' height='28' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='36.0' y='346.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>8</text>
+<line x1='56' y1='342.0' x2='74' y2='342.0' stroke='#8a93a6' stroke-width='1.5' marker-end='url(#a)'/>
+<rect x='76' y='328' width='40' height='28' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='96.0' y='346.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>3</text>
+<line x1='116' y1='342.0' x2='134' y2='342.0' stroke='#8a93a6' stroke-width='1.5' marker-end='url(#a)'/>
+<rect x='136' y='328' width='40' height='28' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='156.0' y='346.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>6</text>
+<line x1='176' y1='342.0' x2='194' y2='342.0' stroke='#8a93a6' stroke-width='1.5' marker-end='url(#a)'/>
+<rect x='196' y='328' width='40' height='28' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='216.0' y='346.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>1</text>
+<line x1='236' y1='342.0' x2='254' y2='342.0' stroke='#8a93a6' stroke-width='1.5' marker-end='url(#a)'/>
+<rect x='256' y='328' width='40' height='28' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='276.0' y='346.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>9</text>
+<line x1='296' y1='342.0' x2='314' y2='342.0' stroke='#8a93a6' stroke-width='1.5' marker-end='url(#a)'/>
+<rect x='316' y='328' width='40' height='28' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='336.0' y='346.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>4</text>
+<line x1='356' y1='342.0' x2='374' y2='342.0' stroke='#8a93a6' stroke-width='1.5' marker-end='url(#a)'/>
+<rect x='376' y='328' width='40' height='28' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='396.0' y='346.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>7</text>
+<line x1='416' y1='342.0' x2='428' y2='342.0' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='430' y='346.0' fill='#8a93a6' font-size='12'>∅</text>
+<text x='216' y='322' fill='#E2B66B' font-size='12' text-anchor='middle'>slow</text>
+<text x='436' y='371' fill='#7AA7FF' font-size='12' text-anchor='middle'>fast</text>
+<text x='16' y='396' fill='#8a93a6' font-size='12'>cut: second = slow-&gt;next; slow-&gt;next = nullptr</text>
+<rect x='16' y='416' width='40' height='28' rx='5' fill='#1f4232' stroke='#62BE8C' stroke-width='1.5'/>
+<text x='36.0' y='434.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>8</text>
+<line x1='56' y1='430.0' x2='74' y2='430.0' stroke='#8a93a6' stroke-width='1.5' marker-end='url(#a)'/>
+<rect x='76' y='416' width='40' height='28' rx='5' fill='#1f4232' stroke='#62BE8C' stroke-width='1.5'/>
+<text x='96.0' y='434.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>3</text>
+<line x1='116' y1='430.0' x2='134' y2='430.0' stroke='#8a93a6' stroke-width='1.5' marker-end='url(#a)'/>
+<rect x='136' y='416' width='40' height='28' rx='5' fill='#1f4232' stroke='#62BE8C' stroke-width='1.5'/>
+<text x='156.0' y='434.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>6</text>
+<line x1='176' y1='430.0' x2='194' y2='430.0' stroke='#8a93a6' stroke-width='1.5' marker-end='url(#a)'/>
+<rect x='196' y='416' width='40' height='28' rx='5' fill='#1f4232' stroke='#62BE8C' stroke-width='1.5'/>
+<text x='216.0' y='434.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>1</text>
+<line x1='236' y1='430.0' x2='248' y2='430.0' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='250' y='434.0' fill='#8a93a6' font-size='12'>∅</text>
+<rect x='296' y='416' width='40' height='28' rx='5' fill='#22355a' stroke='#7AA7FF' stroke-width='1.5'/>
+<text x='316.0' y='434.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>9</text>
+<line x1='336' y1='430.0' x2='354' y2='430.0' stroke='#8a93a6' stroke-width='1.5' marker-end='url(#a)'/>
+<rect x='356' y='416' width='40' height='28' rx='5' fill='#22355a' stroke='#7AA7FF' stroke-width='1.5'/>
+<text x='376.0' y='434.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>4</text>
+<line x1='396' y1='430.0' x2='414' y2='430.0' stroke='#8a93a6' stroke-width='1.5' marker-end='url(#a)'/>
+<rect x='416' y='416' width='40' height='28' rx='5' fill='#22355a' stroke='#7AA7FF' stroke-width='1.5'/>
+<text x='436.0' y='434.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>7</text>
+<line x1='456' y1='430.0' x2='468' y2='430.0' stroke='#8a93a6' stroke-width='1.5'/>
+<text x='470' y='434.0' fill='#8a93a6' font-size='12'>∅</text>
+<text x='216' y='410' fill='#E2B66B' font-size='12' text-anchor='middle'>slow</text>
+<text x='316' y='410' fill='#E2B66B' font-size='12' text-anchor='middle'>second</text>
+</svg>
