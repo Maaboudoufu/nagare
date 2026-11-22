@@ -1,0 +1,27 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 340 114' width='340' height='114' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
+<defs><marker id='ah' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#aab3c5'/></marker></defs>
+<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
+<text x='170.0' y='18' fill='#e6e8ee' font-size='13' text-anchor='middle'>1→2→3→4 after two moves: fast is nullptr</text>
+<rect x='35.0' y='56' width='30' height='30' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<text x='50.0' y='75.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>1</text>
+<rect x='65.0' y='56' width='18' height='30' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<rect x='109.0' y='56' width='30' height='30' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<text x='124.0' y='75.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>2</text>
+<rect x='139.0' y='56' width='18' height='30' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<rect x='183.0' y='56' width='30' height='30' fill='#1f4232' stroke='#62BE8C' stroke-width='1.6'/>
+<text x='198.0' y='75.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>3</text>
+<rect x='213.0' y='56' width='18' height='30' fill='#1f4232' stroke='#62BE8C' stroke-width='1.6'/>
+<rect x='257.0' y='56' width='30' height='30' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<text x='272.0' y='75.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>4</text>
+<rect x='287.0' y='56' width='18' height='30' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<text x='296.0' y='75.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>∅</text>
+<circle cx='74.0' cy='71.0' r='2.5' fill='#aab3c5'/>
+<line x1='74.0' y1='71.0' x2='109.0' y2='71.0' stroke='#aab3c5' stroke-width='1.5' marker-end='url(#ah)'/>
+<circle cx='148.0' cy='71.0' r='2.5' fill='#aab3c5'/>
+<line x1='148.0' y1='71.0' x2='183.0' y2='71.0' stroke='#aab3c5' stroke-width='1.5' marker-end='url(#ah)'/>
+<circle cx='222.0' cy='71.0' r='2.5' fill='#aab3c5'/>
+<line x1='222.0' y1='71.0' x2='257.0' y2='71.0' stroke='#aab3c5' stroke-width='1.5' marker-end='url(#ah)'/>
+<text x='198.0' y='42.0' fill='#E2B66B' font-size='12' text-anchor='middle'>slow</text>
+<line x1='198.0' y1='45.0' x2='198.0' y2='54.0' stroke='#E2B66B' stroke-width='1.3' marker-end='url(#ah)'/>
+<text x='170.0' y='106.0' fill='#8a93a6' font-size='11' text-anchor='middle'>slow stops on 3, the second middle</text>
+</svg>

@@ -1,0 +1,98 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 357 408' width='357' height='408'>
+<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
+<svg x='56' y='0' width='246' height='96' viewBox='0 0 246 96' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
+<defs><marker id='ah' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#aab3c5'/></marker></defs>
+<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
+<text x='123.0' y='18' fill='#e6e8ee' font-size='13' text-anchor='middle'>1. cur = head</text>
+<rect x='25.0' y='56' width='30' height='30' fill='#22355a' stroke='#7AA7FF' stroke-width='1.6'/>
+<text x='40.0' y='75.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>9</text>
+<rect x='55.0' y='56' width='18' height='30' fill='#22355a' stroke='#7AA7FF' stroke-width='1.6'/>
+<rect x='99.0' y='56' width='30' height='30' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<text x='114.0' y='75.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>4</text>
+<rect x='129.0' y='56' width='18' height='30' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<rect x='173.0' y='56' width='30' height='30' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<text x='188.0' y='75.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>7</text>
+<rect x='203.0' y='56' width='18' height='30' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<text x='212.0' y='75.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>∅</text>
+<circle cx='64.0' cy='71.0' r='2.5' fill='#aab3c5'/>
+<line x1='64.0' y1='71.0' x2='99.0' y2='71.0' stroke='#aab3c5' stroke-width='1.5' marker-end='url(#ah)'/>
+<circle cx='138.0' cy='71.0' r='2.5' fill='#aab3c5'/>
+<line x1='138.0' y1='71.0' x2='173.0' y2='71.0' stroke='#aab3c5' stroke-width='1.5' marker-end='url(#ah)'/>
+<text x='40.0' y='42.0' fill='#E2B66B' font-size='12' text-anchor='middle'>head, cur</text>
+<line x1='40.0' y1='45.0' x2='40.0' y2='54.0' stroke='#E2B66B' stroke-width='1.3' marker-end='url(#ah)'/>
+</svg>
+<svg x='53' y='104' width='251' height='96' viewBox='0 0 251 96' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
+<defs><marker id='ah' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#aab3c5'/></marker></defs>
+<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
+<text x='125.5' y='18' fill='#e6e8ee' font-size='13' text-anchor='middle'>2. cur-&gt;next isn't null: step</text>
+<rect x='27.5' y='56' width='30' height='30' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<text x='42.5' y='75.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>9</text>
+<rect x='57.5' y='56' width='18' height='30' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<rect x='101.5' y='56' width='30' height='30' fill='#22355a' stroke='#7AA7FF' stroke-width='1.6'/>
+<text x='116.5' y='75.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>4</text>
+<rect x='131.5' y='56' width='18' height='30' fill='#22355a' stroke='#7AA7FF' stroke-width='1.6'/>
+<rect x='175.5' y='56' width='30' height='30' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<text x='190.5' y='75.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>7</text>
+<rect x='205.5' y='56' width='18' height='30' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<text x='214.5' y='75.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>∅</text>
+<circle cx='66.5' cy='71.0' r='2.5' fill='#aab3c5'/>
+<line x1='66.5' y1='71.0' x2='101.5' y2='71.0' stroke='#aab3c5' stroke-width='1.5' marker-end='url(#ah)'/>
+<circle cx='140.5' cy='71.0' r='2.5' fill='#aab3c5'/>
+<line x1='140.5' y1='71.0' x2='175.5' y2='71.0' stroke='#aab3c5' stroke-width='1.5' marker-end='url(#ah)'/>
+<text x='42.5' y='42.0' fill='#E2B66B' font-size='12' text-anchor='middle'>head</text>
+<line x1='42.5' y1='45.0' x2='42.5' y2='54.0' stroke='#E2B66B' stroke-width='1.3' marker-end='url(#ah)'/>
+<text x='116.5' y='42.0' fill='#E2B66B' font-size='12' text-anchor='middle'>cur</text>
+<line x1='116.5' y1='45.0' x2='116.5' y2='54.0' stroke='#E2B66B' stroke-width='1.3' marker-end='url(#ah)'/>
+</svg>
+<svg x='0' y='208' width='357' height='96' viewBox='0 0 357 96' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
+<defs><marker id='ah' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#aab3c5'/></marker></defs>
+<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
+<text x='178.5' y='18' fill='#e6e8ee' font-size='13' text-anchor='middle'>3. cur-&gt;next is null: cur is the last node</text>
+<rect x='80.5' y='56' width='30' height='30' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<text x='95.5' y='75.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>9</text>
+<rect x='110.5' y='56' width='18' height='30' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<rect x='154.5' y='56' width='30' height='30' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<text x='169.5' y='75.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>4</text>
+<rect x='184.5' y='56' width='18' height='30' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<rect x='228.5' y='56' width='30' height='30' fill='#22355a' stroke='#7AA7FF' stroke-width='1.6'/>
+<text x='243.5' y='75.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>7</text>
+<rect x='258.5' y='56' width='18' height='30' fill='#22355a' stroke='#7AA7FF' stroke-width='1.6'/>
+<text x='267.5' y='75.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>∅</text>
+<circle cx='119.5' cy='71.0' r='2.5' fill='#aab3c5'/>
+<line x1='119.5' y1='71.0' x2='154.5' y2='71.0' stroke='#aab3c5' stroke-width='1.5' marker-end='url(#ah)'/>
+<circle cx='193.5' cy='71.0' r='2.5' fill='#aab3c5'/>
+<line x1='193.5' y1='71.0' x2='228.5' y2='71.0' stroke='#aab3c5' stroke-width='1.5' marker-end='url(#ah)'/>
+<text x='95.5' y='42.0' fill='#E2B66B' font-size='12' text-anchor='middle'>head</text>
+<line x1='95.5' y1='45.0' x2='95.5' y2='54.0' stroke='#E2B66B' stroke-width='1.3' marker-end='url(#ah)'/>
+<text x='243.5' y='42.0' fill='#E2B66B' font-size='12' text-anchor='middle'>cur</text>
+<line x1='243.5' y1='45.0' x2='243.5' y2='54.0' stroke='#E2B66B' stroke-width='1.3' marker-end='url(#ah)'/>
+</svg>
+<svg x='28' y='312' width='302' height='96' viewBox='0 0 302 96' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
+<defs><marker id='ah' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#aab3c5'/></marker></defs>
+<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
+<text x='151.0' y='18' fill='#e6e8ee' font-size='13' text-anchor='middle'>4. cur-&gt;next = the new node</text>
+<rect x='16.0' y='56' width='30' height='30' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<text x='31.0' y='75.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>9</text>
+<rect x='46.0' y='56' width='18' height='30' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<rect x='90.0' y='56' width='30' height='30' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<text x='105.0' y='75.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>4</text>
+<rect x='120.0' y='56' width='18' height='30' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<rect x='164.0' y='56' width='30' height='30' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<text x='179.0' y='75.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>7</text>
+<rect x='194.0' y='56' width='18' height='30' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<rect x='238.0' y='56' width='30' height='30' fill='#5a4520' stroke='#E2B66B' stroke-width='1.6'/>
+<text x='253.0' y='75.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>5</text>
+<rect x='268.0' y='56' width='18' height='30' fill='#5a4520' stroke='#E2B66B' stroke-width='1.6'/>
+<text x='277.0' y='75.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>∅</text>
+<circle cx='55.0' cy='71.0' r='2.5' fill='#aab3c5'/>
+<line x1='55.0' y1='71.0' x2='90.0' y2='71.0' stroke='#aab3c5' stroke-width='1.5' marker-end='url(#ah)'/>
+<circle cx='129.0' cy='71.0' r='2.5' fill='#aab3c5'/>
+<line x1='129.0' y1='71.0' x2='164.0' y2='71.0' stroke='#aab3c5' stroke-width='1.5' marker-end='url(#ah)'/>
+<circle cx='203.0' cy='71.0' r='2.5' fill='#aab3c5'/>
+<line x1='203.0' y1='71.0' x2='238.0' y2='71.0' stroke='#aab3c5' stroke-width='1.5' marker-end='url(#ah)'/>
+<text x='31.0' y='42.0' fill='#E2B66B' font-size='12' text-anchor='middle'>head</text>
+<line x1='31.0' y1='45.0' x2='31.0' y2='54.0' stroke='#E2B66B' stroke-width='1.3' marker-end='url(#ah)'/>
+<text x='179.0' y='42.0' fill='#E2B66B' font-size='12' text-anchor='middle'>cur</text>
+<line x1='179.0' y1='45.0' x2='179.0' y2='54.0' stroke='#E2B66B' stroke-width='1.3' marker-end='url(#ah)'/>
+</svg>
+</svg>
