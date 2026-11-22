@@ -1,5 +1,6 @@
 import aws from './assets/logos/aws.svg';
 import c from './assets/logos/c.svg';
+import cpp from './assets/logos/cpp.svg';
 import powerbi from './assets/logos/powerbi.svg';
 import {N_} from './lib/i18n.js';
 
@@ -24,6 +25,7 @@ export const BRANDS = {
   typescript:{name:'TypeScript', color:'#3178C6', icon:'typescript'},
   javascript:{name:'JavaScript', color:'#F7DF1E', icon:'javascript'},
   c:{name:'C', color:'#1E2B3C', img:c},
+  cpp:{name:'C++', color:'#1E2B3C', img:cpp},
   git:{name:'Git', color:'#F03C2E', icon:'git'},
   shell:{name:'Shell', color:'#4EAA25', icon:'gnubash'},
   sql:{name:'SQL', color:'#003B57', icon:'sqlite'},
