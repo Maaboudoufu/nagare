@@ -1,0 +1,52 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 486' width='300' height='486'>
+<svg x='0' y='0' width='300' height='114' viewBox='0 0 300 114' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
+<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
+<defs><marker id='ah' markerUnits='userSpaceOnUse' markerWidth='9' markerHeight='9' refX='8' refY='4.5' orient='auto'><path d='M0,0 L9,4.5 L0,9 z' fill='#8a93a6'/></marker></defs>
+<text x='150.0' y='22' fill='#e6e8ee' font-size='13.0' text-anchor='middle'>1. top of the stack is at the front</text>
+<rect x='110.0' y='36.0' width='40.0' height='40.0' rx='4' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<text x='130.0' y='60.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>2</text>
+<rect x='150.0' y='36.0' width='40.0' height='40.0' rx='4' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<text x='170.0' y='60.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>1</text>
+<line x1='130.0' y1='90.0' x2='130.0' y2='80.0' stroke='#E2B66B' stroke-width='1.5' marker-end='url(#ah)'/>
+<text x='130.0' y='102.0' fill='#E2B66B' font-size='12' text-anchor='middle'>front</text>
+</svg>
+<svg x='0' y='124' width='300' height='114' viewBox='0 0 300 114' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
+<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
+<defs><marker id='ah' markerUnits='userSpaceOnUse' markerWidth='9' markerHeight='9' refX='8' refY='4.5' orient='auto'><path d='M0,0 L9,4.5 L0,9 z' fill='#8a93a6'/></marker></defs>
+<text x='150.0' y='22' fill='#e6e8ee' font-size='13.0' text-anchor='middle'>2. push(3): enqueue it</text>
+<rect x='90.0' y='36.0' width='40.0' height='40.0' rx='4' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<text x='110.0' y='60.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>2</text>
+<rect x='130.0' y='36.0' width='40.0' height='40.0' rx='4' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<text x='150.0' y='60.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>1</text>
+<rect x='170.0' y='36.0' width='40.0' height='40.0' rx='4' fill='#5a4520' stroke='#E2B66B' stroke-width='1.6'/>
+<text x='190.0' y='60.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>3</text>
+<line x1='110.0' y1='90.0' x2='110.0' y2='80.0' stroke='#E2B66B' stroke-width='1.5' marker-end='url(#ah)'/>
+<text x='110.0' y='102.0' fill='#E2B66B' font-size='12' text-anchor='middle'>front</text>
+</svg>
+<svg x='0' y='248' width='300' height='114' viewBox='0 0 300 114' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
+<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
+<defs><marker id='ah' markerUnits='userSpaceOnUse' markerWidth='9' markerHeight='9' refX='8' refY='4.5' orient='auto'><path d='M0,0 L9,4.5 L0,9 z' fill='#8a93a6'/></marker></defs>
+<text x='150.0' y='22' fill='#e6e8ee' font-size='13.0' text-anchor='middle'>3. move 2 to the back</text>
+<rect x='90.0' y='36.0' width='40.0' height='40.0' rx='4' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<text x='110.0' y='60.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>1</text>
+<rect x='130.0' y='36.0' width='40.0' height='40.0' rx='4' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<text x='150.0' y='60.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>3</text>
+<rect x='170.0' y='36.0' width='40.0' height='40.0' rx='4' fill='#22355a' stroke='#7AA7FF' stroke-width='1.6'/>
+<text x='190.0' y='60.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>2</text>
+<line x1='110.0' y1='90.0' x2='110.0' y2='80.0' stroke='#E2B66B' stroke-width='1.5' marker-end='url(#ah)'/>
+<text x='110.0' y='102.0' fill='#E2B66B' font-size='12' text-anchor='middle'>front</text>
+</svg>
+<svg x='0' y='372' width='300' height='114' viewBox='0 0 300 114' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
+<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
+<defs><marker id='ah' markerUnits='userSpaceOnUse' markerWidth='9' markerHeight='9' refX='8' refY='4.5' orient='auto'><path d='M0,0 L9,4.5 L0,9 z' fill='#8a93a6'/></marker></defs>
+<text x='150.0' y='22' fill='#e6e8ee' font-size='13.0' text-anchor='middle'>4. move 1 to the back</text>
+<rect x='90.0' y='36.0' width='40.0' height='40.0' rx='4' fill='#1f4232' stroke='#62BE8C' stroke-width='1.6'/>
+<text x='110.0' y='60.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>3</text>
+<rect x='130.0' y='36.0' width='40.0' height='40.0' rx='4' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
+<text x='150.0' y='60.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>2</text>
+<rect x='170.0' y='36.0' width='40.0' height='40.0' rx='4' fill='#22355a' stroke='#7AA7FF' stroke-width='1.6'/>
+<text x='190.0' y='60.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>1</text>
+<line x1='110.0' y1='90.0' x2='110.0' y2='80.0' stroke='#E2B66B' stroke-width='1.5' marker-end='url(#ah)'/>
+<text x='110.0' y='102.0' fill='#E2B66B' font-size='12' text-anchor='middle'>front</text>
+</svg>
+</svg>
