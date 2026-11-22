@@ -63,6 +63,14 @@ def commands(lesson, d, submit):
         tracks = any('bootlib.h' in open(os.path.join(d, n)).read() for n in names)
         build = ['gcc', '-std=gnu17', '-g', '-O0', '-Wall', '-I', os.path.join(SUPPORT, 'c'), '-o', 'lesson', *sources, '-lm']
         return [build + ([C_WRAP] if tracks else []), ['./lesson']], ({'BOOT_SUBMIT': '1'} if submit else {})
+    if lang == 'cpp':
+        sources = [n for n in names if n.endswith('.cpp')]
+        # Out-of-bounds, leaks, use after delete and the wrong delete all "work" at -O0, so make them fail, with the line.
+        # ponytail: leak checks need ptrace (Docker's default runtime has it); elsewhere add detect_leaks=0 below.
+        build = ['g++', '-std=c++17', '-g', '-O0', '-Wall', '-fsanitize=address,undefined', '-fno-sanitize-recover=all',
+                 '-fno-omit-frame-pointer', '-D_GLIBCXX_ASSERTIONS', '-I', os.path.join(SUPPORT, 'cpp'), '-o', 'lesson', *sources]
+        env = {'ASAN_OPTIONS': 'handle_abort=1:print_legend=0'}  # abort: a failed bounds check shows the learner's line
+        return [build, ['./lesson']], ({**env, 'BOOT_SUBMIT': '1'} if submit else env)
     raise ValueError(f'no runner for {lang} lessons')
 
 
