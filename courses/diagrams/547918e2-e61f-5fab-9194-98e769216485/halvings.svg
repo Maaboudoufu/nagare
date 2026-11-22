@@ -1,0 +1,24 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 330 314' width='330' height='314' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
+<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
+<text x='165' y='22' fill='#e6e8ee' font-size='13' text-anchor='middle'>while (n &gt; 1) n = n / 2;</text>
+<text x='80' y='62.5' fill='#8a93a6' font-size='12' text-anchor='end'>pass 0</text>
+<rect x='90' y='38' width='40' height='40' fill='#5a4520' stroke='#E2B66B'/>
+<text x='110.0' y='62.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>16</text>
+<text x='140' y='62.5' fill='#e6e8ee' font-size='12'>start: n = 16</text>
+<text x='80' y='116.5' fill='#8a93a6' font-size='12' text-anchor='end'>pass 1</text>
+<rect x='90' y='92' width='40' height='40' fill='#5a4520' stroke='#E2B66B'/>
+<text x='110.0' y='116.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>8</text>
+<text x='140' y='116.5' fill='#e6e8ee' font-size='12'>16 / 2 = 8</text>
+<text x='80' y='170.5' fill='#8a93a6' font-size='12' text-anchor='end'>pass 2</text>
+<rect x='90' y='146' width='40' height='40' fill='#5a4520' stroke='#E2B66B'/>
+<text x='110.0' y='170.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>4</text>
+<text x='140' y='170.5' fill='#e6e8ee' font-size='12'>8 / 2 = 4</text>
+<text x='80' y='224.5' fill='#8a93a6' font-size='12' text-anchor='end'>pass 3</text>
+<rect x='90' y='200' width='40' height='40' fill='#5a4520' stroke='#E2B66B'/>
+<text x='110.0' y='224.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>2</text>
+<text x='140' y='224.5' fill='#e6e8ee' font-size='12'>4 / 2 = 2</text>
+<text x='80' y='278.5' fill='#8a93a6' font-size='12' text-anchor='end'>pass 4</text>
+<rect x='90' y='254' width='40' height='40' fill='#1f4232' stroke='#62BE8C'/>
+<text x='110.0' y='278.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>1</text>
+<text x='140' y='278.5' fill='#e6e8ee' font-size='12'>2 / 2 = 1</text>
+</svg>

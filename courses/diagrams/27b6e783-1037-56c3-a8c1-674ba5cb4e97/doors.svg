@@ -1,0 +1,56 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 380 230' width='380' height='230' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
+<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
+<text x='190.0' y='22' fill='#e6e8ee' font-size='13' text-anchor='middle'>sources 0, 1 (blue); targets 6, 7</text>
+<defs><marker id='arn' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#4a5263'/></marker><marker id='arhot' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#E2B66B'/></marker><marker id='arcmp' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#7AA7FF'/></marker><marker id='arok' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#62BE8C'/></marker><marker id='argone' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#F08A9C'/></marker></defs>
+<line x1='50.0' y1='64.8' x2='116.9' y2='64.8' stroke='#4a5263' stroke-width='1.6'/>
+<rect x='70.5' y='65.8' width='26' height='15' rx='3' fill='#1c2029'/>
+<text x='83.5' y='77.8' fill='#8a93a6' font-size='11' text-anchor='middle'>5</text>
+<line x1='50.0' y1='175.2' x2='116.9' y2='175.2' stroke='#E2B66B' stroke-width='2.5'/>
+<rect x='70.5' y='176.2' width='26' height='15' rx='3' fill='#1c2029'/>
+<text x='83.5' y='188.2' fill='#E2B66B' font-size='11' text-anchor='middle'>2</text>
+<line x1='135.9' y1='83.8' x2='135.9' y2='156.2' stroke='#4a5263' stroke-width='1.6'/>
+<rect x='113.9' y='112.0' width='26' height='15' rx='3' fill='#1c2029'/>
+<text x='126.9' y='124.0' fill='#8a93a6' font-size='11' text-anchor='middle'>4</text>
+<line x1='154.9' y1='64.8' x2='221.9' y2='64.8' stroke='#4a5263' stroke-width='1.6'/>
+<rect x='175.4' y='65.8' width='26' height='15' rx='3' fill='#1c2029'/>
+<text x='188.4' y='77.8' fill='#8a93a6' font-size='11' text-anchor='middle'>3</text>
+<line x1='154.9' y1='175.2' x2='221.9' y2='175.2' stroke='#E2B66B' stroke-width='2.5'/>
+<rect x='175.4' y='176.2' width='26' height='15' rx='3' fill='#1c2029'/>
+<text x='188.4' y='188.2' fill='#E2B66B' font-size='11' text-anchor='middle'>6</text>
+<line x1='259.9' y1='64.8' x2='330.0' y2='64.8' stroke='#4a5263' stroke-width='1.6'/>
+<rect x='281.9' y='65.8' width='26' height='15' rx='3' fill='#1c2029'/>
+<text x='294.9' y='77.8' fill='#8a93a6' font-size='11' text-anchor='middle'>4</text>
+<line x1='259.9' y1='175.2' x2='330.0' y2='175.2' stroke='#E2B66B' stroke-width='2.5'/>
+<rect x='281.9' y='176.2' width='26' height='15' rx='3' fill='#1c2029'/>
+<text x='294.9' y='188.2' fill='#E2B66B' font-size='11' text-anchor='middle'>1</text>
+<line x1='240.9' y1='83.8' x2='240.9' y2='156.2' stroke='#4a5263' stroke-width='1.6'/>
+<rect x='218.9' y='112.0' width='26' height='15' rx='3' fill='#1c2029'/>
+<text x='231.9' y='124.0' fill='#8a93a6' font-size='11' text-anchor='middle'>2</text>
+<line x1='254.2' y1='161.6' x2='335.7' y2='78.4' stroke='#4a5263' stroke-width='1.6'/>
+<rect x='288.4' y='118.3' width='26' height='15' rx='3' fill='#1c2029'/>
+<text x='301.4' y='130.3' fill='#8a93a6' font-size='11' text-anchor='middle'>5</text>
+<circle cx='31.0' cy='64.8' r='17' fill='#22355a' stroke='#7AA7FF' stroke-width='2'/>
+<text x='31.0' y='69.3' fill='#e6e8ee' font-size='12' text-anchor='middle'>0</text>
+<rect x='17.8' y='83.8' width='26.4' height='15' rx='3' fill='#1c2029' opacity='0.85'/>
+<text x='31.0' y='94.8' fill='#7AA7FF' font-size='11' text-anchor='middle'>lib</text>
+<circle cx='31.0' cy='175.2' r='17' fill='#22355a' stroke='#7AA7FF' stroke-width='2'/>
+<text x='31.0' y='179.7' fill='#e6e8ee' font-size='12' text-anchor='middle'>1</text>
+<rect x='17.8' y='194.2' width='26.4' height='15' rx='3' fill='#1c2029' opacity='0.85'/>
+<text x='31.0' y='205.2' fill='#7AA7FF' font-size='11' text-anchor='middle'>lib</text>
+<circle cx='135.9' cy='64.8' r='17' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
+<text x='135.9' y='69.3' fill='#e6e8ee' font-size='12' text-anchor='middle'>2</text>
+<circle cx='135.9' cy='175.2' r='17' fill='#5a4520' stroke='#E2B66B' stroke-width='2'/>
+<text x='135.9' y='179.7' fill='#e6e8ee' font-size='12' text-anchor='middle'>3</text>
+<circle cx='240.9' cy='64.8' r='17' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
+<text x='240.9' y='69.3' fill='#e6e8ee' font-size='12' text-anchor='middle'>4</text>
+<circle cx='240.9' cy='175.2' r='17' fill='#5a4520' stroke='#E2B66B' stroke-width='2'/>
+<text x='240.9' y='179.7' fill='#e6e8ee' font-size='12' text-anchor='middle'>5</text>
+<circle cx='349.0' cy='64.8' r='17' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='349.0' y='69.3' fill='#e6e8ee' font-size='12' text-anchor='middle'>6</text>
+<rect x='335.8' y='83.8' width='26.4' height='15' rx='3' fill='#1c2029' opacity='0.85'/>
+<text x='349.0' y='94.8' fill='#62BE8C' font-size='11' text-anchor='middle'>gym</text>
+<circle cx='349.0' cy='175.2' r='17' fill='#5a4520' stroke='#E2B66B' stroke-width='2'/>
+<text x='349.0' y='179.7' fill='#e6e8ee' font-size='12' text-anchor='middle'>7</text>
+<rect x='335.8' y='194.2' width='26.4' height='15' rx='3' fill='#1c2029' opacity='0.85'/>
+<text x='349.0' y='205.2' fill='#E2B66B' font-size='11' text-anchor='middle'>gym</text>
+</svg>

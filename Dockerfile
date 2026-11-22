@@ -33,7 +33,7 @@ RUN sed -i -e "s#http://deb.debian.org/debian-security#http://snapshot.debian.or
            /etc/apt/sources.list.d/debian.sources \
     && apt-get -o Acquire::Check-Valid-Until=false update \
     && apt-get install -y --no-install-recommends \
-        python3 python3-pytest jq postgresql-client sqlite3 gh unzip zip nodejs npm \
+        python3 python3-pytest g++ jq postgresql-client sqlite3 gh unzip zip nodejs npm \
         less nano vim python3-pylsp ripgrep fd-find netcat-openbsd sudo procps man-db file tree \
     && rm -rf /var/lib/apt/lists/*
 # Sandbox user; passwordless sudo for the Learn Linux permissions lessons.

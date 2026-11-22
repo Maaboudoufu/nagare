@@ -1,12 +1,13 @@
 import aws from './assets/logos/aws.svg';
 import c from './assets/logos/c.svg';
+import cpp from './assets/logos/cpp.svg';
 import powerbi from './assets/logos/powerbi.svg';
 import {N_} from './lib/i18n.js';
 
-export const MODES = {go:'go', py:'python', sql:'text/x-sqlite', js:'javascript', ts:'text/typescript', c:'text/x-csrc'};
+export const MODES = {go:'go', py:'python', sql:'text/x-sqlite', js:'javascript', ts:'text/typescript', c:'text/x-csrc', cpp:'text/x-c++src'};
 export const FENCE_MODES = {go:'go', py:'python', python:'python', sql:'text/x-sqlite', sh:'shell', bash:'shell', shell:'shell',
                             yaml:'yaml', yml:'yaml', json:'application/json', jsonc:'application/json', js:'javascript', javascript:'javascript',
-                            ts:'text/typescript', typescript:'text/typescript', c:'text/x-csrc', h:'text/x-csrc'};
+                            ts:'text/typescript', typescript:'text/typescript', c:'text/x-csrc', h:'text/x-csrc', cpp:'text/x-c++src', 'c++':'text/x-c++src'};
 export const TYPES = {
   type_code:['code-xml', N_('Code')], type_code_tests:['code-xml', N_('Code')], type_code_sql:['database', 'SQL'],
   type_choice:['list-checks', N_('Quiz')], type_cli:['terminal', 'CLI'], type_shell:['terminal', N_('Shell')],
@@ -24,6 +25,7 @@ export const BRANDS = {
   typescript:{name:'TypeScript', color:'#3178C6', icon:'typescript'},
   javascript:{name:'JavaScript', color:'#F7DF1E', icon:'javascript'},
   c:{name:'C', color:'#1E2B3C', img:c},
+  cpp:{name:'C++', color:'#1E2B3C', img:cpp},
   git:{name:'Git', color:'#F03C2E', icon:'git'},
   shell:{name:'Shell', color:'#4EAA25', icon:'gnubash'},
   sql:{name:'SQL', color:'#003B57', icon:'sqlite'},

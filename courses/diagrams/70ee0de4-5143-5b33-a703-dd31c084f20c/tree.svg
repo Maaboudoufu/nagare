@@ -1,0 +1,30 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 524 246' width='524' height='246' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
+<defs><marker id='a0' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#8a93a6'/></marker><marker id='a1' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#E2B66B'/></marker><marker id='a2' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#7AA7FF'/></marker><marker id='a3' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#62BE8C'/></marker><marker id='a4' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#F08A9C'/></marker></defs>
+<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
+<rect x='14' y='40' width='160' height='50' rx='6' fill='#22355a' stroke='#7AA7FF' stroke-width='1.8'/>
+<text x='94.0' y='58' fill='#e6e8ee' font-size='13' font-weight='bold' text-anchor='middle'>TeaBrewer</text>
+<line x1='14' y1='65' x2='174' y2='65' stroke='#7AA7FF' stroke-width='1'/>
+<text x='94.0' y='82' fill='#e6e8ee' font-size='12' text-anchor='middle'>TeaBrewerImpl* impl</text>
+<rect x='270' y='40' width='240' height='56' rx='6' fill='#3a2328' stroke='#F08A9C' stroke-width='1.8' stroke-dasharray='5 4'/>
+<text x='390.0' y='58' fill='#e6e8ee' font-size='12' font-weight='bold' text-anchor='middle'>TeaBrewerImpl (abstract)</text>
+<line x1='270' y1='65' x2='510' y2='65' stroke='#F08A9C' stroke-width='1'/>
+<text x='390.0' y='82' fill='#e6e8ee' font-size='11' text-anchor='middle'>virtual void addTea(Drink&amp;) = 0;</text>
+<line x1='174' y1='65' x2='268' y2='65' stroke='#8a93a6' stroke-width='1.8' marker-end='url(#a0)'/>
+<text x='221.0' y='57.0' fill='#8a93a6' font-size='11' text-anchor='middle'>points at</text>
+<rect x='150' y='150' width='115' height='52' rx='6' fill='#1f4232' stroke='#62BE8C' stroke-width='1.8'/>
+<text x='207.5' y='168' fill='#e6e8ee' font-size='12' font-weight='bold' text-anchor='middle'>HotSteep...</text>
+<line x1='150' y1='175' x2='265' y2='175' stroke='#62BE8C' stroke-width='1'/>
+<text x='207.5' y='192' fill='#e6e8ee' font-size='11' text-anchor='middle'>"Hot Tea"</text>
+<line x1='207' y1='148' x2='390' y2='98' stroke='#7AA7FF' stroke-width='1.8' marker-end='url(#a2)'/>
+<rect x='275' y='150' width='115' height='52' rx='6' fill='#1f4232' stroke='#62BE8C' stroke-width='1.8'/>
+<text x='332.5' y='168' fill='#e6e8ee' font-size='12' font-weight='bold' text-anchor='middle'>ColdBrew...</text>
+<line x1='275' y1='175' x2='390' y2='175' stroke='#62BE8C' stroke-width='1'/>
+<text x='332.5' y='192' fill='#e6e8ee' font-size='11' text-anchor='middle'>"Cold Brew"</text>
+<line x1='332' y1='148' x2='390' y2='98' stroke='#7AA7FF' stroke-width='1.8' marker-end='url(#a2)'/>
+<rect x='400' y='150' width='115' height='52' rx='6' fill='#1f4232' stroke='#62BE8C' stroke-width='1.8'/>
+<text x='457.5' y='168' fill='#e6e8ee' font-size='12' font-weight='bold' text-anchor='middle'>Matcha...</text>
+<line x1='400' y1='175' x2='515' y2='175' stroke='#62BE8C' stroke-width='1'/>
+<text x='457.5' y='192' fill='#e6e8ee' font-size='11' text-anchor='middle'>"Matcha"</text>
+<line x1='457' y1='148' x2='390' y2='98' stroke='#7AA7FF' stroke-width='1.8' marker-end='url(#a2)'/>
+<text x='262' y='230' fill='#8a93a6' font-size='11' text-anchor='middle'>each derived class must define addTea; arrows point to the base (is-a)</text>
+</svg>

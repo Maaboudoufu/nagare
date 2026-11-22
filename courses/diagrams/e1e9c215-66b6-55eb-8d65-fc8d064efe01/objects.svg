@@ -1,0 +1,27 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 490 244' width='490' height='244' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
+<defs><marker id='a0' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#8a93a6'/></marker><marker id='a1' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#E2B66B'/></marker><marker id='a2' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#7AA7FF'/></marker><marker id='a3' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#62BE8C'/></marker><marker id='a4' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#F08A9C'/></marker></defs>
+<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
+<rect x='10' y='30' width='260' height='200' rx='6' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.8'/>
+<text x='140' y='50' fill='#e6e8ee' font-size='13' text-anchor='middle' font-weight='bold'>class BobaCafe</text>
+<rect x='20' y='62' width='240' height='66' rx='6' fill='#1f4232' stroke='#62BE8C' stroke-width='1.8'/>
+<text x='140.0' y='80' fill='#e6e8ee' font-size='13' font-weight='bold' text-anchor='middle'>public: interface</text>
+<line x1='20' y1='87' x2='260' y2='87' stroke='#62BE8C' stroke-width='1'/>
+<text x='140.0' y='104' fill='#e6e8ee' font-size='12' text-anchor='middle'>doOrder(name)</text>
+<text x='140.0' y='122' fill='#e6e8ee' font-size='12' text-anchor='middle'>getDrinksServed()</text>
+<rect x='20' y='142' width='240' height='76' rx='6' fill='#3a2328' stroke='#F08A9C' stroke-width='1.8' stroke-dasharray='5 4'/>
+<text x='140.0' y='160' fill='#e6e8ee' font-size='13' font-weight='bold' text-anchor='middle'>private: implementation</text>
+<line x1='20' y1='167' x2='260' y2='167' stroke='#F08A9C' stroke-width='1'/>
+<text x='140.0' y='184' fill='#e6e8ee' font-size='12' text-anchor='middle'>teaBrewer, bobaCooker, ...</text>
+<text x='140.0' y='202' fill='#e6e8ee' font-size='12' text-anchor='middle'>num_drinks_served</text>
+<text x='390' y='60' fill='#8a93a6' font-size='12' text-anchor='middle'>two objects (instances)</text>
+<rect x='296' y='76' width='180' height='60' rx='6' fill='#22355a' stroke='#7AA7FF' stroke-width='1.8'/>
+<text x='386.0' y='94' fill='#e6e8ee' font-size='13' font-weight='bold' text-anchor='middle'>campus_cafe</text>
+<line x1='296' y1='101' x2='476' y2='101' stroke='#7AA7FF' stroke-width='1'/>
+<text x='386.0' y='118' fill='#e6e8ee' font-size='12' text-anchor='middle'>num_drinks_served = 3</text>
+<line x1='270' y1='130' x2='294' y2='106' stroke='#8a93a6' stroke-width='1.8' stroke-dasharray='5 4' marker-end='url(#a0)'/>
+<rect x='296' y='156' width='180' height='60' rx='6' fill='#22355a' stroke='#7AA7FF' stroke-width='1.8'/>
+<text x='386.0' y='174' fill='#e6e8ee' font-size='13' font-weight='bold' text-anchor='middle'>library_cafe</text>
+<line x1='296' y1='181' x2='476' y2='181' stroke='#7AA7FF' stroke-width='1'/>
+<text x='386.0' y='198' fill='#e6e8ee' font-size='12' text-anchor='middle'>num_drinks_served = 0</text>
+<line x1='270' y1='130' x2='294' y2='186' stroke='#8a93a6' stroke-width='1.8' stroke-dasharray='5 4' marker-end='url(#a0)'/>
+</svg>
