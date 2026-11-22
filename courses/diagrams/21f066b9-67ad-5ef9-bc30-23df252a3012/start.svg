@@ -1,0 +1,435 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 885' width='512' height='885'>
+<svg x='0' y='0' width='250' height='287' viewBox='0 0 250 287' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
+<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
+<defs><marker id='sw' viewBox='0 0 10 10' refX='8' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#E2B66B'/></marker></defs>
+<text x='125.0' y='22' fill='#e6e8ee' font-size='13' text-anchor='middle'>start: n = 11</text>
+<text x='125.0' y='40' fill='#8a93a6' font-size='12' text-anchor='middle'>leaves 5..10 (green) are heaps</text>
+<line x1='125.0' y1='64.0' x2='69.5' y2='116.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='125.0' y1='64.0' x2='180.5' y2='116.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='69.5' y1='116.0' x2='41.8' y2='168.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='69.5' y1='116.0' x2='97.2' y2='168.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='180.5' y1='116.0' x2='152.8' y2='168.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='180.5' y1='116.0' x2='208.2' y2='168.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='41.8' y1='168.0' x2='27.9' y2='220.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='41.8' y1='168.0' x2='55.6' y2='220.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='97.2' y1='168.0' x2='83.4' y2='220.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='97.2' y1='168.0' x2='111.1' y2='220.0' stroke='#4a5263' stroke-width='1.5'/>
+<circle cx='125.0' cy='64.0' r='12' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
+<text x='125.0' y='69.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>15</text>
+<circle cx='69.5' cy='116.0' r='12' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
+<text x='69.5' y='121.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>60</text>
+<circle cx='180.5' cy='116.0' r='12' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
+<text x='180.5' y='121.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>72</text>
+<circle cx='41.8' cy='168.0' r='12' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
+<text x='41.8' y='173.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>70</text>
+<circle cx='97.2' cy='168.0' r='12' fill='#5a4520' stroke='#E2B66B' stroke-width='2'/>
+<text x='97.2' y='173.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>56</text>
+<circle cx='152.8' cy='168.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='152.8' y='173.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>32</text>
+<circle cx='208.2' cy='168.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='208.2' y='173.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>62</text>
+<circle cx='27.9' cy='220.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='27.9' y='225.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>92</text>
+<circle cx='55.6' cy='220.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='55.6' y='225.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>45</text>
+<circle cx='83.4' cy='220.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='83.4' y='225.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>30</text>
+<circle cx='111.1' cy='220.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='111.1' y='225.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>65</text>
+<rect x='8.0' y='244' width='21.3' height='21.3' fill='#2a2f3a' stroke='#8a93a6'/>
+<text x='18.6' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>15</text>
+<text x='18.6' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>0</text>
+<rect x='29.3' y='244' width='21.3' height='21.3' fill='#2a2f3a' stroke='#8a93a6'/>
+<text x='39.9' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>60</text>
+<text x='39.9' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>1</text>
+<rect x='50.5' y='244' width='21.3' height='21.3' fill='#2a2f3a' stroke='#8a93a6'/>
+<text x='61.2' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>72</text>
+<text x='61.2' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>2</text>
+<rect x='71.8' y='244' width='21.3' height='21.3' fill='#2a2f3a' stroke='#8a93a6'/>
+<text x='82.5' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>70</text>
+<text x='82.5' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>3</text>
+<rect x='93.1' y='244' width='21.3' height='21.3' fill='#5a4520' stroke='#E2B66B'/>
+<text x='103.7' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>56</text>
+<text x='103.7' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>4</text>
+<rect x='114.4' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='125.0' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>32</text>
+<text x='125.0' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>5</text>
+<rect x='135.6' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='146.3' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>62</text>
+<text x='146.3' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>6</text>
+<rect x='156.9' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='167.5' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>92</text>
+<text x='167.5' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>7</text>
+<rect x='178.2' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='188.8' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>45</text>
+<text x='188.8' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>8</text>
+<rect x='199.5' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='210.1' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>30</text>
+<text x='210.1' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>9</text>
+<rect x='220.7' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='231.4' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>65</text>
+<text x='231.4' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>10</text>
+</svg>
+<svg x='262' y='0' width='250' height='287' viewBox='0 0 250 287' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
+<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
+<defs><marker id='sw' viewBox='0 0 10 10' refX='8' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#E2B66B'/></marker></defs>
+<text x='125.0' y='22' fill='#e6e8ee' font-size='13' text-anchor='middle'>i = 4: sift 56</text>
+<text x='125.0' y='40' fill='#8a93a6' font-size='12' text-anchor='middle'>56 &lt; 65: swap</text>
+<line x1='125.0' y1='64.0' x2='69.5' y2='116.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='125.0' y1='64.0' x2='180.5' y2='116.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='69.5' y1='116.0' x2='41.8' y2='168.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='69.5' y1='116.0' x2='97.2' y2='168.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='180.5' y1='116.0' x2='152.8' y2='168.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='180.5' y1='116.0' x2='208.2' y2='168.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='41.8' y1='168.0' x2='27.9' y2='220.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='41.8' y1='168.0' x2='55.6' y2='220.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='97.2' y1='168.0' x2='83.4' y2='220.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='97.2' y1='168.0' x2='111.1' y2='220.0' stroke='#4a5263' stroke-width='1.5'/>
+<circle cx='125.0' cy='64.0' r='12' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
+<text x='125.0' y='69.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>15</text>
+<circle cx='69.5' cy='116.0' r='12' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
+<text x='69.5' y='121.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>60</text>
+<circle cx='180.5' cy='116.0' r='12' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
+<text x='180.5' y='121.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>72</text>
+<circle cx='41.8' cy='168.0' r='12' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
+<text x='41.8' y='173.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>70</text>
+<circle cx='97.2' cy='168.0' r='12' fill='#5a4520' stroke='#E2B66B' stroke-width='2'/>
+<text x='97.2' y='173.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>65</text>
+<circle cx='152.8' cy='168.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='152.8' y='173.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>32</text>
+<circle cx='208.2' cy='168.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='208.2' y='173.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>62</text>
+<circle cx='27.9' cy='220.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='27.9' y='225.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>92</text>
+<circle cx='55.6' cy='220.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='55.6' y='225.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>45</text>
+<circle cx='83.4' cy='220.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='83.4' y='225.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>30</text>
+<circle cx='111.1' cy='220.0' r='12' fill='#5a4520' stroke='#E2B66B' stroke-width='2'/>
+<text x='111.1' y='225.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>56</text>
+<path d='M101.1,182.5 Q88.6,197.6 107.0,204.5' fill='none' stroke='#E2B66B' stroke-width='2' marker-end='url(#sw)'/>
+<rect x='8.0' y='244' width='21.3' height='21.3' fill='#2a2f3a' stroke='#8a93a6'/>
+<text x='18.6' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>15</text>
+<text x='18.6' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>0</text>
+<rect x='29.3' y='244' width='21.3' height='21.3' fill='#2a2f3a' stroke='#8a93a6'/>
+<text x='39.9' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>60</text>
+<text x='39.9' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>1</text>
+<rect x='50.5' y='244' width='21.3' height='21.3' fill='#2a2f3a' stroke='#8a93a6'/>
+<text x='61.2' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>72</text>
+<text x='61.2' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>2</text>
+<rect x='71.8' y='244' width='21.3' height='21.3' fill='#2a2f3a' stroke='#8a93a6'/>
+<text x='82.5' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>70</text>
+<text x='82.5' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>3</text>
+<rect x='93.1' y='244' width='21.3' height='21.3' fill='#5a4520' stroke='#E2B66B'/>
+<text x='103.7' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>65</text>
+<text x='103.7' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>4</text>
+<rect x='114.4' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='125.0' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>32</text>
+<text x='125.0' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>5</text>
+<rect x='135.6' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='146.3' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>62</text>
+<text x='146.3' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>6</text>
+<rect x='156.9' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='167.5' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>92</text>
+<text x='167.5' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>7</text>
+<rect x='178.2' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='188.8' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>45</text>
+<text x='188.8' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>8</text>
+<rect x='199.5' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='210.1' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>30</text>
+<text x='210.1' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>9</text>
+<rect x='220.7' y='244' width='21.3' height='21.3' fill='#5a4520' stroke='#E2B66B'/>
+<text x='231.4' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>56</text>
+<text x='231.4' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>10</text>
+</svg>
+<svg x='0' y='299' width='250' height='287' viewBox='0 0 250 287' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
+<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
+<defs><marker id='sw' viewBox='0 0 10 10' refX='8' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#E2B66B'/></marker></defs>
+<text x='125.0' y='22' fill='#e6e8ee' font-size='13' text-anchor='middle'>i = 3: sift 70</text>
+<text x='125.0' y='40' fill='#8a93a6' font-size='12' text-anchor='middle'>70 &lt; 92: swap</text>
+<line x1='125.0' y1='64.0' x2='69.5' y2='116.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='125.0' y1='64.0' x2='180.5' y2='116.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='69.5' y1='116.0' x2='41.8' y2='168.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='69.5' y1='116.0' x2='97.2' y2='168.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='180.5' y1='116.0' x2='152.8' y2='168.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='180.5' y1='116.0' x2='208.2' y2='168.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='41.8' y1='168.0' x2='27.9' y2='220.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='41.8' y1='168.0' x2='55.6' y2='220.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='97.2' y1='168.0' x2='83.4' y2='220.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='97.2' y1='168.0' x2='111.1' y2='220.0' stroke='#4a5263' stroke-width='1.5'/>
+<circle cx='125.0' cy='64.0' r='12' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
+<text x='125.0' y='69.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>15</text>
+<circle cx='69.5' cy='116.0' r='12' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
+<text x='69.5' y='121.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>60</text>
+<circle cx='180.5' cy='116.0' r='12' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
+<text x='180.5' y='121.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>72</text>
+<circle cx='41.8' cy='168.0' r='12' fill='#5a4520' stroke='#E2B66B' stroke-width='2'/>
+<text x='41.8' y='173.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>92</text>
+<circle cx='97.2' cy='168.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='97.2' y='173.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>65</text>
+<circle cx='152.8' cy='168.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='152.8' y='173.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>32</text>
+<circle cx='208.2' cy='168.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='208.2' y='173.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>62</text>
+<circle cx='27.9' cy='220.0' r='12' fill='#5a4520' stroke='#E2B66B' stroke-width='2'/>
+<text x='27.9' y='225.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>70</text>
+<circle cx='55.6' cy='220.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='55.6' y='225.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>45</text>
+<circle cx='83.4' cy='220.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='83.4' y='225.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>30</text>
+<circle cx='111.1' cy='220.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='111.1' y='225.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>56</text>
+<path d='M37.9,182.5 Q50.4,197.6 32.0,204.5' fill='none' stroke='#E2B66B' stroke-width='2' marker-end='url(#sw)'/>
+<rect x='8.0' y='244' width='21.3' height='21.3' fill='#2a2f3a' stroke='#8a93a6'/>
+<text x='18.6' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>15</text>
+<text x='18.6' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>0</text>
+<rect x='29.3' y='244' width='21.3' height='21.3' fill='#2a2f3a' stroke='#8a93a6'/>
+<text x='39.9' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>60</text>
+<text x='39.9' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>1</text>
+<rect x='50.5' y='244' width='21.3' height='21.3' fill='#2a2f3a' stroke='#8a93a6'/>
+<text x='61.2' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>72</text>
+<text x='61.2' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>2</text>
+<rect x='71.8' y='244' width='21.3' height='21.3' fill='#5a4520' stroke='#E2B66B'/>
+<text x='82.5' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>92</text>
+<text x='82.5' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>3</text>
+<rect x='93.1' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='103.7' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>65</text>
+<text x='103.7' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>4</text>
+<rect x='114.4' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='125.0' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>32</text>
+<text x='125.0' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>5</text>
+<rect x='135.6' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='146.3' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>62</text>
+<text x='146.3' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>6</text>
+<rect x='156.9' y='244' width='21.3' height='21.3' fill='#5a4520' stroke='#E2B66B'/>
+<text x='167.5' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>70</text>
+<text x='167.5' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>7</text>
+<rect x='178.2' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='188.8' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>45</text>
+<text x='188.8' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>8</text>
+<rect x='199.5' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='210.1' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>30</text>
+<text x='210.1' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>9</text>
+<rect x='220.7' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='231.4' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>56</text>
+<text x='231.4' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>10</text>
+</svg>
+<svg x='262' y='299' width='250' height='287' viewBox='0 0 250 287' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
+<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
+<defs><marker id='sw' viewBox='0 0 10 10' refX='8' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#E2B66B'/></marker></defs>
+<text x='125.0' y='22' fill='#e6e8ee' font-size='13' text-anchor='middle'>i = 2: sift 72</text>
+<text x='125.0' y='40' fill='#8a93a6' font-size='12' text-anchor='middle'>72 ≥ 32, 62: stays</text>
+<line x1='125.0' y1='64.0' x2='69.5' y2='116.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='125.0' y1='64.0' x2='180.5' y2='116.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='69.5' y1='116.0' x2='41.8' y2='168.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='69.5' y1='116.0' x2='97.2' y2='168.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='180.5' y1='116.0' x2='152.8' y2='168.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='180.5' y1='116.0' x2='208.2' y2='168.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='41.8' y1='168.0' x2='27.9' y2='220.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='41.8' y1='168.0' x2='55.6' y2='220.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='97.2' y1='168.0' x2='83.4' y2='220.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='97.2' y1='168.0' x2='111.1' y2='220.0' stroke='#4a5263' stroke-width='1.5'/>
+<circle cx='125.0' cy='64.0' r='12' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
+<text x='125.0' y='69.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>15</text>
+<circle cx='69.5' cy='116.0' r='12' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
+<text x='69.5' y='121.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>60</text>
+<circle cx='180.5' cy='116.0' r='12' fill='#5a4520' stroke='#E2B66B' stroke-width='2'/>
+<text x='180.5' y='121.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>72</text>
+<circle cx='41.8' cy='168.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='41.8' y='173.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>92</text>
+<circle cx='97.2' cy='168.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='97.2' y='173.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>65</text>
+<circle cx='152.8' cy='168.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='152.8' y='173.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>32</text>
+<circle cx='208.2' cy='168.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='208.2' y='173.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>62</text>
+<circle cx='27.9' cy='220.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='27.9' y='225.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>70</text>
+<circle cx='55.6' cy='220.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='55.6' y='225.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>45</text>
+<circle cx='83.4' cy='220.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='83.4' y='225.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>30</text>
+<circle cx='111.1' cy='220.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='111.1' y='225.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>56</text>
+<rect x='8.0' y='244' width='21.3' height='21.3' fill='#2a2f3a' stroke='#8a93a6'/>
+<text x='18.6' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>15</text>
+<text x='18.6' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>0</text>
+<rect x='29.3' y='244' width='21.3' height='21.3' fill='#2a2f3a' stroke='#8a93a6'/>
+<text x='39.9' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>60</text>
+<text x='39.9' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>1</text>
+<rect x='50.5' y='244' width='21.3' height='21.3' fill='#5a4520' stroke='#E2B66B'/>
+<text x='61.2' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>72</text>
+<text x='61.2' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>2</text>
+<rect x='71.8' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='82.5' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>92</text>
+<text x='82.5' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>3</text>
+<rect x='93.1' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='103.7' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>65</text>
+<text x='103.7' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>4</text>
+<rect x='114.4' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='125.0' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>32</text>
+<text x='125.0' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>5</text>
+<rect x='135.6' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='146.3' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>62</text>
+<text x='146.3' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>6</text>
+<rect x='156.9' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='167.5' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>70</text>
+<text x='167.5' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>7</text>
+<rect x='178.2' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='188.8' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>45</text>
+<text x='188.8' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>8</text>
+<rect x='199.5' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='210.1' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>30</text>
+<text x='210.1' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>9</text>
+<rect x='220.7' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='231.4' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>56</text>
+<text x='231.4' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>10</text>
+</svg>
+<svg x='0' y='598' width='250' height='287' viewBox='0 0 250 287' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
+<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
+<defs><marker id='sw' viewBox='0 0 10 10' refX='8' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#E2B66B'/></marker></defs>
+<text x='125.0' y='22' fill='#e6e8ee' font-size='13' text-anchor='middle'>i = 1: sift 60</text>
+<text x='125.0' y='40' fill='#8a93a6' font-size='12' text-anchor='middle'>60 swaps with 92, then 70</text>
+<line x1='125.0' y1='64.0' x2='69.5' y2='116.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='125.0' y1='64.0' x2='180.5' y2='116.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='69.5' y1='116.0' x2='41.8' y2='168.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='69.5' y1='116.0' x2='97.2' y2='168.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='180.5' y1='116.0' x2='152.8' y2='168.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='180.5' y1='116.0' x2='208.2' y2='168.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='41.8' y1='168.0' x2='27.9' y2='220.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='41.8' y1='168.0' x2='55.6' y2='220.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='97.2' y1='168.0' x2='83.4' y2='220.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='97.2' y1='168.0' x2='111.1' y2='220.0' stroke='#4a5263' stroke-width='1.5'/>
+<circle cx='125.0' cy='64.0' r='12' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
+<text x='125.0' y='69.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>15</text>
+<circle cx='69.5' cy='116.0' r='12' fill='#5a4520' stroke='#E2B66B' stroke-width='2'/>
+<text x='69.5' y='121.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>92</text>
+<circle cx='180.5' cy='116.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='180.5' y='121.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>72</text>
+<circle cx='41.8' cy='168.0' r='12' fill='#5a4520' stroke='#E2B66B' stroke-width='2'/>
+<text x='41.8' y='173.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>70</text>
+<circle cx='97.2' cy='168.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='97.2' y='173.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>65</text>
+<circle cx='152.8' cy='168.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='152.8' y='173.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>32</text>
+<circle cx='208.2' cy='168.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='208.2' y='173.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>62</text>
+<circle cx='27.9' cy='220.0' r='12' fill='#5a4520' stroke='#E2B66B' stroke-width='2'/>
+<text x='27.9' y='225.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>60</text>
+<circle cx='55.6' cy='220.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='55.6' y='225.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>45</text>
+<circle cx='83.4' cy='220.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='83.4' y='225.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>30</text>
+<circle cx='111.1' cy='220.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='111.1' y='225.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>56</text>
+<path d='M62.4,129.2 Q70.0,149.1 49.3,153.9' fill='none' stroke='#E2B66B' stroke-width='2' marker-end='url(#sw)'/>
+<path d='M37.9,182.5 Q50.4,197.6 32.0,204.5' fill='none' stroke='#E2B66B' stroke-width='2' marker-end='url(#sw)'/>
+<rect x='8.0' y='244' width='21.3' height='21.3' fill='#2a2f3a' stroke='#8a93a6'/>
+<text x='18.6' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>15</text>
+<text x='18.6' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>0</text>
+<rect x='29.3' y='244' width='21.3' height='21.3' fill='#5a4520' stroke='#E2B66B'/>
+<text x='39.9' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>92</text>
+<text x='39.9' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>1</text>
+<rect x='50.5' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='61.2' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>72</text>
+<text x='61.2' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>2</text>
+<rect x='71.8' y='244' width='21.3' height='21.3' fill='#5a4520' stroke='#E2B66B'/>
+<text x='82.5' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>70</text>
+<text x='82.5' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>3</text>
+<rect x='93.1' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='103.7' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>65</text>
+<text x='103.7' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>4</text>
+<rect x='114.4' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='125.0' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>32</text>
+<text x='125.0' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>5</text>
+<rect x='135.6' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='146.3' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>62</text>
+<text x='146.3' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>6</text>
+<rect x='156.9' y='244' width='21.3' height='21.3' fill='#5a4520' stroke='#E2B66B'/>
+<text x='167.5' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>60</text>
+<text x='167.5' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>7</text>
+<rect x='178.2' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='188.8' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>45</text>
+<text x='188.8' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>8</text>
+<rect x='199.5' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='210.1' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>30</text>
+<text x='210.1' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>9</text>
+<rect x='220.7' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='231.4' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>56</text>
+<text x='231.4' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>10</text>
+</svg>
+<svg x='262' y='598' width='250' height='287' viewBox='0 0 250 287' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
+<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
+<defs><marker id='sw' viewBox='0 0 10 10' refX='8' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#E2B66B'/></marker></defs>
+<text x='125.0' y='22' fill='#e6e8ee' font-size='13' text-anchor='middle'>i = 0: sift 15</text>
+<text x='125.0' y='40' fill='#8a93a6' font-size='12' text-anchor='middle'>15 sinks three levels: done</text>
+<line x1='125.0' y1='64.0' x2='69.5' y2='116.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='125.0' y1='64.0' x2='180.5' y2='116.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='69.5' y1='116.0' x2='41.8' y2='168.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='69.5' y1='116.0' x2='97.2' y2='168.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='180.5' y1='116.0' x2='152.8' y2='168.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='180.5' y1='116.0' x2='208.2' y2='168.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='41.8' y1='168.0' x2='27.9' y2='220.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='41.8' y1='168.0' x2='55.6' y2='220.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='97.2' y1='168.0' x2='83.4' y2='220.0' stroke='#4a5263' stroke-width='1.5'/>
+<line x1='97.2' y1='168.0' x2='111.1' y2='220.0' stroke='#4a5263' stroke-width='1.5'/>
+<circle cx='125.0' cy='64.0' r='12' fill='#5a4520' stroke='#E2B66B' stroke-width='2'/>
+<text x='125.0' y='69.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>92</text>
+<circle cx='69.5' cy='116.0' r='12' fill='#5a4520' stroke='#E2B66B' stroke-width='2'/>
+<text x='69.5' y='121.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>70</text>
+<circle cx='180.5' cy='116.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='180.5' y='121.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>72</text>
+<circle cx='41.8' cy='168.0' r='12' fill='#5a4520' stroke='#E2B66B' stroke-width='2'/>
+<text x='41.8' y='173.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>60</text>
+<circle cx='97.2' cy='168.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='97.2' y='173.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>65</text>
+<circle cx='152.8' cy='168.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='152.8' y='173.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>32</text>
+<circle cx='208.2' cy='168.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='208.2' y='173.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>62</text>
+<circle cx='27.9' cy='220.0' r='12' fill='#5a4520' stroke='#E2B66B' stroke-width='2'/>
+<text x='27.9' y='225.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>15</text>
+<circle cx='55.6' cy='220.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='55.6' y='225.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>45</text>
+<circle cx='83.4' cy='220.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='83.4' y='225.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>30</text>
+<circle cx='111.1' cy='220.0' r='12' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
+<text x='111.1' y='225.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>56</text>
+<path d='M114.1,74.3 Q108.6,101.3 81.2,105.1' fill='none' stroke='#E2B66B' stroke-width='2' marker-end='url(#sw)'/>
+<path d='M62.4,129.2 Q70.0,149.1 49.3,153.9' fill='none' stroke='#E2B66B' stroke-width='2' marker-end='url(#sw)'/>
+<path d='M37.9,182.5 Q50.4,197.6 32.0,204.5' fill='none' stroke='#E2B66B' stroke-width='2' marker-end='url(#sw)'/>
+<rect x='8.0' y='244' width='21.3' height='21.3' fill='#5a4520' stroke='#E2B66B'/>
+<text x='18.6' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>92</text>
+<text x='18.6' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>0</text>
+<rect x='29.3' y='244' width='21.3' height='21.3' fill='#5a4520' stroke='#E2B66B'/>
+<text x='39.9' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>70</text>
+<text x='39.9' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>1</text>
+<rect x='50.5' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='61.2' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>72</text>
+<text x='61.2' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>2</text>
+<rect x='71.8' y='244' width='21.3' height='21.3' fill='#5a4520' stroke='#E2B66B'/>
+<text x='82.5' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>60</text>
+<text x='82.5' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>3</text>
+<rect x='93.1' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='103.7' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>65</text>
+<text x='103.7' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>4</text>
+<rect x='114.4' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='125.0' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>32</text>
+<text x='125.0' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>5</text>
+<rect x='135.6' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='146.3' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>62</text>
+<text x='146.3' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>6</text>
+<rect x='156.9' y='244' width='21.3' height='21.3' fill='#5a4520' stroke='#E2B66B'/>
+<text x='167.5' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>15</text>
+<text x='167.5' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>7</text>
+<rect x='178.2' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='188.8' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>45</text>
+<text x='188.8' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>8</text>
+<rect x='199.5' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='210.1' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>30</text>
+<text x='210.1' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>9</text>
+<rect x='220.7' y='244' width='21.3' height='21.3' fill='#1f4232' stroke='#62BE8C'/>
+<text x='231.4' y='259.1' fill='#e6e8ee' font-size='12' text-anchor='middle'>56</text>
+<text x='231.4' y='278.3' fill='#8a93a6' font-size='10' text-anchor='middle'>10</text>
+</svg>
+</svg>
