@@ -1,6 +1,6 @@
 """Download every image and video the lessons link to, so nothing loads from the internet at runtime.
 
-Usage (from the project root):  python3 tools/fetch_media.py [--images-only]
+Usage (from the project root):  python3 tools/fetch_media.py [--images-only | --rewrite-only]
   - Files land in media/<host>/<path> (about 11 GB, mostly lesson videos; git-ignored, mounted into the app).
   - media.lock.json records each file's SHA-256 and size; a later run verifies against it, so the media
     set is the same every time. Commit that file.
@@ -98,6 +98,9 @@ def rewrite(lock):
 
 def main():
     lock = json.load(open(LOCK)) if os.path.exists(LOCK) else {}
+    if '--rewrite-only' in sys.argv:  # offline: point links at the locked copies, download nothing
+        print(f'lessons rewritten: {rewrite(lock)} course files')
+        return 0
     urls = sorted(remote_urls() | set(lock))
     if '--images-only' in sys.argv:
         urls = [u for u in urls if not u.lower().endswith(('.mp4', '.webm', '.mov'))]
