@@ -1,0 +1,28 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 250' width='280' height='250' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
+<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
+<text x='140.0' y='22' fill='#e6e8ee' font-size='13' text-anchor='middle'>Königsberg: four odd vertices</text>
+<defs><marker id='arn' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#4a5263'/></marker><marker id='arhot' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#E2B66B'/></marker><marker id='arcmp' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#7AA7FF'/></marker><marker id='arok' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#62BE8C'/></marker><marker id='argone' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#F08A9C'/></marker></defs>
+<path d='M115.2,112.7 Q135.4,90.5 115.2,68.3' fill='none' stroke='#4a5263' stroke-width='1.6'/>
+<path d='M99.4,112.7 Q79.2,90.5 99.4,68.3' fill='none' stroke='#4a5263' stroke-width='1.6'/>
+<path d='M99.4,147.3 Q79.2,169.5 99.4,191.7' fill='none' stroke='#4a5263' stroke-width='1.6'/>
+<path d='M115.2,147.3 Q135.4,169.5 115.2,191.7' fill='none' stroke='#4a5263' stroke-width='1.6'/>
+<line x1='126.3' y1='130.0' x2='230.0' y2='130.0' stroke='#4a5263' stroke-width='1.6'/>
+<line x1='123.9' y1='60.3' x2='232.4' y2='120.7' stroke='#4a5263' stroke-width='1.6'/>
+<line x1='123.9' y1='199.7' x2='232.4' y2='139.3' stroke='#4a5263' stroke-width='1.6'/>
+<circle cx='107.3' cy='51.0' r='17' fill='#3a2328' stroke='#F08A9C' stroke-width='2'/>
+<text x='107.3' y='55.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>C</text>
+<rect x='87.3' y='70.0' width='40.0' height='15' rx='3' fill='#1c2029' opacity='0.85'/>
+<text x='107.3' y='81.0' fill='#F08A9C' font-size='11' text-anchor='middle'>deg 3</text>
+<circle cx='107.3' cy='130.0' r='17' fill='#3a2328' stroke='#F08A9C' stroke-width='2'/>
+<text x='107.3' y='134.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>A</text>
+<rect x='87.3' y='149.0' width='40.0' height='15' rx='3' fill='#1c2029' opacity='0.85'/>
+<text x='107.3' y='160.0' fill='#F08A9C' font-size='11' text-anchor='middle'>deg 5</text>
+<circle cx='107.3' cy='209.0' r='17' fill='#3a2328' stroke='#F08A9C' stroke-width='2'/>
+<text x='107.3' y='213.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>B</text>
+<rect x='87.3' y='228.0' width='40.0' height='15' rx='3' fill='#1c2029' opacity='0.85'/>
+<text x='107.3' y='239.0' fill='#F08A9C' font-size='11' text-anchor='middle'>deg 3</text>
+<circle cx='249.0' cy='130.0' r='17' fill='#3a2328' stroke='#F08A9C' stroke-width='2'/>
+<text x='249.0' y='134.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>D</text>
+<rect x='229.0' y='149.0' width='40.0' height='15' rx='3' fill='#1c2029' opacity='0.85'/>
+<text x='249.0' y='160.0' fill='#F08A9C' font-size='11' text-anchor='middle'>deg 3</text>
+</svg>
