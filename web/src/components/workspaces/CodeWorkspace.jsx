@@ -25,6 +25,11 @@ function Output({lesson: l, out, sql}) {
 export default function CodeWorkspace({lesson: l}) {
   useStore();
   const files = useMemo(() => l.files.filter(f => !f.isHidden), [l]);
+  // The worked solution, if the lesson ships one: extra read-only tabs, so your own code stays put.
+  const solution = useMemo(() => Object.entries(l.solution || {}).map(([name, content]) => ({name:`solution/${name}`, content, isReadonly:true, solution:true})), [l]);
+  const [showSol, setShowSol] = useState(false);
+  const allFiles = useMemo(() => [...files, ...solution], [files, solution]);
+  const tabFiles = showSol ? allFiles : files;
   const sql = l.lang === 'sql', tabs = l.lang === 'go';
   const [active, setActive] = useState(() => (files.find(f => !f.isReadonly) || files[0]).name);
   const [status, setStatus] = useState(null);
@@ -60,7 +65,7 @@ export default function CodeWorkspace({lesson: l}) {
 
   useEffect(() => {  // CodeMirror lives outside React: create it once per lesson
     const saved = store.progress[l.uuid]?.code || {};
-    docs.current = Object.fromEntries(files.map(f => [f.name, CodeMirror.Doc(saved[f.name] ?? f.content, MODES[l.lang])]));
+    docs.current = Object.fromEntries(allFiles.map(f => [f.name, CodeMirror.Doc(saved[f.name] ?? f.content, MODES[l.lang])]));
     const typing = c => !c.state.vim || c.state.vim.insertMode;  // Vim normal mode keeps its own keys
     const cm = ed.current = CodeMirror(host.current, {
       theme:'nagare', lineNumbers:true, indentUnit:{py:4, go:4, c:4, cpp:4}[l.lang] || 2, tabSize:4, indentWithTabs:tabs,
@@ -86,7 +91,7 @@ export default function CodeWorkspace({lesson: l}) {
   }, [l.uuid]);
 
   useEffect(() => {
-    const file = files.find(f => f.name === active);
+    const file = allFiles.find(f => f.name === active);
     ed.current.swapDoc(docs.current[active]);
     ed.current.setOption('readOnly', file.isReadonly);
     ed.current.getInputField().setAttribute('aria-label', t('Code editor: {file}', {file:active}));
@@ -100,29 +105,36 @@ export default function CodeWorkspace({lesson: l}) {
   const onTabKey = (e, i) => {  // arrow keys move between file tabs
     const d = {ArrowRight:1, ArrowLeft:-1}[e.key];
     if (!d) return;
-    const j = (i + d + files.length) % files.length;
-    setActive(files[j].name);
+    const j = (i + d + tabFiles.length) % tabFiles.length;
+    setActive(tabFiles[j].name);
     e.currentTarget.parentElement.children[j].focus();
   };
   const reset = () => {
     if (!confirm(t('Reset this lesson to the starter code? Your changes will be lost.'))) return;
     files.forEach(f => docs.current[f.name].setValue(f.content));
   };
+  const toggleSol = () => {
+    if (showSol) setActive((files.find(f => !f.isReadonly) || files[0]).name);
+    else if (!passed && !confirm(t('Show the solution? Try it yourself first: you learn more from a failed attempt than from reading the answer.'))) return;
+    else setActive(solution[0].name);
+    setShowSol(!showSol);
+  };
 
   return (
     <section id="work" aria-label={t('Workspace')}>
       <div className="work-head">
         <div className="tabs" role="tablist" aria-label={t('Files')}>
-          {files.map((f, i) => (
+          {tabFiles.map((f, i) => (
             <button key={f.name} className="tab" role="tab" aria-controls="ed" aria-selected={f.name === active} tabIndex={f.name === active ? 0 : -1}
                     onClick={() => setActive(f.name)} onKeyDown={e => onTabKey(e, i)}>
-              <Icon name={f.isReadonly ? 'lock' : 'code-xml'}/>{f.name}{f.isReadonly && <span className="sr"> {t('(read-only)')}</span>}
+              <Icon name={f.solution ? 'lightbulb' : f.isReadonly ? 'lock' : 'code-xml'}/>{f.name}{f.isReadonly && <span className="sr"> {t('(read-only)')}</span>}
             </button>
           ))}
         </div>
         {/* Editor settings sit with the editor; the bar below it is only for running the code. */}
         <button className="switch" role="switch" aria-checked={vim} title={t('Vim key bindings')}
                 onClick={() => { save('app:settings', {vim:!vim}); ed.current.focus(); }}><span className="knob"></span>Vim</button>
+        {solution.length > 0 && <button className="btn ghost" aria-pressed={showSol} onClick={toggleSol}><Icon name="lightbulb"/>{showSol ? t('Hide solution') : t('Solution')}</button>}
         <button className="btn ghost" onClick={reset}><Icon name="rotate-ccw"/>{t('Reset')}</button>
       </div>
       <div id="ed" role="tabpanel" ref={host}></div>

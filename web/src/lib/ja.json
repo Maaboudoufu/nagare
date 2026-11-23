@@ -414,5 +414,8 @@
  "Duplicate the line": "行を複製する",
  "Made a folder for this project? Type its name, so the checks run inside it. Otherwise leave this empty.": "このプロジェクト用のフォルダを作りましたか？その名前を入力すると、チェックがその中で実行されます。作っていなければ空のままにしてください。",
  "Beta": "ベータ",
- "Beta: its hands-on lessons are still being fitted to the built-in terminal, so some instructions may not match yet.": "ベータ：実習レッスンを内蔵ターミナル向けに調整中のため、手順の一部がまだ合わないことがあります。"
+ "Beta: its hands-on lessons are still being fitted to the built-in terminal, so some instructions may not match yet.": "ベータ：実習レッスンを内蔵ターミナル向けに調整中のため、手順の一部がまだ合わないことがあります。",
+ "Solution": "解答",
+ "Hide solution": "解答を隠す",
+ "Show the solution? Try it yourself first: you learn more from a failed attempt than from reading the answer.": "解答を表示しますか？まずは自分で挑戦しましょう。答えを読むより、失敗しながら書くほうが身につきます。"
 }
