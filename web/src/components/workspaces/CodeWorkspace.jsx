@@ -113,11 +113,12 @@ export default function CodeWorkspace({lesson: l}) {
     if (!confirm(t('Reset this lesson to the starter code? Your changes will be lost.'))) return;
     files.forEach(f => docs.current[f.name].setValue(f.content));
   };
+  const solDlg = useRef();
+  const revealSol = () => { setActive(solution[0].name); setShowSol(true); };
   const toggleSol = () => {
-    if (showSol) setActive((files.find(f => !f.isReadonly) || files[0]).name);
-    else if (!passed && !confirm(t('Show the solution? Try it yourself first: you learn more from a failed attempt than from reading the answer.'))) return;
-    else setActive(solution[0].name);
-    setShowSol(!showSol);
+    if (showSol) { setActive((files.find(f => !f.isReadonly) || files[0]).name); setShowSol(false); }
+    else if (passed) revealSol();
+    else solDlg.current.showModal();  // not passed yet: nudge them to keep trying first
   };
 
   return (
@@ -150,6 +151,19 @@ export default function CodeWorkspace({lesson: l}) {
         <div className="output-head"><span>{t('Output')}</span><span role="status" aria-live="polite" ref={statusEl}>{status && <Chip {...status}/>}</span></div>
         <pre id="out"><Output lesson={l} out={out} sql={sql}/></pre>
       </section>
+      <dialog className="confirm" ref={solDlg} aria-label={t('Show the solution?')}
+              onClose={e => e.currentTarget.returnValue === 'show' && revealSol()}
+              onClick={e => e.target === solDlg.current && solDlg.current.close()}>
+        <form method="dialog">
+          <span className="confirm-icon" aria-hidden="true"><Icon name="lightbulb"/></span>
+          <h2>{t('Show the solution?')}</h2>
+          <p>{t('Try it yourself first: you learn more from a failed attempt than from reading the answer.')}</p>
+          <footer>
+            <button className="btn primary" value="" autoFocus>{t('Keep trying')}</button>
+            <button className="btn" value="show">{t('Show solution')}</button>
+          </footer>
+        </form>
+      </dialog>
     </section>
   );
 }

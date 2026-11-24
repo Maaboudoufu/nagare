@@ -417,5 +417,8 @@
  "Beta: its hands-on lessons are still being fitted to the built-in terminal, so some instructions may not match yet.": "ベータ：実習レッスンを内蔵ターミナル向けに調整中のため、手順の一部がまだ合わないことがあります。",
  "Solution": "解答",
  "Hide solution": "解答を隠す",
- "Show the solution? Try it yourself first: you learn more from a failed attempt than from reading the answer.": "解答を表示しますか？まずは自分で挑戦しましょう。答えを読むより、失敗しながら書くほうが身につきます。"
+ "Show the solution?": "解答を表示しますか？",
+ "Try it yourself first: you learn more from a failed attempt than from reading the answer.": "まずは自分で挑戦しましょう。答えを読むより、失敗しながら書くほうが身につきます。",
+ "Keep trying": "もう少し挑戦する",
+ "Show solution": "解答を表示"
 }

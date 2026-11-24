@@ -190,6 +190,15 @@ dialog h2 { font:600 1.0625rem var(--sans); letter-spacing:-.01em; }
 .shortcuts dt { display:flex; gap:4px; }
 .shortcuts dd { margin:0; color:var(--muted); font-size:.875rem; }
 .shortcuts .btn { justify-self:end; }
+.confirm { width:min(380px, calc(100vw - 32px)); }
+.confirm form { display:grid; justify-items:center; gap:8px; padding:28px 24px 20px; text-align:center; }
+.confirm-icon { display:grid; place-items:center; width:48px; height:48px; margin-bottom:8px; border-radius:50%;
+                color:var(--warn); background:color-mix(in srgb, var(--warn) 14%, transparent); }
+.confirm-icon svg { width:22px; height:22px; }
+.confirm p { margin:0; max-width:32ch; color:var(--muted); font-size:.9375rem; line-height:1.55; text-wrap:pretty; }
+.confirm footer { display:grid; grid-template-columns:1fr 1fr; gap:8px; width:100%; margin-top:16px; }
+.confirm footer .btn { justify-content:center; min-height:44px; }
+.confirm footer .btn:first-child { order:1; }  /* primary on the right; first in DOM so Enter keeps trying */
 
 /* XP pop-ups: a bar along the bottom drains over the toast's lifetime (Toasts.jsx). */
 .toasts { position:fixed; right:16px; bottom:16px; z-index:60; display:flex; flex-direction:column; gap:8px; align-items:flex-end;
