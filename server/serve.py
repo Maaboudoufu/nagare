@@ -5,7 +5,7 @@ Self-check: python3 server/serve.py --check  (re-submits your saved code, tests 
 import datetime, functools, glob, hmac, json, os, signal, sys, tempfile, threading
 import urllib.parse
 from http.server import BaseHTTPRequestHandler, SimpleHTTPRequestHandler, ThreadingHTTPServer
-import codex, gamify, grader, terminal, workspace
+import codex, gamify, grader, status, terminal, workspace
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # repo root
 COURSES = os.path.join(ROOT, 'courses')
@@ -228,6 +228,8 @@ class Handler(BaseHTTPRequestHandler):
         if url.path.startswith('/api/profile/'):
             profile = public_profile(user, url.path[len('/api/profile/'):], arg('lang', 'en'))
             return self.send_json(profile) if profile else self.send_error(404)
+        if url.path == '/api/status':
+            return self.send_json(status.report())
         if url.path == '/api/codex':
             return self.send_json(codex.status(user))
         if url.path == '/api/codex/models':
@@ -436,6 +438,7 @@ if __name__ == '__main__':
         check()
     else:
         workspace.start()
+        status.start()
         signal.signal(signal.SIGTERM, lambda *a: sys.exit(0))
         port = int(os.environ.get('PORT', 8002))  # gateway/main.go sets PORT
         server = ThreadingHTTPServer(('127.0.0.1', port), Handler)  # localhost only: the API runs code and shells

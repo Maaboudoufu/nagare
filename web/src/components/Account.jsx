@@ -76,6 +76,7 @@ function AccountMenu() {
           {item('/profile', 'user', t('Profile'))}
           {item('/achievements', 'award', t('Achievements'))}
           {item('/leaderboard', 'trophy', t('Leaderboard'))}
+          {item('/status', 'activity', t('Status'))}
           {item('/settings', 'settings', t('Settings'))}
           {store.admin && item('/admin', 'shield', t('Admin'))}
           {store.user && <><hr/><button role="menuitem" onClick={signOut}><Icon name="log-out"/>{t('Sign out')}</button></>}

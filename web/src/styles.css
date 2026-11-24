@@ -810,3 +810,43 @@ dialog h2 { font:600 1.0625rem var(--sans); letter-spacing:-.01em; }
 @media (prefers-reduced-transparency:reduce) { .codex-panel { background:var(--surface); backdrop-filter:none; } }
 @media (prefers-contrast:more) { .codex-panel { border-color:var(--line-strong); } }
 
+/* Status page (Status.jsx) */
+.status-intro { margin:-8px 0 24px; }
+.uptime { padding:20px; border:1px solid var(--line); border-radius:18px; background:var(--surface); user-select:none; }
+.uptime-head { display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+.uptime-head h2 { margin:0; font:600 .9375rem var(--sans); }
+.uptime-state { display:inline-flex; align-items:center; gap:6px; margin:0; font:500 .875rem var(--sans); }
+.uptime-state.good { color:var(--success); }
+.uptime-state.bad { color:var(--warn); }
+.uptime-summary { margin:4px 0 0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-variant-numeric:tabular-nums; }
+.uptime-bars { margin-top:18px; border-radius:var(--r-sm); cursor:pointer; touch-action:pan-y; outline:0; }
+.uptime-bars:focus-visible { outline:2px solid var(--accent); outline-offset:6px; }
+.uptime-row + .uptime-row { margin-top:14px; }
+.uptime-label { display:flex; justify-content:space-between; margin-bottom:6px; font:500 .8125rem var(--sans); }
+.uptime-label .meta { font-variant-numeric:tabular-nums; font-weight:400; }
+.uptime-days { display:flex; gap:2px; height:28px; }
+.uptime-days i { flex-basis:0; min-width:0; border-radius:2px; transition:opacity .15s ease-out; }
+.uptime-days .up { background:var(--success); }
+.uptime-days .degraded { background:var(--warn); }
+.uptime-days .down { background:var(--danger); }
+.uptime-days .none { background:var(--surface-3); }
+.uptime-days .dim { opacity:.45; }
+.uptime-axis { display:flex; justify-content:space-between; margin-top:8px; font-size:.75rem; }
+.uptime-log { display:grid; grid-template-rows:0fr; opacity:0; transition:grid-template-rows .26s cubic-bezier(.23,1,.32,1), opacity .26s cubic-bezier(.23,1,.32,1); }
+.uptime-log.open { grid-template-rows:1fr; opacity:1; }
+.uptime-log > div { overflow:hidden; }
+.uptime-day { margin-top:16px; padding:14px 16px; border-radius:14px; background:var(--surface-2); user-select:text; }
+.uptime-day header { display:flex; align-items:center; justify-content:space-between; font-size:.875rem; }
+.uptime-day header .icon-btn { width:28px; height:28px; }
+.uptime-day > .meta { margin:4px 0 0; font-size:.875rem; }
+.uptime-incident { margin-top:12px; font-size:.875rem; }
+.uptime-incident p { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:0; }
+.uptime-pill { padding:2px 8px; border-radius:999px; font:500 .6875rem var(--sans); }
+.uptime-pill.down { background:var(--danger-soft); color:var(--danger); }
+.uptime-pill.degraded { background:rgba(226,182,107,.14); color:var(--warn); }
+.uptime-incident ol { margin:10px 0 0 4px; padding:0; list-style:none; border-left:1px solid var(--line); }
+.uptime-incident li { position:relative; padding:0 0 8px 16px; }
+.uptime-incident li:last-child { padding-bottom:0; }
+.uptime-incident li::before { content:''; position:absolute; left:-3.5px; top:7px; width:6px; height:6px; border-radius:50%; background:var(--faint); }
+.uptime-incident li .meta { font-variant-numeric:tabular-nums; }
+@media (max-width:600px) { .uptime-days { gap:1px; } .uptime { padding:16px; } }

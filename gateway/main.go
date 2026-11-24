@@ -57,7 +57,7 @@ var courseSlug = regexp.MustCompile(`^[a-z0-9-]+$`)
 func (a *app) routes() http.Handler {
 	mux := http.NewServeMux()
 	mux.HandleFunc("GET /{$}", a.page)
-	for _, p := range []string{"profile", "settings", "achievements", "leaderboard"} {
+	for _, p := range []string{"profile", "settings", "achievements", "leaderboard", "status"} {
 		mux.HandleFunc("GET /"+p, a.page)
 	}
 	mux.HandleFunc("GET /u/{id}", a.page) // a member's profile; the worker decides what's visible
