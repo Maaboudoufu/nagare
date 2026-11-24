@@ -1,5 +1,5 @@
 /* Small shared pieces: icons, logos, progress meters, buttons. */
-import {useId, useState} from 'react';
+import {useEffect, useId, useRef, useState} from 'react';
 import brands from '../assets/brands.svg?no-inline';  // sprites: <use> needs a real file, never a data: URL
 import icons from '../assets/icons.svg?no-inline';
 import {brandOf} from '../constants.js';
@@ -87,7 +87,7 @@ export function NextStep({show}) {
   </>;
 }
 
-export function CopyButton({text}) {
+export function CopyButton({text, label}) {
   const [copied, setCopied] = useState(false);
   const copy = async () => {
     await navigator.clipboard.writeText(text);
@@ -95,7 +95,7 @@ export function CopyButton({text}) {
     setTimeout(() => setCopied(false), 1500);
   };
   return (
-    <button className={'icon-btn copy' + (copied ? ' copied' : '')} aria-label={copied ? t('Copied') : t('Copy code')} onClick={copy}>
+    <button className={'icon-btn copy' + (copied ? ' copied' : '')} aria-label={copied ? t('Copied') : label || t('Copy code')} onClick={copy}>
       <Icon name={copied ? 'check' : 'copy'}/>
     </button>
   );
@@ -103,3 +103,19 @@ export function CopyButton({text}) {
 
 export const Beta = () => <span className="beta" title={t('Beta: its hands-on lessons are still being fitted to the built-in terminal, so some instructions may not match yet.')}>{t('Beta')}</span>;
 export const Chip = ({kind, text, icon}) => <span className={'chip ' + kind}><Icon name={icon} cls={kind === 'busy' ? 'spin' : ''}/>{text}</span>;
+
+/* A 7x7 dot matrix stepping through frames (each frame: the indexes of the lit dots). Holds its first frame when the
+   system asks for reduced motion. */
+export function DotLoader({frames, duration = 100, className = ''}) {
+  const grid = useRef();
+  useEffect(() => {
+    const dots = [...grid.current.children];
+    let i = 0;
+    const step = () => { dots.forEach((d, n) => d.classList.toggle('on', frames[i].includes(n))); i = (i + 1) % frames.length; };
+    step();
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const id = setInterval(step, duration);
+    return () => clearInterval(id);
+  }, [frames, duration]);
+  return <span className={'dot-loader ' + className} ref={grid} aria-hidden="true">{Array.from({length:49}, (_, i) => <i key={i}/>)}</span>;
+}
