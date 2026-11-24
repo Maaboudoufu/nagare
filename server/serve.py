@@ -5,7 +5,7 @@ Self-check: python3 server/serve.py --check  (re-submits your saved code, tests 
 import datetime, functools, glob, hmac, json, os, signal, sys, tempfile, threading
 import urllib.parse
 from http.server import BaseHTTPRequestHandler, SimpleHTTPRequestHandler, ThreadingHTTPServer
-import gamify, grader, terminal, workspace
+import codex, gamify, grader, terminal, workspace
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # repo root
 COURSES = os.path.join(ROOT, 'courses')
@@ -228,6 +228,15 @@ class Handler(BaseHTTPRequestHandler):
         if url.path.startswith('/api/profile/'):
             profile = public_profile(user, url.path[len('/api/profile/'):], arg('lang', 'en'))
             return self.send_json(profile) if profile else self.send_error(404)
+        if url.path == '/api/codex':
+            return self.send_json(codex.status(user))
+        if url.path == '/api/codex/models':
+            try:
+                return self.send_json(codex.models(user))
+            except codex.NotLinked:
+                return self.send_json([])
+            except RuntimeError as e:
+                return self.send_json({'error': str(e)}, 502)
         if url.path == '/api/achievements':
             return self.send_json(gamify.achievements(load_progress(user), LESSONS))
         self.send_error(404)
@@ -258,6 +267,10 @@ class Handler(BaseHTTPRequestHandler):
             if workspace.USER_ID.match(str(body.get('user'))):
                 threading.Thread(target=workspace.remove_user, args=(body['user'],), daemon=True).start()
             return self.send_json({'ok': True})
+        if self.path in ('/api/codex/link', '/api/codex/poll', '/api/codex/unlink'):
+            return self.send_json({'link': codex.start, 'poll': codex.poll, 'unlink': codex.unlink}[self.path.rsplit('/', 1)[1]](user))
+        if self.path == '/api/codex/ask':
+            return self.codex_ask(user, body)
         uuid, lesson = body.get('uuid'), None
         if isinstance(uuid, str):
             lesson = LESSONS.get(uuid)
@@ -288,6 +301,38 @@ class Handler(BaseHTTPRequestHandler):
         except TooBig:
             return self.send_error(413)
         self.send_json(res)
+
+    def codex_ask(self, user, body):
+        """Codex's answer as plain text, streamed as it's written. The lesson and the code come from the server's own
+        copies (the lesson file, the user's saved progress), not the browser."""
+        lesson, question = LESSONS.get(body.get('uuid')) if isinstance(body.get('uuid'), str) else None, body.get('question')
+        if not lesson or not isinstance(question, str) or not question.strip():
+            return self.send_error(400)
+        history = body.get('history') if isinstance(body.get('history'), list) else []
+        prog = load_progress(user)
+        saved, settings = prog.get(body['uuid']), prog.get('app:settings')
+        answer = codex.ask(user, lesson, saved if isinstance(saved, dict) else {}, question.strip()[:4000], history,
+                           settings if isinstance(settings, dict) else {})
+        try:
+            first = next(answer, '')
+        except codex.NotLinked:
+            return self.send_json({'error': 'Link your Codex account in Settings first.'}, 409)
+        except RuntimeError as e:
+            return self.send_json({'error': str(e)}, 502)
+        self.send_response(200)
+        self.send_header('Content-Type', 'text/plain; charset=utf-8')
+        self.send_header('Cache-Control', 'no-store')
+        self.end_headers()  # no length: the answer ends when the connection closes
+        self.close_connection = True
+        try:
+            self.wfile.write(first.encode())
+            for chunk in answer:
+                self.wfile.write(chunk.encode())
+                self.wfile.flush()
+        except (codex.NotLinked, RuntimeError) as e:
+            self.wfile.write(f'\n\n[{e or "Link your Codex account in Settings again."}]'.encode())
+        except OSError:  # the learner closed the panel
+            answer.close()
 
 
 class QuietFiles(SimpleHTTPRequestHandler):
