@@ -5,6 +5,9 @@
 - I wanted this to be super plug-and-play, straight to the point, and still gamified for anyone with autism, ADHD, or any other mental disabilities. Oh, I also wanted VIM in here because other learning platforms don't have it and its more aura.
 - Nothing in this is monetized.
 
+<img width="1080" height="1920" alt="image" src="https://github.com/user-attachments/assets/f5e17c29-5cb3-4232-9c8b-1c0037bab56d" />
+
+
 ### Layout
 | Folder | What's in it |
 | --- | --- |
