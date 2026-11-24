@@ -1,9 +1,10 @@
-import {useState} from 'react';
-import {ACCENTS, applySettings, profile, save, settings, store, toast, useStore} from '../store.js';
+import {useEffect, useState} from 'react';
+import {ACCENTS, applySettings, get, post, profile, save, settings, store, toast, useFetch, useStore} from '../store.js';
 import {sound} from '../lib/fx.js';
 import {LANGS, N_, contentPct, lang, setLang, t} from '../lib/i18n.js';
 import {Avatar, Page} from './Account.jsx';
-import {Icon} from './ui.jsx';
+import {CodexLogo, EFFORT_NAMES} from './CodexHelp.jsx';
+import {CopyButton, Icon} from './ui.jsx';
 
 const FIELDS = [
   ['name', N_('Display name'), N_('How your name shows on your profile'), 60],
@@ -47,6 +48,82 @@ function ProfileForm() {
       </label>
       <div className="wide"><button className="btn primary">{t('Save profile')}</button></div>
     </form>
+  );
+}
+
+// The account's models (asked of OpenAI by the server), and how hard the chosen one thinks. Saved with the settings.
+function CodexModel() {
+  useStore();
+  const list = useFetch('/api/codex/models');
+  if (!Array.isArray(list) || !list.length) return list === undefined ? null : <p className="meta">{list?.error || t('Could not load your models.')}</p>;
+  const s = settings();
+  const model = list.find(m => m.slug === s.codexModel) || list[0];
+  const effort = model.efforts.includes(s.codexEffort) ? s.codexEffort : model.effort;
+  return <>
+    <label className="field"><span>{t('Model')}</span>
+      <select value={model.slug} onChange={e => save('app:settings', {codexModel:e.target.value})}>
+        {list.map(m => <option key={m.slug} value={m.slug}>{m.name}</option>)}
+      </select>
+      {model.description && <span className="meta">{model.description}</span>}
+    </label>
+    <fieldset className="field">
+      <legend>{t('Reasoning effort')}</legend>
+      <div className="segmented">
+        {model.efforts.map(e => (
+          <label key={e}><input type="radio" name="codex-effort" checked={effort === e} onChange={() => save('app:settings', {codexEffort:e})}/>
+            <span>{t(EFFORT_NAMES[e] || e)}</span></label>
+        ))}
+      </div>
+      <span className="meta">{t('Higher thinks longer before answering, and uses more of your plan.')}</span>
+    </fieldset>
+  </>;
+}
+
+function CodexLink() {
+  const [st, setSt] = useState();
+  useEffect(() => { get('/api/codex').then(setSt, () => setSt(null)); }, []);
+  useEffect(() => {  // while a code is showing: ask every few seconds whether it's been entered
+    if (!st?.code) return;
+    const id = setTimeout(() => post('/api/codex/poll', {}).then(s => {
+      setSt(s);
+      if (s.linked) toast({kind:'note', text:t('Codex account linked')});
+    }, () => {}), st.interval * 1000);
+    return () => clearTimeout(id);
+  }, [st]);
+  const call = path => post(path, {}).then(setSt, () => setSt({error:t('Server not reachable')}));
+  if (st === undefined) return null;
+
+  if (st?.linked) return <>
+    <div className="codex-card">
+      <CodexLogo size={22} tile/>
+      <div className="codex-card-text"><strong>{t('Linked')}</strong>{st.email && <span className="meta">{st.email}</span>}</div>
+      <button className="btn ghost danger" onClick={() => call('/api/codex/unlink')}>{t('Unlink')}</button>
+    </div>
+    <CodexModel/>
+  </>;
+
+  if (st?.code) return (
+    <div className="codex-card codex-steps">
+      <ol>
+        <li><span>{t('Open the sign-in page and sign in to ChatGPT')}</span>
+          <a className="btn primary" href={st.url} target="_blank" rel="noopener noreferrer"><Icon name="link"/>{t('Open sign-in page')}</a></li>
+        <li><span>{t('Enter this code')}</span>
+          <div className="codex-usercode"><code>{st.code}</code><CopyButton text={st.code} label={t('Copy code')}/></div></li>
+      </ol>
+      <p className="codex-wait meta" role="status"><Icon name="loader-circle" cls="spin"/>{t('Waiting for you to sign in…')}
+        <button className="btn ghost" onClick={() => call('/api/codex/unlink')}>{t('Cancel')}</button></p>
+    </div>
+  );
+
+  return (
+    <div className="codex-card">
+      <CodexLogo size={22} tile/>
+      <div className="codex-card-text">
+        <strong>{t('Codex by OpenAI')}</strong>
+        <span className="meta">{(st?.error || (st?.expired && t('The code expired. Start again.'))) || t('Uses your own ChatGPT plan. Nagare never sees your password.')}</span>
+      </div>
+      <button className="btn primary" onClick={() => call('/api/codex/link')}>{t('Link Codex account')}</button>
+    </div>
   );
 }
 
@@ -136,6 +213,10 @@ export default function Settings() {
             {ZONES.map(z => <option key={z}>{z}</option>)}
           </select>
         </label>
+      </Section>
+
+      <Section title={t('Codex')} desc={t('Link your ChatGPT account to ask Codex for help in lessons. It sees the lesson and your saved code, and can\'t run anything.')}>
+        <CodexLink/>
       </Section>
 
       <Section title={t('Your data')} desc={t('Everything saved for you: progress, code, profile, settings and XP.')}>

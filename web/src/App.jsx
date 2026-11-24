@@ -6,12 +6,13 @@ import Leaderboard from './components/Leaderboard.jsx';
 import Home from './components/Home.jsx';
 import Profile from './components/Profile.jsx';
 import Settings from './components/Settings.jsx';
+import Status from './components/Status.jsx';
 import Toasts from './components/Toasts.jsx';
 
 // Lessons bring the editor and the markdown renderer: their own chunk, so the other pages load without them.
 const loadCourseView = () => import('./components/CourseView.jsx');
 const CourseView = lazy(loadCourseView);
-const PAGES = {profile:Profile, settings:Settings, achievements:Achievements, leaderboard:Leaderboard, admin:Admin};
+const PAGES = {profile:Profile, settings:Settings, achievements:Achievements, leaderboard:Leaderboard, status:Status, admin:Admin};
 
 function Route() {
   const [, section, slug, uuid] = usePath().split('/');  // /learn/{slug}/{uuid}

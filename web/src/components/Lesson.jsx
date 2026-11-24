@@ -3,6 +3,7 @@ import {t} from '../lib/i18n.js';
 import {enhanceProse, lessonHtml} from '../lib/prose.jsx';
 import {useShortcut} from '../lib/keys.js';
 import {isDone, lessonPath, navigate, useStore} from '../store.js';
+import CodexHelp from './CodexHelp.jsx';
 import {Icon} from './ui.jsx';
 
 function Pager({to, label, tip, ic, href}) {
@@ -32,6 +33,7 @@ export default function Lesson({course, cur, flat, onMenu, focusRef}) {
           <span className="crumb-pos">{t('Lesson {n} of {total}', {n:ch.lessons.indexOf(cur) + 1, total:ch.lessons.length})}</span>
         </div>
         {isDone(cur.uuid) && <span className="badge done-badge"><Icon name="circle-check"/>{t('Completed')}</span>}
+        <CodexHelp lesson={cur}/>
         <div className="pager">
           <Pager to={prev} label={title => t('Previous lesson: {title}', {title})} tip={title => t('Previous: {title}', {title})} ic="chevron-left" href={href}/>
           <Pager to={next} label={title => t('Next lesson: {title}', {title})} tip={title => t('Next: {title}', {title})} ic="chevron-right" href={href}/>
