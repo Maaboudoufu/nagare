@@ -29,19 +29,27 @@ const md = new Marked({renderer:{html:token => esc(typeof token === 'string' ? t
 // thrown along its momentum to the nearest side (and flush to the top or bottom when it lands close), on a critically
 // damped spring that can be grabbed again mid-flight. Which side it's on is remembered in this browser.
 const MARGIN = 12, SNAP_Y = 96, RESPONSE = .4;  // px from the edges; px from top/bottom that snaps flush; spring seconds
+const MIN_W = 320, MIN_H = 360;  // px: the smallest it can be resized to
 const rubber = (over, dim) => over * dim * .55 / (dim + .55 * Math.abs(over));
 const band = (v, max, dim) => v < MARGIN ? MARGIN - rubber(MARGIN - v, dim) : v > max ? max + rubber(v - max, dim) : v;
 const project = v => v / 1000 * .998 / (1 - .998);  // where a flick at v px/s comes to rest, like scrolling
 const clamp = (v, lo, hi) => Math.min(Math.max(v, lo), Math.max(lo, hi));
 const loadDock = () => { try { return JSON.parse(localStorage.getItem('codex-dock')); } catch { return null; } };
 const saveDock = d => { try { localStorage.setItem('codex-dock', JSON.stringify(d)); } catch {} };
+const loadFull = () => { try { return localStorage.getItem('codex-full') === '1'; } catch { return false; } };
+const saveFull = on => { try { localStorage.setItem('codex-full', on ? '1' : '0'); } catch {} };
 
 function makeDock(el) {
-  let x = 0, y = 0, raf = 0;
+  let x = 0, y = 0, raf = 0, full = false, docked = 'right';  // docked: the side it goes back to after full screen
   const max = () => [innerWidth - el.offsetWidth - MARGIN, innerHeight - el.offsetHeight - MARGIN];
   const side = () => x + el.offsetWidth / 2 < innerWidth / 2 ? 'left' : 'right';
   const place = (nx, ny) => { x = nx; y = ny; el.style.translate = `${x}px ${y}px`; };
-  const settle = () => { el.style.transformOrigin = `top ${side()}`; saveDock({side:side(), y}); };
+  const size = () => el.style.width ? {w:el.offsetWidth, h:el.offsetHeight} : {};  // only a size the learner chose
+  const settle = () => { el.style.transformOrigin = `top ${side()}`; saveDock({side:side(), y, ...size()}); };
+  const fit = (w, h) => {  // a chosen size, never bigger than the window
+    if (w) el.style.width = `${clamp(w, MIN_W, innerWidth - 2 * MARGIN)}px`;
+    if (h) el.style.height = `${clamp(h, MIN_H, innerHeight - 2 * MARGIN)}px`;
+  };
   const springTo = (tx, ty, vx, vy) => {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return place(tx, ty), settle();
     const w = 2 * Math.PI / RESPONSE, x0 = x - tx, y0 = y - ty, t0 = performance.now();
@@ -61,16 +69,63 @@ function makeDock(el) {
     springTo(px + el.offsetWidth / 2 < innerWidth / 2 ? MARGIN : Math.max(MARGIN, mx), ty, vx, vy);
   };
   return {
+    setFull(on, animate) {  // fills the window (CSS .full), or goes back to its side
+      if (on === full) return;
+      cancelAnimationFrame(raf);
+      if (on) docked = side();
+      full = on;
+      if (animate) { el.classList.add('sizing'); setTimeout(() => el.classList.remove('sizing'), 350); }
+      el.classList.toggle('full', on);
+      const [mx, my] = max();
+      if (on) place(MARGIN, MARGIN);
+      else { place(docked === 'left' ? MARGIN : Math.max(MARGIN, mx), clamp(y, MARGIN, my)); el.style.transformOrigin = `top ${docked}`; }
+    },
     openAt(rect) {  // where it was left, or under the button that opens it
       cancelAnimationFrame(raf);
-      const [mx, my] = max(), d = loadDock();
+      const d = loadDock();
+      fit(d?.w, d?.h);
+      const [mx, my] = max();
       if (d) place(d.side === 'left' ? MARGIN : Math.max(MARGIN, mx), clamp(d.y, MARGIN, my));
       else place(clamp(rect.right - el.offsetWidth, MARGIN, mx), clamp(rect.bottom + 8, MARGIN, my));
       el.style.transformOrigin = `top ${side()}`;
+      if (full) place(MARGIN, MARGIN);
     },
-    refit() { const [mx, my] = max(); place(side() === 'left' ? MARGIN : Math.max(MARGIN, mx), clamp(y, MARGIN, my)); },
+    refit() {
+      if (el.style.width) fit(parseFloat(el.style.width), parseFloat(el.style.height));
+      const [mx, my] = max();
+      if (full) place(MARGIN, MARGIN);
+      else place(side() === 'left' ? MARGIN : Math.max(MARGIN, mx), clamp(y, MARGIN, my));
+    },
+    resize(e) {  // from an edge or corner (data-dir: n, s, e, w and the four corners); the opposite edges stay put
+      if (full || e.button !== 0) return;
+      cancelAnimationFrame(raf);
+      const grip = e.currentTarget, dir = grip.dataset.dir, x0 = x, y0 = y, w0 = el.offsetWidth, h0 = el.offsetHeight;
+      grip.setPointerCapture(e.pointerId);
+      el.classList.add('dragging');
+      const move = ev => {
+        const dx = ev.clientX - e.clientX, dy = ev.clientY - e.clientY;
+        let w = w0, h = h0, nx = x0, ny = y0;
+        if (dir.includes('e')) w = clamp(w0 + dx, MIN_W, innerWidth - x0 - MARGIN);
+        if (dir.includes('w')) { w = clamp(w0 - dx, MIN_W, x0 + w0 - MARGIN); nx = x0 + w0 - w; }
+        if (dir.includes('s')) h = clamp(h0 + dy, MIN_H, innerHeight - y0 - MARGIN);
+        if (dir.includes('n')) { h = clamp(h0 - dy, MIN_H, y0 + h0 - MARGIN); ny = y0 + h0 - h; }
+        el.style.width = `${w}px`;
+        el.style.height = `${h}px`;
+        place(nx, ny);
+      };
+      const up = () => {
+        grip.removeEventListener('pointermove', move);
+        grip.removeEventListener('pointerup', up);
+        grip.removeEventListener('pointercancel', up);
+        el.classList.remove('dragging');
+        snap(0, 0);  // back flush against its side, at the new size
+      };
+      grip.addEventListener('pointermove', move);
+      grip.addEventListener('pointerup', up);
+      grip.addEventListener('pointercancel', up);
+    },
     down(e) {
-      if (e.button !== 0 || e.target.closest('button')) return;
+      if (full || e.button !== 0 || e.target.closest('button')) return;
       cancelAnimationFrame(raf);  // caught mid-flight: carry on from where it is now
       const handle = e.currentTarget, gx = e.clientX - x, gy = e.clientY - y, trail = [];
       let moved = false;
@@ -113,6 +168,7 @@ export default function CodexHelp({lesson}) {
   const status = useFetch('/api/codex');
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);  // stays after the first open, so closing can animate
+  const [full, setFull] = useState(loadFull);  // filling the window; remembered in this browser
   const [chat, setChat] = useState([]);  // {role:'user'|'assistant', text, error?}
   const [busy, setBusy] = useState(false);
   const [q, setQ] = useState('');
@@ -123,6 +179,7 @@ export default function CodexHelp({lesson}) {
     if (!open || !panel.current) return;
     dock.current ??= makeDock(panel.current);
     dock.current.openAt(trigger.current.getBoundingClientRect());
+    dock.current.setFull(full, false);
     input.current?.focus();
     const refit = () => dock.current.refit();
     addEventListener('resize', refit);
@@ -135,6 +192,7 @@ export default function CodexHelp({lesson}) {
     setOpen(true);
   };
   const close = () => { setOpen(false); trigger.current?.focus(); };
+  const toggleFull = () => { setFull(!full); saveFull(!full); dock.current?.setFull(!full, true); };
 
   const send = async text => {
     const question = text.trim();
@@ -167,14 +225,17 @@ export default function CodexHelp({lesson}) {
             onClick={() => open ? close() : show()}><CodexLogo size={16} mono/>{t('Ask Codex')}</button>
     {mounted && createPortal(  // on <body>: the lesson bar's backdrop-filter would pin a fixed panel inside it
       <aside id="codex-panel" className="codex-panel" data-open={open || undefined} ref={panel} aria-label={t('Ask Codex')}
-             inert={!open || undefined} onKeyDown={e => e.key === 'Escape' && close()}>
-        <header className="codex-head" onPointerDown={e => dock.current?.down(e)} title={t('Drag to move')}>
+             inert={!open || undefined} onKeyDown={e => e.key === 'Escape' && (full ? toggleFull() : close())}>
+        <header className="codex-head" onPointerDown={e => dock.current?.down(e)} title={full ? undefined : t('Drag to move')}
+                onDoubleClick={e => !e.target.closest('button') && toggleFull()}>
           <CodexLogo size={18} tile/>
           <div className="codex-title">
             <h2>Codex</h2>
             <span className="meta">{s.codexModel ? [s.codexModel, s.codexEffort && t(EFFORT_NAMES[s.codexEffort] || s.codexEffort)].filter(Boolean).join(' · ') : t('On your ChatGPT account')}</span>
           </div>
           <button className="icon-btn" aria-label={t('New chat')} title={t('New chat')} disabled={!chat.length || busy} onClick={() => setChat([])}><Icon name="rotate-ccw"/></button>
+          <button className="icon-btn" aria-label={full ? t('Exit full screen') : t('Full screen')} title={full ? t('Exit full screen') : t('Full screen')}
+                  aria-pressed={full} onClick={toggleFull}><Icon name={full ? 'minimize-2' : 'maximize-2'}/></button>
           <button className="icon-btn" aria-label={t('Close')} title={t('Close')} onClick={close}><Icon name="x"/></button>
         </header>
 
@@ -199,6 +260,7 @@ export default function CodexHelp({lesson}) {
               </div>)}
         </div>
 
+        {['n', 's', 'e', 'w', 'nw', 'ne', 'sw', 'se'].map(d => <span key={d} className="codex-grip" data-dir={d} aria-hidden="true" onPointerDown={e => dock.current?.resize(e)}/>)}
         <form className="codex-compose" onSubmit={e => { e.preventDefault(); send(q); }}>
           <textarea ref={input} value={q} rows={1} aria-label={t('Ask about this lesson…')} placeholder={t('Ask about this lesson…')}
                     onChange={e => setQ(e.target.value)} onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(q); } }}/>

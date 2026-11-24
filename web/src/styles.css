@@ -722,6 +722,26 @@ dialog h2 { font:600 1.0625rem var(--sans); letter-spacing:-.01em; }
 
 .codex-head { display:flex; align-items:center; gap:10px; padding:10px 8px 10px 14px; border-bottom:1px solid var(--line);
               cursor:grab; user-select:none; touch-action:none; }
+/* Full screen: fills the window, reading width stays a column. .sizing animates the switch, not every drag frame. */
+.codex-panel.full { width:calc(100vw - 24px) !important; height:calc(100dvh - 24px) !important; border-radius:20px; }  /* over a chosen size */
+/* Resize grips: invisible strips along the edges and bottom corners; the edge lights up under the pointer. */
+.codex-grip { position:absolute; z-index:3; touch-action:none; }
+.codex-grip[data-dir="w"] { left:0; top:18px; bottom:18px; width:6px; cursor:ew-resize; }
+.codex-grip[data-dir="e"] { right:0; top:18px; bottom:18px; width:6px; cursor:ew-resize; }
+.codex-grip[data-dir="s"] { bottom:0; left:18px; right:18px; height:6px; cursor:ns-resize; }
+.codex-grip[data-dir="n"] { top:0; left:18px; right:18px; height:5px; cursor:ns-resize; }
+.codex-grip[data-dir="nw"] { left:0; top:0; width:18px; height:18px; cursor:nwse-resize; }
+.codex-grip[data-dir="ne"] { right:0; top:0; width:18px; height:18px; cursor:nesw-resize; }
+.codex-grip[data-dir="sw"] { left:0; bottom:0; width:18px; height:18px; cursor:nesw-resize; }
+.codex-grip[data-dir="se"] { right:0; bottom:0; width:18px; height:18px; cursor:nwse-resize; }
+.codex-grip:is([data-dir="w"], [data-dir="e"], [data-dir="s"], [data-dir="n"])::after { content:''; position:absolute; inset:0; border-radius:3px;
+                                                                       background:var(--codex); opacity:0; transition:opacity .15s; }
+.codex-grip:is([data-dir="w"], [data-dir="e"], [data-dir="s"], [data-dir="n"]):hover::after { opacity:.35; }
+.codex-panel.full .codex-grip { display:none; }
+.codex-panel.full .codex-head { cursor:default; }
+.codex-panel.full .codex-log { padding-inline:max(16px, calc((100% - 760px) / 2)); }
+.codex-panel.full .codex-compose { margin-inline:max(12px, calc((100% - 760px) / 2)); }
+.codex-panel[data-open].sizing { transition:opacity .18s ease-out, transform .28s var(--ease), width .3s var(--ease), height .3s var(--ease), translate .3s var(--ease); }
 .codex-panel.dragging { box-shadow:0 24px 60px rgba(0,0,0,.55), 0 2px 8px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.05); }
 .codex-panel.dragging .codex-head { cursor:grabbing; }
 .codex-panel.dragging .codex-log { pointer-events:none; }
