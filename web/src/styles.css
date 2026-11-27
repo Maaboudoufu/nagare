@@ -281,6 +281,12 @@ dialog h2 { font:600 1.0625rem var(--sans); letter-spacing:-.01em; }
 .resume .btn { justify-content:center; }
 
 /* The path: one line down the page, a node per course. */
+.home-foot { display:flex; flex-wrap:wrap; align-items:center; gap:6px 12px; margin-top:48px; padding-top:16px; border-top:1px solid var(--line); color:var(--muted); font-size:.8125rem; }
+.home-foot a, .home-foot button { display:inline-flex; padding:0; border:0; background:none; font:inherit; cursor:pointer; align-items:center; gap:6px; color:var(--muted); text-decoration:none; }
+.home-foot a:hover, .home-foot button:hover { color:var(--text); }
+.home-foot-end { margin-left:auto; }
+.home-foot .commit { font-family:var(--mono); }
+.home-foot .icon { width:14px; height:14px; }
 .stream-title { margin-bottom:8px; font:500 .8125rem var(--sans); color:var(--muted); }
 .stream { list-style:none; margin:0 -12px; padding:0; }
 .stream li { position:relative; }

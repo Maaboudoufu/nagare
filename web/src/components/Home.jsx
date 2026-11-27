@@ -5,9 +5,10 @@ import {isDone, lessonPath, pct, save, store, useStore} from '../store.js';
 import {Page} from './Account.jsx';
 import CustomPicker from './CustomPicker.jsx';
 import Resume from './Resume.jsx';
-import {Beta, Icon, Logo, Meter, Ring, TechMark} from './ui.jsx';
+import {Beta, BrandIcon, Icon, Logo, Meter, Ring, TechMark} from './ui.jsx';
 import {BRANDS, PATH_STACKS, brandOf} from '../constants.js';
 import AsciiWave from './AsciiWave.jsx';
+import Shortcuts from './Shortcuts.jsx';
 
 // One course on the path. Its node on the line shows how far along you are: empty, a filling ring, then a check.
 function Course({course: c}) {
@@ -45,7 +46,7 @@ function topStacks(path, list) {
 
 export default function Home() {
   useStore();
-  const [picking, setPicking] = useState(false);
+  const [picking, setPicking] = useState(false), [help, setHelp] = useState(false);
   const path = currentPath(), list = pathCourses(path), stacks = topStacks(path, list);
   const total = list.reduce((n, c) => n + c.lessons.length, 0);
   const done = list.reduce((n, c) => n + c.lessons.filter(isDone).length, 0);
@@ -91,7 +92,18 @@ export default function Home() {
       {list.length
         ? <ol className="stream">{list.map(c => <Course key={c.slug} course={c}/>)}</ol>
         : <p className="meta">{t('No courses in your custom path yet. Use {edit} to pick some.', {edit:<strong>{t('Edit courses')}</strong>})}</p>}
+      <footer className="home-foot">
+        {__COMMIT__ === 'dev' ? <span className="commit">dev</span>
+          : <a className="commit" href={`https://github.com/Maaboudoufu/nagare/commit/${__COMMIT__}`} target="_blank" rel="noopener noreferrer"
+               title={t('Version')}>{__COMMIT__.slice(0, 7)}</a>}
+        <button type="button" onClick={() => setHelp(true)}><Icon name="keyboard"/>{t('Keyboard shortcuts')}</button>
+        <span className="home-foot-end">{t('Found a bug or have an idea?')}</span>
+        <a href="https://github.com/Maaboudoufu/nagare/issues" target="_blank" rel="noopener noreferrer">
+          <BrandIcon name="github"/>{t('Open an issue')}<Icon name="arrow-up-right"/>
+        </a>
+      </footer>
       {picking && <CustomPicker onClose={closePicker}/>}
+      {help && <Shortcuts onClose={() => setHelp(false)}/>}
     </Page>
   );
 }

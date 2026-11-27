@@ -15,6 +15,7 @@ WORKDIR /web
 COPY web/package.json web/bun.lock ./
 RUN bun install --frozen-lockfile --ignore-scripts
 COPY web/ ./
+ARG GIT_SHA
 RUN bun --bun run build
 
 FROM ${GOLANG_IMAGE} AS gateway

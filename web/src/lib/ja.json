@@ -495,5 +495,8 @@
  "{n} services down": "{n} 件のサービスが停止中",
  "{service} down for {n} min": "{service} が {n} 分停止",
  "Full screen": "全画面表示",
- "Exit full screen": "全画面表示を終了"
+ "Exit full screen": "全画面表示を終了",
+ "Found a bug or have an idea?": "バグの報告やアイデアはこちら",
+ "Open an issue": "Issue を作成",
+ "Version": "バージョン"
 }
