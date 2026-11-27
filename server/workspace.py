@@ -21,6 +21,8 @@ IDLE_S = float(os.environ.get('WORKSPACE_IDLE_MINUTES', 15)) * 60
 MAX_WORKSPACES = int(os.environ.get('MAX_WORKSPACES', 50))
 SANDBOXES_PER_USER = 3
 RUNTIME = ['--runtime', os.environ['WORKSPACE_RUNTIME']] if os.environ.get('WORKSPACE_RUNTIME') else []
+# Sandboxes keep sudo for the Learn Linux lessons, so root gets back only what sudo, chown and chmod use.
+SANDBOX_CAPS = ['--cap-drop', 'ALL', *(f'--cap-add={c}' for c in ('CHOWN', 'DAC_OVERRIDE', 'FOWNER', 'SETUID', 'SETGID', 'AUDIT_WRITE'))]
 LIMITS = ['--cpus', os.environ.get('WORKSPACE_CPUS', '1'), '--memory', os.environ.get('WORKSPACE_MEMORY', '1g'),
           '--pids-limit', '512', *RUNTIME]
 USER_ID = re.compile(r'^[a-z0-9]{1,32}$')
@@ -163,6 +165,7 @@ def workspace(user):
         _check(_docker('run', '-d', '--rm', '--name', name, '--label', 'nagare=workspace', '--label', f'nagare.user={user}',
                        '--hostname', 'workspace', '--network', NETWORK, '--init', '--user', '1000:1000',
                        '--security-opt', 'no-new-privileges',  # no sudo/setuid to root (sandboxes keep sudo: no network)
+                       '--cap-drop', 'ALL',  # uid 1000 with no setuid needs none of root's powers
                        '-e', f'HOME={HOME}', *TERM_ENV, *AWS_ENV,
                        # Nothing here starts inside the home folder: the user can make it unreadable (chmod 000 ~),
                        # and a shell that had to cd into it then never opened again. HOME_FIX puts the permissions back.
@@ -269,6 +272,7 @@ def sandbox(user, uuid):
         record = ['-e', 'NAGARE_RECORD_COMMANDS=1'] if _match_count(spec) > 1 else []
         cid = _check(_docker('create', '-it', '--label', 'nagare=sandbox', '--label', f'nagare.user={user}', '--name', name,
                              '--network', 'none', '--memory', '256m', '--pids-limit', '128', '--cpus', '0.5',
+                             *SANDBOX_CAPS,
                              *RUNTIME,
                              '--hostname', 'worldbanc', '--user', 'user', '-w', spec['cwd'], *TERM_ENV,
                              *record,
