@@ -224,7 +224,7 @@ dialog h2 { font:600 1.0625rem var(--sans); letter-spacing:-.01em; }
 .page.narrow { max-width:820px; }
 .page h1 { font:400 clamp(2rem, 4vw, 2.75rem)/1.1 var(--sans); letter-spacing:-.03em; margin-bottom:12px; }
 .lede { max-width:62ch; margin-bottom:28px; color:var(--muted); font-size:1rem; }
-.page > .tabs { margin-bottom:28px; }
+.page > .tabs, .path-top > .tabs { margin-bottom:28px; }
 .section { padding:28px 0; border-top:1px solid var(--line); }
 .section-head { display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:14px; }
 .section-head h2, .setting-head h2 { font:600 1rem var(--sans); }
@@ -249,10 +249,14 @@ dialog h2 { font:600 1.0625rem var(--sans); letter-spacing:-.01em; }
 
 /* Home: the path's name and your progress on the left, where to pick up on the right, then the path itself. */
 .path-head { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,360px); gap:56px; align-items:start; margin:44px 0 56px; }
-/* The wave (AsciiWave.jsx): a band of live ASCII between the tabs and the path's title, faded out at every edge. */
-.path-wave { display:block; width:100%; height:clamp(240px, 36vw, 400px); margin:-12px 0 -20px; color:var(--muted); pointer-events:none;
-             mask-image:linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent), linear-gradient(transparent, #000 25%, #000 70%, transparent);
+/* The wave (AsciiWave.jsx): live ASCII behind the path tabs and header. It leans right, where the resume card is, and
+   fades out toward the title and every edge so it has no frame. The card turns to frosted glass over it. */
+.path-top { position:relative; isolation:isolate; }
+.path-wave { position:absolute; z-index:-1; inset:-32px 0 -24px; width:100%; height:calc(100% + 56px);
+             color:var(--muted); opacity:.45; pointer-events:none;
+             mask-image:radial-gradient(ellipse 70% 85% at 74% 58%, #000 20%, transparent 75%), linear-gradient(rgba(0,0,0,.25), #000 38%);
              mask-composite:intersect; }
+.path-top .resume { background:color-mix(in srgb, var(--surface) 62%, transparent); backdrop-filter:blur(2px); }
 .path-progress { max-width:440px; margin-top:28px; }
 .path-progress .meta { margin-top:10px; }
 .path-progress strong { color:var(--text); font-weight:600; }
@@ -658,6 +662,7 @@ dialog h2 { font:600 1.0625rem var(--sans); letter-spacing:-.01em; }
 }
 @media (max-width:900px) {  /* pages go to one column */
   .path-head { grid-template-columns:minmax(0,1fr); gap:32px; margin-bottom:40px; }
+  .path-wave { mask-image:linear-gradient(transparent 38%, #000 62%, #000 85%, transparent); }  /* behind the card only, under the text */
   .resume { max-width:480px; }
   .hero { grid-template-columns:auto minmax(0,1fr); }
   .hero-level { grid-column:1 / -1; padding-top:20px; border-top:1px solid var(--line); }
@@ -699,6 +704,7 @@ dialog h2 { font:600 1.0625rem var(--sans); letter-spacing:-.01em; }
   *, *::before, *::after { transition-duration:.01ms !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; }
 }
 @media (prefers-reduced-transparency:reduce) {
+  .path-top .resume { background:var(--surface); backdrop-filter:none; }
   .nav-head { background:var(--surface); backdrop-filter:none; }
   .lesson-bar { background:var(--bg); backdrop-filter:none; }
 }

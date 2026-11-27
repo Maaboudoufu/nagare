@@ -45,24 +45,26 @@ export default function Home() {
 
   return (
     <Page title={path.title} className="home">
-      <div className="tabs" role="group" aria-label={t('Learning path')}>
-        {paths().map(p => <button key={p.id} className="tab" aria-pressed={p.id === path.id} onClick={() => choose(p.id)}>{p.short}</button>)}
-      </div>
-      <AsciiWave className="path-wave"/>
-      <header className="path-head">
-        <div className="path-intro">
-          <h1>{path.title}</h1>
-          {path.description && <p className="lede">{path.description}</p>}
-          {path.id === 'custom' && <button className="btn" id="edit-custom" onClick={() => setPicking(true)}><Icon name="pen-line"/>{t('Edit courses')}</button>}
-          {list.length > 0 && (
-            <div className="path-progress">
-              <Meter n={done} total={total} label={t('Path progress')}/>
-              <p className="meta">{t('{done} of {total} lessons · {pct}%', {done:<strong>{done.toLocaleString(locale())}</strong>, total:total.toLocaleString(locale()), pct:pct(done, total)})}</p>
-            </div>
-          )}
+      <div className="path-top">
+        <AsciiWave className="path-wave"/>
+        <div className="tabs" role="group" aria-label={t('Learning path')}>
+          {paths().map(p => <button key={p.id} className="tab" aria-pressed={p.id === path.id} onClick={() => choose(p.id)}>{p.short}</button>)}
         </div>
-        <Resume list={list}/>
-      </header>
+        <header className="path-head">
+          <div className="path-intro">
+            <h1>{path.title}</h1>
+            {path.description && <p className="lede">{path.description}</p>}
+            {path.id === 'custom' && <button className="btn" id="edit-custom" onClick={() => setPicking(true)}><Icon name="pen-line"/>{t('Edit courses')}</button>}
+            {list.length > 0 && (
+              <div className="path-progress">
+                <Meter n={done} total={total} label={t('Path progress')}/>
+                <p className="meta">{t('{done} of {total} lessons · {pct}%', {done:<strong>{done.toLocaleString(locale())}</strong>, total:total.toLocaleString(locale()), pct:pct(done, total)})}</p>
+              </div>
+            )}
+          </div>
+          <Resume list={list}/>
+        </header>
+      </div>
       <h2 className="stream-title">{list.length === 1 ? t('{n} course', {n:list.length}) : t('{n} courses', {n:list.length})}</h2>
       {list.length
         ? <ol className="stream">{list.map(c => <Course key={c.slug} course={c}/>)}</ol>
