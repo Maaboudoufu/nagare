@@ -21,7 +21,7 @@
   /* Ink: cool near-blacks, one step lighter per layer. */
   --bg:#0F1216; --surface:#151920; --surface-2:#1C2129; --surface-3:#272E38; --editor-bg:#0B0D11;
   --line:#222831; --line-strong:#626B78;                  /* strong: 3:1 on --bg, for input borders */
-  --text:#E9EBEE; --muted:#9BA3AF; --faint:#737C89;       /* on --bg: muted 7:1, faint 4:1 (icons, counts) */
+  --text:#E9EBEE; --muted:#9BA3AF; --faint:#7F8895;       /* muted 7:1 on --bg; faint ≥4.5:1 up to --surface-2 (icons, counts) */
   --accent:#7AA7FF; --accent-soft:rgba(122,167,255,.14);  /* store.js swaps in the color picked in Settings */
   --success:#62BE8C; --success-soft:rgba(98,190,140,.12);
   --danger:#F08A82; --danger-soft:rgba(240,138,130,.12); --warn:#E2B66B; --person:#B8A6EE;
@@ -582,6 +582,7 @@ dialog h2 { font:600 1.0625rem var(--sans); letter-spacing:-.01em; }
 .actions { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:20px 0 16px; }
 
 .q { margin-bottom:32px; }
+.q-text { font-weight:500; }  /* the question reads before its options */
 .q-text p { margin-bottom:12px; }
 .options { display:grid; gap:8px; }
 .option { display:flex; align-items:center; gap:12px; width:100%; min-height:48px; padding:10px 14px; text-align:left;
