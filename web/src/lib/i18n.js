@@ -16,14 +16,14 @@ export function lang() {
   const l = store.progress['app:settings']?.lang || stored() || (navigator.language?.startsWith('ja') ? 'ja' : 'en');
   return DICTS[l] || l === 'en' ? l : 'en';
 }
-export const locale = () => lang() === 'ja' ? 'ja-JP' : undefined;
+export const locale = () => lang() === 'ja' ? 'ja-JP' : 'en-US';  // not undefined: that's the browser's language
 
 export function setLang(l) {
   try { localStorage.setItem('lang', l); } catch { /* private mode: the saved setting still works once signed in */ }
   document.documentElement.lang = l;
+  if (store.catalog) save('app:settings', {lang:l});  // first: lang() reads it
   localizeCatalog();
-  if (store.catalog) save('app:settings', {lang:l});
-  else bump();
+  bump();
 }
 
 export function t(key, vars) {
