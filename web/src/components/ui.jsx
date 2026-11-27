@@ -57,13 +57,24 @@ export function Ring({n, total, size = 64, stroke = 3, label, children}) {
   );
 }
 
+const lum = hex => { const n = parseInt(hex.slice(1), 16); return (0.299 * (n >> 16) + 0.587 * (n >> 8 & 255) + 0.114 * (n & 255)) / 255; };
+
 export function Logo({course, size = 'md'}) {
   const {name, color, icon, img, lucide} = brandOf(course);
-  const n = parseInt(color.slice(1), 16), lum = (0.299 * (n >> 16) + 0.587 * (n >> 8 & 255) + 0.114 * (n & 255)) / 255;
   return (
-    <span className={`logo logo-${size}`} style={{background:color, color:lum > 0.6 ? '#131315' : '#FFFFFF'}} title={t(name)}>
+    <span className={`logo logo-${size}`} style={{background:color, color:lum(color) > 0.6 ? '#131315' : '#FFFFFF'}} title={t(name)}>
       {img ? <img src={img} alt=""/> : lucide ? <Icon name={icon}/> : <BrandIcon name={icon}/>}
       <span className="sr">{t(name)}</span>
+    </span>
+  );
+}
+
+// A technology's mark with no tile: full-color files as they are, one-color icons in the brand's color,
+// or in the text color when that is too dark to read on the page.
+export function TechMark({brand: {color, icon, img, lucide}}) {
+  return (
+    <span className="tech-mark" style={{color:lum(color) > 0.3 ? color : 'var(--text)'}} aria-hidden="true">
+      {img ? <img src={img} alt=""/> : lucide ? <Icon name={icon}/> : <BrandIcon name={icon}/>}
     </span>
   );
 }

@@ -2,6 +2,7 @@ import aws from './assets/logos/aws.svg';
 import c from './assets/logos/c.svg';
 import cpp from './assets/logos/cpp.svg';
 import powerbi from './assets/logos/powerbi.svg';
+import sjsu from './assets/logos/sjsu.svg';
 import {N_} from './lib/i18n.js';
 
 export const MODES = {go:'go', py:'python', sql:'text/x-sqlite', js:'javascript', ts:'text/typescript', c:'text/x-csrc', cpp:'text/x-c++src'};
@@ -41,6 +42,10 @@ export const BRANDS = {
 };
 export const SHORT_NAMES = {'backend-python-golang':N_('Backend (Go)'), 'backend-python-typescript':N_('Backend (TypeScript)'),
                             'devops-python-golang':N_('DevOps'), 'data-analyst-python':N_('Data Analyst')};
+// A path's own logo, shown above its title (sjsu: the Spartans mark, from English Wikipedia).
+export const PATH_LOGOS = {sjsu:{src:sjsu, alt:'San José State Spartans'}};
+// A path's top technologies when the course count picks the wrong ones (DevOps is more Kubernetes than SQL).
+export const PATH_STACKS = {'devops-python-golang':['go', 'python', 'kubernetes']};
 export const STEP_TITLES = {type_cli:['terminal', N_('Run these in your terminal')], type_shell:['terminal', N_('Do this in your terminal')],
                             type_github_checks:['git-branch', N_('Checks run against your GitHub repo')]};
 

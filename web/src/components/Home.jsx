@@ -5,7 +5,8 @@ import {isDone, lessonPath, pct, save, store, useStore} from '../store.js';
 import {Page} from './Account.jsx';
 import CustomPicker from './CustomPicker.jsx';
 import Resume from './Resume.jsx';
-import {Beta, Icon, Logo, Meter, Ring} from './ui.jsx';
+import {Beta, Icon, Logo, Meter, Ring, TechMark} from './ui.jsx';
+import {BRANDS, PATH_STACKS, brandOf} from '../constants.js';
 import AsciiWave from './AsciiWave.jsx';
 
 // One course on the path. Its node on the line shows how far along you are: empty, a filling ring, then a check.
@@ -27,10 +28,25 @@ function Course({course: c}) {
   );
 }
 
+// The path's three main technologies, by how many of its courses use each (lessons break ties). Projects don't count.
+// None for All courses: it's every technology.
+function topStacks(path, list) {
+  if (path.id === 'all') return [];
+  if (PATH_STACKS[path.id]) return PATH_STACKS[path.id].map(k => BRANDS[k]);
+  const by = new Map();
+  for (const c of list) {
+    const b = brandOf(c);
+    if (b === BRANDS.any) continue;
+    const e = by.get(b) || {brand:b, courses:0, lessons:0};
+    e.courses++; e.lessons += c.lessons.length; by.set(b, e);
+  }
+  return [...by.values()].sort((a, b) => b.courses - a.courses || b.lessons - a.lessons).slice(0, 3).map(e => e.brand);
+}
+
 export default function Home() {
   useStore();
   const [picking, setPicking] = useState(false);
-  const path = currentPath(), list = pathCourses(path);
+  const path = currentPath(), list = pathCourses(path), stacks = topStacks(path, list);
   const total = list.reduce((n, c) => n + c.lessons.length, 0);
   const done = list.reduce((n, c) => n + c.lessons.filter(isDone).length, 0);
 
@@ -52,8 +68,14 @@ export default function Home() {
         </div>
         <header className="path-head">
           <div className="path-intro">
+            {path.logo && <span className="path-logo"><img src={path.logo.src} alt={path.logo.alt}/></span>}
             <h1>{path.title}</h1>
             {path.description && <p className="lede">{path.description}</p>}
+            {stacks.length > 0 && (
+              <ul className="stacks" aria-label={t('Top tech stacks')}>
+                {stacks.map(b => <li key={b.name}><TechMark brand={b}/>{t(b.name)}</li>)}
+              </ul>
+            )}
             {path.id === 'custom' && <button className="btn" id="edit-custom" onClick={() => setPicking(true)}><Icon name="pen-line"/>{t('Edit courses')}</button>}
             {list.length > 0 && (
               <div className="path-progress">
