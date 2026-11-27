@@ -1,74 +1,74 @@
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 514 320' width='514' height='320'>
-<svg x='0' y='0' width='250' height='320' viewBox='0 0 250 320' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
-<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
-<svg x='0' y='0' width='250' height='260' viewBox='0 0 250 260' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
-<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
-<text x='125.0' y='22' fill='#e6e8ee' font-size='13' text-anchor='middle'>1. mark and push A</text>
-<defs><marker id='arn' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#4a5263'/></marker><marker id='arhot' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#E2B66B'/></marker><marker id='arcmp' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#7AA7FF'/></marker><marker id='arok' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#62BE8C'/></marker><marker id='argone' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#F08A9C'/></marker></defs>
-<line x1='101.2' y1='63.4' x2='67.9' y2='92.3' stroke='#4a5263' stroke-width='1.6'/>
-<line x1='131.1' y1='62.0' x2='175.3' y2='93.7' stroke='#4a5263' stroke-width='1.6'/>
-<line x1='47.5' y1='122.8' x2='37.0' y2='153.9' stroke='#4a5263' stroke-width='1.6'/>
-<line x1='67.7' y1='117.4' x2='92.0' y2='139.1' stroke='#4a5263' stroke-width='1.6'/>
-<line x1='190.8' y1='123.8' x2='190.8' y2='153.0' stroke='#4a5263' stroke-width='1.6'/>
-<line x1='124.7' y1='156.2' x2='172.3' y2='167.6' stroke='#4a5263' stroke-width='1.6'/>
-<line x1='106.2' y1='170.8' x2='106.2' y2='200.0' stroke='#4a5263' stroke-width='1.6'/>
-<circle cx='115.6' cy='51.0' r='17' fill='#5a4520' stroke='#E2B66B' stroke-width='2'/>
-<text x='115.6' y='55.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>A</text>
-<circle cx='53.6' cy='104.8' r='17' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
-<text x='53.6' y='109.3' fill='#e6e8ee' font-size='12' text-anchor='middle'>B</text>
-<circle cx='190.8' cy='104.8' r='17' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
-<text x='190.8' y='109.3' fill='#e6e8ee' font-size='12' text-anchor='middle'>C</text>
-<circle cx='31.0' cy='172.0' r='17' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
-<text x='31.0' y='176.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>D</text>
-<circle cx='106.2' cy='151.8' r='17' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
-<text x='106.2' y='156.3' fill='#e6e8ee' font-size='12' text-anchor='middle'>E</text>
-<circle cx='190.8' cy='172.0' r='17' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
-<text x='190.8' y='176.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>F</text>
-<circle cx='106.2' cy='219.0' r='17' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
-<text x='106.2' y='223.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>G</text>
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 514 320' width='514' height='320' font-family='IBM Plex Sans,system-ui,-apple-system,Segoe UI,sans-serif'>
+<svg x='0' y='0' width='250' height='320' viewBox='0 0 250 320' font-family='IBM Plex Sans,system-ui,-apple-system,Segoe UI,sans-serif'>
+<rect width='100%' height='100%' rx='0' fill='#0F1216'/>
+<svg x='0' y='0' width='250' height='260' viewBox='0 0 250 260' font-family='IBM Plex Sans,system-ui,-apple-system,Segoe UI,sans-serif'>
+<rect width='100%' height='100%' rx='0' fill='#0F1216'/>
+<text font-weight='600' x='125.0' y='22' fill='#E9EBEE' font-size='14' text-anchor='middle'>1. mark and push A</text>
+<defs><marker id='arn' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#4A5360'/></marker><marker id='arhot' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#C4A26A'/></marker><marker id='arcmp' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#7E9AC4'/></marker><marker id='arok' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#6EA586'/></marker><marker id='argone' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#C47B75'/></marker></defs>
+<line x1='101.2' y1='63.4' x2='67.9' y2='92.3' stroke='#4A5360' stroke-width='1'/>
+<line x1='131.1' y1='62.0' x2='175.3' y2='93.7' stroke='#4A5360' stroke-width='1'/>
+<line x1='47.5' y1='122.8' x2='37.0' y2='153.9' stroke='#4A5360' stroke-width='1'/>
+<line x1='67.7' y1='117.4' x2='92.0' y2='139.1' stroke='#4A5360' stroke-width='1'/>
+<line x1='190.8' y1='123.8' x2='190.8' y2='153.0' stroke='#4A5360' stroke-width='1'/>
+<line x1='124.7' y1='156.2' x2='172.3' y2='167.6' stroke='#4A5360' stroke-width='1'/>
+<line x1='106.2' y1='170.8' x2='106.2' y2='200.0' stroke='#4A5360' stroke-width='1'/>
+<circle cx='115.6' cy='51.0' r='17' fill='#241F16' stroke='#C4A26A' stroke-width='1.5'/>
+<text x='115.6' y='55.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>A</text>
+<circle cx='53.6' cy='104.8' r='17' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text x='53.6' y='109.3' fill='#E9EBEE' font-size='12' text-anchor='middle'>B</text>
+<circle cx='190.8' cy='104.8' r='17' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text x='190.8' y='109.3' fill='#E9EBEE' font-size='12' text-anchor='middle'>C</text>
+<circle cx='31.0' cy='172.0' r='17' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text x='31.0' y='176.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>D</text>
+<circle cx='106.2' cy='151.8' r='17' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text x='106.2' y='156.3' fill='#E9EBEE' font-size='12' text-anchor='middle'>E</text>
+<circle cx='190.8' cy='172.0' r='17' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text x='190.8' y='176.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>F</text>
+<circle cx='106.2' cy='219.0' r='17' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text x='106.2' y='223.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>G</text>
 </svg>
-<svg x='75' y='270' width='100' height='50' viewBox='0 0 100 50' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
-<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
-<text x='8' y='29.0' fill='#8a93a6' font-size='11'>queue</text>
-<rect x='52.0' y='10' width='30.0' height='30' rx='4' fill='#2a2f3a' stroke='#8a93a6'/>
-<text x='67.0' y='29.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>A</text>
+<svg x='75' y='270' width='100' height='50' viewBox='0 0 100 50' font-family='IBM Plex Sans,system-ui,-apple-system,Segoe UI,sans-serif'>
+<rect width='100%' height='100%' rx='0' fill='#0F1216'/>
+<text x='8' y='29.0' fill='#9BA3AF' font-size='11.5'>queue</text>
+<rect x='52.0' y='10' width='30.0' height='30' rx='3' fill='#161A21' stroke='#2E3540'/>
+<text x='67.0' y='29.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>A</text>
 </svg>
 </svg>
-<svg x='264' y='0' width='250' height='320' viewBox='0 0 250 320' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
-<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
-<svg x='0' y='0' width='250' height='260' viewBox='0 0 250 260' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
-<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
-<text x='125.0' y='22' fill='#e6e8ee' font-size='13' text-anchor='middle'>2. pop A: push B, C</text>
-<defs><marker id='arn' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#4a5263'/></marker><marker id='arhot' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#E2B66B'/></marker><marker id='arcmp' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#7AA7FF'/></marker><marker id='arok' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#62BE8C'/></marker><marker id='argone' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#F08A9C'/></marker></defs>
-<line x1='101.2' y1='63.4' x2='67.9' y2='92.3' stroke='#62BE8C' stroke-width='2.5'/>
-<line x1='131.1' y1='62.0' x2='175.3' y2='93.7' stroke='#62BE8C' stroke-width='2.5'/>
-<line x1='47.5' y1='122.8' x2='37.0' y2='153.9' stroke='#4a5263' stroke-width='1.6'/>
-<line x1='67.7' y1='117.4' x2='92.0' y2='139.1' stroke='#4a5263' stroke-width='1.6'/>
-<line x1='190.8' y1='123.8' x2='190.8' y2='153.0' stroke='#4a5263' stroke-width='1.6'/>
-<line x1='124.7' y1='156.2' x2='172.3' y2='167.6' stroke='#4a5263' stroke-width='1.6'/>
-<line x1='106.2' y1='170.8' x2='106.2' y2='200.0' stroke='#4a5263' stroke-width='1.6'/>
-<circle cx='115.6' cy='51.0' r='17' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
-<text x='115.6' y='55.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>A</text>
-<circle cx='53.6' cy='104.8' r='17' fill='#22355a' stroke='#7AA7FF' stroke-width='2'/>
-<text x='53.6' y='109.3' fill='#e6e8ee' font-size='12' text-anchor='middle'>B</text>
-<circle cx='190.8' cy='104.8' r='17' fill='#22355a' stroke='#7AA7FF' stroke-width='2'/>
-<text x='190.8' y='109.3' fill='#e6e8ee' font-size='12' text-anchor='middle'>C</text>
-<circle cx='31.0' cy='172.0' r='17' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
-<text x='31.0' y='176.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>D</text>
-<circle cx='106.2' cy='151.8' r='17' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
-<text x='106.2' y='156.3' fill='#e6e8ee' font-size='12' text-anchor='middle'>E</text>
-<circle cx='190.8' cy='172.0' r='17' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
-<text x='190.8' y='176.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>F</text>
-<circle cx='106.2' cy='219.0' r='17' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
-<text x='106.2' y='223.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>G</text>
+<svg x='264' y='0' width='250' height='320' viewBox='0 0 250 320' font-family='IBM Plex Sans,system-ui,-apple-system,Segoe UI,sans-serif'>
+<rect width='100%' height='100%' rx='0' fill='#0F1216'/>
+<svg x='0' y='0' width='250' height='260' viewBox='0 0 250 260' font-family='IBM Plex Sans,system-ui,-apple-system,Segoe UI,sans-serif'>
+<rect width='100%' height='100%' rx='0' fill='#0F1216'/>
+<text font-weight='600' x='125.0' y='22' fill='#E9EBEE' font-size='14' text-anchor='middle'>2. pop A: push B, C</text>
+<defs><marker id='arn' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#4A5360'/></marker><marker id='arhot' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#C4A26A'/></marker><marker id='arcmp' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#7E9AC4'/></marker><marker id='arok' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#6EA586'/></marker><marker id='argone' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#C47B75'/></marker></defs>
+<line x1='101.2' y1='63.4' x2='67.9' y2='92.3' stroke='#6EA586' stroke-width='1.5'/>
+<line x1='131.1' y1='62.0' x2='175.3' y2='93.7' stroke='#6EA586' stroke-width='1.5'/>
+<line x1='47.5' y1='122.8' x2='37.0' y2='153.9' stroke='#4A5360' stroke-width='1'/>
+<line x1='67.7' y1='117.4' x2='92.0' y2='139.1' stroke='#4A5360' stroke-width='1'/>
+<line x1='190.8' y1='123.8' x2='190.8' y2='153.0' stroke='#4A5360' stroke-width='1'/>
+<line x1='124.7' y1='156.2' x2='172.3' y2='167.6' stroke='#4A5360' stroke-width='1'/>
+<line x1='106.2' y1='170.8' x2='106.2' y2='200.0' stroke='#4A5360' stroke-width='1'/>
+<circle cx='115.6' cy='51.0' r='17' fill='#142019' stroke='#6EA586' stroke-width='1.5'/>
+<text x='115.6' y='55.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>A</text>
+<circle cx='53.6' cy='104.8' r='17' fill='#18202E' stroke='#7E9AC4' stroke-width='1.5'/>
+<text x='53.6' y='109.3' fill='#E9EBEE' font-size='12' text-anchor='middle'>B</text>
+<circle cx='190.8' cy='104.8' r='17' fill='#18202E' stroke='#7E9AC4' stroke-width='1.5'/>
+<text x='190.8' y='109.3' fill='#E9EBEE' font-size='12' text-anchor='middle'>C</text>
+<circle cx='31.0' cy='172.0' r='17' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text x='31.0' y='176.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>D</text>
+<circle cx='106.2' cy='151.8' r='17' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text x='106.2' y='156.3' fill='#E9EBEE' font-size='12' text-anchor='middle'>E</text>
+<circle cx='190.8' cy='172.0' r='17' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text x='190.8' y='176.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>F</text>
+<circle cx='106.2' cy='219.0' r='17' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text x='106.2' y='223.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>G</text>
 </svg>
-<svg x='58' y='270' width='134' height='50' viewBox='0 0 134 50' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
-<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
-<text x='8' y='29.0' fill='#8a93a6' font-size='11'>queue</text>
-<rect x='52.0' y='10' width='30.0' height='30' rx='4' fill='#22355a' stroke='#7AA7FF'/>
-<text x='67.0' y='29.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>B</text>
-<rect x='86.0' y='10' width='30.0' height='30' rx='4' fill='#22355a' stroke='#7AA7FF'/>
-<text x='101.0' y='29.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>C</text>
+<svg x='58' y='270' width='134' height='50' viewBox='0 0 134 50' font-family='IBM Plex Sans,system-ui,-apple-system,Segoe UI,sans-serif'>
+<rect width='100%' height='100%' rx='0' fill='#0F1216'/>
+<text x='8' y='29.0' fill='#9BA3AF' font-size='11.5'>queue</text>
+<rect x='52.0' y='10' width='30.0' height='30' rx='3' fill='#18202E' stroke='#7E9AC4'/>
+<text x='67.0' y='29.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>B</text>
+<rect x='86.0' y='10' width='30.0' height='30' rx='3' fill='#18202E' stroke='#7E9AC4'/>
+<text x='101.0' y='29.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>C</text>
 </svg>
 </svg>
 </svg>

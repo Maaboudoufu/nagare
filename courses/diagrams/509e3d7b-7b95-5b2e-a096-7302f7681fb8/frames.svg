@@ -1,30 +1,30 @@
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 494 182' width='494' height='182'>
-<svg x='0' y='0' width='230' height='182' viewBox='0 0 230 182' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
-<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
-<defs><marker id='ah' markerUnits='userSpaceOnUse' markerWidth='9' markerHeight='9' refX='8' refY='4.5' orient='auto'><path d='M0,0 L9,4.5 L0,9 z' fill='#8a93a6'/></marker></defs>
-<text x='115.0' y='22' fill='#e6e8ee' font-size='13.0' text-anchor='middle'>calls go down first</text>
-<line x1='6.0' y1='152.0' x2='224.0' y2='152.0' stroke='#4a5263' stroke-width='2'/>
-<rect x='12.0' y='122.0' width='206.0' height='24.0' rx='4' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
-<text x='115.0' y='138.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>printReverse(1)</text>
-<rect x='12.0' y='94.0' width='206.0' height='24.0' rx='4' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
-<text x='115.0' y='110.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>printReverse(2)</text>
-<rect x='12.0' y='66.0' width='206.0' height='24.0' rx='4' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
-<text x='115.0' y='82.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>printReverse(3)</text>
-<rect x='12.0' y='38.0' width='206.0' height='24.0' rx='4' fill='#5a4520' stroke='#E2B66B' stroke-width='1.6'/>
-<text x='115.0' y='54.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>printReverse(null)</text>
-<text x='115.0' y='174.0' fill='#8a93a6' font-size='11.0' text-anchor='middle'>nothing printed yet</text>
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 494 182' width='494' height='182' font-family='IBM Plex Sans,system-ui,-apple-system,Segoe UI,sans-serif'>
+<svg x='0' y='0' width='230' height='182' viewBox='0 0 230 182' font-family='IBM Plex Sans,system-ui,-apple-system,Segoe UI,sans-serif'>
+<rect width='100%' height='100%' rx='0' fill='#0F1216'/>
+<defs><marker id='ah' markerUnits='userSpaceOnUse' markerWidth='9' markerHeight='9' refX='8' refY='4.5' orient='auto'><path d='M0,0 L9,4.5 L0,9 z' fill='#9BA3AF'/></marker></defs>
+<text font-weight='600' x='115.0' y='22' fill='#E9EBEE' font-size='14' text-anchor='middle'>Calls go down first</text>
+<line x1='6.0' y1='152.0' x2='224.0' y2='152.0' stroke='#4A5360' stroke-width='1'/>
+<rect x='12.0' y='122.0' width='206.0' height='24.0' rx='3' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='115.0' y='138.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>printReverse(1)</text>
+<rect x='12.0' y='94.0' width='206.0' height='24.0' rx='3' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='115.0' y='110.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>printReverse(2)</text>
+<rect x='12.0' y='66.0' width='206.0' height='24.0' rx='3' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='115.0' y='82.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>printReverse(3)</text>
+<rect x='12.0' y='38.0' width='206.0' height='24.0' rx='3' fill='#241F16' stroke='#C4A26A' stroke-width='1.5'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='115.0' y='54.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>printReverse(null)</text>
+<text x='115.0' y='174.0' fill='#9BA3AF' font-size='11.5' text-anchor='middle'>nothing printed yet</text>
 </svg>
-<svg x='244' y='0' width='250' height='182' viewBox='0 0 250 182' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
-<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
-<defs><marker id='ah' markerUnits='userSpaceOnUse' markerWidth='9' markerHeight='9' refX='8' refY='4.5' orient='auto'><path d='M0,0 L9,4.5 L0,9 z' fill='#8a93a6'/></marker></defs>
-<text x='125.0' y='22' fill='#e6e8ee' font-size='13.0' text-anchor='middle'>then each frame prints</text>
-<line x1='6.0' y1='152.0' x2='244.0' y2='152.0' stroke='#4a5263' stroke-width='2'/>
-<rect x='12.0' y='122.0' width='226.0' height='24.0' rx='4' fill='#1f4232' stroke='#62BE8C' stroke-width='1.6'/>
-<text x='125.0' y='138.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>(1) prints 1: last</text>
-<rect x='12.0' y='94.0' width='226.0' height='24.0' rx='4' fill='#1f4232' stroke='#62BE8C' stroke-width='1.6'/>
-<text x='125.0' y='110.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>(2) prints 2: second</text>
-<rect x='12.0' y='66.0' width='226.0' height='24.0' rx='4' fill='#1f4232' stroke='#62BE8C' stroke-width='1.6'/>
-<text x='125.0' y='82.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>(3) prints 3: first</text>
-<text x='125.0' y='174.0' fill='#8a93a6' font-size='11.0' text-anchor='middle'>as it comes off the stack</text>
+<svg x='244' y='0' width='250' height='182' viewBox='0 0 250 182' font-family='IBM Plex Sans,system-ui,-apple-system,Segoe UI,sans-serif'>
+<rect width='100%' height='100%' rx='0' fill='#0F1216'/>
+<defs><marker id='ah' markerUnits='userSpaceOnUse' markerWidth='9' markerHeight='9' refX='8' refY='4.5' orient='auto'><path d='M0,0 L9,4.5 L0,9 z' fill='#9BA3AF'/></marker></defs>
+<text font-weight='600' x='125.0' y='22' fill='#E9EBEE' font-size='14' text-anchor='middle'>Then each frame prints</text>
+<line x1='6.0' y1='152.0' x2='244.0' y2='152.0' stroke='#4A5360' stroke-width='1'/>
+<rect x='12.0' y='122.0' width='226.0' height='24.0' rx='3' fill='#142019' stroke='#6EA586' stroke-width='1.5'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='125.0' y='138.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>(1) prints 1: last</text>
+<rect x='12.0' y='94.0' width='226.0' height='24.0' rx='3' fill='#142019' stroke='#6EA586' stroke-width='1.5'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='125.0' y='110.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>(2) prints 2: second</text>
+<rect x='12.0' y='66.0' width='226.0' height='24.0' rx='3' fill='#142019' stroke='#6EA586' stroke-width='1.5'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='125.0' y='82.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>(3) prints 3: first</text>
+<text x='125.0' y='174.0' fill='#9BA3AF' font-size='11.5' text-anchor='middle'>as it comes off the stack</text>
 </svg>
 </svg>

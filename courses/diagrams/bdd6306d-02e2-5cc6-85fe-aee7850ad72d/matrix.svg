@@ -1,87 +1,87 @@
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 440 214' width='440' height='214'>
-<svg x='0' y='0' width='230' height='210' viewBox='0 0 230 210' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
-<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
-<text x='115.0' y='22' fill='#e6e8ee' font-size='13' text-anchor='middle'>the lecture graph</text>
-<defs><marker id='arn' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#4a5263'/></marker><marker id='arhot' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#E2B66B'/></marker><marker id='arcmp' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#7AA7FF'/></marker><marker id='arok' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#62BE8C'/></marker><marker id='argone' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#F08A9C'/></marker></defs>
-<line x1='48.2' y1='78.3' x2='89.4' y2='59.1' stroke='#4a5263' stroke-width='1.6'/>
-<line x1='36.5' y1='104.6' x2='50.7' y2='150.8' stroke='#4a5263' stroke-width='1.6'/>
-<line x1='116.6' y1='67.1' x2='155.4' y2='129.3' stroke='#4a5263' stroke-width='1.6'/>
-<line x1='124.7' y1='56.8' x2='180.9' y2='74.7' stroke='#4a5263' stroke-width='1.6'/>
-<line x1='74.8' y1='165.0' x2='146.8' y2='149.4' stroke='#4a5263' stroke-width='1.6'/>
-<line x1='174.1' y1='128.5' x2='190.3' y2='97.4' stroke='#4a5263' stroke-width='1.6'/>
-<circle cx='31.0' cy='86.4' r='17' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
-<text x='31.0' y='90.9' fill='#e6e8ee' font-size='12' text-anchor='middle'>0</text>
-<circle cx='106.6' cy='51.0' r='17' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
-<text x='106.6' y='55.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>1</text>
-<circle cx='199.0' cy='80.5' r='17' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
-<text x='199.0' y='85.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>4</text>
-<circle cx='165.4' cy='145.4' r='17' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
-<text x='165.4' y='149.9' fill='#e6e8ee' font-size='12' text-anchor='middle'>3</text>
-<circle cx='56.2' cy='169.0' r='17' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
-<text x='56.2' y='173.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>2</text>
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 440 214' width='440' height='214' font-family='IBM Plex Sans,system-ui,-apple-system,Segoe UI,sans-serif'>
+<svg x='0' y='0' width='230' height='210' viewBox='0 0 230 210' font-family='IBM Plex Sans,system-ui,-apple-system,Segoe UI,sans-serif'>
+<rect width='100%' height='100%' rx='0' fill='#0F1216'/>
+<text font-weight='600' x='115.0' y='22' fill='#E9EBEE' font-size='14' text-anchor='middle'>The lecture graph</text>
+<defs><marker id='arn' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#4A5360'/></marker><marker id='arhot' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#C4A26A'/></marker><marker id='arcmp' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#7E9AC4'/></marker><marker id='arok' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#6EA586'/></marker><marker id='argone' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#C47B75'/></marker></defs>
+<line x1='48.2' y1='78.3' x2='89.4' y2='59.1' stroke='#4A5360' stroke-width='1'/>
+<line x1='36.5' y1='104.6' x2='50.7' y2='150.8' stroke='#4A5360' stroke-width='1'/>
+<line x1='116.6' y1='67.1' x2='155.4' y2='129.3' stroke='#4A5360' stroke-width='1'/>
+<line x1='124.7' y1='56.8' x2='180.9' y2='74.7' stroke='#4A5360' stroke-width='1'/>
+<line x1='74.8' y1='165.0' x2='146.8' y2='149.4' stroke='#4A5360' stroke-width='1'/>
+<line x1='174.1' y1='128.5' x2='190.3' y2='97.4' stroke='#4A5360' stroke-width='1'/>
+<circle cx='31.0' cy='86.4' r='17' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='31.0' y='90.9' fill='#E9EBEE' font-size='12' text-anchor='middle'>0</text>
+<circle cx='106.6' cy='51.0' r='17' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='106.6' y='55.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>1</text>
+<circle cx='199.0' cy='80.5' r='17' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='199.0' y='85.0' fill='#E9EBEE' font-size='12' text-anchor='middle'>4</text>
+<circle cx='165.4' cy='145.4' r='17' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='165.4' y='149.9' fill='#E9EBEE' font-size='12' text-anchor='middle'>3</text>
+<circle cx='56.2' cy='169.0' r='17' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='56.2' y='173.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>2</text>
 </svg>
-<svg x='244' y='0' width='196' height='214' viewBox='0 0 196 214' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
-<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
-<text x='98.0' y='22' fill='#e6e8ee' font-size='13' text-anchor='middle'>A[i][j]</text>
-<text x='51.0' y='46' fill='#8a93a6' font-size='11' text-anchor='middle'>0</text>
-<text x='81.0' y='46' fill='#8a93a6' font-size='11' text-anchor='middle'>1</text>
-<text x='111.0' y='46' fill='#8a93a6' font-size='11' text-anchor='middle'>2</text>
-<text x='141.0' y='46' fill='#8a93a6' font-size='11' text-anchor='middle'>3</text>
-<text x='171.0' y='46' fill='#8a93a6' font-size='11' text-anchor='middle'>4</text>
-<text x='28.0' y='71.0' fill='#8a93a6' font-size='11' text-anchor='end'>0</text>
-<rect x='36.0' y='52' width='30' height='30' fill='#2a2f3a' stroke='#4a5263'/>
-<text x='51.0' y='71.5' fill='#8a93a6' font-size='12' text-anchor='middle'>0</text>
-<rect x='66.0' y='52' width='30' height='30' fill='#5a4520' stroke='#E2B66B'/>
-<text x='81.0' y='71.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>1</text>
-<rect x='96.0' y='52' width='30' height='30' fill='#2a2f3a' stroke='#4a5263'/>
-<text x='111.0' y='71.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>1</text>
-<rect x='126.0' y='52' width='30' height='30' fill='#2a2f3a' stroke='#4a5263'/>
-<text x='141.0' y='71.5' fill='#8a93a6' font-size='12' text-anchor='middle'>0</text>
-<rect x='156.0' y='52' width='30' height='30' fill='#2a2f3a' stroke='#4a5263'/>
-<text x='171.0' y='71.5' fill='#8a93a6' font-size='12' text-anchor='middle'>0</text>
-<text x='28.0' y='101.0' fill='#8a93a6' font-size='11' text-anchor='end'>1</text>
-<rect x='36.0' y='82' width='30' height='30' fill='#5a4520' stroke='#E2B66B'/>
-<text x='51.0' y='101.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>1</text>
-<rect x='66.0' y='82' width='30' height='30' fill='#2a2f3a' stroke='#4a5263'/>
-<text x='81.0' y='101.5' fill='#8a93a6' font-size='12' text-anchor='middle'>0</text>
-<rect x='96.0' y='82' width='30' height='30' fill='#2a2f3a' stroke='#4a5263'/>
-<text x='111.0' y='101.5' fill='#8a93a6' font-size='12' text-anchor='middle'>0</text>
-<rect x='126.0' y='82' width='30' height='30' fill='#2a2f3a' stroke='#4a5263'/>
-<text x='141.0' y='101.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>1</text>
-<rect x='156.0' y='82' width='30' height='30' fill='#2a2f3a' stroke='#4a5263'/>
-<text x='171.0' y='101.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>1</text>
-<text x='28.0' y='131.0' fill='#8a93a6' font-size='11' text-anchor='end'>2</text>
-<rect x='36.0' y='112' width='30' height='30' fill='#2a2f3a' stroke='#4a5263'/>
-<text x='51.0' y='131.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>1</text>
-<rect x='66.0' y='112' width='30' height='30' fill='#2a2f3a' stroke='#4a5263'/>
-<text x='81.0' y='131.5' fill='#8a93a6' font-size='12' text-anchor='middle'>0</text>
-<rect x='96.0' y='112' width='30' height='30' fill='#2a2f3a' stroke='#4a5263'/>
-<text x='111.0' y='131.5' fill='#8a93a6' font-size='12' text-anchor='middle'>0</text>
-<rect x='126.0' y='112' width='30' height='30' fill='#2a2f3a' stroke='#4a5263'/>
-<text x='141.0' y='131.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>1</text>
-<rect x='156.0' y='112' width='30' height='30' fill='#2a2f3a' stroke='#4a5263'/>
-<text x='171.0' y='131.5' fill='#8a93a6' font-size='12' text-anchor='middle'>0</text>
-<text x='28.0' y='161.0' fill='#8a93a6' font-size='11' text-anchor='end'>3</text>
-<rect x='36.0' y='142' width='30' height='30' fill='#2a2f3a' stroke='#4a5263'/>
-<text x='51.0' y='161.5' fill='#8a93a6' font-size='12' text-anchor='middle'>0</text>
-<rect x='66.0' y='142' width='30' height='30' fill='#2a2f3a' stroke='#4a5263'/>
-<text x='81.0' y='161.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>1</text>
-<rect x='96.0' y='142' width='30' height='30' fill='#2a2f3a' stroke='#4a5263'/>
-<text x='111.0' y='161.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>1</text>
-<rect x='126.0' y='142' width='30' height='30' fill='#2a2f3a' stroke='#4a5263'/>
-<text x='141.0' y='161.5' fill='#8a93a6' font-size='12' text-anchor='middle'>0</text>
-<rect x='156.0' y='142' width='30' height='30' fill='#2a2f3a' stroke='#4a5263'/>
-<text x='171.0' y='161.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>1</text>
-<text x='28.0' y='191.0' fill='#8a93a6' font-size='11' text-anchor='end'>4</text>
-<rect x='36.0' y='172' width='30' height='30' fill='#2a2f3a' stroke='#4a5263'/>
-<text x='51.0' y='191.5' fill='#8a93a6' font-size='12' text-anchor='middle'>0</text>
-<rect x='66.0' y='172' width='30' height='30' fill='#2a2f3a' stroke='#4a5263'/>
-<text x='81.0' y='191.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>1</text>
-<rect x='96.0' y='172' width='30' height='30' fill='#2a2f3a' stroke='#4a5263'/>
-<text x='111.0' y='191.5' fill='#8a93a6' font-size='12' text-anchor='middle'>0</text>
-<rect x='126.0' y='172' width='30' height='30' fill='#2a2f3a' stroke='#4a5263'/>
-<text x='141.0' y='191.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>1</text>
-<rect x='156.0' y='172' width='30' height='30' fill='#2a2f3a' stroke='#4a5263'/>
-<text x='171.0' y='191.5' fill='#8a93a6' font-size='12' text-anchor='middle'>0</text>
+<svg x='244' y='0' width='196' height='214' viewBox='0 0 196 214' font-family='IBM Plex Sans,system-ui,-apple-system,Segoe UI,sans-serif'>
+<rect width='100%' height='100%' rx='0' fill='#0F1216'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='98.0' y='22' fill='#E9EBEE' font-size='13' text-anchor='middle'>A[i][j]</text>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='51.0' y='46' fill='#9BA3AF' font-size='11' text-anchor='middle'>0</text>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='81.0' y='46' fill='#9BA3AF' font-size='11' text-anchor='middle'>1</text>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='111.0' y='46' fill='#9BA3AF' font-size='11' text-anchor='middle'>2</text>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='141.0' y='46' fill='#9BA3AF' font-size='11' text-anchor='middle'>3</text>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='171.0' y='46' fill='#9BA3AF' font-size='11' text-anchor='middle'>4</text>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='28.0' y='71.0' fill='#9BA3AF' font-size='11' text-anchor='end'>0</text>
+<rect x='36.0' y='52' width='30' height='30' fill='#161A21' stroke='#4A5360'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='51.0' y='71.5' fill='#9BA3AF' font-size='12' text-anchor='middle'>0</text>
+<rect x='66.0' y='52' width='30' height='30' fill='#241F16' stroke='#C4A26A'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='81.0' y='71.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>1</text>
+<rect x='96.0' y='52' width='30' height='30' fill='#161A21' stroke='#4A5360'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='111.0' y='71.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>1</text>
+<rect x='126.0' y='52' width='30' height='30' fill='#161A21' stroke='#4A5360'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='141.0' y='71.5' fill='#9BA3AF' font-size='12' text-anchor='middle'>0</text>
+<rect x='156.0' y='52' width='30' height='30' fill='#161A21' stroke='#4A5360'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='171.0' y='71.5' fill='#9BA3AF' font-size='12' text-anchor='middle'>0</text>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='28.0' y='101.0' fill='#9BA3AF' font-size='11' text-anchor='end'>1</text>
+<rect x='36.0' y='82' width='30' height='30' fill='#241F16' stroke='#C4A26A'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='51.0' y='101.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>1</text>
+<rect x='66.0' y='82' width='30' height='30' fill='#161A21' stroke='#4A5360'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='81.0' y='101.5' fill='#9BA3AF' font-size='12' text-anchor='middle'>0</text>
+<rect x='96.0' y='82' width='30' height='30' fill='#161A21' stroke='#4A5360'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='111.0' y='101.5' fill='#9BA3AF' font-size='12' text-anchor='middle'>0</text>
+<rect x='126.0' y='82' width='30' height='30' fill='#161A21' stroke='#4A5360'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='141.0' y='101.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>1</text>
+<rect x='156.0' y='82' width='30' height='30' fill='#161A21' stroke='#4A5360'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='171.0' y='101.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>1</text>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='28.0' y='131.0' fill='#9BA3AF' font-size='11' text-anchor='end'>2</text>
+<rect x='36.0' y='112' width='30' height='30' fill='#161A21' stroke='#4A5360'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='51.0' y='131.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>1</text>
+<rect x='66.0' y='112' width='30' height='30' fill='#161A21' stroke='#4A5360'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='81.0' y='131.5' fill='#9BA3AF' font-size='12' text-anchor='middle'>0</text>
+<rect x='96.0' y='112' width='30' height='30' fill='#161A21' stroke='#4A5360'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='111.0' y='131.5' fill='#9BA3AF' font-size='12' text-anchor='middle'>0</text>
+<rect x='126.0' y='112' width='30' height='30' fill='#161A21' stroke='#4A5360'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='141.0' y='131.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>1</text>
+<rect x='156.0' y='112' width='30' height='30' fill='#161A21' stroke='#4A5360'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='171.0' y='131.5' fill='#9BA3AF' font-size='12' text-anchor='middle'>0</text>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='28.0' y='161.0' fill='#9BA3AF' font-size='11' text-anchor='end'>3</text>
+<rect x='36.0' y='142' width='30' height='30' fill='#161A21' stroke='#4A5360'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='51.0' y='161.5' fill='#9BA3AF' font-size='12' text-anchor='middle'>0</text>
+<rect x='66.0' y='142' width='30' height='30' fill='#161A21' stroke='#4A5360'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='81.0' y='161.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>1</text>
+<rect x='96.0' y='142' width='30' height='30' fill='#161A21' stroke='#4A5360'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='111.0' y='161.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>1</text>
+<rect x='126.0' y='142' width='30' height='30' fill='#161A21' stroke='#4A5360'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='141.0' y='161.5' fill='#9BA3AF' font-size='12' text-anchor='middle'>0</text>
+<rect x='156.0' y='142' width='30' height='30' fill='#161A21' stroke='#4A5360'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='171.0' y='161.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>1</text>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='28.0' y='191.0' fill='#9BA3AF' font-size='11' text-anchor='end'>4</text>
+<rect x='36.0' y='172' width='30' height='30' fill='#161A21' stroke='#4A5360'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='51.0' y='191.5' fill='#9BA3AF' font-size='12' text-anchor='middle'>0</text>
+<rect x='66.0' y='172' width='30' height='30' fill='#161A21' stroke='#4A5360'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='81.0' y='191.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>1</text>
+<rect x='96.0' y='172' width='30' height='30' fill='#161A21' stroke='#4A5360'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='111.0' y='191.5' fill='#9BA3AF' font-size='12' text-anchor='middle'>0</text>
+<rect x='126.0' y='172' width='30' height='30' fill='#161A21' stroke='#4A5360'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='141.0' y='191.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>1</text>
+<rect x='156.0' y='172' width='30' height='30' fill='#161A21' stroke='#4A5360'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='171.0' y='191.5' fill='#9BA3AF' font-size='12' text-anchor='middle'>0</text>
 </svg>
 </svg>

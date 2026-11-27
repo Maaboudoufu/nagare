@@ -1,27 +1,27 @@
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 524 276' width='524' height='276' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
-<defs><marker id='a0' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#8a93a6'/></marker><marker id='a1' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#E2B66B'/></marker><marker id='a2' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#7AA7FF'/></marker><marker id='a3' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#62BE8C'/></marker><marker id='a4' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#F08A9C'/></marker></defs>
-<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
-<rect x='30' y='40' width='150' height='34' rx='6' fill='#22355a' stroke='#7AA7FF' stroke-width='1.8'/>
-<text x='105.0' y='58' fill='#e6e8ee' font-size='12' text-anchor='middle'>BobaCafe</text>
-<rect x='30' y='130' width='150' height='34' rx='6' fill='#5a4520' stroke='#E2B66B' stroke-width='1.8'/>
-<text x='105.0' y='148' fill='#e6e8ee' font-size='12' text-anchor='middle'>MobileBobaCafe</text>
-<line x1='105' y1='128' x2='105' y2='76' stroke='#7AA7FF' stroke-width='1.8' marker-end='url(#a2)'/>
-<text x='127.0' y='106.0' fill='#7AA7FF' font-size='11' text-anchor='middle'>is-a</text>
-<text x='105' y='196' fill='#8a93a6' font-size='12' text-anchor='middle'>inheritance</text>
-<rect x='250' y='40' width='130' height='34' rx='6' fill='#22355a' stroke='#7AA7FF' stroke-width='1.8'/>
-<text x='315.0' y='58' fill='#e6e8ee' font-size='12' text-anchor='middle'>BobaCafe</text>
-<rect x='390' y='96' width='120' height='28' rx='6' fill='#1f4232' stroke='#62BE8C' stroke-width='1.8'/>
-<text x='450.0' y='114' fill='#e6e8ee' font-size='11' text-anchor='middle'>TeaBrewer</text>
-<line x1='315' y1='74' x2='388' y2='110' stroke='#62BE8C' stroke-width='1.8' marker-end='url(#a3)'/>
-<rect x='390' y='132' width='120' height='28' rx='6' fill='#1f4232' stroke='#62BE8C' stroke-width='1.8'/>
-<text x='450.0' y='150' fill='#e6e8ee' font-size='11' text-anchor='middle'>BobaCooker</text>
-<line x1='315' y1='74' x2='388' y2='146' stroke='#62BE8C' stroke-width='1.8' marker-end='url(#a3)'/>
-<rect x='390' y='168' width='120' height='28' rx='6' fill='#1f4232' stroke='#62BE8C' stroke-width='1.8'/>
-<text x='450.0' y='186' fill='#e6e8ee' font-size='11' text-anchor='middle'>ToppingStation</text>
-<line x1='315' y1='74' x2='388' y2='182' stroke='#62BE8C' stroke-width='1.8' marker-end='url(#a3)'/>
-<rect x='390' y='204' width='120' height='28' rx='6' fill='#1f4232' stroke='#62BE8C' stroke-width='1.8'/>
-<text x='450.0' y='222' fill='#e6e8ee' font-size='11' text-anchor='middle'>OrderKiosk</text>
-<line x1='315' y1='74' x2='388' y2='218' stroke='#62BE8C' stroke-width='1.8' marker-end='url(#a3)'/>
-<text x='282' y='150' fill='#62BE8C' font-size='12' text-anchor='middle'>has-a</text>
-<text x='380' y='260' fill='#8a93a6' font-size='12' text-anchor='middle'>composition (members)</text>
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 524 276' width='524' height='276' font-family='IBM Plex Sans,system-ui,-apple-system,Segoe UI,sans-serif'>
+<defs><marker id='a0' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#9BA3AF'/></marker><marker id='a1' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#C4A26A'/></marker><marker id='a2' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#7E9AC4'/></marker><marker id='a3' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#6EA586'/></marker><marker id='a4' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#C47B75'/></marker></defs>
+<rect width='100%' height='100%' rx='0' fill='#0F1216'/>
+<rect x='30' y='40' width='150' height='34' rx='3' fill='#18202E' stroke='#7E9AC4' stroke-width='1.5'/>
+<text x='105.0' y='58' fill='#E9EBEE' font-size='12' text-anchor='middle'>BobaCafe</text>
+<rect x='30' y='130' width='150' height='34' rx='3' fill='#241F16' stroke='#C4A26A' stroke-width='1.5'/>
+<text x='105.0' y='148' fill='#E9EBEE' font-size='12' text-anchor='middle'>MobileBobaCafe</text>
+<line x1='105' y1='128' x2='105' y2='76' stroke='#7E9AC4' stroke-width='1.5' marker-end='url(#a2)'/>
+<text x='127.0' y='106.0' fill='#C2C8D0' font-size='11.5' text-anchor='middle'>is-a</text>
+<text x='105' y='196' fill='#9BA3AF' font-size='12' text-anchor='middle'>inheritance</text>
+<rect x='250' y='40' width='130' height='34' rx='3' fill='#18202E' stroke='#7E9AC4' stroke-width='1.5'/>
+<text x='315.0' y='58' fill='#E9EBEE' font-size='12' text-anchor='middle'>BobaCafe</text>
+<rect x='390' y='96' width='120' height='28' rx='3' fill='#142019' stroke='#6EA586' stroke-width='1.5'/>
+<text x='450.0' y='114' fill='#E9EBEE' font-size='11.5' text-anchor='middle'>TeaBrewer</text>
+<line x1='315' y1='74' x2='388' y2='110' stroke='#6EA586' stroke-width='1.5' marker-end='url(#a3)'/>
+<rect x='390' y='132' width='120' height='28' rx='3' fill='#142019' stroke='#6EA586' stroke-width='1.5'/>
+<text x='450.0' y='150' fill='#E9EBEE' font-size='11.5' text-anchor='middle'>BobaCooker</text>
+<line x1='315' y1='74' x2='388' y2='146' stroke='#6EA586' stroke-width='1.5' marker-end='url(#a3)'/>
+<rect x='390' y='168' width='120' height='28' rx='3' fill='#142019' stroke='#6EA586' stroke-width='1.5'/>
+<text x='450.0' y='186' fill='#E9EBEE' font-size='11.5' text-anchor='middle'>ToppingStation</text>
+<line x1='315' y1='74' x2='388' y2='182' stroke='#6EA586' stroke-width='1.5' marker-end='url(#a3)'/>
+<rect x='390' y='204' width='120' height='28' rx='3' fill='#142019' stroke='#6EA586' stroke-width='1.5'/>
+<text x='450.0' y='222' fill='#E9EBEE' font-size='11.5' text-anchor='middle'>OrderKiosk</text>
+<line x1='315' y1='74' x2='388' y2='218' stroke='#6EA586' stroke-width='1.5' marker-end='url(#a3)'/>
+<text x='282' y='150' fill='#C2C8D0' font-size='12' text-anchor='middle'>has-a</text>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='380' y='260' fill='#9BA3AF' font-size='12' text-anchor='middle'>composition (members)</text>
 </svg>

@@ -1,25 +1,25 @@
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 596 168' width='596' height='168' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
-<defs><marker id='a0' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#8a93a6'/></marker><marker id='a1' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#E2B66B'/></marker><marker id='a2' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#7AA7FF'/></marker><marker id='a3' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#62BE8C'/></marker><marker id='a4' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#F08A9C'/></marker></defs>
-<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
-<text x='75' y='28' fill='#e6e8ee' font-size='12' text-anchor='middle'>1. BobaCafe a;</text>
-<rect x='20' y='80' width='110' height='28' rx='6' fill='#1f4232' stroke='#62BE8C' stroke-width='1.8'/>
-<text x='75.0' y='98' fill='#e6e8ee' font-size='12' text-anchor='middle'>cafe a</text>
-<text x='75' y='130' fill='#E2B66B' font-size='12' text-anchor='middle'>num_open = 1</text>
-<text x='219' y='28' fill='#e6e8ee' font-size='12' text-anchor='middle'>2. { BobaCafe b;</text>
-<rect x='164' y='80' width='110' height='28' rx='6' fill='#1f4232' stroke='#62BE8C' stroke-width='1.8'/>
-<text x='219.0' y='98' fill='#e6e8ee' font-size='12' text-anchor='middle'>cafe a</text>
-<rect x='164' y='44' width='110' height='28' rx='6' fill='#1f4232' stroke='#62BE8C' stroke-width='1.8'/>
-<text x='219.0' y='62' fill='#e6e8ee' font-size='12' text-anchor='middle'>cafe b</text>
-<text x='219' y='130' fill='#E2B66B' font-size='12' text-anchor='middle'>num_open = 2</text>
-<text x='363' y='28' fill='#e6e8ee' font-size='12' text-anchor='middle'>3. }</text>
-<rect x='308' y='80' width='110' height='28' rx='6' fill='#1f4232' stroke='#62BE8C' stroke-width='1.8'/>
-<text x='363.0' y='98' fill='#e6e8ee' font-size='12' text-anchor='middle'>cafe a</text>
-<rect x='308' y='44' width='110' height='28' rx='6' fill='#3a2328' stroke='#F08A9C' stroke-width='1.8' stroke-dasharray='5 4'/>
-<text x='363.0' y='62' fill='#e6e8ee' font-size='11' text-anchor='middle'>b: ~BobaCafe()</text>
-<text x='363' y='130' fill='#E2B66B' font-size='12' text-anchor='middle'>num_open = 1</text>
-<text x='507' y='28' fill='#e6e8ee' font-size='12' text-anchor='middle'>4. return</text>
-<rect x='452' y='80' width='110' height='28' rx='6' fill='#3a2328' stroke='#F08A9C' stroke-width='1.8' stroke-dasharray='5 4'/>
-<text x='507.0' y='98' fill='#e6e8ee' font-size='11' text-anchor='middle'>a: ~BobaCafe()</text>
-<text x='507' y='130' fill='#E2B66B' font-size='12' text-anchor='middle'>num_open = 0</text>
-<text x='298' y='154' fill='#8a93a6' font-size='11' text-anchor='middle'>green = alive, red = its destructor runs at this step</text>
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 596 168' width='596' height='168' font-family='IBM Plex Sans,system-ui,-apple-system,Segoe UI,sans-serif'>
+<defs><marker id='a0' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#9BA3AF'/></marker><marker id='a1' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#C4A26A'/></marker><marker id='a2' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#7E9AC4'/></marker><marker id='a3' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#6EA586'/></marker><marker id='a4' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#C47B75'/></marker></defs>
+<rect width='100%' height='100%' rx='0' fill='#0F1216'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='75' y='28' fill='#E9EBEE' font-size='12' text-anchor='middle'>1. BobaCafe a;</text>
+<rect x='20' y='80' width='110' height='28' rx='3' fill='#142019' stroke='#6EA586' stroke-width='1.5'/>
+<text x='75.0' y='98' fill='#E9EBEE' font-size='12' text-anchor='middle'>cafe a</text>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='75' y='130' fill='#C2C8D0' font-size='12' text-anchor='middle'>num_open = 1</text>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='219' y='28' fill='#E9EBEE' font-size='12' text-anchor='middle'>2. { BobaCafe b;</text>
+<rect x='164' y='80' width='110' height='28' rx='3' fill='#142019' stroke='#6EA586' stroke-width='1.5'/>
+<text x='219.0' y='98' fill='#E9EBEE' font-size='12' text-anchor='middle'>cafe a</text>
+<rect x='164' y='44' width='110' height='28' rx='3' fill='#142019' stroke='#6EA586' stroke-width='1.5'/>
+<text x='219.0' y='62' fill='#E9EBEE' font-size='12' text-anchor='middle'>cafe b</text>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='219' y='130' fill='#C2C8D0' font-size='12' text-anchor='middle'>num_open = 2</text>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='363' y='28' fill='#E9EBEE' font-size='12' text-anchor='middle'>3. }</text>
+<rect x='308' y='80' width='110' height='28' rx='3' fill='#142019' stroke='#6EA586' stroke-width='1.5'/>
+<text x='363.0' y='98' fill='#E9EBEE' font-size='12' text-anchor='middle'>cafe a</text>
+<rect x='308' y='44' width='110' height='28' rx='3' fill='#221718' stroke='#C47B75' stroke-width='1.5' stroke-dasharray='5 4'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='363.0' y='62' fill='#E9EBEE' font-size='11' text-anchor='middle'>b: ~BobaCafe()</text>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='363' y='130' fill='#C2C8D0' font-size='12' text-anchor='middle'>num_open = 1</text>
+<text x='507' y='28' fill='#E9EBEE' font-size='12' text-anchor='middle'>4. return</text>
+<rect x='452' y='80' width='110' height='28' rx='3' fill='#221718' stroke='#C47B75' stroke-width='1.5' stroke-dasharray='5 4'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='507.0' y='98' fill='#E9EBEE' font-size='11' text-anchor='middle'>a: ~BobaCafe()</text>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='507' y='130' fill='#C2C8D0' font-size='12' text-anchor='middle'>num_open = 0</text>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='298' y='154' fill='#9BA3AF' font-size='11' text-anchor='middle'>green = alive, red = its destructor runs at this step</text>
 </svg>

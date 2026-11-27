@@ -1,32 +1,32 @@
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 440 294' width='440' height='294' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
-<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
-<defs><marker id='hm' markerUnits='userSpaceOnUse' markerWidth='10' markerHeight='10' refX='9' refY='5' orient='auto'><path d='M0,0 L10,5 L0,10 z' fill='#E2B66B'/></marker></defs>
-<text x='220.0' y='22' fill='#e6e8ee' font-size='13.0' text-anchor='middle'>fibonacciMemo(5): 9 calls instead of 15</text>
-<line x1='309.2' y1='62.0' x2='230.5' y2='86.0' stroke='#4a5263' stroke-width='1.5'/>
-<line x1='230.5' y1='112.0' x2='157.0' y2='136.0' stroke='#4a5263' stroke-width='1.5'/>
-<line x1='157.0' y1='162.0' x2='94.0' y2='186.0' stroke='#4a5263' stroke-width='1.5'/>
-<line x1='94.0' y1='212.0' x2='52.0' y2='236.0' stroke='#4a5263' stroke-width='1.5'/>
-<line x1='94.0' y1='212.0' x2='136.0' y2='236.0' stroke='#4a5263' stroke-width='1.5'/>
-<line x1='157.0' y1='162.0' x2='220.0' y2='186.0' stroke='#4a5263' stroke-width='1.5'/>
-<line x1='230.5' y1='112.0' x2='304.0' y2='136.0' stroke='#4a5263' stroke-width='1.5'/>
-<line x1='309.2' y1='62.0' x2='388.0' y2='86.0' stroke='#4a5263' stroke-width='1.5'/>
-<rect x='286.2' y='36.0' width='46.0' height='26' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
-<text x='309.2' y='53.5' fill='#e6e8ee' font-size='12.0' text-anchor='middle'>f(5)</text>
-<rect x='207.5' y='86.0' width='46.0' height='26' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
-<text x='230.5' y='103.5' fill='#e6e8ee' font-size='12.0' text-anchor='middle'>f(4)</text>
-<rect x='134.0' y='136.0' width='46.0' height='26' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
-<text x='157.0' y='153.5' fill='#e6e8ee' font-size='12.0' text-anchor='middle'>f(3)</text>
-<rect x='71.0' y='186.0' width='46.0' height='26' rx='5' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
-<text x='94.0' y='203.5' fill='#e6e8ee' font-size='12.0' text-anchor='middle'>f(2)</text>
-<rect x='29.0' y='236.0' width='46.0' height='26' rx='5' fill='#1f4232' stroke='#62BE8C' stroke-width='1.6'/>
-<text x='52.0' y='253.5' fill='#e6e8ee' font-size='12.0' text-anchor='middle'>f(1)</text>
-<rect x='113.0' y='236.0' width='46.0' height='26' rx='5' fill='#1f4232' stroke='#62BE8C' stroke-width='1.6'/>
-<text x='136.0' y='253.5' fill='#e6e8ee' font-size='12.0' text-anchor='middle'>f(0)</text>
-<rect x='197.0' y='186.0' width='46.0' height='26' rx='5' fill='#1f4232' stroke='#62BE8C' stroke-width='1.6'/>
-<text x='220.0' y='203.5' fill='#e6e8ee' font-size='12.0' text-anchor='middle'>f(1)</text>
-<rect x='265.0' y='136.0' width='78.0' height='26' rx='5' fill='#22355a' stroke='#7AA7FF' stroke-width='1.6'/>
-<text x='304.0' y='153.5' fill='#e6e8ee' font-size='11.6' text-anchor='middle'>f(2): memo</text>
-<rect x='349.0' y='86.0' width='78.0' height='26' rx='5' fill='#22355a' stroke='#7AA7FF' stroke-width='1.6'/>
-<text x='388.0' y='103.5' fill='#e6e8ee' font-size='11.6' text-anchor='middle'>f(3): memo</text>
-<text x='220.0' y='284.0' fill='#8a93a6' font-size='11.0' text-anchor='middle'>blue: memo[n] is already set, so it returns at once</text>
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 440 294' width='440' height='294' font-family='IBM Plex Sans,system-ui,-apple-system,Segoe UI,sans-serif'>
+<rect width='100%' height='100%' rx='0' fill='#0F1216'/>
+<defs><marker id='hm' markerUnits='userSpaceOnUse' markerWidth='10' markerHeight='10' refX='9' refY='5' orient='auto'><path d='M0,0 L10,5 L0,10 z' fill='#C4A26A'/></marker></defs>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='220.0' y='22' fill='#E9EBEE' font-size='13.0' text-anchor='middle'>fibonacciMemo(5): 9 calls instead of 15</text>
+<line x1='309.2' y1='62.0' x2='230.5' y2='86.0' stroke='#4A5360' stroke-width='1'/>
+<line x1='230.5' y1='112.0' x2='157.0' y2='136.0' stroke='#4A5360' stroke-width='1'/>
+<line x1='157.0' y1='162.0' x2='94.0' y2='186.0' stroke='#4A5360' stroke-width='1'/>
+<line x1='94.0' y1='212.0' x2='52.0' y2='236.0' stroke='#4A5360' stroke-width='1'/>
+<line x1='94.0' y1='212.0' x2='136.0' y2='236.0' stroke='#4A5360' stroke-width='1'/>
+<line x1='157.0' y1='162.0' x2='220.0' y2='186.0' stroke='#4A5360' stroke-width='1'/>
+<line x1='230.5' y1='112.0' x2='304.0' y2='136.0' stroke='#4A5360' stroke-width='1'/>
+<line x1='309.2' y1='62.0' x2='388.0' y2='86.0' stroke='#4A5360' stroke-width='1'/>
+<rect x='286.2' y='36.0' width='46.0' height='26' rx='3' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='309.2' y='53.5' fill='#E9EBEE' font-size='12.0' text-anchor='middle'>f(5)</text>
+<rect x='207.5' y='86.0' width='46.0' height='26' rx='3' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='230.5' y='103.5' fill='#E9EBEE' font-size='12.0' text-anchor='middle'>f(4)</text>
+<rect x='134.0' y='136.0' width='46.0' height='26' rx='3' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='157.0' y='153.5' fill='#E9EBEE' font-size='12.0' text-anchor='middle'>f(3)</text>
+<rect x='71.0' y='186.0' width='46.0' height='26' rx='3' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='94.0' y='203.5' fill='#E9EBEE' font-size='12.0' text-anchor='middle'>f(2)</text>
+<rect x='29.0' y='236.0' width='46.0' height='26' rx='3' fill='#142019' stroke='#6EA586' stroke-width='1.5'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='52.0' y='253.5' fill='#E9EBEE' font-size='12.0' text-anchor='middle'>f(1)</text>
+<rect x='113.0' y='236.0' width='46.0' height='26' rx='3' fill='#142019' stroke='#6EA586' stroke-width='1.5'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='136.0' y='253.5' fill='#E9EBEE' font-size='12.0' text-anchor='middle'>f(0)</text>
+<rect x='197.0' y='186.0' width='46.0' height='26' rx='3' fill='#142019' stroke='#6EA586' stroke-width='1.5'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='220.0' y='203.5' fill='#E9EBEE' font-size='12.0' text-anchor='middle'>f(1)</text>
+<rect x='265.0' y='136.0' width='78.0' height='26' rx='3' fill='#18202E' stroke='#7E9AC4' stroke-width='1.5'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='304.0' y='153.5' fill='#E9EBEE' font-size='11.6' text-anchor='middle'>f(2): memo</text>
+<rect x='349.0' y='86.0' width='78.0' height='26' rx='3' fill='#18202E' stroke='#7E9AC4' stroke-width='1.5'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='388.0' y='103.5' fill='#E9EBEE' font-size='11.6' text-anchor='middle'>f(3): memo</text>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='220.0' y='284.0' fill='#9BA3AF' font-size='11.0' text-anchor='middle'>blue: memo[n] is already set, so it returns at once</text>
 </svg>

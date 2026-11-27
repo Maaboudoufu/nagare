@@ -1,31 +1,31 @@
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 238' width='500' height='238' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
-<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
-<text x='250.0' y='22.0' fill='#e6e8ee' font-size='13' text-anchor='middle'>what const locks</text>
-<text x='16.0' y='69.0' fill='#e6e8ee' font-size='12' text-anchor='start'>const River* p</text>
-<rect x='196.0' y='48.0' width='64.0' height='32.0' rx='2' fill='#5a4520' stroke='#E2B66B' stroke-width='1.5'/>
-<rect x='330.0' y='48.0' width='92.0' height='32.0' rx='2' fill='#1f4232' stroke='#62BE8C' stroke-width='1.5'/>
-<text x='376.0' y='68.2' fill='#e6e8ee' font-size='12' text-anchor='middle'>River</text>
-<circle cx='228.0' cy='64.0' r='3.5' fill='#7AA7FF'/>
-<line x1='228.0' y1='64.0' x2='319.0' y2='64.0' stroke='#7AA7FF' stroke-width='2'/>
-<polygon points='328.0,64.0 319.0,59.0 319.0,69.0' fill='#7AA7FF'/>
-<text x='228.0' y='96.0' fill='#E2B66B' font-size='11' text-anchor='middle'>p: re-point</text>
-<text x='376.0' y='96.0' fill='#62BE8C' font-size='11' text-anchor='middle'>*p: read only</text>
-<text x='16.0' y='133.0' fill='#e6e8ee' font-size='12' text-anchor='start'>River* const p</text>
-<rect x='196.0' y='112.0' width='64.0' height='32.0' rx='2' fill='#1f4232' stroke='#62BE8C' stroke-width='1.5'/>
-<rect x='330.0' y='112.0' width='92.0' height='32.0' rx='2' fill='#5a4520' stroke='#E2B66B' stroke-width='1.5'/>
-<text x='376.0' y='132.2' fill='#e6e8ee' font-size='12' text-anchor='middle'>River</text>
-<circle cx='228.0' cy='128.0' r='3.5' fill='#7AA7FF'/>
-<line x1='228.0' y1='128.0' x2='319.0' y2='128.0' stroke='#7AA7FF' stroke-width='2'/>
-<polygon points='328.0,128.0 319.0,123.0 319.0,133.0' fill='#7AA7FF'/>
-<text x='228.0' y='160.0' fill='#62BE8C' font-size='11' text-anchor='middle'>p: fixed</text>
-<text x='376.0' y='160.0' fill='#E2B66B' font-size='11' text-anchor='middle'>*p: change</text>
-<text x='16.0' y='197.0' fill='#e6e8ee' font-size='12' text-anchor='start'>const River* const p</text>
-<rect x='196.0' y='176.0' width='64.0' height='32.0' rx='2' fill='#1f4232' stroke='#62BE8C' stroke-width='1.5'/>
-<rect x='330.0' y='176.0' width='92.0' height='32.0' rx='2' fill='#1f4232' stroke='#62BE8C' stroke-width='1.5'/>
-<text x='376.0' y='196.2' fill='#e6e8ee' font-size='12' text-anchor='middle'>River</text>
-<circle cx='228.0' cy='192.0' r='3.5' fill='#7AA7FF'/>
-<line x1='228.0' y1='192.0' x2='319.0' y2='192.0' stroke='#7AA7FF' stroke-width='2'/>
-<polygon points='328.0,192.0 319.0,187.0 319.0,197.0' fill='#7AA7FF'/>
-<text x='228.0' y='224.0' fill='#62BE8C' font-size='11' text-anchor='middle'>p: fixed</text>
-<text x='376.0' y='224.0' fill='#62BE8C' font-size='11' text-anchor='middle'>*p: read only</text>
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 238' width='500' height='238' font-family='IBM Plex Sans,system-ui,-apple-system,Segoe UI,sans-serif'>
+<rect width='100%' height='100%' rx='0' fill='#0F1216'/>
+<text font-weight='600' x='250.0' y='22.0' fill='#E9EBEE' font-size='14' text-anchor='middle'>What const locks</text>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='16.0' y='69.0' fill='#E9EBEE' font-size='12' text-anchor='start'>const River* p</text>
+<rect x='196.0' y='48.0' width='64.0' height='32.0' rx='2' fill='#241F16' stroke='#C4A26A' stroke-width='1.5'/>
+<rect x='330.0' y='48.0' width='92.0' height='32.0' rx='2' fill='#142019' stroke='#6EA586' stroke-width='1.5'/>
+<text x='376.0' y='68.2' fill='#E9EBEE' font-size='12' text-anchor='middle'>River</text>
+<circle cx='228.0' cy='64.0' r='3.5' fill='#7E9AC4'/>
+<line x1='228.0' y1='64.0' x2='319.0' y2='64.0' stroke='#7E9AC4' stroke-width='1.5'/>
+<polygon points='328.0,64.0 319.0,59.0 319.0,69.0' fill='#7E9AC4'/>
+<text x='228.0' y='96.0' fill='#C2C8D0' font-size='11.5' text-anchor='middle'>p: re-point</text>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='376.0' y='96.0' fill='#C2C8D0' font-size='11' text-anchor='middle'>*p: read only</text>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='16.0' y='133.0' fill='#E9EBEE' font-size='12' text-anchor='start'>River* const p</text>
+<rect x='196.0' y='112.0' width='64.0' height='32.0' rx='2' fill='#142019' stroke='#6EA586' stroke-width='1.5'/>
+<rect x='330.0' y='112.0' width='92.0' height='32.0' rx='2' fill='#241F16' stroke='#C4A26A' stroke-width='1.5'/>
+<text x='376.0' y='132.2' fill='#E9EBEE' font-size='12' text-anchor='middle'>River</text>
+<circle cx='228.0' cy='128.0' r='3.5' fill='#7E9AC4'/>
+<line x1='228.0' y1='128.0' x2='319.0' y2='128.0' stroke='#7E9AC4' stroke-width='1.5'/>
+<polygon points='328.0,128.0 319.0,123.0 319.0,133.0' fill='#7E9AC4'/>
+<text x='228.0' y='160.0' fill='#C2C8D0' font-size='11.5' text-anchor='middle'>p: fixed</text>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='376.0' y='160.0' fill='#C2C8D0' font-size='11' text-anchor='middle'>*p: change</text>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='16.0' y='197.0' fill='#E9EBEE' font-size='12' text-anchor='start'>const River* const p</text>
+<rect x='196.0' y='176.0' width='64.0' height='32.0' rx='2' fill='#142019' stroke='#6EA586' stroke-width='1.5'/>
+<rect x='330.0' y='176.0' width='92.0' height='32.0' rx='2' fill='#142019' stroke='#6EA586' stroke-width='1.5'/>
+<text x='376.0' y='196.2' fill='#E9EBEE' font-size='12' text-anchor='middle'>River</text>
+<circle cx='228.0' cy='192.0' r='3.5' fill='#7E9AC4'/>
+<line x1='228.0' y1='192.0' x2='319.0' y2='192.0' stroke='#7E9AC4' stroke-width='1.5'/>
+<polygon points='328.0,192.0 319.0,187.0 319.0,197.0' fill='#7E9AC4'/>
+<text x='228.0' y='224.0' fill='#C2C8D0' font-size='11.5' text-anchor='middle'>p: fixed</text>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='376.0' y='224.0' fill='#C2C8D0' font-size='11' text-anchor='middle'>*p: read only</text>
 </svg>

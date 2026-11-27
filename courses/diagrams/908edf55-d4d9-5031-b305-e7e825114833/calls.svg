@@ -1,34 +1,34 @@
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 514 190' width='514' height='190'>
-<svg x='0' y='0' width='200' height='190' viewBox='0 0 200 190' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
-<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
-<defs><marker id='ah' markerUnits='userSpaceOnUse' markerWidth='9' markerHeight='9' refX='8' refY='4.5' orient='auto'><path d='M0,0 L9,4.5 L0,9 z' fill='#8a93a6'/></marker></defs>
-<text x='100.0' y='22' fill='#e6e8ee' font-size='13.0' text-anchor='middle'>calls: n halves</text>
-<line x1='6.0' y1='180.0' x2='194.0' y2='180.0' stroke='#4a5263' stroke-width='2'/>
-<rect x='12.0' y='150.0' width='176.0' height='24.0' rx='4' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
-<text x='100.0' y='166.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>power(2, 13)</text>
-<rect x='12.0' y='122.0' width='176.0' height='24.0' rx='4' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
-<text x='100.0' y='138.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>power(2, 6)</text>
-<rect x='12.0' y='94.0' width='176.0' height='24.0' rx='4' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
-<text x='100.0' y='110.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>power(2, 3)</text>
-<rect x='12.0' y='66.0' width='176.0' height='24.0' rx='4' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
-<text x='100.0' y='82.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>power(2, 1)</text>
-<rect x='12.0' y='38.0' width='176.0' height='24.0' rx='4' fill='#5a4520' stroke='#E2B66B' stroke-width='1.6'/>
-<text x='100.0' y='54.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>power(2, 0)</text>
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 514 190' width='514' height='190' font-family='IBM Plex Sans,system-ui,-apple-system,Segoe UI,sans-serif'>
+<svg x='0' y='0' width='200' height='190' viewBox='0 0 200 190' font-family='IBM Plex Sans,system-ui,-apple-system,Segoe UI,sans-serif'>
+<rect width='100%' height='100%' rx='0' fill='#0F1216'/>
+<defs><marker id='ah' markerUnits='userSpaceOnUse' markerWidth='9' markerHeight='9' refX='8' refY='4.5' orient='auto'><path d='M0,0 L9,4.5 L0,9 z' fill='#9BA3AF'/></marker></defs>
+<text font-weight='600' x='100.0' y='22' fill='#E9EBEE' font-size='14' text-anchor='middle'>Calls: n halves</text>
+<line x1='6.0' y1='180.0' x2='194.0' y2='180.0' stroke='#4A5360' stroke-width='1'/>
+<rect x='12.0' y='150.0' width='176.0' height='24.0' rx='3' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='100.0' y='166.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>power(2, 13)</text>
+<rect x='12.0' y='122.0' width='176.0' height='24.0' rx='3' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='100.0' y='138.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>power(2, 6)</text>
+<rect x='12.0' y='94.0' width='176.0' height='24.0' rx='3' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='100.0' y='110.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>power(2, 3)</text>
+<rect x='12.0' y='66.0' width='176.0' height='24.0' rx='3' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='100.0' y='82.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>power(2, 1)</text>
+<rect x='12.0' y='38.0' width='176.0' height='24.0' rx='3' fill='#241F16' stroke='#C4A26A' stroke-width='1.5'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='100.0' y='54.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>power(2, 0)</text>
 </svg>
-<svg x='214' y='0' width='300' height='190' viewBox='0 0 300 190' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
-<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
-<defs><marker id='ah' markerUnits='userSpaceOnUse' markerWidth='9' markerHeight='9' refX='8' refY='4.5' orient='auto'><path d='M0,0 L9,4.5 L0,9 z' fill='#8a93a6'/></marker></defs>
-<text x='150.0' y='22' fill='#e6e8ee' font-size='13.0' text-anchor='middle'>returns: half * half</text>
-<line x1='6.0' y1='180.0' x2='294.0' y2='180.0' stroke='#4a5263' stroke-width='2'/>
-<rect x='12.0' y='150.0' width='276.0' height='24.0' rx='4' fill='#1f4232' stroke='#62BE8C' stroke-width='1.6'/>
-<text x='150.0' y='166.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>2 * 64 * 64 = 8192</text>
-<rect x='12.0' y='122.0' width='276.0' height='24.0' rx='4' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
-<text x='150.0' y='138.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>8 * 8 = 64</text>
-<rect x='12.0' y='94.0' width='276.0' height='24.0' rx='4' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
-<text x='150.0' y='110.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>2 * 2 * 2 = 8</text>
-<rect x='12.0' y='66.0' width='276.0' height='24.0' rx='4' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
-<text x='150.0' y='82.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>2 * 1 * 1 = 2</text>
-<rect x='12.0' y='38.0' width='276.0' height='24.0' rx='4' fill='#2a2f3a' stroke='#8a93a6' stroke-width='1.6'/>
-<text x='150.0' y='54.5' fill='#e6e8ee' font-size='12' text-anchor='middle'>returns 1</text>
+<svg x='214' y='0' width='300' height='190' viewBox='0 0 300 190' font-family='IBM Plex Sans,system-ui,-apple-system,Segoe UI,sans-serif'>
+<rect width='100%' height='100%' rx='0' fill='#0F1216'/>
+<defs><marker id='ah' markerUnits='userSpaceOnUse' markerWidth='9' markerHeight='9' refX='8' refY='4.5' orient='auto'><path d='M0,0 L9,4.5 L0,9 z' fill='#9BA3AF'/></marker></defs>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='150.0' y='22' fill='#E9EBEE' font-size='13.0' text-anchor='middle'>returns: half * half</text>
+<line x1='6.0' y1='180.0' x2='294.0' y2='180.0' stroke='#4A5360' stroke-width='1'/>
+<rect x='12.0' y='150.0' width='276.0' height='24.0' rx='3' fill='#142019' stroke='#6EA586' stroke-width='1.5'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='150.0' y='166.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>2 * 64 * 64 = 8192</text>
+<rect x='12.0' y='122.0' width='276.0' height='24.0' rx='3' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='150.0' y='138.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>8 * 8 = 64</text>
+<rect x='12.0' y='94.0' width='276.0' height='24.0' rx='3' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='150.0' y='110.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>2 * 2 * 2 = 8</text>
+<rect x='12.0' y='66.0' width='276.0' height='24.0' rx='3' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='150.0' y='82.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>2 * 1 * 1 = 2</text>
+<rect x='12.0' y='38.0' width='276.0' height='24.0' rx='3' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text x='150.0' y='54.5' fill='#E9EBEE' font-size='12' text-anchor='middle'>returns 1</text>
 </svg>
 </svg>

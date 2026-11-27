@@ -1,46 +1,46 @@
 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 542 130' width='542' height='130'>
 <svg x='0' y='0' width='264' height='130' viewBox='0 0 264 130' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
-<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
-<text x='132.0' y='22.0' fill='#e6e8ee' font-size='13' text-anchor='middle'>j = 3</text>
-<text x='41.0' y='49.0' fill='#8a93a6' font-size='11' text-anchor='end'>j</text>
-<text x='41.0' y='78.0' fill='#8a93a6' font-size='12' text-anchor='end'>best</text>
-<text x='69.0' y='49.0' fill='#8a93a6' font-size='11' text-anchor='middle'>0</text>
-<rect x='49.0' y='54' width='40' height='40' fill='#22355a' stroke='#7AA7FF' stroke-width='2'/>
-<text x='69.0' y='78.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>0</text>
-<text x='109.0' y='49.0' fill='#8a93a6' font-size='11' text-anchor='middle'>1</text>
-<rect x='89.0' y='54' width='40' height='40' fill='#22355a' stroke='#7AA7FF' stroke-width='2'/>
-<text x='109.0' y='78.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>1</text>
-<text x='149.0' y='49.0' fill='#8a93a6' font-size='11' text-anchor='middle'>2</text>
-<rect x='129.0' y='54' width='40' height='40' fill='#22355a' stroke='#7AA7FF' stroke-width='2'/>
-<text x='149.0' y='78.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>6</text>
-<text x='189.0' y='49.0' fill='#8a93a6' font-size='11' text-anchor='middle'>3</text>
-<rect x='169.0' y='54' width='40' height='40' fill='#5a4520' stroke='#E2B66B' stroke-width='2'/>
-<text x='189.0' y='78.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>10</text>
-<text x='229.0' y='49.0' fill='#8a93a6' font-size='11' text-anchor='middle'>4</text>
-<rect x='209.0' y='54' width='40' height='40' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
-<text x='229.0' y='78.5' fill='#e6e8ee' font-size='13' text-anchor='middle'></text>
-<text x='132.0' y='114.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>max(1+6, 6+1, 10+0) = 10</text>
+<rect width='100%' height='100%' rx='10' fill='#151920'/>
+<text x='132.0' y='22.0' fill='#d4d8de' font-size='13' text-anchor='middle'>j = 3</text>
+<text x='41.0' y='49.0' fill='#858d98' font-size='11' text-anchor='end'>j</text>
+<text x='41.0' y='78.0' fill='#858d98' font-size='12' text-anchor='end'>best</text>
+<text x='69.0' y='49.0' fill='#858d98' font-size='11' text-anchor='middle'>0</text>
+<rect x='49.0' y='54' width='40' height='40' fill='#212b38' stroke='#6382a8' stroke-width='1.25'/>
+<text x='69.0' y='78.5' fill='#d4d8de' font-size='13' text-anchor='middle'>0</text>
+<text x='109.0' y='49.0' fill='#858d98' font-size='11' text-anchor='middle'>1</text>
+<rect x='89.0' y='54' width='40' height='40' fill='#212b38' stroke='#6382a8' stroke-width='1.25'/>
+<text x='109.0' y='78.5' fill='#d4d8de' font-size='13' text-anchor='middle'>1</text>
+<text x='149.0' y='49.0' fill='#858d98' font-size='11' text-anchor='middle'>2</text>
+<rect x='129.0' y='54' width='40' height='40' fill='#212b38' stroke='#6382a8' stroke-width='1.25'/>
+<text x='149.0' y='78.5' fill='#d4d8de' font-size='13' text-anchor='middle'>6</text>
+<text x='189.0' y='49.0' fill='#858d98' font-size='11' text-anchor='middle'>3</text>
+<rect x='169.0' y='54' width='40' height='40' fill='#3a3226' stroke='#a08654' stroke-width='1.25'/>
+<text x='189.0' y='78.5' fill='#d4d8de' font-size='13' text-anchor='middle'>10</text>
+<text x='229.0' y='49.0' fill='#858d98' font-size='11' text-anchor='middle'>4</text>
+<rect x='209.0' y='54' width='40' height='40' fill='#1b2028' stroke='#353c47' stroke-width='1.25'/>
+<text x='229.0' y='78.5' fill='#d4d8de' font-size='13' text-anchor='middle'></text>
+<text x='132.0' y='114.0' fill='#d4d8de' font-size='12' text-anchor='middle'>max(1+6, 6+1, 10+0) = 10</text>
 </svg>
 <svg x='278' y='0' width='264' height='130' viewBox='0 0 264 130' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
-<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
-<text x='132.0' y='22.0' fill='#e6e8ee' font-size='13' text-anchor='middle'>j = 4</text>
-<text x='41.0' y='49.0' fill='#8a93a6' font-size='11' text-anchor='end'>j</text>
-<text x='41.0' y='78.0' fill='#8a93a6' font-size='12' text-anchor='end'>best</text>
-<text x='69.0' y='49.0' fill='#8a93a6' font-size='11' text-anchor='middle'>0</text>
-<rect x='49.0' y='54' width='40' height='40' fill='#22355a' stroke='#7AA7FF' stroke-width='2'/>
-<text x='69.0' y='78.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>0</text>
-<text x='109.0' y='49.0' fill='#8a93a6' font-size='11' text-anchor='middle'>1</text>
-<rect x='89.0' y='54' width='40' height='40' fill='#22355a' stroke='#7AA7FF' stroke-width='2'/>
-<text x='109.0' y='78.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>1</text>
-<text x='149.0' y='49.0' fill='#8a93a6' font-size='11' text-anchor='middle'>2</text>
-<rect x='129.0' y='54' width='40' height='40' fill='#22355a' stroke='#7AA7FF' stroke-width='2'/>
-<text x='149.0' y='78.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>6</text>
-<text x='189.0' y='49.0' fill='#8a93a6' font-size='11' text-anchor='middle'>3</text>
-<rect x='169.0' y='54' width='40' height='40' fill='#22355a' stroke='#7AA7FF' stroke-width='2'/>
-<text x='189.0' y='78.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>10</text>
-<text x='229.0' y='49.0' fill='#8a93a6' font-size='11' text-anchor='middle'>4</text>
-<rect x='209.0' y='54' width='40' height='40' fill='#5a4520' stroke='#E2B66B' stroke-width='2'/>
-<text x='229.0' y='78.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>12</text>
-<text x='132.0' y='114.0' fill='#e6e8ee' font-size='12' text-anchor='middle'>max(1+10, 6+6, 10+1, 12+0)</text>
+<rect width='100%' height='100%' rx='10' fill='#151920'/>
+<text x='132.0' y='22.0' fill='#d4d8de' font-size='13' text-anchor='middle'>j = 4</text>
+<text x='41.0' y='49.0' fill='#858d98' font-size='11' text-anchor='end'>j</text>
+<text x='41.0' y='78.0' fill='#858d98' font-size='12' text-anchor='end'>best</text>
+<text x='69.0' y='49.0' fill='#858d98' font-size='11' text-anchor='middle'>0</text>
+<rect x='49.0' y='54' width='40' height='40' fill='#212b38' stroke='#6382a8' stroke-width='1.25'/>
+<text x='69.0' y='78.5' fill='#d4d8de' font-size='13' text-anchor='middle'>0</text>
+<text x='109.0' y='49.0' fill='#858d98' font-size='11' text-anchor='middle'>1</text>
+<rect x='89.0' y='54' width='40' height='40' fill='#212b38' stroke='#6382a8' stroke-width='1.25'/>
+<text x='109.0' y='78.5' fill='#d4d8de' font-size='13' text-anchor='middle'>1</text>
+<text x='149.0' y='49.0' fill='#858d98' font-size='11' text-anchor='middle'>2</text>
+<rect x='129.0' y='54' width='40' height='40' fill='#212b38' stroke='#6382a8' stroke-width='1.25'/>
+<text x='149.0' y='78.5' fill='#d4d8de' font-size='13' text-anchor='middle'>6</text>
+<text x='189.0' y='49.0' fill='#858d98' font-size='11' text-anchor='middle'>3</text>
+<rect x='169.0' y='54' width='40' height='40' fill='#212b38' stroke='#6382a8' stroke-width='1.25'/>
+<text x='189.0' y='78.5' fill='#d4d8de' font-size='13' text-anchor='middle'>10</text>
+<text x='229.0' y='49.0' fill='#858d98' font-size='11' text-anchor='middle'>4</text>
+<rect x='209.0' y='54' width='40' height='40' fill='#3a3226' stroke='#a08654' stroke-width='1.25'/>
+<text x='229.0' y='78.5' fill='#d4d8de' font-size='13' text-anchor='middle'>12</text>
+<text x='132.0' y='114.0' fill='#d4d8de' font-size='12' text-anchor='middle'>max(1+10, 6+6, 10+1, 12+0)</text>
 </svg>
 </svg>

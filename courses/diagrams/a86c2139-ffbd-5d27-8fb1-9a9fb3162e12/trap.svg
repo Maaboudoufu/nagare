@@ -1,34 +1,34 @@
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 474 190' width='474' height='190'>
-<svg x='0' y='0' width='230' height='190' viewBox='0 0 230 190' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
-<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
-<defs><marker id='a' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M0,0 L10,5 L0,10 z' fill='#8a93a6'/></marker></defs>
-<text x='115' y='24' fill='#e6e8ee' font-size='13' text-anchor='middle'>remove(50): q is 30</text>
-<line x1='89.8' y1='106.0' x2='39.2' y2='156.0' stroke='#4a5263' stroke-width='1.5'/>
-<line x1='140.2' y1='56.0' x2='89.8' y2='106.0' stroke='#4a5263' stroke-width='1.5'/>
-<line x1='140.2' y1='56.0' x2='190.8' y2='106.0' stroke='#4a5263' stroke-width='1.5'/>
-<circle cx='39.2' cy='156.0' r='16' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
-<text x='39.2' y='160.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>20</text>
-<circle cx='89.8' cy='106.0' r='16' fill='#22355a' stroke='#7AA7FF' stroke-width='2'/>
-<text x='89.8' y='110.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>30</text>
-<text x='89.8' y='135.0' fill='#7AA7FF' font-size='11.5' text-anchor='middle' stroke='#1c2029' stroke-width='4' stroke-linejoin='round' paint-order='stroke'>q</text>
-<circle cx='140.2' cy='56.0' r='16' fill='#5a4520' stroke='#E2B66B' stroke-width='2'/>
-<text x='140.2' y='60.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>50</text>
-<text x='140.2' y='85.0' fill='#E2B66B' font-size='11.5' text-anchor='middle' stroke='#1c2029' stroke-width='4' stroke-linejoin='round' paint-order='stroke'>node = qp</text>
-<circle cx='190.8' cy='106.0' r='16' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
-<text x='190.8' y='110.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>70</text>
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 474 190' width='474' height='190' font-family='IBM Plex Sans,system-ui,-apple-system,Segoe UI,sans-serif'>
+<svg x='0' y='0' width='230' height='190' viewBox='0 0 230 190' font-family='IBM Plex Sans,system-ui,-apple-system,Segoe UI,sans-serif'>
+<rect width='100%' height='100%' rx='0' fill='#0F1216'/>
+<defs><marker id='a' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M0,0 L10,5 L0,10 z' fill='#9BA3AF'/></marker></defs>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='115' y='24' fill='#E9EBEE' font-size='13' text-anchor='middle'>remove(50): q is 30</text>
+<line x1='89.8' y1='106.0' x2='39.2' y2='156.0' stroke='#4A5360' stroke-width='1'/>
+<line x1='140.2' y1='56.0' x2='89.8' y2='106.0' stroke='#4A5360' stroke-width='1'/>
+<line x1='140.2' y1='56.0' x2='190.8' y2='106.0' stroke='#4A5360' stroke-width='1'/>
+<circle cx='39.2' cy='156.0' r='16' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='39.2' y='160.5' fill='#E9EBEE' font-size='13' text-anchor='middle'>20</text>
+<circle cx='89.8' cy='106.0' r='16' fill='#18202E' stroke='#7E9AC4' stroke-width='1.5'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='89.8' y='110.5' fill='#E9EBEE' font-size='13' text-anchor='middle'>30</text>
+<text x='89.8' y='135.0' fill='#C2C8D0' font-size='11.5' text-anchor='middle' stroke='#0F1216' stroke-width='4' stroke-linejoin='round' paint-order='stroke'>q</text>
+<circle cx='140.2' cy='56.0' r='16' fill='#241F16' stroke='#C4A26A' stroke-width='1.5'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='140.2' y='60.5' fill='#E9EBEE' font-size='13' text-anchor='middle'>50</text>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='140.2' y='85.0' fill='#C2C8D0' font-size='11.5' text-anchor='middle' stroke='#0F1216' stroke-width='4' stroke-linejoin='round' paint-order='stroke'>node = qp</text>
+<circle cx='190.8' cy='106.0' r='16' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='190.8' y='110.5' fill='#E9EBEE' font-size='13' text-anchor='middle'>70</text>
 </svg>
-<svg x='244' y='0' width='230' height='140' viewBox='0 0 230 140' font-family='ui-monospace,SFMono-Regular,Menlo,monospace'>
-<rect width='100%' height='100%' rx='10' fill='#1c2029'/>
-<defs><marker id='a' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M0,0 L10,5 L0,10 z' fill='#8a93a6'/></marker></defs>
-<text x='115' y='24' fill='#e6e8ee' font-size='13' text-anchor='middle'>t-&gt;left = q-&gt;left</text>
-<line x1='115.0' y1='56.0' x2='47.7' y2='106.0' stroke='#4a5263' stroke-width='1.5'/>
-<line x1='115.0' y1='56.0' x2='182.3' y2='106.0' stroke='#4a5263' stroke-width='1.5'/>
-<circle cx='47.7' cy='106.0' r='16' fill='#5a4520' stroke='#E2B66B' stroke-width='2'/>
-<text x='47.7' y='110.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>20</text>
-<text x='47.7' y='135.0' fill='#E2B66B' font-size='11.5' text-anchor='middle' stroke='#1c2029' stroke-width='4' stroke-linejoin='round' paint-order='stroke'>moved up</text>
-<circle cx='115.0' cy='56.0' r='16' fill='#1f4232' stroke='#62BE8C' stroke-width='2'/>
-<text x='115.0' y='60.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>30</text>
-<circle cx='182.3' cy='106.0' r='16' fill='#2a2f3a' stroke='#8a93a6' stroke-width='2'/>
-<text x='182.3' y='110.5' fill='#e6e8ee' font-size='13' text-anchor='middle'>70</text>
+<svg x='244' y='0' width='230' height='140' viewBox='0 0 230 140' font-family='IBM Plex Sans,system-ui,-apple-system,Segoe UI,sans-serif'>
+<rect width='100%' height='100%' rx='0' fill='#0F1216'/>
+<defs><marker id='a' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M0,0 L10,5 L0,10 z' fill='#9BA3AF'/></marker></defs>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='115' y='24' fill='#E9EBEE' font-size='13' text-anchor='middle'>t-&gt;left = q-&gt;left</text>
+<line x1='115.0' y1='56.0' x2='47.7' y2='106.0' stroke='#4A5360' stroke-width='1'/>
+<line x1='115.0' y1='56.0' x2='182.3' y2='106.0' stroke='#4A5360' stroke-width='1'/>
+<circle cx='47.7' cy='106.0' r='16' fill='#241F16' stroke='#C4A26A' stroke-width='1.5'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='47.7' y='110.5' fill='#E9EBEE' font-size='13' text-anchor='middle'>20</text>
+<text x='47.7' y='135.0' fill='#C2C8D0' font-size='11.5' text-anchor='middle' stroke='#0F1216' stroke-width='4' stroke-linejoin='round' paint-order='stroke'>moved up</text>
+<circle cx='115.0' cy='56.0' r='16' fill='#142019' stroke='#6EA586' stroke-width='1.5'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='115.0' y='60.5' fill='#E9EBEE' font-size='13' text-anchor='middle'>30</text>
+<circle cx='182.3' cy='106.0' r='16' fill='#161A21' stroke='#2E3540' stroke-width='1'/>
+<text font-family='ui-monospace,SFMono-Regular,Menlo,monospace' x='182.3' y='110.5' fill='#E9EBEE' font-size='13' text-anchor='middle'>70</text>
 </svg>
 </svg>
