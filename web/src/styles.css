@@ -23,7 +23,7 @@
   --line:#222831; --line-strong:#626B78;                  /* strong: 3:1 on --bg, for input borders */
   --text:#E9EBEE; --muted:#9BA3AF; --faint:#7F8895;       /* muted 7:1 on --bg; faint ≥4.5:1 up to --surface-2 (icons, counts) */
   --accent:#7AA7FF; --accent-soft:rgba(122,167,255,.14);  /* store.js swaps in the color picked in Settings */
-  --success:#62BE8C; --success-soft:rgba(98,190,140,.12);
+  --success:#84BA8F; --success-soft:rgba(132,186,143,.12);  /* sage, not mint: sits with the cool ink */
   --danger:#F08A82; --danger-soft:rgba(240,138,130,.12); --warn:#E2B66B; --person:#B8A6EE;
   --bronze:#C08A62; --silver:#A3ABB8; --gold:#C9A64E;
   --primary:#E9EBEE; --primary-hover:#FFFFFF; --on-primary:#0F1216;
@@ -619,13 +619,12 @@ dialog h2 { font:600 1.0625rem var(--sans); letter-spacing:-.01em; }
 .key { display:inline-grid; place-items:center; width:24px; height:24px; flex:none; border-radius:var(--r-sm); background:var(--surface-2);
        font:600 .75rem var(--sans); color:var(--muted); }
 .opt-text { flex:1; }
-.option:is(.right, .wrong) { --tone:var(--success); border-color:color-mix(in srgb, var(--tone) 45%, transparent);
-                             background:color-mix(in srgb, var(--tone) 12%, transparent); }
+.option:is(.right, .wrong) { --tone:var(--success); border-color:color-mix(in srgb, var(--tone) 55%, var(--line)); background:var(--surface); }
 .option.wrong { --tone:var(--danger); }
 .option:is(.right, .wrong) .key { background:var(--tone); color:var(--on-primary); }
 .opt-icon { display:inline-flex; color:var(--tone); }
 .feedback { display:flex; align-items:center; gap:8px; min-height:24px; margin-top:10px; font-size:.875rem; font-weight:500; }
-.feedback.pass { color:var(--success); } .feedback.fail { color:var(--danger); }
+.feedback .icon { color:var(--tone); } .feedback.pass { --tone:var(--success); } .feedback.fail { --tone:var(--danger); }
 
 /* Steps (CLI, shell, GitHub): numbered, then marked as each one passes or fails. */
 .steps { list-style:none; margin:0; padding:0; }
