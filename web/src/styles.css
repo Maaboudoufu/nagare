@@ -409,6 +409,8 @@ dialog h2 { font:600 1.0625rem var(--sans); letter-spacing:-.01em; }
 .center { position:relative; min-height:100vh; min-height:100dvh; display:grid; grid-template-columns:minmax(0,340px);
           place-content:center; justify-items:center; padding:24px 16px; text-align:center; }
 .center > .lang-menu { position:absolute; top:16px; right:16px; }
+/* The sign-in backdrop (WakeGlyph.jsx): behind everything, never in the way of a click. Its ink is this color. */
+.wake { position:fixed; inset:0; z-index:-1; display:block; width:100%; height:100%; pointer-events:none; color:var(--muted); }
 .center-mark { width:68px; height:48px; margin-bottom:28px; }
 .center h1 { font:400 1.875rem/1.2 var(--sans); letter-spacing:-.025em; margin-bottom:10px; }
 .center > .meta { margin-bottom:28px; font-size:.9375rem; }

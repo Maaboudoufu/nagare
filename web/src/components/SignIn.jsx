@@ -4,6 +4,7 @@ import {N_, t} from '../lib/i18n.js';
 import {useStore} from '../store.js';
 import {LangMenu} from './Account.jsx';
 import {BrandMark, Icon} from './ui.jsx';
+import WakeGlyph from './WakeGlyph.jsx';
 
 const ERRORS = {
   access_denied:N_('Sign-in was cancelled.'),
@@ -28,6 +29,7 @@ export default function SignIn() {
   const error = code && (ERRORS[code] ? t(ERRORS[code]) : t('Sign-in failed. Please try again.'));
   return (
     <main className="center">
+      <WakeGlyph/>
       <LangMenu/>
       <BrandMark className="center-mark"/>
       <h1>{t('Sign in to {app}', {app:t('nagare')})}</h1>
