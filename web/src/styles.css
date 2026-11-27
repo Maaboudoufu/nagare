@@ -249,6 +249,11 @@ dialog h2 { font:600 1.0625rem var(--sans); letter-spacing:-.01em; }
 
 /* Home: the path's name and your progress on the left, where to pick up on the right, then the path itself. */
 .path-head { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,360px); gap:56px; align-items:start; margin:44px 0 56px; }
+/* The wave (Home.jsx): dimmed far back behind the header, its edges faded into the page so it has no frame. */
+.path-head { position:relative; isolation:isolate; }
+.path-wave { position:absolute; z-index:-1; inset:-20px 0 -48px; width:100%; height:calc(100% + 68px); object-fit:cover;
+             opacity:.32; pointer-events:none;
+             mask-image:radial-gradient(ellipse 55% 60% at 52% 50%, #000 25%, transparent 100%); }
 .path-progress { max-width:440px; margin-top:28px; }
 .path-progress .meta { margin-top:10px; }
 .path-progress strong { color:var(--text); font-weight:600; }
