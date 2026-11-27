@@ -376,7 +376,9 @@ dialog h2 { font:600 1.0625rem var(--sans); letter-spacing:-.01em; }
 .ach-name { font-weight:600; }
 .ach.locked .ach-name { color:var(--muted); }
 .ach-tier { display:inline-flex; align-items:center; gap:6px; margin-top:2px; font-size:.75rem; color:var(--faint); }
-.tier-dot { width:6px; height:6px; border-radius:50%; background:var(--tier); }
+/* An 8-bit coin: a 5×5 grid of 2px pixels with the corners knocked out, and one lighter pixel for the shine. */
+.tier-dot { width:10px; height:10px; flex:none; background:linear-gradient(color-mix(in srgb, #fff 45%, var(--tier)) 0 0) 2px 2px / 2px 2px no-repeat, var(--tier);
+  clip-path:polygon(2px 0, 8px 0, 8px 2px, 10px 2px, 10px 8px, 8px 8px, 8px 10px, 2px 10px, 2px 8px, 0 8px, 0 2px, 2px 2px); }
 .ach-side { display:grid; justify-items:end; gap:6px; min-width:72px; text-align:right; }
 .ach-side .meter { width:72px; }
 .medal { flex:none; color:var(--tier); shape-rendering:crispEdges; }
