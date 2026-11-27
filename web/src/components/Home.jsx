@@ -6,15 +6,7 @@ import {Page} from './Account.jsx';
 import CustomPicker from './CustomPicker.jsx';
 import Resume from './Resume.jsx';
 import {Beta, Icon, Logo, Meter, Ring} from './ui.jsx';
-// "d ASCII" from the 21st.dev ASCII editor, self-hosted: the CSP only allows media from 'self'.
-import waveVideo from '../assets/wave.mp4';
-import wavePoster from '../assets/wave.webp';
-
-// A dithered wave behind the path's header: 流れ, flow. Under reduced motion it's the still poster.
-const Wave = () => (
-  <video className="path-wave" src={waveVideo} poster={wavePoster} aria-hidden="true" tabIndex={-1}
-         autoPlay={!matchMedia('(prefers-reduced-motion: reduce)').matches} loop muted playsInline/>
-);
+import AsciiWave from './AsciiWave.jsx';
 
 // One course on the path. Its node on the line shows how far along you are: empty, a filling ring, then a check.
 function Course({course: c}) {
@@ -56,8 +48,8 @@ export default function Home() {
       <div className="tabs" role="group" aria-label={t('Learning path')}>
         {paths().map(p => <button key={p.id} className="tab" aria-pressed={p.id === path.id} onClick={() => choose(p.id)}>{p.short}</button>)}
       </div>
+      <AsciiWave className="path-wave"/>
       <header className="path-head">
-        <Wave/>
         <div className="path-intro">
           <h1>{path.title}</h1>
           {path.description && <p className="lede">{path.description}</p>}
