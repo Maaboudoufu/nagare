@@ -3,7 +3,7 @@ import {useEffect, useMemo, useRef, useState} from 'react';
 import {MODES} from '../../constants.js';
 import CodeMirror from '../../lib/codemirror.js';
 import {fx} from '../../lib/fx.js';
-import {N_, t} from '../../lib/i18n.js';
+import {N_, lang, t} from '../../lib/i18n.js';
 import {MOD, useContinue, useShortcut} from '../../lib/keys.js';
 import {markDone, post, save, settings, store, useStore} from '../../store.js';
 import {Chip, DoneButton, Icon, NextStep} from '../ui.jsx';
@@ -96,6 +96,8 @@ export default function CodeWorkspace({lesson: l}) {
     ed.current.setOption('readOnly', file.isReadonly);
     ed.current.getInputField().setAttribute('aria-label', t('Code editor: {file}', {file:active}));
   }, [active, l.uuid]);
+
+  useEffect(() => { ed.current.setOption('phrases', Object.fromEntries(PHRASES.map(p => [p, t(p)]))); }, [lang()]);
 
   useEffect(() => {
     ed.current.setOption('keyMap', vim ? 'vim' : 'sublime');

@@ -1,5 +1,5 @@
 import {useEffect, useMemo, useRef} from 'react';
-import {t} from '../lib/i18n.js';
+import {lang, t} from '../lib/i18n.js';
 import {enhanceProse, lessonHtml} from '../lib/prose.jsx';
 import {useShortcut} from '../lib/keys.js';
 import {isDone, lessonPath, navigate, useStore} from '../store.js';
@@ -19,7 +19,7 @@ export default function Lesson({course, cur, flat, onMenu, focusRef}) {
   useEffect(() => {
     focusRef.current.scrollTop = 0;
     return enhanceProse(article.current);
-  }, [cur]);
+  }, [cur, lang()]);  // lang: its callout titles and copy buttons are interface text, even in an untranslated lesson
   const i = flat.indexOf(cur), prev = flat[i - 1], next = flat[i + 1];
   const ci = course.chapters.findIndex(ch => ch.lessons.includes(cur)), ch = course.chapters[ci];
   const href = l => lessonPath(course.slug, l.uuid);
@@ -40,7 +40,7 @@ export default function Lesson({course, cur, flat, onMenu, focusRef}) {
         </div>
       </header>
       {/* key: a fresh <article> per lesson, so React never diffs against the DOM enhanceProse rewrote */}
-      <article key={`${cur.uuid}:${course.lang || 'en'}`} lang={course.lang || 'en'} className="prose" ref={article} dangerouslySetInnerHTML={body}></article>
+      <article key={`${cur.uuid}:${lang()}`} lang={course.lang || 'en'} className="prose" ref={article} dangerouslySetInnerHTML={body}></article>
       <nav className="lesson-foot" aria-label={t('Previous and next lesson')}>
         {prev && (
           <a className="foot-link" href={href(prev)}>
